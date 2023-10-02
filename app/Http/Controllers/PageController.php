@@ -100,7 +100,7 @@ class PageController extends Controller
        public function projects(FilterRequest $request)
     {
         $data = $request->validated();
-        
+      
         $filter = app()-> make(PageProjectsFilter::class, ['queryParams' => array_filter($data)]);
 
         $collection = Collection::where('price', 1)->orderByDesc('id')->filter($filter)->paginate(12);
@@ -113,11 +113,11 @@ class PageController extends Controller
             return Carbon::parse($date)->isoFormat('MMMM');
         })->unique();
 
-        $eventType = Collection::where('price', 1)->distinct()->orderBy('tip', 'asc')->pluck('tip')->map(function ($eventType) {
+        $eventType = Subject::distinct()->orderBy('name', 'asc')->pluck('name')->map(function ($eventType) {
             return $eventType;
         })->unique();
         
-        $tema = Collection::where('price', 1)->distinct()->orderBy('tema', 'asc')->pluck('tema')->map(function ($tema) {
+        $tema = Event::distinct()->orderBy('name', 'asc')->pluck('name')->map(function ($tema) {
             return $tema;
         })->unique();
 

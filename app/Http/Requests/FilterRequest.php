@@ -38,6 +38,7 @@ class FilterRequest extends FormRequest
             'tema' =>'',
             'teg' =>'',
             'role' => '',
+            'searchText' => '',
         ];
     }
 }
