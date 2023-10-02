@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\AboutController;
+use App\Http\Controllers\FAQController;
 use App\Http\Controllers\PageController;
 use Illuminate\Support\Facades\Route;
 
@@ -44,8 +46,7 @@ Route::get('/faq', function () {
     return view('pages.faq', ['name' => 'faq']);
 });
 
-Route::get('/about', function () {
-    return view('pages.about', ['name' => 'about']);
-});
+Route::get('/about/', [AboutController::class,'index'])->name('about');
+Route::get('/faq/', [FAQController::class,'index'])->name('faq');
 
 Route::get('storage/{filename}', [PageController::class, 'image']);

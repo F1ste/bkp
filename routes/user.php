@@ -1,10 +1,12 @@
 <?php
 
+use App\Http\Controllers\AboutController;
 use App\Http\Controllers\CollectionController;
 use App\Http\Controllers\AdminCollectionController;
 use App\Http\Controllers\SettingUserController;
 use App\Http\Controllers\UserPageController;
 use App\Http\Controllers\AdminPageController;
+use App\Http\Controllers\FAQController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -135,6 +137,17 @@ Route::middleware(['role:admin'])->prefix('/admin')->group(function () {
         Route::post('/edit', [AdminCollectionController::class, 'partners_edit'])->name('admin.partners.edit');
          Route::post('/delete', [AdminCollectionController::class, 'partners_delete'])->name('admin.partners.delete');
     });
+
+        Route::prefix('/about')->group(function(){
+            Route::get('/',[AboutController::class,'about'])->name('admin.about');
+            Route::get('/edit-{about}',[AboutController::class,'edit'])->name('admin.about.edit');
+            Route::post('/update',[AboutController::class,'update'])->name('admin.about.update');
+        });
+        Route::prefix('/faq')->group(function(){
+            Route::get('/',[FAQController::class,'faq'])->name('admin.faq');
+            Route::get('/edit-{faq}',[FAQController::class,'edit'])->name('admin.faq.edit');
+            Route::post('/update',[FAQController::class,'update'])->name('admin.faq.update');
+        });
 
 
 });
