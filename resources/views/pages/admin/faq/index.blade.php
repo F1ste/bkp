@@ -25,7 +25,7 @@
                     <div class="my-projects__projects-items">
                         @foreach ($faq as $el)
                             <div class="my-projects__item">
-                                <a href="{{ route('admin.about.edit', ['faq' => $el->id]) }}">
+                                <a href="{{ route('admin.faq.edit', ['faq' => $el->id]) }}">
                                     <div class="my-projects__project-name">
                                         {{ $el->quest }}
                                     </div>

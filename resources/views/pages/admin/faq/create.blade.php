@@ -27,28 +27,30 @@
                         <div class="create-project__main-info" style="align-items: flex-start;">
                             <div class="create-project__main-col">
                                 <div class="create-project__form-img">
-                                    <label class="create-project__form-label form__label">Основное фото проекта</label>
+                                    <label class="create-project__form-label form__label">Фото вопроса</label>
                                     <div class="create-project__main-photo form__input add-photo">
-                                        <div class="create-project__drag-and-drop drag-and-drop">
-                                            <div class="create-project__drag-wrapper drag-wrapper">
-                                                <input type="file" name="file" class="file__input" accept=".jpeg, .jpg, .png" hidden>
-                                                <div class="create-project__upload-logo"><img src="/image/iconsFont/add-img.svg" alt="фото"></div>
-                                                <div class="create-project__upload-info">Фото</div>
+                                    <div data-img="{{ route('admin.faq.img') }}" class="create-project__drag-and-drop drag-and-drop" id='img1'>
+                                                <div class="create-project__drag-wrapper drag-wrapper" id='img1_box'>
+                                                    <form id='form_img_1'><input id='img1_input' type="file" name="file" class="file__input" accept=".jpeg, .jpg, .png" hidden></form>
+                                                    <div class="create-project__upload-logo"><img src="/image/iconsFont/add-img.svg" alt="Загрузите основное фото проекта"></div>
+                                                    <div class="create-project__upload-info">Загрузите основное фото</div>
+                                                </div>
+
+                                                <img id="img1_fin" class='form_img_cul' style="width: 100%;" src="">
                                             </div>
-                                        </div>
                                     </div>
                                     <div class="create-project__photo-propetries">550x545 px, до 100 мб</div>
                                 </div>
                                 <div class="create-project__form-item form__item">
-                                    <label for="name" class="create-project__form-label form__label">Вопрос</label>
-                                    <input id="name" type="text" name="title"
+                                    <label for="quest" class="create-project__form-label form__label">Вопрос</label>
+                                    <input id="quest" type="text" name="quest"
                                         class="create-project__form-input form__input" placeholder="Название"
                                         data-placeholder="Название">
                                 </div>
                                 <div class="create-project__project-description">
                                     <div class="create-project__form-item form__item">
-                                        <label for="excerpt" class="create-project__form-label form__label">Ответ</label>
-                                        <textarea id="excerpt" type="text" name="description"
+                                        <label for="description" class="create-project__form-label form__label">Ответ</label>
+                                        <textarea id="description" type="text" name="description"
                                             class="create-project__form-input form__input project-description" placeholder="Не более 10000 символов"
                                             data-placeholder="Не более 10000 символов"></textarea>
                                     </div>
@@ -79,14 +81,3 @@
     </section>
 
 @endsection
-
-<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-<script src="/plugins/ckeditor/ckeditor.js"></script>
-<script src="/plugins/ckfinder/ckfinder.js"></script>
-<script>
-    $(document).ready(function() {
-        var editor = CKEDITOR.replaceAll();
-        CKFinder.setupCKEditor(editor);
-    })
-</script>
-<script src="{{ asset('front/js/app.js') }}"></script>

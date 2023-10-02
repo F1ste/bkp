@@ -65,7 +65,8 @@ class FAQController extends Controller
         $faq->quest=$request->quest;
         $faq->description=$request->description;
         $faq->img=$request->img;
-        return response()->json(route('admin.faq.edit', ['id' => $faq->id]), 201);
+        $faq->save();
+        return response()->json(route('pages.admin.faq.edit', ['id' => $faq->id]), 201);
     }
 
     public function faq (){

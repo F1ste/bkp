@@ -145,7 +145,7 @@ Route::middleware(['role:admin'])->prefix('/admin')->group(function () {
             Route::post('/img', [AboutController::class, 'img'])->name('admin.about.img');
         });
         Route::prefix('/faq')->group(function(){
-            Route::get('/',[FAQController::class,'faq'])->name('admin.faq');
+            Route::get('/',[FAQController::class,'faq'])->name('admin.faq.index');
             Route::get('/single-{id}',[FAQController::class,'edit'])->name('admin.faq.edit');
             Route::get('/new',[FAQController::class,'create'])->name('admin.faq.create');
             Route::post('/update',[FAQController::class,'update'])->name('admin.faq.update');

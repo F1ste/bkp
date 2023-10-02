@@ -17,7 +17,7 @@
                                 {{ $item->quest }}
                             </div>
                             <div class="faq__question-text">
-                                {{ !!$item->description!!}}
+                                {!! $item->description !!}
                             </div>
                         </div>
                         <div class="faq__col">

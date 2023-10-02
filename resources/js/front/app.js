@@ -33,3 +33,5 @@ import "./partners/store"
 import "./partners/edit"
 
 import "./about/edit"
+
+import "./faq/create"
