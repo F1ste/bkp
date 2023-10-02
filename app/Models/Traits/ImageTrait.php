@@ -16,7 +16,7 @@ trait ImageTrait
                 $ext = $value->extension();
                 $image_name = uniqid() . '.' . $ext;
                 $value->move(public_path() . '/covers/', $image_name);
-                $cover = '/storage/' . $image_name;
+                $path = '/storage/' . $image_name;
     }
     return $path;
 }

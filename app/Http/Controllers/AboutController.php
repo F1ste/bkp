@@ -17,23 +17,37 @@ class AboutController extends Controller
         return view('pages.about')->with('about', $about);
     }
     
-    public function edit(About $about)
+    public function edit($id)
     {
-        return view('pages.admin.about.edit',[
-            'about'=>$about
-        ]);
+        $about =  About::where('id', $id)->get();
+
+        if(count($about) > 0) {
+
+            $about = $about[0];
+            
+
+            return view('pages.admin.about.edit', [
+                'about'    => $about,
+                'id'            => $id,
+                
+            ]);
+        } else {
+            return redirect(route('pages.admin.about.edit'));
+        }
     }
 
-    public function update(About $about,AboutRequest $request)
+    public function update(AboutRequest $request)
     {
         $request->validated();
-
-        $about->udpate([
-        'title' => $request->title,
-        'description'=> $request->description,
-        'img'=> $this->imgStore($request),
+        
+        $collection = About::where('id', $request->id)->update([
+            'title'          => $request->title,
+            'img'           => $this->imgStore($request),
+            'description'           => $request->description,
+            
         ]);
-        return redirect()->route('pages.admin.about.index');
+        
+        return response()->json($collection, 201);
     }
 
     public function about(){

@@ -140,7 +140,7 @@ Route::middleware(['role:admin'])->prefix('/admin')->group(function () {
 
         Route::prefix('/about')->group(function(){
             Route::get('/',[AboutController::class,'about'])->name('admin.about');
-            Route::get('/edit-{about}',[AboutController::class,'edit'])->name('admin.about.edit');
+            Route::get('/edit-{id}',[AboutController::class,'edit'])->name('admin.about.edit');
             Route::post('/update',[AboutController::class,'update'])->name('admin.about.update');
         });
         Route::prefix('/faq')->group(function(){

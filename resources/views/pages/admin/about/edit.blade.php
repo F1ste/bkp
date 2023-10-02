@@ -9,7 +9,7 @@
 
     <div class="page__container">
 
-        <section data-update="{{ route('admin.about.update') }}" data-id="{{ $about }}" id='about-edit'
+        <section data-update="{{ route('admin.about.update') }}" data-id="{{ $id }}" id='about-edit'
             class="collection section-base create-project personal-account">
 
             <div class="create-project__container">
