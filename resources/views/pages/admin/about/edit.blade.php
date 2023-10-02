@@ -46,14 +46,14 @@
                             <div class="create-project__main-col">
                                 <div class="create-project__form-item form__item">
                                     <label for="title" class="create-project__form-label form__label">Заголовок</label>
-                                    <input style="width:40%" id="title" type="text" name="projectName"
+                                    <input style="width:40%" id="title" type="text" name="title"
                                         class="create-project__form-input form__input" placeholder="Заголовок"
                                         data-placeholder="Название" value="{{ $about->title }}">
                                 </div>
                                 <div class="create-project__project-description">
                                     <div class="create-project__form-item form__item">
                                         <label for="description" class="create-project__form-label form__label">Описание проекта</label>
-                                        <textarea id="description" type="text" name="projectDescription" class="create-project__form-input form__input project-description" placeholder="Не более 10000 символов" data-placeholder="Не более 10000 символов">{{ $about->description }}</textarea>
+                                        <textarea id="description" type="text" name="description" class="create-project__form-input form__input project-description" placeholder="Не более 10000 символов" data-placeholder="Не более 10000 символов">{{ $about->description }}</textarea>
                                     </div>
                                 </div>
 
