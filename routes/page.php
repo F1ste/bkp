@@ -35,20 +35,16 @@ Route::prefix('/designer')->group(function () {
     Route::get('/{id}', [PageController::class, 'designer'])->name('designer');
 });
 
-Route::get('/contacts', function () {
-    return view('pages.contacts', ['name' => 'contacts']);
-});
+
 
 Route::get('/partners', function () {
     return view('pages.partners', ['name' => 'partners']);
 });
 
-Route::get('/faq', function () {
-    return view('pages.faq', ['name' => 'faq']);
-});
+
 
 Route::get('/about/', [AboutController::class,'index'])->name('about');
-Route::get('/contact/', [ContactController::class,'index'])->name('contact');
+Route::get('/contacts/', [ContactController::class,'index'])->name('contact');
 Route::get('/faq/', [FAQController::class,'index'])->name('faq');
 
 Route::get('storage/{filename}', [PageController::class, 'image']);
