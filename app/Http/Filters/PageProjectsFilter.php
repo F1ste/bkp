@@ -18,6 +18,8 @@ class PageProjectsFilter extends AbstractFilter
     public const TEMA = 'tema';
     public const TEG = 'teg';
 
+    public const ROLE = 'role';
+
     protected function getCallbacks(): array
     {
         return [
@@ -26,6 +28,7 @@ class PageProjectsFilter extends AbstractFilter
             self::TIP => [$this, 'tip'],
             self::TEMA => [$this, 'tema'],
             self::TEG => [$this, 'teg'],
+            self::ROLE => [$this, 'role'],
         ];
     }
 
@@ -103,6 +106,16 @@ class PageProjectsFilter extends AbstractFilter
         $builder->where(function ($query) use ($values) {
             foreach ($values as $value) {
                 $query->orWhere('teg', 'like', "%{$value}%");
+            }
+        });
+    }
+
+    public function role(Builder $builder, $value)
+    {
+        $values = $value;
+        $builder->where(function ($query) use ($values) {
+            foreach ($values as $value) {
+                $query->orWhere('serch', 'like', "%{$value}%");
             }
         });
     }
