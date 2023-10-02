@@ -73,4 +73,9 @@ class FAQController extends Controller
         $faq=FAQ::all();
         return view('pages.admin.faq.index')->with('faq', $faq);
     }
+
+    public function delete(Request $request){
+       FAQ::where('id', $request->id)->delete();
+       return true;
+    }
 }

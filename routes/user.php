@@ -151,7 +151,8 @@ Route::middleware(['role:admin'])->prefix('/admin')->group(function () {
             Route::get('/new',[FAQController::class,'create'])->name('admin.faq.create');
             Route::post('/update',[FAQController::class,'update'])->name('admin.faq.update');
             Route::post('/store',[FAQController::class,'store'])->name('admin.faq.store');
-            Route::post('/img', [AboutController::class, 'img'])->name('admin.faq.img');
+            Route::post('/img', [FAQController::class, 'img'])->name('admin.faq.img');
+            Route::post('/delete', [FAQController::class, 'delete'])->name('admin.faq.delete');
             
         });
         Route::prefix('/contact')->group(function(){
