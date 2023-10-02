@@ -45,15 +45,15 @@
                         <div class="create-project__main-info" style="align-items: flex-start;">
                             <div class="create-project__main-col">
                                 <div class="create-project__form-item form__item">
-                                    <label for="name" class="create-project__form-label form__label">Заголовок</label>
-                                    <input style="width:40%" id="name" type="text" name="quest"
+                                    <label for="quest" class="create-project__form-label form__label">Заголовок</label>
+                                    <input style="width:40%" id="quest" type="text" name="quest"
                                         class="create-project__form-input form__input" placeholder="Заголовок"
-                                        data-placeholder="Название" value="{{ $faq->title }}">
+                                        data-placeholder="Название" value="{{ $faq->quest }}">
                                 </div>
                                 <div class="create-project__project-description">
                                     <div class="create-project__form-item form__item">
-                                        <label for="excerpt" class="create-project__form-label form__label">Описание проекта</label>
-                                        <textarea id="excerpt" type="text" name="description" class="create-project__form-input form__input project-description" placeholder="Не более 10000 символов" data-placeholder="Не более 10000 символов">{{ $faq->description }}</textarea>
+                                        <label for="description" class="create-project__form-label form__label">Описание проекта</label>
+                                        <textarea id="description" type="text" name="description" class="create-project__form-input form__input project-description" placeholder="Не более 10000 символов" data-placeholder="Не более 10000 символов">{{ $faq->description }}</textarea>
                                     </div>
                                 </div>
 
@@ -71,6 +71,7 @@
                 <div class="create-project__footer">
 
                     <div class="create-project__buttons">
+                    <a data-del="{{ route('admin.faq.delete') }}" style="cursor: pointer;" id="del-button" class="create-project__btn btn btn-white btn-border_black">Удалить</a>
                         <!--<a href="#" class="create-project__btn btn btn-white btn-border_black">Сохранить черновик</a>-->
                         <button  id='store-button' class="create-project__btn btn btn-filled">Редактировать</button>
                     </div>
@@ -79,14 +80,4 @@
             </div>
     </div>
     </section>
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-    <script src="/plugins/ckeditor/ckeditor.js"></script>
-    <script src="/plugins/ckfinder/ckfinder.js"></script>
-    <script>
-      $(document).ready(function(){
-        var editor = CKEDITOR.replaceAll();
-        CKFinder.setupCKEditor( editor );
-      })
-    </script>
-    <script src="{{ asset('front/js/app.js') }}"></script>
 @endsection
