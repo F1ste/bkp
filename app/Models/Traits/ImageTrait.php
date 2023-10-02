@@ -10,14 +10,17 @@ trait ImageTrait
 {
     function imgStore(Request $request): string
     {
-        $path='';
-            if ($request->has('file')) {   
-                $value=$request->file('file');
-                $ext = $value->extension();
-                $image_name = uniqid() . '.' . $ext;
-                $value->move(public_path() . '/covers/', $image_name);
-                $path = '/storage/' . $image_name;
-    }
-    return $path;
+        $size = $request->file('file')->getSize();
+        $type = $request->file('file')->extension();
+
+        $name = $size.'_'.'image'.'.'.$type;
+
+        $path = $request->file('file')->storeAs(
+            'public', $name
+        );
+
+        $link = '/storage/'.$name;
+
+        return $link;
 }
 }

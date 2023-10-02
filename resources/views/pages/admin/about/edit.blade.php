@@ -19,7 +19,7 @@
                         <div class="create-project__form-img">
                             <label class="create-project__form-label form__label">Фото на странице "О Бирже"</label>
                             <div class="create-project__main-photo form__input add-photo">
-                                <div data-img="{{ $about->img}}" class="create-project__drag-and-drop drag-and-drop" id='img1'>
+                                <div data-img="{{ route('admin.about.img')}}" class="create-project__drag-and-drop drag-and-drop" id='img1'>
                                     @if($about->img == '')
                                     <div class="create-project__drag-wrapper drag-wrapper" id='img1_box'>
                                         <form id='form_img_1'><input id='img1_input' type="file" name="file" class="file__input" accept=".jpeg, .jpg, .png" hidden></form>

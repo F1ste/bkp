@@ -26,7 +26,7 @@ class AboutController extends Controller
             $about = $about[0];
             
 
-            return view('pages.admin.about.edit', [
+            return view('pages.admin.about.edit', [ 
                 'about'    => $about,
                 'id'            => $id,
                 
@@ -35,14 +35,16 @@ class AboutController extends Controller
             return redirect(route('pages.admin.about.edit'));
         }
     }
-
+    public function img(Request $request){
+        return $this->imgStore($request);
+    }
     public function update(AboutRequest $request)
     {
         $request->validated();
         
         $collection = About::where('id', $request->id)->update([
             'title'          => $request->title,
-            'img'           => $this->imgStore($request),
+            'img'           => $request->img,
             'description'           => $request->description,
             
         ]);
