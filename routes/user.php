@@ -6,6 +6,7 @@ use App\Http\Controllers\AdminCollectionController;
 use App\Http\Controllers\SettingUserController;
 use App\Http\Controllers\UserPageController;
 use App\Http\Controllers\AdminPageController;
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\FAQController;
 use Illuminate\Support\Facades\Route;
 
@@ -152,6 +153,11 @@ Route::middleware(['role:admin'])->prefix('/admin')->group(function () {
             Route::post('/store',[FAQController::class,'store'])->name('admin.faq.store');
             Route::post('/img', [AboutController::class, 'img'])->name('admin.faq.img');
             
+        });
+        Route::prefix('/contact')->group(function(){
+            Route::get('/',[ContactController::class,'contact'])->name('admin.contact');
+            Route::get('/edit-{id}',[ContactController::class,'edit'])->name('admin.contact.edit');
+            Route::post('/update',[ContactController::class,'update'])->name('admin.contact.update');
         });
 
 
