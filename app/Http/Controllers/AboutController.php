@@ -28,7 +28,7 @@ class AboutController extends Controller
 
             return view('pages.admin.about.edit', [ 
                 'about'    => $about,
-                'id'            => $id,
+                'id'       => $id,
                 
             ]);
         } else {
@@ -43,9 +43,9 @@ class AboutController extends Controller
         $request->validated();
         
         $collection = About::where('id', $request->id)->update([
-            'title'          => $request->title,
+            'title'         => $request->title,
             'img'           => $request->img,
-            'description'           => $request->description,
+            'description'   => $request->description,
             
         ]);
         

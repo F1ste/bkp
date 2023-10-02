@@ -9,7 +9,7 @@
 
     <div class="page__container">
 
-        <section data-update="{{ route('admin.about.update') }}" data-id="{{ $about }}" id='about_page-edit'
+        <section data-update="{{ route('admin.faq.update') }}" data-id="{{ $id }}" id='faq_page-edit'
             class="collection section-base create-project personal-account">
 
             <div class="create-project__container">
@@ -19,7 +19,7 @@
                         <div class="create-project__form-img">
                             <label class="create-project__form-label form__label">Фото на странице "Вопрос-ответ"</label>
                             <div class="create-project__main-photo form__input add-photo">
-                                <div data-img="{{ $faq->img}}" class="create-project__drag-and-drop drag-and-drop" id='img1'>
+                                <div data-img="{{ route('admin.faq.img')}}" class="create-project__drag-and-drop drag-and-drop" id='img1'>
                                     @if($faq->img == '')
                                     <div class="create-project__drag-wrapper drag-wrapper" id='img1_box'>
                                         <form id='form_img_1'><input id='img1_input' type="file" name="file" class="file__input" accept=".jpeg, .jpg, .png" hidden></form>
@@ -36,7 +36,7 @@
                                         <div class="create-project__upload-info">Загрузите фото</div>
                                     </div>
 
-                                    <img id="img1_fin" class='form_img_cul' style="width: 100%;display: block;" src="{{ $about->img }}">
+                                    <img id="img1_fin" class='form_img_cul' style="width: 100%;display: block;" src="{{ $faq->img }}">
                                     @endif
                                 </div>
                             </div>

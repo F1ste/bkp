@@ -16,23 +16,41 @@ class FAQController extends Controller
         return view('pages.faq')->with('faq', $faq);
     }
     
-    public function edit(FAQ $faq)
+
+    public function edit($id)
     {
-        return view('pages.admin.faq.edit',[
-            'faq'=>$faq
-        ]);
+        $faq =  FAQ::where('id', $id)->get();
+
+        if(count($faq) > 0) {
+
+            $faq = $faq[0];
+            
+
+            return view('pages.admin.faq.edit', [ 
+                'faq'      => $faq,
+                'id'       => $id,
+                
+            ]);
+        } else {
+            return redirect(route('pages.admin.faq.create'));
+        }
     }
 
-    public function update(FAQ $faq,FAQRequest $request)
+    public function img(Request $request){
+        return $this->imgStore($request);
+    }
+    public function update(FAQRequest $request)
     {
         $request->validated();
-
-        $faq->udpate([
-        'title' => $request->title,
-        'description'=> $request->description,
-        'img'=> $this->imgStore($request),
+        
+        $faq = FAQ::where('id', $request->id)->update([
+            'title'         => $request->title,
+            'img'           => $request->img,
+            'description'   => $request->description,
+            
         ]);
-        return redirect()->route('pages.admin.faq.index');
+        
+        return response()->json($faq, 201);
     }
     public function create()
     {
@@ -46,7 +64,8 @@ class FAQController extends Controller
         $faq=new FAQ;
         $faq->quest=$request->quest;
         $faq->description=$request->description;
-        return redirect()->route('pages.admin.faq.index');
+        $faq->img=$request->img;
+        return response()->json(route('admin.faq.edit', ['id' => $faq->id]), 201);
     }
 
     public function faq (){
