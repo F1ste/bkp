@@ -19,10 +19,10 @@
                             </button>
                             <div class="spollers__body">
                                 <div class="spollers__wrapper">
-                                    <a href="#" class="sidebar__item _icon-dashboard" dataText="Главная"></a>
-                                    <a href="#" class="sidebar__item _icon-dashboard" dataText="О Бирже"></a>
-                                    <a href="#" class="sidebar__item _icon-dashboard" dataText="Вопрос-ответ"></a>
-                                    <a href="#" class="sidebar__item _icon-dashboard" dataText="Контакты"></a>
+                                    <a href="/admin/dashboard" class="sidebar__item _icon-dashboard" dataText="Главная"></a>
+                                    <a href="/admin/about/edit-1" class="sidebar__item _icon-dashboard" dataText="О Бирже"></a>
+                                    <a href="/admin/faq/faq-1" class="sidebar__item _icon-dashboard" dataText="Вопрос-ответ"></a>
+                                    <a href="/admin/contact/contact-1" class="sidebar__item _icon-dashboard" dataText="Контакты"></a>
                                 </div>
                             </div>
                         </div>
