@@ -9,7 +9,20 @@ import { } from "../libs/ckeditor/ckeditor";
 
     if (!collectionEdit) return false
 
-
+    var editorData = {};
+    var textareas = document.querySelectorAll("textarea:not(#video)");
+    textareas.forEach(function (textarea) {
+        var editor = CKEDITOR.replace(textarea);
+        CKFinder.setupCKEditor(editor);
+        var excerptFieldName = textarea.id;
+        (function (currentEditor, fieldName) {
+            editorData[fieldName] = currentEditor.getData();
+            currentEditor.on("change", function () {
+                editorData[fieldName] = currentEditor.getData();
+            });
+        })(editor, excerptFieldName);
+    });
+  
 
     const uploadRoute = collectionEdit.dataset.image,
         updateRoute = collectionEdit.dataset.update,
@@ -18,8 +31,8 @@ import { } from "../libs/ckeditor/ckeditor";
 
 
     const select = {
-        description: 'description',
-        img: 'img',
+        description: editorData.description,
+        img: 'img1_fin',
         title: 'title',
         storeButton: 'store-button',
     }
@@ -31,6 +44,8 @@ import { } from "../libs/ckeditor/ckeditor";
 
     document.getElementById(select.storeButton).addEventListener('click', e => {
         let title = document.getElementById(select.title).value;
+        let img = document.getElementById(select.img).value;
+        let description = editorData.description;
 
         if (title == '') {
             alert('Заполните поле!');
@@ -59,24 +74,6 @@ import { } from "../libs/ckeditor/ckeditor";
             console.log(error.response)
         })
     });
-
-
-
-    document.getElementById(select.del).addEventListener('click', e => {
-
-        let del = document.getElementById(select.del).dataset.del;
-        axios.post(del, {
-            id: id
-
-        }).then(e => {
-            window.location.replace("/admin/about");
-        }).catch(error => {
-            console.log(error.response)
-        })
-
-    });
-
-
 
 })()
 

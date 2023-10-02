@@ -31,3 +31,5 @@ import "./teg/edit"
 
 import "./partners/store"
 import "./partners/edit"
+
+import "./about/edit"

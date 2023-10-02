@@ -9,7 +9,7 @@
 
     <div class="page__container">
 
-        <section data-update="{{ route('admin.about.update') }}" data-id="{{ $about }}" id='about_page-edit'
+        <section data-update="{{ route('admin.about.update') }}" data-id="{{ $about }}" id='about-edit'
             class="collection section-base create-project personal-account">
 
             <div class="create-project__container">
@@ -45,15 +45,15 @@
                         <div class="create-project__main-info" style="align-items: flex-start;">
                             <div class="create-project__main-col">
                                 <div class="create-project__form-item form__item">
-                                    <label for="name" class="create-project__form-label form__label">Заголовок</label>
-                                    <input style="width:40%" id="name" type="text" name="projectName"
+                                    <label for="title" class="create-project__form-label form__label">Заголовок</label>
+                                    <input style="width:40%" id="title" type="text" name="projectName"
                                         class="create-project__form-input form__input" placeholder="Заголовок"
                                         data-placeholder="Название" value="{{ $about->title }}">
                                 </div>
                                 <div class="create-project__project-description">
                                     <div class="create-project__form-item form__item">
-                                        <label for="excerpt" class="create-project__form-label form__label">Описание проекта</label>
-                                        <textarea id="excerpt" type="text" name="projectDescription" class="create-project__form-input form__input project-description" placeholder="Не более 10000 символов" data-placeholder="Не более 10000 символов">{{ $about->description }}</textarea>
+                                        <label for="description" class="create-project__form-label form__label">Описание проекта</label>
+                                        <textarea id="description" type="text" name="projectDescription" class="create-project__form-input form__input project-description" placeholder="Не более 10000 символов" data-placeholder="Не более 10000 символов">{{ $about->description }}</textarea>
                                     </div>
                                 </div>
 
@@ -79,14 +79,5 @@
             </div>
     </div>
     </section>
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-    <script src="/plugins/ckeditor/ckeditor.js"></script>
-    <script src="/plugins/ckfinder/ckfinder.js"></script>
-    <script>
-      $(document).ready(function(){
-        var editor = CKEDITOR.replaceAll();
-        CKFinder.setupCKEditor( editor );
-      })
-    </script>
-    <script src="{{ asset('front/js/app.js') }}"></script>
+
 @endsection
