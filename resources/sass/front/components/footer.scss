@@ -1,0 +1,124 @@
+.page-footer {
+    background: #242527;
+    padding: 166px 0px;
+
+    .container {
+        display: flex;
+        flex-flow: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .page-footer__logo {
+        margin-bottom: 26px;
+
+        a {
+            transition: all 300ms;
+            font-family: 'Syncopate', 'Arial', 'Montserrat';
+            font-style: normal;
+            font-weight: 700;
+            font-size: 30px;
+            line-height: 31px;
+            text-transform: uppercase;
+            color: #FFFFFF;
+
+            &:hover {
+                transition: all 300ms;
+                color: #F20519;
+            }
+        }
+    }
+
+    .page-footer__social {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 24px;
+
+        a {
+
+            svg {
+                width: 38px;
+                height: 38px;
+                margin: 0px 23px;
+
+                circle {
+                    transition: all 300ms;
+                }
+            }
+
+            &:hover {
+
+                svg {
+
+                    circle {
+                        fill: #F20519;
+                        transition: all 300ms;
+                    }
+                }
+            }
+        }
+    }
+
+    .page-footer_coping {
+        p {
+            font-style: normal;
+            font-weight: 400;
+            font-size: 20px;
+            line-height: 24px;
+            text-align: center;
+            letter-spacing: 0.01em;
+            color: #A58A55;
+        }
+    }
+}
+
+@media (max-width: 768px) {
+    .page-footer {
+        padding: 80px 0px;
+    }
+}
+
+@media (max-width: 420px) {
+    .page-footer {
+        padding: 60px 0px;
+    }
+    .page-footer .page-footer__logo a {
+        font-size: 20px;
+        line-height: 21px;
+    }
+    .page-footer .page-footer__social a svg {
+        width: 26px;
+        height: 26px;
+        margin: 0px 15px;
+    }
+    .page-footer .page-footer__logo {
+        margin-bottom: 20px;
+    }
+    .page-footer .page-footer__social {
+        margin-bottom: 20px;
+    }
+    .page-footer .page-footer_coping p {
+        font-size: 14px;
+        line-height: 17px;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

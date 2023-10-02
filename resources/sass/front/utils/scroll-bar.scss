@@ -1,0 +1,13 @@
+body, .menu__body {
+
+    &::-webkit-scrollbar {
+        width: 6px;
+    }
+    &::-webkit-scrollbar-track {
+
+    }
+    &::-webkit-scrollbar-thumb {
+        background-color: #F20519;
+        border-radius: 20px;
+    }
+}

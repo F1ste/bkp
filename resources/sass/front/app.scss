@@ -1,0 +1,37 @@
+/** Fonts **/
+@import url(https://fonts.googleapis.com/css?family=Montserrat:regular,500,600,700&display=swap);
+@import url(https://fonts.googleapis.com/css?family=Syncopate:700display=swap);
+
+@font-face {
+    font-family: 'AA Spaceman';
+    src: url('../fonts/AASpaceman.woff2') format('woff2'),
+    url('../fonts/AASpaceman.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+/** End Fonts **/
+
+/** Utils **/
+@import "./utils/reset";
+@import "./utils/base";
+@import "./utils/main";
+@import "./utils/hover";
+@import "./utils/scroll-bar";
+/** End Utils **/
+
+/** Components **/
+@import "./components/footer";
+@import "./components/header";
+@import "./components/notification-modal";
+/** End Components **/
+
+/** Page **/
+@import "./pages/login/login";
+@import "./pages/register/register";
+@import "./pages/setting/profile";
+@import "./pages/collection/collection";
+@import "./pages/collection/new";
+@import "./pages/document/document";
+@import "./pages/dashboard/dashboard";
+/** End Page **/

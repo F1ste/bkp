@@ -1,0 +1,106 @@
+.notification {
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    z-index: 9;
+    background: rgba(0, 0, 0, 0.74);
+    right: 0px;
+    bottom: 0px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .modal-group {
+        background: #FFFFFF;
+        position: relative;
+        width: 900px;
+        height: 560px;
+        display: flex;
+        flex-flow: column;
+        align-items: center;
+        justify-content: center;
+
+        .modal-group__title {
+            margin-bottom: 50px;
+            font-style: normal;
+            font-weight: 700;
+            font-size: 40px;
+            line-height: 49px;
+            letter-spacing: 0.04em;
+            color: #242527;
+        }
+
+        .modal-group__description {
+            margin-bottom: 50px;
+            font-style: normal;
+            font-weight: 400;
+            font-size: 24px;
+            line-height: 29px;
+            text-align: center;
+            letter-spacing: 0.04em;
+            color: #242527;
+        }
+
+        .modal-group__button {
+            background: #F20519;
+            border-radius: 2px;
+            border: 0px;
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 580px;
+            font-style: normal;
+            font-weight: 700;
+            font-size: 24px;
+            line-height: 29px;
+            letter-spacing: 0.03em;
+            color: #FFFFFF;
+            transition: all 300ms;
+            cursor: pointer;
+
+            &:hover {
+                transition: all 300ms;
+                background: #92000c;
+            }
+        }
+
+        .times {
+            position: absolute;
+            top: 58px;
+            right: 75px;
+            cursor: pointer;
+
+            svg {
+                path {
+                    transition: all 300ms;
+                }
+            }
+
+            &:hover {
+                svg {
+                    path {
+                        transition: all 300ms;
+                        stroke: #F20519;
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
