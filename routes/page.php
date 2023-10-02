@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\AboutController;
+use App\Http\Controllers\ContactController;
+use App\Http\Controllers\FAQController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\SearchResultsController;
 use App\Http\Requests\FilterRequest;
@@ -46,9 +49,9 @@ Route::get('/faq', function () {
     return view('pages.faq', ['name' => 'faq']);
 });
 
-Route::get('/about', function () {
-    return view('pages.about', ['name' => 'about']);
-});
+Route::get('/about/', [AboutController::class,'index'])->name('about');
+Route::get('/contact/', [ContactController::class,'index'])->name('contact');
+Route::get('/faq/', [FAQController::class,'index'])->name('faq');
 
 Route::get('storage/{filename}', [PageController::class, 'image']);
 

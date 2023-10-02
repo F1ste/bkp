@@ -8,18 +8,12 @@
 						<div class="contacts__title section__title">
 							Контакты
 						</div>
+						@foreach ($contact as $item)
 						<div class="contacts__info">
-							<div class="contacts__name">АНО «Дирекция Санкт-Петербургского международного культурного форума»</div>
-							<div class="contacts__adress">Малая Морская ул., 8, Санкт-Петербург, 191186</div>
-							<div class="contacts__items">
-								<div class="contacts__item-phone">
-									<a href="mailto:office@culturalforum.ru">office@culturalforum.ru</a>
-								</div>
-								<div class="contacts__item-email">
-									+7 (812) 779-10-30
-								</div>
-							</div>
+							{!$item->descripiton!}
 						</div>
+						@endforeach
+						
 						<div class="contacts__info-general">
 							<div class="contacts__info-title">
 								Общие вопросы

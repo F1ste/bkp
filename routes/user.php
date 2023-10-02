@@ -1,10 +1,13 @@
 <?php
 
+use App\Http\Controllers\AboutController;
 use App\Http\Controllers\CollectionController;
 use App\Http\Controllers\AdminCollectionController;
 use App\Http\Controllers\SettingUserController;
 use App\Http\Controllers\UserPageController;
 use App\Http\Controllers\AdminPageController;
+use App\Http\Controllers\ContactController;
+use App\Http\Controllers\FAQController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -135,6 +138,28 @@ Route::middleware(['role:admin'])->prefix('/admin')->group(function () {
         Route::post('/edit', [AdminCollectionController::class, 'partners_edit'])->name('admin.partners.edit');
          Route::post('/delete', [AdminCollectionController::class, 'partners_delete'])->name('admin.partners.delete');
     });
+
+        Route::prefix('/about')->group(function(){
+            Route::get('/',[AboutController::class,'about'])->name('admin.about');
+            Route::get('/edit-{id}',[AboutController::class,'edit'])->name('admin.about.edit');
+            Route::post('/update',[AboutController::class,'update'])->name('admin.about.update');
+            Route::post('/img', [AboutController::class, 'img'])->name('admin.about.img');
+        });
+        Route::prefix('/faq')->group(function(){
+            Route::get('/',[FAQController::class,'faq'])->name('admin.faq');
+            Route::get('/single-{id}',[FAQController::class,'edit'])->name('admin.faq.edit');
+            Route::get('/new',[FAQController::class,'create'])->name('admin.faq.create');
+            Route::post('/update',[FAQController::class,'update'])->name('admin.faq.update');
+            Route::post('/store',[FAQController::class,'store'])->name('admin.faq.store');
+            Route::post('/img', [FAQController::class, 'img'])->name('admin.faq.img');
+            Route::post('/delete', [FAQController::class, 'delete'])->name('admin.faq.delete');
+            
+        });
+        Route::prefix('/contact')->group(function(){
+            Route::get('/',[ContactController::class,'contact'])->name('admin.contact');
+            Route::get('/edit-{id}',[ContactController::class,'edit'])->name('admin.contact.edit');
+            Route::post('/update',[ContactController::class,'update'])->name('admin.contact.update');
+        });
 
 
 });
