@@ -125,13 +125,18 @@ class PageController extends Controller
             return $teg;
         })->unique();
 
+        $roles = Roles::distinct()->orderBy('name', 'asc')->pluck('name')->map(function ($roles) {
+            return $roles;
+        })->unique();
+
         return view('pages.front.projects.projects', [
             'collections'    => $collection,
             'years' => $years,
             'months' => $months,
             'event_type' => $eventType,
             'tema' => $tema,
-            'teg' => $teg
+            'teg' => $teg,
+            'roles' => $roles
         ]);
 
     }

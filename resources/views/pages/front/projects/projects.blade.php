@@ -148,6 +148,23 @@
 											@endforeach
 											</div>
 										</div>
+										<div class="filter__item">
+											<button type="button" data-spoller data-spoller-close class="filter__btn accordion__title _icon-accordionArrow">
+												Роли
+											</button>
+											<div class="filter__accordion-body accordion__body main-text">
+											@foreach ($roles as $rubric)
+												@if (!is_null($rubric))
+													<div class="filter__form-item form__item">
+														<div class="filter__checkbox checkbox">
+															<input data-no-focus-classes id="{{ $rubric }}" value="{{ $rubric }}" type="checkbox" name="role[]" class="filter__checkbox-input checkbox__input">
+															<label for="{{ $rubric }}" class="filter__form-label checkbox__label "><span>{{ Str::title($rubric) }}</span></label>
+														</div>
+													</div>
+												@endif
+											@endforeach
+											</div>
+										</div>
 <!-- 										<div class="filter__item">
 											<button type="button" data-spoller data-spoller-close class="filter__btn accordion__title all-filters">
 												Все фильтры
