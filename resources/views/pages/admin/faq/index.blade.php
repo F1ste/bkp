@@ -23,15 +23,15 @@
                     </div>
 
                     <div class="my-projects__projects-items">
-                        @foreach ($faq as $el)
-                            <div class="my-projects__item">
-                                <a href="{{ route('admin.faq.edit', ['faq' => $el->id]) }}">
-                                    <div class="my-projects__project-name">
-                                        {{ $el->quest }}
-                                    </div>
+                        @foreach($faq as $el)
+                        <div class="my-projects__item" style="margin-bottom: 15px;">
+                            <a href="{{ route('admin.faq.edit', ['id' => $el->id]) }}">
+                                <div class="my-projects__project-name">
+                                    {{ $el->quest }}
+                                </div>
 
-                                </a>
-                            </div>
+                            </a>
+                        </div>
                         @endforeach
                     </div>
 
