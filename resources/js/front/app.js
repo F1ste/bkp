@@ -35,3 +35,4 @@ import "./partners/edit"
 import "./about/edit"
 
 import "./faq/create"
+import "./faq/edit"

@@ -44,7 +44,7 @@ class FAQController extends Controller
         $request->validated();
         
         $faq = FAQ::where('id', $request->id)->update([
-            'title'         => $request->title,
+            'quest'         => $request->quest,
             'img'           => $request->img,
             'description'   => $request->description,
             
@@ -66,7 +66,7 @@ class FAQController extends Controller
         $faq->description=$request->description;
         $faq->img=$request->img;
         $faq->save();
-        return response()->json(route('pages.admin.faq.edit', ['id' => $faq->id]), 201);
+        return response()->json(route('admin.faq.edit', ['id' => $faq->id]), 201);
     }
 
     public function faq (){
