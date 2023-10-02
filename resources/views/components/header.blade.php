@@ -25,10 +25,25 @@
                             <li class="menu__item"><a href="/news" class="menu__link">Новости</a></li>
                             <li class="menu__item"><a href="/faq" class="menu__link">FAQ</a></li>
                             <li class="menu__item"><a href="/contacts" class="menu__link">Контакты</a></li>
-                            <form class="menu__search-form form">
+                            <form id="headerSearch" class="menu__search-form form">
                                 <div class="menu__form-item search-item form-item">
-                                    <input type="text" class="form__input _icon-search" placeholder="Найти...">
+                                    <input type="text" class="form__input _icon-search" name="searchText" placeholder="Найти...">
                                     <button type="submit" class="menu__search-submit search-submit _icon-search"></button>
+                                </div>
+                                <div class="search-results">
+                                    <div class="search-results__group-name">
+                                    
+                                
+                                    </div>
+                                    <div class="search-results__item">
+                                        
+                                    </div>
+                                    <div class="search-results__group-name">
+                                        
+                                    </div>
+                                    <div class="search-results__item">
+                                       
+                                    </div>
                                 </div>
                             </form>
 

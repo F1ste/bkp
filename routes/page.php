@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\PageController;
+use App\Http\Controllers\SearchResultsController;
+use App\Http\Requests\FilterRequest;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [PageController::class, 'home'])->name('home');
@@ -49,3 +51,6 @@ Route::get('/about', function () {
 });
 
 Route::get('storage/{filename}', [PageController::class, 'image']);
+
+Route::get('/search', [SearchResultsController::class, 'index']);
+

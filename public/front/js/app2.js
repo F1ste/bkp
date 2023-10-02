@@ -10107,6 +10107,83 @@
             addPartnerBtn.addEventListener("click", addPartner);
         })();
         (() => {
+            const headerSearch = document.getElementById("headerSearch");
+            if (!headerSearch) return false;
+            const headerSearchInput = headerSearch.querySelector("input");
+            const headerSearchResults = headerSearch.querySelector(".search-results");
+            const headerResultItem = headerSearch.querySelector(".search-results__item");
+        
+            headerSearch.addEventListener("click", () => {
+                if (headerSearchInput.value !== "") headerSearchResults.classList.add("_results-active");
+            });
+        
+            document.addEventListener("click", (event) => {
+                if (!headerSearch.contains(event.target)) headerSearchResults.classList.remove("_results-active");
+            });
+        
+            function showSearchResults() {
+                const query = headerSearchInput.value;
+                if (headerSearchInput.value !== "" && headerResultItem) {
+                    headerSearchResults.classList.add("_results-active");
+                    fetch(`/search?searchText=${query}`)
+                        .then((response) => response.json())
+                        .then((data) => {
+                            const newsArray = data.news || [];
+                            const collectionsArray = data.collections || [];
+        
+                            headerSearchResults.innerHTML = "";
+        
+                            function addGroup(groupName, groupHref) {
+                                const group = document.createElement("div");
+                                group.classList.add("search-results__group-name");
+                                const groupLink = document.createElement("a");
+                                groupLink.textContent = groupName;
+                                groupLink.href = groupHref;
+                                group.appendChild(groupLink);
+                                headerSearchResults.appendChild(group);
+                            }
+        
+                            if (newsArray.length > 0 || collectionsArray.length > 0) {
+                                if (newsArray.length > 0) {
+                                    addGroup("Новости", "/news");
+                                    newsArray.forEach((item) => {
+                                        const listItem = document.createElement("div");
+                                        listItem.classList.add("search-results__item");
+                                        const title = document.createElement("a");
+                                        title.textContent = item.name;
+                                        title.href = "/news/news/" + item.id;
+                                        listItem.appendChild(title);
+                                        headerSearchResults.appendChild(listItem);
+                                    });
+                                }
+        
+                                if (collectionsArray.length > 0) {
+                                    addGroup("Проекты", "/projects");
+                                    collectionsArray.forEach((item) => {
+                                        const listItem = document.createElement("div");
+                                        listItem.classList.add("search-results__item");
+                                        const title = document.createElement("a");
+                                        title.textContent = item.name;
+                                        title.href = "/projects/project/" + item.id;
+                                        listItem.appendChild(title);
+                                        headerSearchResults.appendChild(listItem);
+                                    });
+                                }
+                            } else {
+                                const noResultsMessage = document.createElement("div");
+                                noResultsMessage.textContent = "По вашему запросу ничего не найдено";
+                                headerSearchResults.appendChild(noResultsMessage);
+                            }
+                        })
+                        .catch((error) => {
+                            console.error("Произошла ошибка при запросе:", error);
+                        });
+                } else headerSearchResults.classList.remove("_results-active");
+            }
+        
+            headerSearchInput.addEventListener("input", showSearchResults);
+        })();
+        (() => {
             const pickers = document.querySelectorAll("[data-datepicker]");
             if (pickers.length === 0) return false;
             let countPicker = 1;
