@@ -31,10 +31,12 @@
 					<a href="{{$icon->style}}" class="socials__social-item icon-vk">
 						<i class="socials__icon _icon-vk"></i>
 					</a>
+					@endif
 					@if(strpos($icon,'youtube.com')!==false)
 					<a href="{{$icon->style}}" class="socials__social-item icon-youtube">
 						<i class="socials__icon _icon-youtube"></i>
 					</a>
+					@endif
 					@endforeach
 					</div>
 				</div>
