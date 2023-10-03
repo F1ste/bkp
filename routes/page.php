@@ -53,3 +53,4 @@ Route::get('storage/{filename}', [PageController::class, 'image']);
 
 Route::get('/search', [SearchResultsController::class, 'index']);
 
+

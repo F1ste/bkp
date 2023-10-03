@@ -8,6 +8,8 @@ use App\Http\Controllers\UserPageController;
 use App\Http\Controllers\AdminPageController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\FAQController;
+use App\Http\Controllers\FooterController;
+use App\View\Components\Footer;
 use Illuminate\Support\Facades\Route;
 
 
@@ -159,6 +161,31 @@ Route::middleware(['role:admin'])->prefix('/admin')->group(function () {
             Route::get('/',[ContactController::class,'contact'])->name('admin.contact');
             Route::get('/edit-{id}',[ContactController::class,'edit'])->name('admin.contact.edit');
             Route::post('/update',[ContactController::class,'update'])->name('admin.contact.update');
+        });
+
+        Route::prefix('/footer')->group(function(){
+            Route::get('/',[FooterController::class,'footer'])->name('admin.footer');
+            Route::prefix('/fdescr')->group(function(){
+                Route::get('/single-{id}',[FooterController::class,'fdescr_edit'])->name('admin.fdescr.edit');
+                Route::get('/new',[FooterController::class,'fdescr_create'])->name('admin.fdescr.create');
+                Route::post('/update',[FooterController::class,'fdescr_update'])->name('admin.fdescr.update');
+                Route::post('/store',[FooterController::class,'fdescr_store'])->name('admin.fdescr.store');
+                Route::post('/delete', [FooterController::class, 'fdescr_delete'])->name('admin.fdescr.delete');
+            });
+            Route::prefix('/ficon')->group(function(){
+                Route::get('/single-{id}',[FooterController::class,'ficon_edit'])->name('admin.ficon.edit');
+                Route::get('/new',[FooterController::class,'ficon_create'])->name('admin.ficon.create');
+                Route::post('/update',[FooterController::class,'ficon_update'])->name('admin.ficon.update');
+                Route::post('/store',[FooterController::class,'ficon_store'])->name('admin.ficon.store');
+                Route::post('/delete', [FooterController::class, 'ficon_delete'])->name('admin.ficon.delete');
+            });
+            Route::prefix('/fpage')->group(function(){
+                Route::get('/single-{id}',[FooterController::class,'fpage_edit'])->name('admin.fpage.edit');
+                Route::get('/new',[FooterController::class,'fpage_create'])->name('admin.fpage.create');
+                Route::post('/update',[FooterController::class,'fpage_update'])->name('admin.fpage.update');
+                Route::post('/store',[FooterController::class,'fpage_store'])->name('admin.fpage.store');
+                Route::post('/delete', [FooterController::class, 'fpage_delete'])->name('admin.fpage.delete');
+            });
         });
 
 
