@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\FdescrRequest;
 use App\Http\Requests\FiconRequest;
 use App\Http\Requests\FinfoRequest;
+use App\Http\Requests\FpageRequest;
 use App\Models\Fdescr;
 use App\Models\Ficon;
 use App\Models\Finfo;
@@ -53,7 +54,7 @@ class FooterController extends Controller
         $fdescr=new Fdescr;
         $fdescr->descr=$request->descr;
         $fdescr->save();
-        return response()->json(route('admin.faq.edit', ['id' => $fdescr->id]), 201);
+        return response()->json(route('admin.footer.fdescr.edit', ['id' => $fdescr->id]), 201);
     }
     public function ficon_store(FiconRequest $request)
     {
@@ -61,7 +62,7 @@ class FooterController extends Controller
         $ficon=new Ficon;
         $ficon->icon=$request->icon;
         $ficon->save();
-        return response()->json(route('admin.faq.edit', ['id' => $ficon->id]), 201);
+        return response()->json(route('admin.footer.ficon.edit', ['id' => $ficon->id]), 201);
     }
     public function finfo_store(FinfoRequest $request)
     {
@@ -69,7 +70,15 @@ class FooterController extends Controller
         $finfo=new Finfo;
         $finfo->info=$request->info;
         $finfo->save();
-        return response()->json(route('admin.faq.edit', ['id' => $finfo->id]), 201);
+        return response()->json(route('admin.footer.finfo.edit', ['id' => $finfo->id]), 201);
+    }
+    public function fpage_store(FpageRequest $request)
+    {
+        $request->validated();
+        $fpage=new Fpage;
+        $fpage->info=$request->info;
+        $fpage->save();
+        return response()->json(route('admin.footer.finfo.edit', ['id' => $fpage->id]), 201);
     }
 
 
