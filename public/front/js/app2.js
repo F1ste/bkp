@@ -10038,9 +10038,11 @@
             }
             dropArea.forEach((element => {
                 element.addEventListener("click", (e => {
-                    var box = e.currentTarget;
-                    var lockedItem = box.querySelector(".file__input");
-                    lockedItem.click();
+                    if (!e.target.classList.contains("delete-img__button")) {
+                        var box = e.currentTarget;
+                        var lockedItem = box.querySelector(".file__input");
+                        lockedItem.click();
+                    }
                 }));
             }));
             fileInput.onchange = () => {
@@ -10070,18 +10072,19 @@
             function addPartner(e) {
                 e.target;
                 const findPartnerBlock = findPartnerSect.querySelectorAll(".find-partners__partner-block");
+                const dataSelect = document.querySelectorAll("select");
                 let partnerCount = findPartnerBlock.length;
-                let partnerBlockTempl = `\n        <div class="find-partners__partner-block">\n            <div class="create-project__form-select">\n                <label class="create-project__form-label form__label">Кого ищем</label>\n                <select id="selectElement${partnerCount}" data-scroll name="form[]" class="form__select">\n                    <option value="" selected>Выбрать</option>\n                </select>\n            </div>\n            <div class="create-project__form-item form__item">\n                <label for="FormProjectRoleUntil${partnerCount + +1}" class="create-project__form-label form__label">До какого числа принимаются заявки</label>\n                <input id="FormProjectRoleUntil${partnerCount + +1}" autocomplete="off" data-datepicker data-datepicker_${partnerCount + +2} type="text" name="projectName" class="create-project__form-input form__input" placeholder="До 10.09.2023" data-placeholder="До 10.09.2023">\n            </div>\n            <div class="create-project__role-description form__item">\n                <label for="FormProjectPartnerDescription${partnerCount}" class="create-project__form-label form__label">Описание</label>\n                <textarea id="FormProjectPartnerDescription${partnerCount}" type="text" name="roleDescription"\n                class="create-project__form-input form__input project-description" placeholder="Не более 10000 символов" data-placeholder="Не более 10000 символов"></textarea>\n            </div>\n\n        </div>\n        `;
+                let partnerBlockTempl = `\n        <div class="find-partners__partner-block">\n            <div class="create-project__form-select">\n                <label class="create-project__form-label form__label">Кого ищем</label>\n                <select id="selectElement${partnerCount}" data-id="${dataSelect.length + +1}" data-scroll name="form[]" class="form__select">\n                    <option value="" selected>Выбрать</option>\n                </select>\n            </div>\n            <div class="create-project__form-item form__item">\n                <label for="FormProjectRoleUntil${partnerCount + +1}" class="create-project__form-label form__label">До какого числа принимаются заявки</label>\n                <input id="FormProjectRoleUntil${partnerCount + +1}" autocomplete="off" data-datepicker data-datepicker_${partnerCount + +2} type="text" name="projectName" class="create-project__form-input form__input" placeholder="До 10.09.2023" data-placeholder="До 10.09.2023">\n            </div>\n            <div class="create-project__role-description form__item">\n                <label for="FormProjectPartnerDescription${partnerCount}" class="create-project__form-label form__label">Описание</label>\n                <textarea id="FormProjectPartnerDescription${partnerCount}" type="text" name="roleDescription"\n                class="create-project__form-input form__input project-description" placeholder="Не более 10000 символов" data-placeholder="Не более 10000 символов"></textarea>\n            </div>\n\n        </div>\n        `;
                 findPartnerContent.insertAdjacentHTML("beforeend", partnerBlockTempl);
                 var selectElement = document.getElementById(`selectElement${partnerCount}`);
-                const urlRoles = "http://culturexchange.ru/rol";
+                const urlRoles = "/rol";
                 function fetchData() {
                     return fetch(urlRoles).then((response => response.json())).then((data => data));
                 }
                 fetchData().then((data => {
                     for (const item of data) {
                         const option = document.createElement("option");
-                        option.value = item.id;
+                        option.value = item.name;
                         option.textContent = item.name;
                         selectElement.appendChild(option);
                     }
@@ -10112,75 +10115,66 @@
             const headerSearchInput = headerSearch.querySelector("input");
             const headerSearchResults = headerSearch.querySelector(".search-results");
             const headerResultItem = headerSearch.querySelector(".search-results__item");
-        
-            headerSearch.addEventListener("click", () => {
+            headerSearch.addEventListener("click", (() => {
                 if (headerSearchInput.value !== "") headerSearchResults.classList.add("_results-active");
-            });
-        
-            document.addEventListener("click", (event) => {
+            }));
+            document.addEventListener("click", (event => {
                 if (!headerSearch.contains(event.target)) headerSearchResults.classList.remove("_results-active");
-            });
-        
+            }));
             function showSearchResults() {
                 const query = headerSearchInput.value;
                 if (headerSearchInput.value !== "" && headerResultItem) {
                     headerSearchResults.classList.add("_results-active");
-                    fetch(`/search?searchText=${query}`)
-                        .then((response) => response.json())
-                        .then((data) => {
-                            const newsArray = data.news || [];
-                            const collectionsArray = data.collections || [];
-        
-                            headerSearchResults.innerHTML = "";
-        
-                            function addGroup(groupName, groupHref) {
-                                const group = document.createElement("div");
-                                group.classList.add("search-results__group-name");
-                                const groupLink = document.createElement("a");
-                                groupLink.textContent = groupName;
-                                groupLink.href = groupHref;
-                                group.appendChild(groupLink);
-                                headerSearchResults.appendChild(group);
+                    fetch(`/search?searchText=${query}`).then((response => response.json())).then((data => {
+                        console.log(data.news.length);
+                        console.log(data.collections);
+                        const newsArray = data.news || [];
+                        const collectionsArray = data.collections || [];
+                        headerSearchResults.innerHTML = "";
+                        function addGroup(groupName, groupHref) {
+                            const group = document.createElement("div");
+                            group.classList.add("search-results__group-name");
+                            const groupLink = document.createElement("a");
+                            groupLink.textContent = groupName;
+                            groupLink.href = groupHref;
+                            group.appendChild(groupLink);
+                            headerSearchResults.appendChild(group);
+                        }
+                        if (newsArray.length > 0 || collectionsArray.length > 0) {
+                            if (newsArray.length > 0) {
+                                addGroup("Новости", "/news");
+                                newsArray.forEach((item => {
+                                    const listItem = document.createElement("div");
+                                    listItem.classList.add("search-results__item");
+                                    const title = document.createElement("a");
+                                    title.textContent = item.name;
+                                    title.href = "/news/news/" + item.id;
+                                    listItem.appendChild(title);
+                                    headerSearchResults.appendChild(listItem);
+                                }));
                             }
-        
-                            if (newsArray.length > 0 || collectionsArray.length > 0) {
-                                if (newsArray.length > 0) {
-                                    addGroup("Новости", "/news");
-                                    newsArray.forEach((item) => {
-                                        const listItem = document.createElement("div");
-                                        listItem.classList.add("search-results__item");
-                                        const title = document.createElement("a");
-                                        title.textContent = item.name;
-                                        title.href = "/news/news/" + item.id;
-                                        listItem.appendChild(title);
-                                        headerSearchResults.appendChild(listItem);
-                                    });
-                                }
-        
-                                if (collectionsArray.length > 0) {
-                                    addGroup("Проекты", "/projects");
-                                    collectionsArray.forEach((item) => {
-                                        const listItem = document.createElement("div");
-                                        listItem.classList.add("search-results__item");
-                                        const title = document.createElement("a");
-                                        title.textContent = item.name;
-                                        title.href = "/projects/project/" + item.id;
-                                        listItem.appendChild(title);
-                                        headerSearchResults.appendChild(listItem);
-                                    });
-                                }
-                            } else {
-                                const noResultsMessage = document.createElement("div");
-                                noResultsMessage.textContent = "По вашему запросу ничего не найдено";
-                                headerSearchResults.appendChild(noResultsMessage);
+                            if (collectionsArray.length > 0) {
+                                addGroup("Проекты", "/projects");
+                                collectionsArray.forEach((item => {
+                                    const listItem = document.createElement("div");
+                                    listItem.classList.add("search-results__item");
+                                    const title = document.createElement("a");
+                                    title.textContent = item.name;
+                                    title.href = "/projects/project/" + item.id;
+                                    listItem.appendChild(title);
+                                    headerSearchResults.appendChild(listItem);
+                                }));
                             }
-                        })
-                        .catch((error) => {
-                            console.error("Произошла ошибка при запросе:", error);
-                        });
+                        } else {
+                            const noResultsMessage = document.createElement("div");
+                            noResultsMessage.textContent = "По вашему запросу ничего не найдено";
+                            headerSearchResults.appendChild(noResultsMessage);
+                        }
+                    })).catch((error => {
+                        console.error("Произошла ошибка при запросе:", error);
+                    }));
                 } else headerSearchResults.classList.remove("_results-active");
             }
-        
             headerSearchInput.addEventListener("input", showSearchResults);
         })();
         (() => {

@@ -33,6 +33,7 @@
                                                 </div>
 
                                                 <img id="img1_fin" class='form_img_cul' style="width: 100%;" src="">
+                                                <button id="img1_delete" class="delete-img__button" style="display: none;"></button>
                                             </div>
                                         </div>
                                         <div class="create-project__photo-propetries">550x545 px, до 100 мб</div>
@@ -112,6 +113,7 @@
                                                         <div class="create-project__upload-info">Загрузите фото </div>
                                                     </div>
                                                     <img id="img2_fin" class='form_img_cul' style="width: 100%;" src="">
+                                                    <button id="img2_delete" class="delete-img__button" style="display: none;"></button>
                                                 </div>
                                             </div>
                                         </div>
@@ -124,6 +126,7 @@
                                                         <div class="create-project__upload-logo"><img src="/image/iconsFont/add-img_thin.svg" alt="Загрузите фото "></div>
                                                     </div>
                                                     <img id="img3_fin" class='form_img_cul' style="width: 100%;" src="">
+                                                    <button id="img3_delete" class="delete-img__button" style="display: none;"></button>
                                                 </div>
                                             </div>
                                         </div>
@@ -136,6 +139,7 @@
                                                         <div class="create-project__upload-logo"><img src="/image/iconsFont/add-img_thin.svg" alt="Загрузите фото "></div>
                                                     </div>
                                                     <img id="img4_fin" class='form_img_cul' style="width: 100%;" src="">
+                                                    <button id="img4_delete" class="delete-img__button" style="display: none;"></button>
                                                 </div>
                                             </div>
                                         </div>
@@ -148,6 +152,7 @@
                                                         <div class="create-project__upload-logo"><img src="/image/iconsFont/add-img_thin.svg" alt="Загрузите фото "></div>
                                                     </div>
                                                     <img id="img5_fin" class='form_img_cul' style="width: 100%;" src="">
+                                                    <button id="img5_delete" class="delete-img__button" style="display: none;"></button>
                                                 </div>
                                             </div>
                                         </div>
@@ -160,6 +165,7 @@
                                                         <div class="create-project__upload-logo"><img src="/image/iconsFont/add-img_thin.svg" alt="Загрузите фото "></div>
                                                     </div>
                                                     <img id="img6_fin" class='form_img_cul' style="width: 100%;" src="">
+                                                    <button id="img6_delete" class="delete-img__button" style="display: none;"></button>
                                                 </div>
                                             </div>
                                         </div>

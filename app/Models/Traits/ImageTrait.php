@@ -22,5 +22,6 @@ trait ImageTrait
         $link = '/storage/'.$name;
 
         return $link;
-}
+    }
+    
 }
