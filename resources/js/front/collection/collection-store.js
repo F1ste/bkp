@@ -283,7 +283,7 @@ import {} from "../libs/ckeditor/ckeditor";
             }
         }
         images.images = image
-
+        
         //if(name.length === 0 || excerpt.length === 0) return false
 
         document.getElementById(select.storeButton).innerHTML = `Подождите...`

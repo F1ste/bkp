@@ -6,7 +6,7 @@ import { } from "../libs/ckeditor/ckeditor";
     const collectionEdit = document.getElementById('collection-edit')
 
     if (!collectionEdit) return false
-
+    
 
     var img1 = document.getElementById('img1_fin').getAttribute('src'),
         img2 = document.getElementById('img2_fin').getAttribute('src'),
