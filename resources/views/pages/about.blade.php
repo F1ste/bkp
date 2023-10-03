@@ -91,67 +91,67 @@
                             </div>
                         </div>
                     </div>
-                    <div class="join-us">
-                        <div class="join-us__container">
-                            <div class="join-us__wrapper">
-                                <div class="join-us__heading section__heading">
-                                    <div class="join-us__heading-text section__heading-text">
-                                        <div class="join-us__title main-page__section-title">
-                                            Присоединяйтесь к нам
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="join-us__content">
-                                    <div class="join-us__item">
-                                        <div class="join-us__media media-block">
-                                            <a href="#">
-                                                <picture>
-                                                    <source srcset="{{ asset('image/join-us1.webp') }}" type="image/webp">
-                                                    <img src="{{ asset('image/join-us1.png') }}" alt="Изображение">
-                                                </picture>
-                                            </a>
-                                        </div>
-                                        <div class="join-us__info">
-                                            <div class="join-us__text">
-                                                <div class="join-us__text-title">
-                                                    Предложить проект
-                                                </div>
-                                                <div class="join-us__text-desrcription">
-                                                    Предложите свою идею и укажите
-                                                    какая помощь вам нужна
-                                                </div>
-                                            </div>
-                                            <a href="#" class="join-us__btn _fw btn btn-filled">Перейти</a>
-                                        </div>
-                                    </div>
-                                    <div class="join-us__item">
-                                        <div class="join-us__media media-block">
-                                            <a href="#">
-                                                <picture>
-                                                    <source srcset="{{ asset('image/join-us2.webp') }}" type="image/webp">
-                                                    <img src="{{ asset('image/join-us2.png') }}" alt="Изображение">
-                                                </picture>
-                                            </a>
-                                        </div>
-                                        <div class="join-us__info">
-                                            <div class="join-us__text">
-                                                <div class="join-us__text-title">
-                                                    Ответить на проект
-                                                </div>
-                                                <div class="join-us__text-desrcription">
-                                                    Ознакосьтесь с перечнем проектов
-                                                    и предложите свою помощь
-                                                </div>
-                                            </div>
-                                            <a href="#" class="join-us__btn _fw btn btn-filled">Перейти</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </div>
+			<div class="join-us">
+				<div class="join-us__container">
+					<div class="join-us__wrapper">
+						<div class="join-us__heading section__heading">
+							<div class="join-us__heading-text section__heading-text">
+								<div class="join-us__title main-page__section-title">
+									Присоединяйтесь к нам
+								</div>
+							</div>
+						</div>
+						<div class="join-us__content">
+							<div class="join-us__item">
+								<div class="join-us__media media-block">
+									<a href="#">
+										<picture>
+											<source srcset="{{ asset('image/join-us1.webp') }}" type="image/webp">
+											<img src="{{ asset('image/join-us1.png') }}" alt="Изображение">
+										</picture>
+									</a>
+								</div>
+								<div class="join-us__info">
+									<div class="join-us__text">
+										<div class="join-us__text-title">
+											Предложить проект
+										</div>
+										<div class="join-us__text-desrcription">
+											Предложите свою идею и укажите
+											какая помощь вам нужна
+										</div>
+									</div>
+									<a href="#" class="join-us__btn _fw btn btn-filled">Перейти</a>
+								</div>
+							</div>
+							<div class="join-us__item">
+								<div class="join-us__media media-block">
+									<a href="#">
+										<picture>
+											<source srcset="{{ asset('image/join-us2.webp') }}" type="image/webp">
+											<img src="{{ asset('image/join-us2.png') }}" alt="Изображение">
+										</picture>
+									</a>
+								</div>
+								<div class="join-us__info">
+									<div class="join-us__text">
+										<div class="join-us__text-title">
+											Ответить на проект
+										</div>
+										<div class="join-us__text-desrcription">
+											Ознакосьтесь с перечнем проектов
+											и предложите свою помощь
+										</div>
+									</div>
+									<a href="#" class="join-us__btn _fw btn btn-filled">Перейти</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
         </section>
     </main>
 @endsection
