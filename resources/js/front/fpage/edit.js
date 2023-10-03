@@ -3,7 +3,7 @@ import { notification } from "../utils/notification";
 import { } from "../libs/ckeditor/ckeditor";
 (() => {
 
-    const collectionEdit = document.getElementById('fdescr-edit')
+    const collectionEdit = document.getElementById('fpage-edit')
 
     if (!collectionEdit) return false
 

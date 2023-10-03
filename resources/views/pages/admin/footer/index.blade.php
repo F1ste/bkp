@@ -63,24 +63,21 @@
                     </div>
                     <div class="my-projects__heading block-heading">
                         <div class="my-projects__title personal__title">
-                            Редактирование описаний в футере
+                            Редактирование информации в футере
                         </div>
                     </div>
-                    <div style="display: flex;justify-content: space-between;margin-top: 20px;">
-
-
-                        <div>
-                            <a href="{{ route('admin.fdescr.create') }}" class="my-projects__btn btn btn-white">Создать
-                               описание в футере</a>
-                        </div>
-                    </div>
+                        @if (count($footer_ar['descr']) == 0)
+                            <a href="{{ route('admin.fdescr.create') }}" class="my-projects__btn btn btn-white"
+                            style="margin-top: 20px;">Создать описание в футере</a>
+                        @endif
 
                     <div class="my-projects__projects-items">
                         @foreach ($footer_ar['descr'] as $el)
                             <div class="my-projects__item" style="margin-bottom: 15px;">
                                 <a href="{{ route('admin.fdescr.edit', ['id' => $el->id]) }}">
                                     <div class="my-projects__project-name">
-                                        {{ $el->descr }}
+                                        <!-- {!! $el->descr !!} -->
+                                        Редактировать описание футера
                                     </div>
                                 </a>
                             </div>
