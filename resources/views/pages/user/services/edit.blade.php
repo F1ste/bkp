@@ -27,6 +27,7 @@
                                                 </div>
 
                                                 <img id="img1_fin" class='form_img_cul' style="width: 100%;" src="">
+                                                <button id="img1_delete" class="delete-img__button" style="display: none;"></button>
                                                 @else
 
                                                  <div style="display: none;" class="create-project__drag-wrapper drag-wrapper" id='img1_box'>
@@ -36,6 +37,7 @@
                                                 </div>
 
                                                 <img id="img1_fin" class='form_img_cul' style="display: block; width: 100%;" src="{{ $collection->img1 }}">
+                                                <button id="img1_delete" class="delete-img__button"></button>
                                                 @endif
                                             </div>
                                         </div>
@@ -131,6 +133,7 @@
                                                         <div class="create-project__upload-info">Загрузите фото </div>
                                                     </div>
                                                     <img id="img2_fin" class='form_img_cul' style='width: 100%;' src="">
+                                                    <button id="img2_delete" class="delete-img__button" style="display: none;"></button>
                                                 </div>
                                                 @else
 
@@ -141,6 +144,7 @@
                                                         <div class="create-project__upload-info">Загрузите фото </div>
                                                     </div>
                                                     <img id="img2_fin" class='form_img_cul' style="display: block; width: 100%;" src="{{ $collection->img2 }}">
+                                                    <button id="img2_delete" class="delete-img__button"></button>
                                                 </div>
                                                 @endif
 
@@ -161,6 +165,7 @@
                                                         <div class="create-project__upload-logo"><img src="/image/iconsFont/add-img_thin.svg" alt="Загрузите фото "></div>
                                                     </div>
                                                     <img id="img3_fin" class='form_img_cul' style='width: 100%;' src="">
+                                                    <button id="img3_delete" class="delete-img__button" style="display: none;"></button>
                                                 </div>
                                                 @else
 
@@ -171,6 +176,7 @@
                                                         <div class="create-project__upload-logo"><img src="/image/iconsFont/add-img_thin.svg" alt="Загрузите фото "></div>
                                                     </div>
                                                     <img id="img3_fin" class='form_img_cul' style="display: block; width: 100%;" src="{{ $collection->img3 }}">
+                                                    <button id="img3_delete" class="delete-img__button"></button>
                                                 </div>
 
 
@@ -193,6 +199,7 @@
                                                         <div class="create-project__upload-logo"><img src="/image/iconsFont/add-img_thin.svg" alt="Загрузите фото "></div>
                                                     </div>
                                                     <img id="img4_fin" class='form_img_cul' style='width: 100%;' src="">
+                                                    <button id="img4_delete" class="delete-img__button" style="display: none;"></button>
                                                 </div>
                                                 @else
 
@@ -202,6 +209,7 @@
                                                         <div class="create-project__upload-logo"><img src="/image/iconsFont/add-img_thin.svg" alt="Загрузите фото "></div>
                                                     </div>
                                                     <img id="img4_fin" class='form_img_cul' style="display: block; width: 100%;" src="{{ $collection->img4 }}">
+                                                    <button id="img4_delete" class="delete-img__button"></button>
                                                 </div>
 
 
@@ -223,6 +231,7 @@
                                                         <div class="create-project__upload-logo"><img src="/image/iconsFont/add-img_thin.svg" alt="Загрузите фото "></div>
                                                     </div>
                                                     <img id="img5_fin" class='form_img_cul' style='width: 100%;' src="">
+                                                    <button id="img5_delete" class="delete-img__button" style="display: none;"></button>
                                                 </div>
                                                 @else
 
@@ -232,6 +241,7 @@
                                                         <div class="create-project__upload-logo"><img src="/image/iconsFont/add-img_thin.svg" alt="Загрузите фото "></div>
                                                     </div>
                                                     <img id="img5_fin" class='form_img_cul' style="width: 100%; display: block;" src="{{ $collection->img5 }}">
+                                                    <button id="img5_delete" class="delete-img__button"></button>
                                                 </div>
 
                                                 @endif
@@ -252,6 +262,7 @@
                                                         <div class="create-project__upload-logo"><img src="/image/iconsFont/add-img_thin.svg" alt="Загрузите фото "></div>
                                                     </div>
                                                     <img id="img6_fin" class='form_img_cul' style='width: 100%;' src="">
+                                                    <button id="img6_delete" class="delete-img__button" style="display: none;"></button>
                                                 </div>
                                                 @else
 
@@ -261,6 +272,7 @@
                                                         <div class="create-project__upload-logo"><img src="/image/iconsFont/add-img_thin.svg" alt="Загрузите фото "></div>
                                                     </div>
                                                     <img id="img6_fin" class='form_img_cul' style="width: 100%; display: block;" src="{{ $collection->img6 }}">
+                                                    <button id="img6_delete" class="delete-img__button"></button>
                                                 </div>
 
                                                 @endif

@@ -62,136 +62,201 @@ import {} from "../libs/ckeditor/ckeditor";
          del: 'del-button',
     }
 
- document.getElementById(select.img1).addEventListener('click', e => {
+    document.getElementById(select.img1).addEventListener('click', e => {
         const blox = document.getElementById('img1_box');
         const avatar = document.getElementById(select.img1).dataset.img;
         const input = document.getElementById('img1_input');
         const form = document.getElementById('form_img_1');
         const fin = document.getElementById('img1_fin');
+        const deleteButton = document.getElementById('img1_delete');
 
-         input.addEventListener('change', e => {
-             axios.post(avatar, new FormData(form))
+        input.addEventListener('change', e => {
+            axios.post(avatar, new FormData(form))
                 .then(e => {
                     img1 = e.data;
                     fin.setAttribute('src', e.data);
                     blox.style.display = "none";
                     fin.style.display = "block";
+                    deleteButton.style.display = "block";
                 })
 
-         })
+        })
+
+        deleteButton.addEventListener('click', (e) => {
+            img1 = '';
+            fin.removeAttribute('src');
+            blox.style.display = "block";
+            fin.style.display = "none";
+            deleteButton.style.display = "none";
+            input.value = '';
+        });
 
     })
 
-      document.getElementById(select.img2).addEventListener('click', e => {
+    document.getElementById(select.img2).addEventListener('click', e => {
         const blox = document.getElementById('img2_box');
         const avatar = document.getElementById(select.img2).dataset.img;
         const input = document.getElementById('img2_input');
         const form = document.getElementById('form_img_2');
         const fin = document.getElementById('img2_fin');
+        const deleteButton = document.getElementById('img2_delete');
 
 
-
-         input.addEventListener('change', e => {
-             axios.post(avatar, new FormData(form))
+        input.addEventListener('change', e => {
+            axios.post(avatar, new FormData(form))
                 .then(e => {
                     img2 = e.data;
                     fin.setAttribute('src', e.data);
                     blox.style.display = "none";
                     fin.style.display = "block";
+                    deleteButton.style.display = "block";
                 })
 
-         })
+        })
+
+        deleteButton.addEventListener('click', (e) => {
+            img2 = '';
+            fin.removeAttribute('src');
+            blox.style.display = "block";
+            fin.style.display = "none";
+            deleteButton.style.display = "none";
+            input.value = '';
+        });
 
     })
 
 
-         document.getElementById(select.img3).addEventListener('click', e => {
+    document.getElementById(select.img3).addEventListener('click', e => {
         const blox = document.getElementById('img3_box');
         const avatar = document.getElementById(select.img3).dataset.img;
         const input = document.getElementById('img3_input');
         const form = document.getElementById('form_img_3');
         const fin = document.getElementById('img3_fin');
+        const deleteButton = document.getElementById('img3_delete');
 
-         input.addEventListener('change', e => {
-             axios.post(avatar, new FormData(form))
+        input.addEventListener('change', e => {
+            axios.post(avatar, new FormData(form))
                 .then(e => {
                     img3 = e.data;
                     fin.setAttribute('src', e.data);
                     blox.style.display = "none";
                     fin.style.display = "block";
+                    deleteButton.style.display = "block";
                 })
 
-         })
+        })
+
+        deleteButton.addEventListener('click', (e) => {
+            img3 = '';
+            fin.removeAttribute('src');
+            blox.style.display = "block";
+            fin.style.display = "none";
+            deleteButton.style.display = "none";
+            input.value = '';
+        });
 
     })
 
 
-       document.getElementById(select.img4).addEventListener('click', e => {
+    document.getElementById(select.img4).addEventListener('click', e => {
         const blox = document.getElementById('img4_box');
         const avatar = document.getElementById(select.img4).dataset.img;
         const input = document.getElementById('img4_input');
         const form = document.getElementById('form_img_4');
         const fin = document.getElementById('img4_fin');
+        const deleteButton = document.getElementById('img4_delete');
 
-         input.addEventListener('change', e => {
-             axios.post(avatar, new FormData(form))
+        input.addEventListener('change', e => {
+            axios.post(avatar, new FormData(form))
                 .then(e => {
                     img4 = e.data;
                     fin.setAttribute('src', e.data);
                     blox.style.display = "none";
                     fin.style.display = "block";
+                    deleteButton.style.display = "block";
                 })
 
-         })
+        })
 
+        deleteButton.addEventListener('click', (e) => {
+            img4 = '';
+            fin.removeAttribute('src');
+            blox.style.display = "block";
+            fin.style.display = "none";
+            deleteButton.style.display = "none";
+            input.value = '';
+        });
     })
 
-          document.getElementById(select.img5).addEventListener('click', e => {
+    document.getElementById(select.img5).addEventListener('click', e => {
         const blox = document.getElementById('img5_box');
         const avatar = document.getElementById(select.img5).dataset.img;
         const input = document.getElementById('img5_input');
         const form = document.getElementById('form_img_5');
         const fin = document.getElementById('img5_fin');
+        const deleteButton = document.getElementById('img5_delete');
 
-         input.addEventListener('change', e => {
-             axios.post(avatar, new FormData(form))
+        input.addEventListener('change', e => {
+            axios.post(avatar, new FormData(form))
                 .then(e => {
                     img5 = e.data;
                     fin.setAttribute('src', e.data);
                     blox.style.display = "none";
                     fin.style.display = "block";
+                    deleteButton.style.display = "block";
                 })
 
-         })
+        })
+
+        deleteButton.addEventListener('click', (e) => {
+            img5 = '';
+            fin.removeAttribute('src');
+            blox.style.display = "block";
+            fin.style.display = "none";
+            deleteButton.style.display = "none";
+            input.value = '';
+        });
 
     })
 
-            document.getElementById(select.img6).addEventListener('click', e => {
+    document.getElementById(select.img6).addEventListener('click', e => {
         const blox = document.getElementById('img6_box');
         const avatar = document.getElementById(select.img6).dataset.img;
         const input = document.getElementById('img6_input');
         const form = document.getElementById('form_img_6');
         const fin = document.getElementById('img6_fin');
+        const deleteButton = document.getElementById('img6_delete');
 
-         input.addEventListener('change', e => {
-             axios.post(avatar, new FormData(form))
+        input.addEventListener('change', e => {
+            axios.post(avatar, new FormData(form))
                 .then(e => {
                     img6 = e.data;
                     fin.setAttribute('src', e.data);
                     blox.style.display = "none";
                     fin.style.display = "block";
+                    deleteButton.style.display = "block";
                 })
 
-         })
+        })
+
+        deleteButton.addEventListener('click', (e) => {
+            img6 = '';
+            fin.removeAttribute('src');
+            blox.style.display = "block";
+            fin.style.display = "none";
+            deleteButton.style.display = "none";
+            input.value = '';
+        });
 
     })
 
-             document.getElementById(select.img7).addEventListener('click', e => {
+        document.getElementById(select.img7).addEventListener('click', e => {
         const blox = document.getElementById('img7_box');
         const avatar = document.getElementById(select.img7).dataset.img;
         const input = document.getElementById('img7_input');
         const form = document.getElementById('form_img_7');
         const fin = document.getElementById('img7_fin');
+        const deleteButton = document.getElementById('img7_delete');
 
          input.addEventListener('change', e => {
              axios.post(avatar, new FormData(form))
@@ -200,12 +265,29 @@ import {} from "../libs/ckeditor/ckeditor";
                     fin.setAttribute('src', e.data);
                     blox.style.display = "none";
                     fin.style.display = "block";
+                    deleteButton.style.display = "block";
                 })
 
          })
 
+         deleteButton.addEventListener('click', (e) => {
+            img6 = '';
+            fin.removeAttribute('src');
+            blox.style.display = "block";
+            fin.style.display = "none";
+            deleteButton.style.display = "none";
+            input.value = '';
+        });
+
     })
 
+    document.getElementById(select.img1).click();
+    document.getElementById(select.img2).click();
+    document.getElementById(select.img3).click();
+    document.getElementById(select.img4).click();
+    document.getElementById(select.img5).click();
+    document.getElementById(select.img6).click();
+    document.getElementById(select.img7).click();
 
 
     document.getElementById(select.storeButton).addEventListener('click', e => {
