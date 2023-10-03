@@ -9,6 +9,7 @@ use App\Models\Fdescr;
 use App\Models\Ficon;
 use App\Models\Fpage;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\View;
 
 class FooterController extends Controller
 {
@@ -20,7 +21,7 @@ class FooterController extends Controller
             'pages' => Fpage::all(),
             'descr' => Fdescr::all(),
         ];
-        return view('components.footer-index')->with('footer_ar', $footer_ar);
+        return View::share('components.footer-index')->with('footer_ar', $footer_ar); 
     }
 
     public function fdescr_create()
