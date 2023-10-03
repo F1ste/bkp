@@ -11,7 +11,7 @@ class ContactController extends Controller
     public function index()
     {
         $contact = Contact::get();
-        return view('pages.contact')->with('contact', $contact);
+        return view('pages.contacts')->with('contact', $contact);
     }
     
     public function edit($id)
@@ -29,7 +29,7 @@ class ContactController extends Controller
                 
             ]);
         } else {
-            return redirect(route('pages.admin.contact.edit'));
+            return redirect(route('pages.admin.contact.create'));
         }
     }
     public function update(ContactRequest $request)

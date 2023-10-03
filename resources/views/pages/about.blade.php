@@ -5,10 +5,9 @@
             <div class="about__container">
                 <div class="about__heading section__heading">
                     <div class="about__heading-text section__heading-text">
+                        @foreach ($about as $item)
                         <div class="about__title section__title">
-                            @foreach ($about as $item)
-								{{ $item->title }}
-							@endforeach
+                            О БИРЖЕ
                         </div>
                     </div>
                 </div>
@@ -17,8 +16,8 @@
                         <div class="about__media media-block">
 						@foreach ($about as $item)
                             <picture>
-                                <source srcset="{{ $item->img }}" type="image/webp"><img
-                                    src="{{ $item->img }}" alt="">
+                                <source srcset="{{ asset('image/about/about1.webp') }}" type="image/webp"><img
+                                    src="{{ asset('image/about/about1.png') }}" alt="">
                             </picture>
 						@endforeach
                         </div>
