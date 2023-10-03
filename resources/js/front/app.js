@@ -36,3 +36,12 @@ import "./about/edit"
 
 import "./faq/create"
 import "./faq/edit"
+
+import "./fdesc/create"
+import "./fdesc/edit"
+
+import "./ficon/create"
+import "./ficon/edit"
+
+import "./fpage/create"
+import "./fpage/edit"

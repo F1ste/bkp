@@ -12,24 +12,33 @@
 						</div>
 					</div>
 					<div class="footer__menu-col">
-						<a href="" class="footer__menu-link">О Бирже</a>
-						<a href="" class="footer__menu-link">Проекты</a>
-						<a href="" class="footer__menu-link">Новости</a>
-					</div>
-					<div class="footer__menu-col">
-						<a href="" class="footer__menu-link">FAQ</a>
-						<a href="" class="footer__menu-link">Контакты</a>
-					</div>
-					<div data-da=".footer__company-info, 991.98, 1" class="footer__menu-col socials">
-						<a href="" class="socials__social-item icon-telegram">
-							<i class="socials__icon _icon-telegram"></i>
-						</a>
-						<a href="" class="socials__social-item icon-vk">
-							<i class="socials__icon _icon-vk"></i>
-						</a>
-						<a href="" class="socials__social-item icon-youtube">
-							<i class="socials__icon _icon-youtube"></i>
-						</a>
+					@foreach ($footer_ar['pages'] as $page)
+						<a href="{{$page->link}}" class="footer__menu-link">{{$page->page}}</a>
+						@if (($loop->index % 3 == 2) && ($loop->index > 0))
+						
+						
+						@endif
+					@endforeach
+				</div>
+				<div data-da=".footer__company-info, 991.98, 1" class="footer__menu-col socials">
+					@foreach ($footer_ar['icons'] as $icon )
+						@if(strpos($icon,'t.me')!==false)
+							<a href="{{$icon->style}}" class="socials__social-item icon-telegram">
+								<i class="socials__icon _icon-telegram"></i>
+							</a>
+						@endif
+						@if(strpos($icon,'vk.com')!==false)
+							<a href="{{$icon->style}}" class="socials__social-item icon-vk">
+								<i class="socials__icon _icon-vk"></i>
+							</a>
+						@endif
+						@if(strpos($icon,'youtube.com')!==false)
+							<a href="{{$icon->style}}" class="socials__social-item icon-youtube">
+								<i class="socials__icon _icon-youtube"></i>
+							</a>
+						@endif
+					@endforeach
+				
 					</div>
 				</div>
 				<div class="footer__company-info">

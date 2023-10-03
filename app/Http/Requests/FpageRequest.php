@@ -24,7 +24,8 @@ class FpageRequest extends FormRequest
     public function rules()
     {
         return [
-            'page'=>'string|required'
+            'page'=>'string|required',
+            'link'=>'string|required'
         ];
     }
 }
