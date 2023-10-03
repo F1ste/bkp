@@ -6,22 +6,26 @@
                 <div class="about__heading section__heading">
                     <div class="about__heading-text section__heading-text">
                         <div class="about__title section__title">
-                            О БИРЖЕ
+                            @foreach ($about as $item)
+								{{ $item->title }}
+							@endforeach
                         </div>
                     </div>
                 </div>
                 <div class="about__content">
                     <div class="about__main-info">
                         <div class="about__media media-block">
+						@foreach ($about as $item)
                             <picture>
-                                <source srcset="{{ asset('image/about/about1.webp') }}" type="image/webp"><img
-                                    src="{{ asset('image/about/about1.png') }}" alt="">
+                                <source srcset="{{ $item->img }}" type="image/webp"><img
+                                    src="{{ $item->img }}" alt="">
                             </picture>
+						@endforeach
                         </div>
                         <div class="about__main-text">
                             @foreach ($about as $item)
                                 <div class="about__text-paragraph">
-									{{$item->description}}
+									{!! $item->description !!}
                                 </div>
                             @endforeach
                         </div>
