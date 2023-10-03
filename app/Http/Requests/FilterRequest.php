@@ -37,6 +37,8 @@ class FilterRequest extends FormRequest
             'project' =>'',
             'tema' =>'',
             'teg' =>'',
+            'role' => '',
+            'searchText' => '',
         ];
     }
 }

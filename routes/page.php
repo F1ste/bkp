@@ -4,6 +4,8 @@ use App\Http\Controllers\AboutController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\FAQController;
 use App\Http\Controllers\PageController;
+use App\Http\Controllers\SearchResultsController;
+use App\Http\Requests\FilterRequest;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [PageController::class, 'home'])->name('home');
@@ -48,3 +50,6 @@ Route::get('/contacts/', [ContactController::class,'index'])->name('contact');
 Route::get('/faq/', [FAQController::class,'index'])->name('faq');
 
 Route::get('storage/{filename}', [PageController::class, 'image']);
+
+Route::get('/search', [SearchResultsController::class, 'index']);
+
