@@ -27,10 +27,12 @@
 						<i class="socials__icon _icon-telegram"></i>
 					</a>
 					@endif
-					<a href="" class="socials__social-item icon-vk">
+					@if(strpos($icon,'vk.com')!==false)
+					<a href="{{$icon->style}}" class="socials__social-item icon-vk">
 						<i class="socials__icon _icon-vk"></i>
 					</a>
-					<a href="" class="socials__social-item icon-youtube">
+					@if(strpos($icon,'youtube.com')!==false)
+					<a href="{{$icon->style}}" class="socials__social-item icon-youtube">
 						<i class="socials__icon _icon-youtube"></i>
 					</a>
 					@endforeach
