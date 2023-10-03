@@ -1930,14 +1930,14 @@ select {
   gap: 0.3125rem;
   -webkit-transition: all 0.2s ease;
   transition: all 0.2s ease;
+  max-height: 250px;
+  overflow: auto;
 }
 
 .search-results._results-active {
   top: 60px;
   opacity: 1;
   visibility: visible;
-  max-height: 250px;
-  overflow: auto;
 }
 
 .search-results__group-name {
