@@ -5,9 +5,11 @@
             <div class="about__container">
                 <div class="about__heading section__heading">
                     <div class="about__heading-text section__heading-text">
-                        @foreach ($about as $item)
+                        
                         <div class="about__title section__title">
-                            О БИРЖЕ
+						@foreach ($about as $item)
+                            {{ $item->title }}
+						@endforeach
                         </div>
                     </div>
                 </div>
