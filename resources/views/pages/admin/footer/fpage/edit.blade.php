@@ -9,7 +9,7 @@
 
     <div class="page__container">
 
-        <section data-update="{{ route('admin.fpage.edit') }}" data-id="{{ $id }}" id='fpage-edit'
+        <section data-update="{{ route('admin.fpage.update') }}" data-id="{{ $id }}" id='fpage-edit'
             class="collection section-base create-project personal-account">
 
             <div class="create-project__container">

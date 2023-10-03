@@ -9,7 +9,7 @@
 
     <div class="page__container">
 
-        <section data-update="{{ route('admin.ficon.edit') }}" data-id="{{ $id }}" id='ficon-edit'
+        <section data-update="{{ route('admin.ficon.update') }}" data-id="{{ $id }}" id='ficon-edit'
             class="collection section-base create-project personal-account">
 
             <div class="create-project__container">

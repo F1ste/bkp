@@ -9,7 +9,7 @@
 
             <div class="page__container">
 
-                <section data-update="{{ route('admin.fdescr.edit') }}" data-id="{{ $id }}" id='fdescr-edit' class="collection section-base create-project personal-account">
+                <section data-update="{{ route('admin.fdescr.update') }}" data-id="{{ $id }}" id='fdescr-edit' class="collection section-base create-project personal-account">
 
                     <div class="create-project__container">
                         <div data-one-select class="create-project__content">

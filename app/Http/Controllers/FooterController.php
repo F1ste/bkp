@@ -77,14 +77,14 @@ class FooterController extends Controller
     {
         $request->validated();
         $ficon = Ficon::where('id', $request->id)->update([
-            'icon' => $request->icon
+            'style' => $request->style
         ]);
         return response()->json($ficon, 201);
     }
-    public function fpage_update(FpageRequest $request)
+    public function fpage_updage(FpageRequest $request)
     {
         $request->validated();
-        $fpage = Ficon::where('id', $request->id)->update([
+        $fpage = Fpage::where('id', $request->id)->update([
             'page' => $request->page,
             'link' => $request->link
         ]);
@@ -113,7 +113,7 @@ class FooterController extends Controller
                 'id'       => $id,
             ]);
         } else {
-            return redirect(route('pages.admin.footer.ficon.create'));
+            return redirect(route('admin.footer.ficon.create'));
         }
     }
     public function fpage_edit($id)
@@ -122,11 +122,11 @@ class FooterController extends Controller
         if (count($fpage) > 0) {
             $fpage = $fpage[0];
             return view('pages.admin.footer.fpage.edit', [
-                'ficon'      => $fpage,
+                'fpage'      => $fpage,
                 'id'       => $id,
             ]);
         } else {
-            return redirect(route('pages.admin.footer.fpage.create'));
+            return redirect(route('admin.footer.fpage.create'));
         }
     }
     public function footer(){

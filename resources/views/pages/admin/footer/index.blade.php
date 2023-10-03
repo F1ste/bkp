@@ -26,7 +26,7 @@
                     <div class="my-projects__projects-items">
                         @foreach ($footer_ar['icons'] as $el)
                             <div class="my-projects__item" style="margin-bottom: 15px;">
-                                <a href="{{ route('admin.ficon.edit', ['id' => $el->id]) }}">
+                                <a href="{{ route('admin.ficon.edit', ['id'=>$el->id]) }}">
                                     <div class="my-projects__project-name">
                                         {{ $el->style }}
                                     </div>
@@ -50,15 +50,15 @@
                     </div>
 
                     <div class="my-projects__projects-items">
-                        @foreach ($footer_ar['pages'] as $el)
-                            <div class="my-projects__item" style="margin-bottom: 15px;">
-                                <a href="{{ route('admin.fpage.edit', ['id' => $el->id]) }}">
-                                    <div class="my-projects__project-name">
-                                        {{ $el->page }}
-                                    </div>
+                        @foreach($footer_ar['pages'] as $el)
+                        <div class="my-projects__item" style="margin-bottom: 15px;">
+                            <a href="{{ route('admin.fpage.edit', ['id' => $el->id]) }}">
+                                <div class="my-projects__project-name">
+                                    {{ $el->page }}
+                                </div>
 
-                                </a>
-                            </div>
+                            </a>
+                        </div>
                         @endforeach
                     </div>
                     <div class="my-projects__heading block-heading">
