@@ -51,7 +51,7 @@ class FooterController extends Controller
     {
         $request->validated();
         $ficon = new Ficon;
-        $ficon->icon = $request->icon;
+        $ficon->style = $request->style;
         $ficon->save();
         return response()->json(route('pages.admin.footer.ficon.edit', ['id' => $ficon->id]), 201);
     }
@@ -77,7 +77,7 @@ class FooterController extends Controller
     {
         $request->validated();
         $ficon = Ficon::where('id', $request->id)->update([
-            'style' => $request->style
+            'icon' => $request->icon
         ]);
         return response()->json($ficon, 201);
     }
@@ -100,7 +100,7 @@ class FooterController extends Controller
                 'id'       => $id,
             ]);
         } else {
-            return redirect(route('admin.footer.fdescr.create'));
+            return redirect(route('admin.footer.fdescr.edit'));
         }
     }
     public function ficon_edit($id)
