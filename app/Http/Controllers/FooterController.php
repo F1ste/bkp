@@ -77,7 +77,7 @@ class FooterController extends Controller
     {
         $request->validated();
         $ficon = Ficon::where('id', $request->id)->update([
-            'icon' => $request->icon
+            'style' => $request->style
         ]);
         return response()->json($ficon, 201);
     }
