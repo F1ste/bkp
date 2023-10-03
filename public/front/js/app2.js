@@ -10038,9 +10038,11 @@
             }
             dropArea.forEach((element => {
                 element.addEventListener("click", (e => {
-                    var box = e.currentTarget;
-                    var lockedItem = box.querySelector(".file__input");
-                    lockedItem.click();
+                    if (!e.target.classList.contains("delete-img__button")) {
+                        var box = e.currentTarget;
+                        var lockedItem = box.querySelector(".file__input");
+                        lockedItem.click();
+                    }
                 }));
             }));
             fileInput.onchange = () => {

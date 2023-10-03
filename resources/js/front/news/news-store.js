@@ -52,12 +52,13 @@ import {} from "../libs/ckeditor/ckeditor";
         img7: 'img7',
     }
 
-   document.getElementById(select.img1).addEventListener('click', e => {
+    document.getElementById(select.img1).addEventListener('click', e => {
         const blox = document.getElementById('img1_box');
         const avatar = document.getElementById(select.img1).dataset.img;
         const input = document.getElementById('img1_input');
         const form = document.getElementById('form_img_1');
         const fin = document.getElementById('img1_fin');
+        const deleteButton = document.getElementById('img1_delete');
 
          input.addEventListener('change', e => {
              axios.post(avatar, new FormData(form))
@@ -66,10 +67,19 @@ import {} from "../libs/ckeditor/ckeditor";
                     fin.setAttribute('src', e.data);
                     blox.style.display = "none";
                     fin.style.display = "block";
+                    deleteButton.style.display = "block";
                 })
 
          })
-
+         
+         deleteButton.addEventListener('click', (e) => {
+            img1 = '';
+            fin.removeAttribute('src');
+            blox.style.display = "block";
+            fin.style.display = "none";
+            deleteButton.style.display = "none";
+            input.value = '';
+        });
     })
 
       document.getElementById(select.img2).addEventListener('click', e => {
@@ -78,8 +88,7 @@ import {} from "../libs/ckeditor/ckeditor";
         const input = document.getElementById('img2_input');
         const form = document.getElementById('form_img_2');
         const fin = document.getElementById('img2_fin');
-
-
+        const deleteButton = document.getElementById('img2_delete');
 
          input.addEventListener('change', e => {
              axios.post(avatar, new FormData(form))
@@ -88,10 +97,18 @@ import {} from "../libs/ckeditor/ckeditor";
                     fin.setAttribute('src', e.data);
                     blox.style.display = "none";
                     fin.style.display = "block";
+                    deleteButton.style.display = "block";
                 })
 
          })
-
+         deleteButton.addEventListener('click', () => {
+            img2 = '';
+            fin.removeAttribute('src');
+            blox.style.display = "block";
+            fin.style.display = "none";
+            deleteButton.style.display = "none";
+            input.value = ''; 
+        });
     })
 
 
@@ -101,6 +118,7 @@ import {} from "../libs/ckeditor/ckeditor";
         const input = document.getElementById('img3_input');
         const form = document.getElementById('form_img_3');
         const fin = document.getElementById('img3_fin');
+        const deleteButton = document.getElementById('img3_delete');
 
          input.addEventListener('change', e => {
              axios.post(avatar, new FormData(form))
@@ -109,10 +127,18 @@ import {} from "../libs/ckeditor/ckeditor";
                     fin.setAttribute('src', e.data);
                     blox.style.display = "none";
                     fin.style.display = "block";
+                    deleteButton.style.display = "block";
                 })
 
          })
-
+         deleteButton.addEventListener('click', () => {
+            img3 = '';
+            fin.removeAttribute('src');
+            blox.style.display = "block";
+            fin.style.display = "none";
+            deleteButton.style.display = "none";
+            input.value = ''; 
+        });
     })
 
 
@@ -122,6 +148,7 @@ import {} from "../libs/ckeditor/ckeditor";
         const input = document.getElementById('img4_input');
         const form = document.getElementById('form_img_4');
         const fin = document.getElementById('img4_fin');
+        const deleteButton = document.getElementById('img4_delete');
 
          input.addEventListener('change', e => {
              axios.post(avatar, new FormData(form))
@@ -130,9 +157,18 @@ import {} from "../libs/ckeditor/ckeditor";
                     fin.setAttribute('src', e.data);
                     blox.style.display = "none";
                     fin.style.display = "block";
+                    deleteButton.style.display = "block";
                 })
 
          })
+         deleteButton.addEventListener('click', () => {
+            img4 = '';
+            fin.removeAttribute('src');
+            blox.style.display = "block";
+            fin.style.display = "none";
+            deleteButton.style.display = "none";
+            input.value = ''; 
+        });
 
     })
 
@@ -142,6 +178,7 @@ import {} from "../libs/ckeditor/ckeditor";
         const input = document.getElementById('img5_input');
         const form = document.getElementById('form_img_5');
         const fin = document.getElementById('img5_fin');
+        const deleteButton = document.getElementById('img5_delete');
 
          input.addEventListener('change', e => {
              axios.post(avatar, new FormData(form))
@@ -150,10 +187,18 @@ import {} from "../libs/ckeditor/ckeditor";
                     fin.setAttribute('src', e.data);
                     blox.style.display = "none";
                     fin.style.display = "block";
+                    deleteButton.style.display = "block";
                 })
 
          })
-
+         deleteButton.addEventListener('click', () => {
+            img5 = '';
+            fin.removeAttribute('src');
+            blox.style.display = "block";
+            fin.style.display = "none";
+            deleteButton.style.display = "none";
+            input.value = ''; 
+        });
     })
 
             document.getElementById(select.img6).addEventListener('click', e => {
@@ -162,6 +207,7 @@ import {} from "../libs/ckeditor/ckeditor";
         const input = document.getElementById('img6_input');
         const form = document.getElementById('form_img_6');
         const fin = document.getElementById('img6_fin');
+        const deleteButton = document.getElementById('img6_delete');
 
          input.addEventListener('change', e => {
              axios.post(avatar, new FormData(form))
@@ -170,18 +216,27 @@ import {} from "../libs/ckeditor/ckeditor";
                     fin.setAttribute('src', e.data);
                     blox.style.display = "none";
                     fin.style.display = "block";
+                    deleteButton.style.display = "block";
                 })
 
          })
-
+         deleteButton.addEventListener('click', () => {
+            img6 = '';
+            fin.removeAttribute('src');
+            blox.style.display = "block";
+            fin.style.display = "none";
+            deleteButton.style.display = "none";
+            input.value = ''; 
+        });
     })
 
-              document.getElementById(select.img7).addEventListener('click', e => {
+        document.getElementById(select.img7).addEventListener('click', e => {
         const blox = document.getElementById('img7_box');
-        const avatar = document.getElementById(select.img1).dataset.img;
+        const avatar = document.getElementById(select.img7).dataset.img;
         const input = document.getElementById('img7_input');
         const form = document.getElementById('form_img_7');
-        const fin = document.getElementById('img6_fin');
+        const fin = document.getElementById('img7_fin');
+        const deleteButton = document.getElementById('img7_delete');
 
          input.addEventListener('change', e => {
              axios.post(avatar, new FormData(form))
@@ -190,9 +245,18 @@ import {} from "../libs/ckeditor/ckeditor";
                     fin.setAttribute('src', e.data);
                     blox.style.display = "none";
                     fin.style.display = "block";
+                    deleteButton.style.display = "block";
                 })
 
          })
+         deleteButton.addEventListener('click', () => {
+            img7 = '';
+            fin.removeAttribute('src');
+            blox.style.display = "block";
+            fin.style.display = "none";
+            deleteButton.style.display = "none";
+            input.value = ''; 
+        });
 
     })
 
