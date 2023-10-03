@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use App\Models\About;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class AboutSeeder extends Seeder
 {
@@ -15,9 +16,9 @@ class AboutSeeder extends Seeder
      */
     public function run()
     {
-        About::create([
+        DB::table('abouts')->insert([
             'title' => "О Бирже",
-            
+
             "description" => "Платформа «Культурная биржа» – первый в России сайт-агрегатор культурных проектов,
             работающей по принципу р2р (peer-to-peer – «от человека к человеку») и позволяющей напрямую
             находить партнеров для культурных проектов самого разного типа и характера. 
@@ -31,7 +32,7 @@ class AboutSeeder extends Seeder
             как профессионалы, так и любители; как учреждения и общественные организации,
             так и самостоятельно работающие деятели культуры.",
 
-            "img" => asset('image/partner.webp'),
+            "img" => ('image/about1.webp'),
         ]);
     }
 }
