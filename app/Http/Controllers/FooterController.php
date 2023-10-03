@@ -100,7 +100,7 @@ class FooterController extends Controller
                 'id'       => $id,
             ]);
         } else {
-            return redirect(route('pages.admin.footer.fdescr.create'));
+            return redirect(route('admin.footer.fdescr.create'));
         }
     }
     public function ficon_edit($id)

@@ -36,3 +36,6 @@ import "./about/edit"
 
 import "./faq/create"
 import "./faq/edit"
+
+import "./footer/create"
+import "./footer/edit"
