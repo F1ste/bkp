@@ -36,12 +36,12 @@ class ContactController extends Controller
     {
         $request->validated();
     
-        $collection = Contact::where('id', $request->id)->update([
+        $contact = Contact::where('id', $request->id)->update([
             'description'   => $request->description,
             
         ]);
         
-        return response()->json($collection, 201);
+        return response()->json($contact, 201);
     }
 
     public function contact(){
