@@ -23,8 +23,6 @@ import { } from "../libs/ckeditor/ckeditor";
         })(editor, excerptFieldName);
     });
   
-
-
     const uploadRoute = collectionEdit.dataset.image,
         updateRoute = collectionEdit.dataset.update,
         id = collectionEdit.dataset.id;
@@ -34,13 +32,14 @@ import { } from "../libs/ckeditor/ckeditor";
         storeButton: 'store-button',
     }
 
+
     document.getElementById(select.storeButton).addEventListener('click', e => {
         let description = editorData.description;
-
         if (description == '') {
             alert('Заполните поле!');
             return false
         }
+
 
         document.getElementById(select.storeButton).innerHTML = `Подождите...`
 

@@ -22,12 +22,8 @@
                                         <textarea id="description" type="text" name="description" class="create-project__form-input form__input project-description" placeholder="Не более 10000 символов" data-placeholder="Не более 10000 символов">{{ $contact->description }}</textarea>
                                     </div>
                                 </div>
-
-
                             </div>
-
                         </div>
-
                     </div>
                     
                                     <div class="create-project__footer">
