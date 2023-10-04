@@ -136,7 +136,7 @@
                                             <div class="create-project__form-select">
                                                 <label class="create-project__form-label form__label">Выводить на главную</label>
                                                 <select id="glav" data-scroll name="form[]" class="form__select">
-                                                    <option value="" selected>Выбрать</option>
+                                                    <option value="0" >Нет</option>
                                                     <option value="1" @if($collection->glav == 1) selected @endif>Топ 1</option>
                                                     <option value="2"@if($collection->glav == 2) selected @endif>Топ 2</option>
                                                     <option value="3"@if($collection->glav == 3) selected @endif>Топ 3</option>
@@ -145,7 +145,7 @@
                                             <div class="create-project__form-select">
                                                 <label class="create-project__form-label form__label">Позиция в Новостях</label>
                                                 <select id="pozits" data-scroll name="form[]" class="form__select">
-                                                    <option value="" selected>Выбрать</option>
+                                                    <option value="0" >Нет</option>
                                                     <option value="1" @if($collection->pozits == 1) selected @endif>Топ 1</option>
                                                     <option value="2" @if($collection->pozits == 2) selected @endif>Топ 2</option>
                                                     <option value="3" @if($collection->pozits == 3) selected @endif>Топ 3</option>
