@@ -14,7 +14,7 @@
 
             <div class="create-project__container">
                 <div data-one-select class="create-project__content">
-                    <div class="create-project__title personal__title">Редактировать страницу "О Бирже"</div>
+                    <div class="create-project__title personal__title">Редактировать страницу "Контакты"</div>
                     <div class="create-project__general-info" style="align-items: flex-start;">
                                 <div class="create-project__project-description">
                                     <div class="create-project__form-item form__item">

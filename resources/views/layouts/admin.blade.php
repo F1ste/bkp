@@ -20,9 +20,9 @@
                             <div class="spollers__body">
                                 <div class="spollers__wrapper">
                                     <a href="/admin/dashboard" class="sidebar__item _icon-dashboard" dataText="Главная"></a>
-                                    <a href="/admin/about/edit-1" class="sidebar__item _icon-dashboard" dataText="О Бирже"></a>
-                                    <a href="/admin/faq/" class="sidebar__item _icon-dashboard" dataText="Вопрос-ответ"></a>
-                                    <a href="/admin/contact/contact-1" class="sidebar__item _icon-dashboard" dataText="Контакты"></a>
+                                    <a href="{{route('admin.about.edit',['id'=>1])}}" class="sidebar__item _icon-dashboard" dataText="О Бирже"></a>
+                                    <a href="{{route("admin.faq")}}" class="sidebar__item _icon-dashboard" dataText="Вопрос-ответ"></a>
+                                    <a href="{{route('admin.contact.edit', ['id'=>1])}}" class="sidebar__item _icon-dashboard" dataText="Контакты"></a>
                                     <a href="/admin/footer" class="sidebar__item _icon-dashboard" dataText="Настройки футера"></a>
                                 </div>
                             </div>
