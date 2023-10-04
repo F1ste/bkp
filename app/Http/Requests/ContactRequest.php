@@ -25,6 +25,8 @@ class ContactRequest extends FormRequest
     {
         return [
             'description'=>'string|required',
+            'map'=>'string|required',
+            
         ];
     }
 }

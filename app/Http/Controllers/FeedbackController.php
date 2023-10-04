@@ -1,0 +1,28 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Models\Feedback;
+use Illuminate\Http\Request;
+
+class FeedbackController extends Controller
+{
+    public function store(Request $request){
+        $request->validated();
+        $feedback = new Feedback;
+        $feedback->cover_letter = $request->cover_letter;
+        $feedback ->status = null;
+        $feedback ->user_id = $request->user_id;
+        $feedback->service_id = $request->service_id;
+        $feedback->save();
+        return response()->json($feedback, 201);
+    }
+
+    public function update (Request $request ){
+        $request->validated();
+        $feedback = Feedback::where('id',$request->id)->update([
+            'status'=>$request->status
+        ]);
+        return response()->json($feedback, 201);
+    }
+}
