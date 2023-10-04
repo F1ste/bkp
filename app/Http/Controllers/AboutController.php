@@ -19,7 +19,7 @@ class AboutController extends Controller
     
     public function edit($id)
     {
-        $about =  About::where('id', $id)->get();
+        $about =  About::where('id', $id)->find();
 
         if(count($about) > 0) {
 
@@ -32,7 +32,7 @@ class AboutController extends Controller
                 
             ]);
         } else {
-            return redirect(route('pages.admin.about.edit'));
+            return redirect(route('admin.about.edit'));
         }
     }
     public function img(Request $request){

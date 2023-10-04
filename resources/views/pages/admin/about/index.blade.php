@@ -19,7 +19,7 @@
 							<div class="my-projects__projects-items">
 								@foreach($about as $el)
 								<div class="my-projects__item">
-									<a href="{{ route('admin.about.edit', ['about' => $el->id]) }}">
+									<a href="{{ route('admin.about.edit', ['id' => $el->id]) }}">
 										<div class="my-projects__project-name">
 											{{ $el->title }}
 										</div>
