@@ -10,7 +10,7 @@
 						</div>
 						@foreach ($contact as $item )
 							<div class="contacts__info">
-								{{$item->description}}
+								{!! $item->description !!}
 							</div>
 						@endforeach
 						
