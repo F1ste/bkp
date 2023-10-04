@@ -34,6 +34,8 @@ import "./partners/edit"
 
 import "./about/edit"
 
+import "./contacts/edit"
+
 import "./faq/create"
 import "./faq/edit"
 

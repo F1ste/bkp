@@ -29,18 +29,18 @@
                         </div>
 
                     </div>
+                    
+                                    <div class="create-project__footer">
+                    
+                                        <div class="create-project__buttons">
+                                            <!--<a href="#" class="create-project__btn btn btn-white btn-border_black">Сохранить черновик</a>-->
+                                            <button  id='store-button' class="create-project__btn btn btn-filled">Редактировать</button>
+                                        </div>
+                                    </div>
                 </div>
 
 
 
-
-                <div class="create-project__footer">
-
-                    <div class="create-project__buttons">
-                        <!--<a href="#" class="create-project__btn btn btn-white btn-border_black">Сохранить черновик</a>-->
-                        <button  id='store-button' class="create-project__btn btn btn-filled">Редактировать</button>
-                    </div>
-                </div>
 
             </div>
     </div>

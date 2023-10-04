@@ -598,7 +598,7 @@ footer h4 {
   -webkit-appearance: none;
      -moz-appearance: none;
           appearance: none;
-  background: url(/images/selectapperance.svg?2b0f92a752132ae7f18ba22f10634ade) 90% no-repeat;
+  background: url(/images/selectapperance.svg?960e684f751f6e01c41448d281a39639) 90% no-repeat;
   padding: 0px 0px 0px 30px;
 }
 
@@ -1305,7 +1305,7 @@ body::-webkit-scrollbar-thumb, .menu__body::-webkit-scrollbar-thumb {
   position: absolute;
   left: 3px;
   top: 2px;
-  background: url(/images/checked.svg?74c266e2f7fd2358845002cb91df6247) center center no-repeat;
+  background: url(/images/checked.svg?4d4f096941eb637fa472a5fe93f835e6) center center no-repeat;
   background-size: cover;
 }
 .page-login .page-login__input-group__social {

@@ -61,7 +61,6 @@ import { } from "../libs/ckeditor/ckeditor";
 
     })
 
-
     document.getElementById(select.storeButton).addEventListener('click', e => {
         let title = document.getElementById(select.title).value;
         let img = img1;

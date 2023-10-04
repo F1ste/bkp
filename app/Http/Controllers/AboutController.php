@@ -19,7 +19,7 @@ class AboutController extends Controller
     
     public function edit($id)
     {
-        $about =  About::where('id', $id)->find();
+        $about =  About::where('id', $id)->get();
 
         if(count($about) > 0) {
 
