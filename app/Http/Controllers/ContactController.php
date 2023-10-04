@@ -28,9 +28,7 @@ class ContactController extends Controller
                 'id'       => $id,
                 
             ]);
-        } else {
-            return redirect(route('pages.admin.contact.create'));
-        }
+        } 
     }
     public function update(ContactRequest $request)
     {
@@ -38,6 +36,7 @@ class ContactController extends Controller
     
         $contact = Contact::where('id', $request->id)->update([
             'description'   => $request->description,
+            'map'=>$request->map
             
         ]);
         

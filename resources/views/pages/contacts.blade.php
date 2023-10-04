@@ -45,9 +45,11 @@
 						</div>
 					</div>
 					<div class="contacts__col">
-						<div class="contacts__media media-block">
-							<picture><source srcset="{{ asset('image/banner1.webp') }}" type="image/webp"><img src="{{ asset('image/banner1.jpg') }}" alt=""></picture>
-						</div>
+						@foreach ($contact as $item )
+							<div class="contacts__info">
+								{!! $item->map !!}
+							</div>
+						@endforeach
 					</div>
 
 

@@ -22,6 +22,14 @@
                                         <textarea id="description" type="text" name="description" class="create-project__form-input form__input project-description" placeholder="Не более 10000 символов" data-placeholder="Не более 10000 символов">{{ $contact->description }}</textarea>
                                     </div>
                                 </div>
+                                <div class="create-project__add-code">
+                                    <div class="create-project__form-item form__item">
+                                        <label for="map" class="create-project__form-label form__label">Iframe карты
+                                        </label>
+                                        <textarea id="map" type="text" name="map" class="create-project__form-input form__input add-code" 
+                                        placeholder="Добавьте код встраивания плеера трансляции" data-placeholder="Не более 10000 символов" style="min-height: 369px;">{{$contact->map}}</textarea>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
