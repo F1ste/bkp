@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Collection;
 use App\Models\Feedback;
 use Illuminate\Http\Request;
 
@@ -25,4 +26,13 @@ class FeedbackController extends Controller
         ]);
         return response()->json($feedback, 201);
     }
+    public function candidat_index (){
+        $feedback = Feedback::with('services')->where('user_id', auth()->user()->id)->get();
+        return view('pages.user.feedback.candidat')->with('feedback',$feedback);
+    }
+    public function owner_index(){
+        $feedback = Collection::with('feedback')->where('user_id',auth()->user()->id)->get();
+        return view ('pages.user.feedback.owner')->with('feedback',$feedback);
+    }
 }
+    
