@@ -11,16 +11,19 @@
 							при поддержке JTI Россия
 						</div>
 					</div>
-					<div class="footer__menu-col">
 					@foreach ($footer_ar['pages'] as $page)
+						@if ($loop->index % 3 == 0)
+							<div class="footer__menu-col">
+						@endif
+
 						<a href="{{$page->link}}" class="footer__menu-link">{{$page->page}}</a>
-						@if (($loop->index % 3 == 2) && ($loop->index > 0))
-						
-						
+
+						@if (($loop->index + 1) % 3 == 0 || $loop->last)
+							</div>
 						@endif
 					@endforeach
-				</div>
-				<div data-da=".footer__company-info, 991.98, 1" class="footer__menu-col socials">
+
+					<div data-da=".footer__company-info, 991.98, 1" class="footer__menu-col socials">
 					@foreach ($footer_ar['icons'] as $icon )
 						@if(strpos($icon,'t.me')!==false)
 							<a href="{{$icon->style}}" class="socials__social-item icon-telegram">
