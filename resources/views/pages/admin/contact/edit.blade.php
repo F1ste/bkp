@@ -24,11 +24,10 @@
                                 </div>
                                 <div class="create-project__add-code">
                                     <div class="create-project__form-item form__item">
-                                        <label for="video" class="create-project__form-label form__label">Код видео
-                                            <button type="button" data-tippy-content="Вставьте код (frame) видео. Плееры, которые поддерживает платформа:
-                                                 class="_icon-info"></button>
+                                        <label for="map" class="create-project__form-label form__label">Iframe карты
                                         </label>
-                                        <textarea id="video" type="text" name="map" class="create-project__form-input form__input add-code" placeholder="Добавьте код встраивания плеера трансляции" data-placeholder="Не более 10000 символов">{{$contact->map}}</textarea>
+                                        <textarea id="map" type="text" name="map" class="create-project__form-input form__input add-code" 
+                                        placeholder="Добавьте код встраивания плеера трансляции" data-placeholder="Не более 10000 символов" style="min-height: 369px;">{{$contact->map}}</textarea>
                                     </div>
                                 </div>
                             </div>
