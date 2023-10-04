@@ -22,25 +22,21 @@
                                         <textarea id="description" type="text" name="description" class="create-project__form-input form__input project-description" placeholder="Не более 10000 символов" data-placeholder="Не более 10000 символов">{{ $contact->description }}</textarea>
                                     </div>
                                 </div>
-
-
                             </div>
-
                         </div>
-
                     </div>
+                    
+                                    <div class="create-project__footer">
+                    
+                                        <div class="create-project__buttons">
+                                            <!--<a href="#" class="create-project__btn btn btn-white btn-border_black">Сохранить черновик</a>-->
+                                            <button  id='store-button' class="create-project__btn btn btn-filled">Редактировать</button>
+                                        </div>
+                                    </div>
                 </div>
 
 
 
-
-                <div class="create-project__footer">
-
-                    <div class="create-project__buttons">
-                        <!--<a href="#" class="create-project__btn btn btn-white btn-border_black">Сохранить черновик</a>-->
-                        <button  id='store-button' class="create-project__btn btn btn-filled">Редактировать</button>
-                    </div>
-                </div>
 
             </div>
     </div>

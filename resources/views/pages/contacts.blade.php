@@ -8,10 +8,10 @@
 						<div class="contacts__title section__title">
 							Контакты
 						</div>
-						@foreach ($contact as $item)
-						<div class="contacts__info">
-							{!! $item->descripiton !!}
-						</div>
+						@foreach ($contact as $item )
+							<div class="contacts__info">
+								{!! $item->description !!}
+							</div>
 						@endforeach
 						
 						<div class="contacts__info-general">
