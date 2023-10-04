@@ -21,7 +21,9 @@ class ContactSeeder extends Seeder
             Для представителей СМИ
             media@culturalforum.ru
             Вопросы по программе
-            programme@culturalforum.ru"
+            programme@culturalforum.ru",
+
+            "map"=>"Карта"
         ]);
     }
 }
