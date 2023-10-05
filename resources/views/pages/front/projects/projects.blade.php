@@ -47,11 +47,11 @@
 										<div class="join-us__info">
 											<div class="join-us__text">
 												<div class="join-us__text-title">
-													Ответить на проект
+													Узнайте о событиях
 												</div>
 												<div class="join-us__text-desrcription">
-													Ознакосьтесь с перечнем проектов
-													и предложите свою помощь
+													Ознакомьтесь с новостями проектов и 
+													культурной биржи
 												</div>
 											</div>
 											<a href="#" class="join-us__btn _fw btn btn-filled">Перейти</a>
