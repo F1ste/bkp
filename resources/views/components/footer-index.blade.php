@@ -6,7 +6,7 @@
 							<img src="{{ asset('image/logo-white.svg') }}" alt="Культурная Биржа">
 							<div class="logo__text">Культурная <br> Биржа</div>
 						</a>
-						<div class="with-support">
+						<div class="with-support" style="display: none;">
 							Проект реализуется <br>
 							при поддержке JTI Россия
 						</div>
