@@ -16,7 +16,7 @@
 									</svg>
 								</a>
 							</div>
-							{{dd()}}
+							{{dd($serch)}}
 						
 						@foreach ($serch as $item )
 							{{dd($item->sel)}}
