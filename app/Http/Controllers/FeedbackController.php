@@ -16,6 +16,7 @@ class FeedbackController extends Controller
         $feedback ->status = null;
         $feedback ->user_id = auth()->user()->id;
         $feedback->service_id = $request->service_id;
+        $feedback->role_name=$request->role_name;
         $feedback->save();
         return redirect()->route('projects');
     }
@@ -27,9 +28,13 @@ class FeedbackController extends Controller
         ]);
         return response()->json($feedback, 201);
     }
-    public function candidat_index (){
-        $feedback = Feedback::with('services')->where('user_id', auth()->user()->id)->get();
-        return view('pages.user.feedback.candidat')->with('feedback',$feedback);
+    public function candidat_index ($id){
+        $feedback = Feedback::find($id)->with('service')->where('user_id', auth()->user()->id)->first();
+        $serch = json_decode($feedback->service->serch);
+        return view('pages.user.feedback.candidat',[
+            'feedback'=>$feedback,
+            'serch'=>$serch
+        ]);
     }
     public function owner_index(){
         $feedback = Collection::with('feedback')->where('user_id',auth()->user()->id)->get();
