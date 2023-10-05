@@ -48,6 +48,7 @@ Route::prefix('/profile')->middleware('auth')->group(function () {
     });
     Route::prefix('/feedback')->group(function(){
         Route::post('/',[FeedbackController::class,'store'])->name('profile.feedback.create');
+        Route::put('/',[FeedbackController::class,'update'])->name('profile.feedback.update');
         Route::get('/candidat-{id}',[FeedbackController::class,'candidat_index'])->name('profile.feedback.candidat');
     });
 });
