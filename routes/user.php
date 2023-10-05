@@ -8,6 +8,7 @@ use App\Http\Controllers\UserPageController;
 use App\Http\Controllers\AdminPageController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\FAQController;
+use App\Http\Controllers\FeedbackController;
 use App\Http\Controllers\FooterController;
 use App\View\Components\Footer;
 use Illuminate\Support\Facades\Route;
@@ -44,6 +45,9 @@ Route::prefix('/profile')->middleware('auth')->group(function () {
         Route::post('/edit', [CollectionController::class, 'edit'])->name('profile.services.edit');
         Route::post('/upload', [CollectionController::class, 'upload'])->name('profile.services.upload');
         Route::post('/delete', [CollectionController::class, 'delete'])->name('profile.services.delete');
+    });
+    Route::prefix('/feedback')->group(function(){
+        Route::post('/',[FeedbackController::class,'store'])->name('profile.feedback.create');
     });
 });
 

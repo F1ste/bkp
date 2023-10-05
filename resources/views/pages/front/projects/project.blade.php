@@ -95,9 +95,9 @@
 										<div class="partners-searching__replies">
 											<b>Откликнулось:</b> 3
 										</div>
-										<a href="" class="partners-searching__btn btn btn-filled _fw">
+										<button type="button" data-popup="#feedbackPopup" class="partners-searching__btn btn btn-filled _fw">
 											Откликнуться
-										</a>
+										</button>
 									</div>
 								</div>
 								@endforeach
