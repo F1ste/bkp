@@ -81,7 +81,7 @@
 
 
 								@foreach($serch as $serchs)
-								<div class="tabs__body">
+								<div class="tabs__body" data-update="{{ route('profile.feedback.update') }}" id='feedback-send'>
 									<div class="partners-searching__finding-date">
 										Ищем до {{$serchs->inp}}
 									</div>
@@ -95,7 +95,7 @@
 										<div class="partners-searching__replies">
 											<b>Откликнулось:</b> 3
 										</div>
-										<button type="button" data-popup="#feedbackPopup" class="partners-searching__btn btn btn-filled _fw">
+										<button type="button" data-popup="#feedbackPopup" data-role="{{ $serchs->sel }}" class="partners-searching__btn btn btn-filled _fw">
 											Откликнуться
 										</button>
 									</div>

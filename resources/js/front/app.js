@@ -36,6 +36,8 @@ import "./about/edit"
 
 import "./contacts/edit"
 
+import "./feedback//edit"
+
 import "./faq/create"
 import "./faq/edit"
 
