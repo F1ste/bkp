@@ -10,7 +10,7 @@ import { } from "../libs/ckeditor/ckeditor";
     if (!collectionEdit) return false
 
     var editorData = {};
-    var textareas = document.querySelectorAll("textarea:not(#video)");
+    var textareas = document.querySelectorAll("textarea:not(#map)");
     textareas.forEach(function (textarea) {
         var editor = CKEDITOR.replace(textarea);
         CKFinder.setupCKEditor(editor);
@@ -29,12 +29,15 @@ import { } from "../libs/ckeditor/ckeditor";
 
     const select = {
         description: editorData.description,
+        map: 'map',
         storeButton: 'store-button',
     }
 
 
     document.getElementById(select.storeButton).addEventListener('click', e => {
         let description = editorData.description;
+        let map = document.getElementById(select.map).value;
+
         if (description == '') {
             alert('Заполните поле!');
             return false
@@ -46,6 +49,7 @@ import { } from "../libs/ckeditor/ckeditor";
         axios.post(updateRoute, {
             id: id,
             description: description,
+            map: map
 
         }).then(e => {
             location.reload()
