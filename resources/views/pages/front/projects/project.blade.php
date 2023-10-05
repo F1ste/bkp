@@ -81,7 +81,7 @@
 
 
 								@foreach($serch as $serchs)
-								<div class="tabs__body">
+								<div class="tabs__body feedback-send">
 									<div class="partners-searching__finding-date">
 										Ищем до {{$serchs->inp}}
 									</div>
@@ -95,9 +95,9 @@
 										<div class="partners-searching__replies">
 											<b>Откликнулось:</b> 3
 										</div>
-										<a data-popup="#feedbackPopup" href="" class="partners-searching__btn btn btn-filled _fw">
+										<button type="button" data-popup="#feedbackPopup" data-role="{{ $serchs->sel }}" class="partners-searching__btn btn btn-filled _fw">
 											Откликнуться
-										</a>
+										</button>
 									</div>
 								</div>
 								@endforeach

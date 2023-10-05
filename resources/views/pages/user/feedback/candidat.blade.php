@@ -3,8 +3,8 @@
 @section('title', 'Отклики на проекты')
 
 @section('content')
-
 <div class="page__container">
+
 				<section class="feedback personal-account">
 					<div class="feedback__container">
 						<div class="feedback__content">
@@ -16,14 +16,20 @@
 									</svg>
 								</a>
 							</div>
+							{{dd($serch)}}
+						
+						@foreach ($serch as $item )
+							{{dd($item->sel)}}
+						@endforeach
+							
 							<div class="feedback__heading">
 								<div class="feedback__heading-info">
 									<div class="feedback__title">
-										Название проекта
+
 									</div>
 									<div class="feedback__info">
 										<div class="feedback__info-item">
-											Роль: Волонтер
+											
 										</div>
 										<div class="feedback__info-item">
 											Статус отклика: Одобрено
@@ -50,11 +56,9 @@
 									Сопроводительное письмо
 								</div>
 								<div class="feedback__text main-text">
-									Здравствуйте! Очень заинтересован стать волонтером на вашем форуме. Обладаю глубокой страстью к природе. <br>
-									Готов помогать в различных проектах и развивать сообщество природолюбов. <br>
-									С нетерпением жду возможности присоединиться и принести пользу вашему форуму.
+									{{$feedback->cover_letter}}
 									<br><br>
-									Имя Фамилия Отчество
+									{{$feedback->service->name}}
 								</div>
 							</div>
 							<div class="feedback__project-request">
