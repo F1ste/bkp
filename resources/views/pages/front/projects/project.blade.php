@@ -81,7 +81,7 @@
 
 
 								@foreach($serch as $serchs)
-								<div class="tabs__body" data-update="{{ route('profile.feedback.update') }}" id='feedback-send'>
+								<div class="tabs__body feedback-send">
 									<div class="partners-searching__finding-date">
 										Ищем до {{$serchs->inp}}
 									</div>

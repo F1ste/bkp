@@ -3,48 +3,55 @@ import { notification } from "../utils/notification";
 import { } from "../libs/ckeditor/ckeditor";
 (() => {
 
-    const collectionEdit = document.getElementById('feedback-send')
+    const collectionEdit = document.querySelectorAll('.feedback-send')
 
 
 
-    if (!collectionEdit) return false
+    if (collectionEdit.length === 0) return false
 
+    const popupBlock = document.getElementById('feedbackPopup');
+    const popupContent = popupBlock.querySelector('.popup__content');
+    const popupSubmitBtn = popupBlock.querySelector('.popup__submit');
 
-  
-    const uploadRoute = collectionEdit.dataset.image,
-        updateRoute = collectionEdit.dataset.update,
-        id = collectionEdit.dataset.id;
+    const parntersSearchBlock = document.querySelector('.partners-searching');
 
-    const select = {
-        description: editorData.description,
-        map: 'map',
-        storeButton: 'store-button',
-    }
+    
+    function getFeedbackData(e) {
+        let currentTarget = e.target;
 
-
-    document.getElementById(select.storeButton).addEventListener('click', e => {
-        let description = editorData.description;
-        let map = document.getElementById(select.map).value;
-
-        if (description == '') {
-            alert('Заполните поле!');
-            return false
+        if (!currentTarget.classList.contains('partners-searching__btn')) {
+            return false;
         }
 
+        let feedbackRole = currentTarget.dataset.role;
+        let feedbackText = currentTarget.closest('.feedback-send').querySelector('.partners-searching__partner-description').textContent;
 
-        document.getElementById(select.storeButton).innerHTML = `Подождите...`
+        popupSubmitBtn.dataset.role = feedbackRole;
+        popupSubmitBtn.dataset.cvv = feedbackText;
+    }
 
-        axios.post(updateRoute, {
-            id: id,
-            description: description,
-            map: map
+    parntersSearchBlock.addEventListener('click', getFeedbackData)
+
+
+    function sendingFeedback(e) {
+        let requestRoute = popupContent.dataset.update;
+        let projectId = popupContent.dataset.id
+        let feedbackRole = e.target.dataset.role;
+        let feedbackText = e.target.dataset.cvv;
+        
+        axios.post(requestRoute, {
+            service_id: projectId,
+            role_name: feedbackRole,
+            cover_letter: feedbackText,
 
         }).then(e => {
-            location.reload()
+            popupContent.querySelector('.popup__text').innerHTML = 'Ваш отклик отправлен';
         }).catch(error => {
             console.log(error.response)
-        })
-    });
+        }) 
+    }
+
+    popupSubmitBtn.addEventListener('click', sendingFeedback);
 
 })()
 
