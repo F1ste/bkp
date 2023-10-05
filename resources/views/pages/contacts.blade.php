@@ -14,7 +14,7 @@
 							</div>
 						@endforeach
 						
-						<div class="contacts__info-general">
+<!-- 						<div class="contacts__info-general">
 							<div class="contacts__info-title">
 								Общие вопросы
 							</div>
@@ -42,11 +42,12 @@
 									<a href="mailto:programme@culturalforum.ru">programme@culturalforum.ru</a>
 								</div>
 							</div>
-						</div>
+						</div> 
+					-->
 					</div>
 					<div class="contacts__col">
 						@foreach ($contact as $item )
-							<div class="contacts__info">
+							<div class="contacts__media ">
 								{!! $item->map !!}
 							</div>
 						@endforeach

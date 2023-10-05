@@ -1913,7 +1913,7 @@ body::after {
 .header {
   position: relative;
   width: 100%;
-  z-index: 10;
+  z-index: 1001;
   min-height: 95px;
   background-color: #F8F8F8;
   -webkit-box-shadow: 33px 15px 38px -24px rgba(55, 55, 55, 0.35);
@@ -4281,6 +4281,12 @@ body::after {
   width: 100%;
 }
 
+.contacts__col iframe {
+  position: relative;
+  width: 100%;
+  z-index: 999;
+}
+
 .contacts__title {
   margin-top: -15px;
 }
@@ -4291,6 +4297,21 @@ body::after {
   font-weight: 400;
   line-height: normal;
   letter-spacing: 0.64px;
+}
+
+.contacts__info p:not(:last-child) {
+  margin-bottom: 0.9375rem;
+}
+
+.contacts__info h2 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  line-height: normal;
+  letter-spacing: 0.8px;
+}
+
+.contacts__info h3 strong {
+  font-weight: 600;
 }
 
 .contacts__adress {
@@ -6940,7 +6961,7 @@ body::after {
     width: 2.25rem;
     height: 1.5625rem;
     cursor: pointer;
-    z-index: 5;
+    z-index: 1000;
   }
 
   .icon-menu span,
