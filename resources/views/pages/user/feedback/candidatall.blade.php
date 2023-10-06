@@ -1,4 +1,4 @@
-@extends('layouts.index')
+@extends('layouts.authorisation')
 
 @section('title', 'Отклики на проекты')
 
