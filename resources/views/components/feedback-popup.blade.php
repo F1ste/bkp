@@ -8,7 +8,7 @@
 				<div class="profile__cover-letter">
 					<div class="profile__form-item form__item">
 						<label for="ProfileCV" class="profile__form-label form__label">Краткое сопроводительное письмо</label>
-						<textarea id="FormProjectDescription" type="text" 
+						<textarea id="cover_letter" type="text" 
 						class="profile__form-input form__input project-description" name="cover_letter" placeholder="Краткое сопроводительное письмо" data-placeholder="Краткое сопроводительное письмо"></textarea>
 					</div>
 				</div>

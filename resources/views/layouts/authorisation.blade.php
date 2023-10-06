@@ -8,7 +8,7 @@
         <title>@yield('title') - БКП</title>
     </head>
     <body>
-        <div class="wrapper">
+
         <x-header />
            <main class="page">
             <div class="sidebar">
@@ -48,7 +48,7 @@
             </div>
         @yield('content')
             </main>
-        </div>
+
         <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
         <script src="{{ asset('/plugins/ckeditor/ckeditor.js') }}"></script>
         <script src="{{ asset('/plugins/ckfinder/ckfinder.js') }}"></script>

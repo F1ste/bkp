@@ -24,10 +24,10 @@ import { } from "../libs/ckeditor/ckeditor";
         }
 
         let feedbackRole = currentTarget.dataset.role;
-        let feedbackText = currentTarget.closest('.feedback-send').querySelector('.partners-searching__partner-description').textContent;
+        //let feedbackText = currentTarget.closest('.feedback-send').querySelector('.partners-searching__partner-description').textContent;
 
         popupSubmitBtn.dataset.role = feedbackRole;
-        popupSubmitBtn.dataset.cvv = feedbackText;
+        //popupSubmitBtn.dataset.text = feedbackText;
     }
 
     parntersSearchBlock.addEventListener('click', getFeedbackData)
@@ -37,12 +37,12 @@ import { } from "../libs/ckeditor/ckeditor";
         let requestRoute = popupContent.dataset.update;
         let projectId = popupContent.dataset.id
         let feedbackRole = e.target.dataset.role;
-        let feedbackText = e.target.dataset.cvv;
+        let feedbackCvv = popupContent.querySelector('[name="cover_letter"]').value;
         
         axios.post(requestRoute, {
             service_id: projectId,
             role_name: feedbackRole,
-            cover_letter: feedbackText,
+            cover_letter: feedbackCvv,
 
         }).then(e => {
             popupContent.querySelector('.popup__text').innerHTML = 'Ваш отклик отправлен';
