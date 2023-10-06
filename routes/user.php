@@ -48,9 +48,9 @@ Route::prefix('/profile')->middleware('auth')->group(function () {
     });
     Route::prefix('/feedback')->group(function(){
         Route::post('/',[FeedbackController::class,'store'])->name('profile.feedback.create');
-        Route::put('/accept',[FeedbackController::class,'accept'])->name('profile.feedback.accept');
-        Route::put('/decline',[FeedbackController::class,'decline'])->name('profile.feedback.decline');
-        Route::put('/viewed',[FeedbackController::class,'viewed'])->name('profile.feedback.viewed');
+        Route::put('/accept-{id}',[FeedbackController::class,'accept'])->name('profile.feedback.accept');
+        Route::put('/decline-{id}',[FeedbackController::class,'decline'])->name('profile.feedback.decline');
+        Route::put('/viewed-{id}',[FeedbackController::class,'viewed'])->name('profile.feedback.viewed');
         Route::get('/candidat-{id}',[FeedbackController::class,'candidat_index'])->name('profile.feedback.candidat');
         Route::get('/owner-{id}',[FeedbackController::class,'owner_index'])->name('profile.feedback.owner');
         Route::get('/owner',[FeedbackController::class,'owner_all'])->name('profile.feedback.owner.all');

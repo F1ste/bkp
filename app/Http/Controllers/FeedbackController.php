@@ -124,20 +124,21 @@ class FeedbackController extends Controller
 ]);
        
 }
-    public function accept(Request $request){
-        $feedback = Feedback::where('id', $request->id)->update([
+    public function accept($id){
+        $feedback = Feedback::where('id', $id)->update([
             'status' => 1
         ]);
+        dd($feedback);
         return response()->json($feedback->status, 201);
     }
-    public function decline(Request $request){
-        $feedback = Feedback::where('id', $request->id)->update([
+    public function decline($id){
+        $feedback = Feedback::where('id', $id)->update([
             'status' => 2
         ]);
         return response()->json($feedback->status, 201);
 }
-    public function viewed(Request $request){
-        $feedback = Feedback::where('id', $request->id)->update([
+    public function viewed($id){
+        $feedback = Feedback::where($id)->update([
             'status' => 3
     ]);
     return response()->json($feedback->status, 201);
