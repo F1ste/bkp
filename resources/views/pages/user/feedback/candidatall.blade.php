@@ -29,7 +29,8 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @if($feedback == null && $mysubarr == null)
+                                        {{-- {{ dd(get_defined_vars()) }} --}}
+                                        @if($mysubarr == [] )
                                         <div>Пока что вы не откликались ни на один проект</div>
                                         @else
                                         @foreach ($feedback as $item )
@@ -46,8 +47,8 @@
                                         @endforeach
                                         @endif
                                     </tbody>
-                                </table>
-						</div>
+                                    </table>
+                            </div>
 					</div>
 				</section>
 			</div>

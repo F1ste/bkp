@@ -68,9 +68,9 @@ class FeedbackController extends Controller
 
     public function owner_all(){
         $feedback = Collection::with('feedbacks')->where('user_id', auth()->user()->id)->get();
+        $mysubarr = [];
         foreach($feedback as $item){
         $serch = json_decode($item->serch,true);
-        $mysubarr = [];
         if(isset($item->feedbacks)){
             $feedback=null;
             $mysubarr=null;
@@ -80,7 +80,6 @@ class FeedbackController extends Controller
         foreach ($serch as $subarr) {
             if ($subarr['sel'] == $item->feedbacks['role_name']) {
                 $mysubarr = $subarr;
-                
                 break;
             }
         }
@@ -94,27 +93,28 @@ class FeedbackController extends Controller
     }
     public function candidat_all(){
         $feedback = Feedback::with('service')->where('user_id', auth()->user()->id)->get();
+        $mysubarr = [];
         foreach ($feedback as $item){
         $serch = json_decode($item->service->serch,true);
-        $mysubarr = [];
         if(isset($feedback->service)){
-            $feedback = null;
-            $mysubarr = null;
-            break;
+            $feedback==null;
+            $mysubarr==null;
         }
         else{
         foreach ($serch as $subarr) {
             if ($subarr['sel'] == $item['role_name']) {
                 $mysubarr = $subarr;
-                break;
             }
         }
+        
     }
+    
     }
-        return view('pages.user.feedback.candidatall',[
-            'feedback' => $feedback,
-            'mysubarr' => $mysubarr
-    ]);
+    return view('pages.user.feedback.candidatall',[
+        'feedback' => $feedback,
+        'mysubarr' => $mysubarr
+]);
+       
 }
 
 }

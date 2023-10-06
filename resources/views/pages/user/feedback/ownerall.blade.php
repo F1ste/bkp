@@ -29,7 +29,8 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @if($feedback == null && $mysubarr == null)
+                                     
+                                        @if($mysubarr == [])
                                             <div>Пока на ваши проекты никто не откликнулся</div>
                                         @else
                                         @foreach ($feedback as $item )
