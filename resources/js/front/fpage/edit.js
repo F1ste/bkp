@@ -6,45 +6,35 @@ import { } from "../libs/ckeditor/ckeditor";
     const collectionEdit = document.getElementById('fpage-edit')
 
     if (!collectionEdit) return false
-
-    var editorData = {};
-    var textareas = document.querySelectorAll("textarea:not(#video)");
-    textareas.forEach(function (textarea) {
-        var editor = CKEDITOR.replace(textarea);
-        CKFinder.setupCKEditor(editor);
-        var excerptFieldName = textarea.id;
-        (function (currentEditor, fieldName) {
-            editorData[fieldName] = currentEditor.getData();
-            currentEditor.on("change", function () {
-                editorData[fieldName] = currentEditor.getData();
-            });
-        })(editor, excerptFieldName);
-    });
   
     const uploadRoute = collectionEdit.dataset.image,
         updateRoute = collectionEdit.dataset.update,
         id = collectionEdit.dataset.id;
 
     const select = {
-        descr: editorData.descr,
+        link: 'link',
+        page: 'page',
         storeButton: 'store-button',
+        del: 'del-button',
     }
 
     document.getElementById(select.storeButton).addEventListener('click', e => {
-        let descr = editorData.descr;
+        let page = document.getElementById(select.page).value;
+        let link = document.getElementById(select.link).value;
 
-        if (descr == '') {
+        if (page == '' || link =='') {
             alert('Заполните поле!');
             return false
         }
+
 
 
         document.getElementById(select.storeButton).innerHTML = `Подождите...`
 
         axios.post(updateRoute, {
             id: id,
-            descr: descr,
-
+            page: page,
+            link: link,
 
         }).then(e => {
             location.reload()
@@ -52,6 +42,21 @@ import { } from "../libs/ckeditor/ckeditor";
             console.log(error.response)
         })
     });
+
+    
+    document.getElementById(select.del).addEventListener('click', e => {
+
+        let del = document.getElementById(select.del).dataset.del;
+        axios.post(del, {
+        id: id
+
+    }).then(e => {
+        window.location.replace("/admin/footer");
+    }).catch(error => {
+        console.log(error.response)
+    })
+
+     });
 
 })()
 
