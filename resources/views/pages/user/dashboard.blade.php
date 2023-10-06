@@ -69,7 +69,7 @@
 									</a>
 								</div>
 							</div>
-							<table class="my-feedbacks__table">
+							<!-- <table class="my-feedbacks__table">
 								<thead>
 									<tr class="my-feedbacks__table-heading">
 										<th>№</th>
@@ -112,7 +112,7 @@
 										<td class="my-feedbacks__table-item"><a href="" class="my-feedbacks__btn btn btn-white _fw">Подробнее</a></td>
 									</tr>
 								</tbody>
-							</table>
+							</table> -->
 						</div>
 					</div>
 				</section>

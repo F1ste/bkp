@@ -18,7 +18,11 @@
 							</div>
 							<div class="feedback__heading">
                                 <table class="my-feedbacks__table">
-                                    <thead>
+                                    
+                                        @if($feedback == null && $mysubarr == null)
+                                        <div>Вы не откликнулись ни на один проект</div>
+                                        @else
+                                        <thead>
                                         <tr class="my-feedbacks__table-heading">
                                             <th>№</th>
                                             <th>Проект</th>
@@ -29,9 +33,6 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @if($feedback == null && $mysubarr == null)
-                                        <div>Пока что вы не откликались ни на один проект</div>
-                                        @else
                                         @foreach ($feedback as $item )
                                         <tr class="my-feedbacks__table-row">
                                             <td class="my-feedbacks__table-item">
