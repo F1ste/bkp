@@ -36,7 +36,8 @@
                                 <div class="create-project__footer">
 
                                     <div class="create-project__buttons">
-                                        <!-- <a data-del="{{ route('admin.tema.delete') }}" style="cursor: pointer;" id="del-button" class="create-project__btn btn btn-white btn-border_black">Удалить</a> -->
+<!--                                     <a data-del="{{ route('admin.fdescr.delete') }}" style="cursor: pointer;" id="del-button"
+                                    class="create-project__btn btn btn-white btn-border_black">Удалить</a> -->
                                         <!--<a href="#" class="create-project__btn btn btn-white btn-border_black">Сохранить черновик</a>-->
                                         <button id='store-button' class="create-project__btn btn btn-filled">Сохранить</button>
                                     </div>

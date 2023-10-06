@@ -28,6 +28,7 @@ import { } from "../libs/ckeditor/ckeditor";
     const select = {
         descr: editorData.descr,
         storeButton: 'store-button',
+        del: 'del-button',
     }
 
     document.getElementById(select.storeButton).addEventListener('click', e => {
@@ -52,6 +53,20 @@ import { } from "../libs/ckeditor/ckeditor";
             console.log(error.response)
         })
     });
+
+    document.getElementById(select.del).addEventListener('click', e => {
+
+        let del = document.getElementById(select.del).dataset.del;
+        axios.post(del, {
+        id: id
+
+    }).then(e => {
+        window.location.replace("/admin/footer");
+    }).catch(error => {
+        console.log(error.response)
+    })
+
+     });
 
 })()
 

@@ -47,7 +47,7 @@ import { } from "../libs/ckeditor/ckeditor";
 
 
         }).then(e => {
-            location.reload()
+            window.location.href = e.data;
         }).catch(error => {
             console.log(error.response)
         })

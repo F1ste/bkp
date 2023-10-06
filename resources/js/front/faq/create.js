@@ -90,7 +90,7 @@ import { } from "../libs/ckeditor/ckeditor";
             img: img
 
         }).then(e => {
-            location.reload()
+            window.location.href = e.data;
         }).catch(error => {
             console.log(error.response)
         })

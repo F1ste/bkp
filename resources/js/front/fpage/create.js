@@ -32,7 +32,7 @@ import { } from "../libs/ckeditor/ckeditor";
     }
 
     document.getElementById(select.storeButton).addEventListener('click', e => {
-        let page = document.getElementById(select.link).value;
+        let page = document.getElementById(select.page).value;
         let link = document.getElementById(select.link).value;
         if (page == '' || link =='') {
             alert('Заполните поле!');
@@ -49,7 +49,7 @@ import { } from "../libs/ckeditor/ckeditor";
 
 
         }).then(e => {
-            location.reload()
+            window.location.href = e.data;
         }).catch(error => {
             console.log(error.response)
         })

@@ -81,7 +81,7 @@ class FooterController extends Controller
         ]);
         return response()->json($ficon, 201);
     }
-    public function fpage_updage(FpageRequest $request)
+    public function fpage_update(FpageRequest $request)
     {
         $request->validated();
         $fpage = Fpage::where('id', $request->id)->update([
