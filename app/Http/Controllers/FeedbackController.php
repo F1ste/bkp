@@ -67,15 +67,53 @@ class FeedbackController extends Controller
     }
 
     public function owner_all(){
-        $feedback = Collection::with('feedback')->where('user_id', auth()->user()->id)->get();
+        $feedback = Collection::with('feedbacks')->where('user_id', auth()->user()->id)->get();
+        foreach($feedback as $item){
+        $serch = json_decode($item->serch,true);
+        $mysubarr = [];
+        if(isset($item->feedbacks)){
+            $feedback=null;
+            $mysubarr=null;
+            break;
+        }
+        else{
+        foreach ($serch as $subarr) {
+            if ($subarr['sel'] == $item->feedbacks['role_name']) {
+                $mysubarr = $subarr;
+                
+                break;
+            }
+        }
+    }
+       
+    }
         return view('pages.user.feedback.ownerall',[
-            'feedback'=>$feedback
+            'feedback' => $feedback,
+            'mysubarr' => $mysubarr
         ]);
     }
     public function candidat_all(){
         $feedback = Feedback::with('service')->where('user_id', auth()->user()->id)->get();
+        foreach ($feedback as $item){
+        $serch = json_decode($item->service->serch,true);
+        $mysubarr = [];
+        if(isset($feedback->service)){
+            $feedback = null;
+            $mysubarr = null;
+            break;
+        }
+        else{
+        foreach ($serch as $subarr) {
+            if ($subarr['sel'] == $item['role_name']) {
+                $mysubarr = $subarr;
+                break;
+            }
+        }
+    }
+    }
         return view('pages.user.feedback.candidatall',[
-            'feedback'=>$feedback
+            'feedback' => $feedback,
+            'mysubarr' => $mysubarr
     ]);
 }
 

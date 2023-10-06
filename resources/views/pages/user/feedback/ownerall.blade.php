@@ -29,36 +29,22 @@
                                         </tr>
                                     </thead>
                                     <tbody>
+                                        @if($feedback == null && $mysubarr == null)
+                                            <div>Пока на ваши проекты никто не откликнулся</div>
+                                        @else
+                                        @foreach ($feedback as $item )
                                         <tr class="my-feedbacks__table-row">
                                             <td class="my-feedbacks__table-item">
                                                 <div class="table-number">1</div>
                                             </td>
-                                            <td class="my-feedbacks__table-item">Название проекта</td>
-                                            <td class="my-feedbacks__table-item">Инвестор</td>
-                                            <td class="my-feedbacks__table-item">До 29.08.2023</td>
+                                            <td class="my-feedbacks__table-item">{{$item->service->name_proj}}</td>
+                                            <td class="my-feedbacks__table-item">{{$item->name}}</td>
+                                            <td class="my-feedbacks__table-item">{{$mysubarr['inp']}}</td>
                                             <td class="my-feedbacks__table-item">Просмотрено</td>
-                                            <td class="my-feedbacks__table-item"><a href="" class="my-feedbacks__btn btn btn-white _fw">Подробнее</a></td>
+                                            <td class="my-feedbacks__table-item"><a href="{{route('profile.feedback.candidat', ['id' => $item->id]) }}" class="my-feedbacks__btn btn btn-white _fw">Подробнее</a></td>
                                         </tr>
-                                        <tr class="my-feedbacks__table-row">
-                                            <td class="my-feedbacks__table-item">
-                                                <div class="table-number">2</div>
-                                            </td>
-                                            <td class="my-feedbacks__table-item">Название проекта 453</td>
-                                            <td class="my-feedbacks__table-item">Исполнитель</td>
-                                            <td class="my-feedbacks__table-item">До 30.08.2023</td>
-                                            <td class="my-feedbacks__table-item">Отказано</td>
-                                            <td class="my-feedbacks__table-item"><a href="" class="my-feedbacks__btn btn btn-white _fw">Подробнее</a></td>
-                                        </tr>
-                                        <tr class="my-feedbacks__table-row">
-                                            <td class="my-feedbacks__table-item">
-                                                <div class="table-number">3</div>
-                                            </td>
-                                            <td class="my-feedbacks__table-item">Название проекта 2342</td>
-                                            <td class="my-feedbacks__table-item">Спикер</td>
-                                            <td class="my-feedbacks__table-item">До 29.08.2023</td>
-                                            <td class="my-feedbacks__table-item">Одобрено</td>
-                                            <td class="my-feedbacks__table-item"><a href="" class="my-feedbacks__btn btn btn-white _fw">Подробнее</a></td>
-                                        </tr>
+                                        @endforeach
+                                        @endif
                                     </tbody>
                                 </table>
 						</div>
