@@ -18,10 +18,13 @@
 							</div>
 							<div class="feedback__heading">
                                 <table class="my-feedbacks__table">
-                                    
-                                        @if($feedback == null && $mysubarr == null)
-                                        <div>Вы не откликнулись ни на один проект</div>
+
+
+                                        {{-- {{ dd(get_defined_vars()) }} --}}
+                                        @if($mysubarr == [] )
+                                        <div>Вы не откликнулись ни на нодин проект</div>
                                         @else
+                                        @foreach ($feedback as $item )
                                         <thead>
                                         <tr class="my-feedbacks__table-heading">
                                             <th>№</th>
@@ -33,11 +36,6 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        {{-- {{ dd(get_defined_vars()) }} --}}
-                                        @if($mysubarr == [] )
-                                        <div>Пока что вы не откликались ни на один проект</div>
-                                        @else
-                                        @foreach ($feedback as $item )
                                         <tr class="my-feedbacks__table-row">
                                             <td class="my-feedbacks__table-item">
                                                 <div class="table-number">1</div>

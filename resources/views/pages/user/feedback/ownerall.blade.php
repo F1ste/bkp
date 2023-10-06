@@ -19,9 +19,11 @@
 							<div class="feedback__heading">
                                 <table class="my-feedbacks__table">
 
-                                        @if($feedback == null && $mysubarr == null)
+                                     
+                                        @if($mysubarr == [])
                                             <div>На Ваши проекты еще никто не откликнулся</div>
                                         @else
+                                        @foreach ($feedback as $item )
                                         <thead>
                                         <tr class="my-feedbacks__table-heading">
                                             <th>№</th>
@@ -33,11 +35,6 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                     
-                                        @if($mysubarr == [])
-                                            <div>Пока на ваши проекты никто не откликнулся</div>
-                                        @else
-                                        @foreach ($feedback as $item )
                                         <tr class="my-feedbacks__table-row">
                                             <td class="my-feedbacks__table-item">
                                                 <div class="table-number">1</div>
