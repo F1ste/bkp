@@ -27,12 +27,29 @@
 											{{$mysubarr['sel']}}
 										</div>
 										<div class="feedback__info-item">
+										@if ($feedback->status == 1)
 											Статус отклика: Одобрено
+										@elseif ($feedback->status == 2)
+											Статус отклика: Отказано
+										@else
+											Статус отклика: Просмотрено
+										@endif
 										</div>
 										<div class="feedback__info-item">
 											{{$mysubarr['inp']}}
 										</div>
 									</div>
+								</div>
+								<div class="feedback__buttons feedback-status">
+									<button href="" class="feedback__btn btn btn-white">
+									Перейти в диалог
+									</button>
+									<button data-update="{{ route('profile.feedback.decline', ['id'=>$feedback->id]) }}" data-status="decline" class="feedback__btn btn btn-white">
+										Отклонить
+									</button>
+									<button data-update="{{ route('profile.feedback.accept', ['id'=>$feedback->id]) }}" data-status="aprove" class="feedback__btn btn btn-filled" >
+										Принять
+									</button>
 								</div>
 							</div>
 							<div class="feedback__project-request">

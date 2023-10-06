@@ -43,7 +43,15 @@
                                             <td class="my-feedbacks__table-item">{{$item->service->name_proj}}</td>
                                             <td class="my-feedbacks__table-item">{{$item->role_name}}</td>
                                             <td class="my-feedbacks__table-item">{{$mysubarr['inp']}}</td>
-                                            <td class="my-feedbacks__table-item">Просмотрено</td>
+                                            <td class="my-feedbacks__table-item">											
+                                                @if ($item->status == 1)
+												    Одобрено
+                                                @elseif ($item->status == 2)
+                                                    Отказано
+                                                @else
+                                                    Просмотрено
+                                                @endif
+                                            </td>
                                             <td class="my-feedbacks__table-item"><a href="{{route('profile.feedback.candidat', ['id' => $item->id]) }}" class="my-feedbacks__btn btn btn-white _fw">Подробнее</a></td>
                                         </tr>
                                         @endforeach

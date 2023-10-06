@@ -26,7 +26,13 @@
 											{{$mysubarr['sel']}}
 										</div>
 										<div class="feedback__info-item">
-											Статус отклика: Одобрено
+											@if ($feedback->status == 1)
+												Статус отклика: Одобрено
+											@elseif ($feedback->status == 2)
+												Статус отклика: Отказано
+											@else
+												Статус отклика: Просмотрено
+											@endif
 										</div>
 										<div class="feedback__info-item">
 											{{$mysubarr['inp']}}
