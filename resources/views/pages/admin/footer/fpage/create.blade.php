@@ -7,7 +7,7 @@
 
 
 
-            <div class="page__container">
+            <div class="page__container" style="min-height: 100vh;">
 
                 <section data-store="{{ route('admin.fpage.store') }}" id='fpage-store' class="collection section-base create-project personal-account">
 

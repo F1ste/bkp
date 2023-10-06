@@ -5,7 +5,7 @@
 @section('content')
 
 
-			<div class="page__container" style="height: 100vh;">
+			<div class="page__container" style="min-height: 100vh;">
 				<section class="my-projects personal-account">
 					<div class="my-projects__container">
 						<div class="my-projects__content">

@@ -7,7 +7,7 @@
 
 
 
-    <div class="page__container">
+    <div class="page__container" style="min-height: 100vh;">
 
         <section data-store="{{ route('admin.faq.store') }}" id='faq-store'
             class="collection section-base create-project personal-account">

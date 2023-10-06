@@ -45,7 +45,7 @@ class FooterController extends Controller
         $fdescr = new Fdescr;
         $fdescr->descr = $request->descr;
         $fdescr->save();
-        return response()->json(route('pages.admin.footer.fdescr.edit', ['id' => $fdescr->id]), 201);
+        return response()->json(route('admin.fdescr.edit', ['id' => $fdescr->id]), 201);
     }
     public function ficon_store(FiconRequest $request)
     {
@@ -53,7 +53,7 @@ class FooterController extends Controller
         $ficon = new Ficon;
         $ficon->style = $request->style;
         $ficon->save();
-        return response()->json(route('pages.admin.footer.ficon.edit', ['id' => $ficon->id]), 201);
+        return response()->json(route('admin.ficon.edit', ['id' => $ficon->id]), 201);
     }
 
     public function fpage_store(FpageRequest $request)
@@ -63,7 +63,7 @@ class FooterController extends Controller
         $fpage->page = $request->page;
         $fpage->link = $request->link;
         $fpage->save();
-        return response()->json(route('pages.admin.footer.fpage.edit', ['id' => $fpage->id]), 201);
+        return response()->json(route('admin.fpage.edit', ['id' => $fpage->id]), 201);
     }
     public function fdescr_update(FdescrRequest $request)
     {

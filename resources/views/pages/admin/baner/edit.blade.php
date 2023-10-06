@@ -7,7 +7,7 @@
 
 
 
-            <div class="page__container">
+            <div class="page__container" style="min-height: 100vh;">
 
                 <section data-update="{{ route('admin.banner.edit') }}" data-id="{{ $id }}" id='banner-edit' class="collection section-base create-project personal-account">
 
