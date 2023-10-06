@@ -143,7 +143,10 @@ class PageController extends Controller
 
            public function project($id)
     {
-         $collection = Collection::where('id', $id)->get();
+         $collection = Collection::with('feedbacks')->where('id', $id)->get();
+         foreach($collection as $item){
+         $counter = $item->feedbacks->count();
+        }
         $id_user = $collection[0]->user_id;
         $user = User::where('id', $id_user)->get();
 
@@ -159,7 +162,8 @@ class PageController extends Controller
                 'id'            => $id,
                 'teg'            => $teg,
                 'serch'            => $serch,
-                'user'            => $user
+                'user'            => $user,
+                'counter'         => $counter
             ]);
 
     }

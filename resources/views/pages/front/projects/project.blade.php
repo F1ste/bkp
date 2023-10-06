@@ -93,7 +93,7 @@
 											<b>Дата обновления:</b> {{$serchs->inp}}
 										</div>
 										<div class="partners-searching__replies">
-											<b>Откликнулось:</b> 3
+											<b>Откликнулось:</b> {{$counter}}
 										</div>
 										<button type="button" data-popup="#feedbackPopup" data-role="{{ $serchs->sel }}" class="partners-searching__btn btn btn-filled _fw">
 											Откликнуться
