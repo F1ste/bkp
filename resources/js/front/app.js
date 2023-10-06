@@ -36,7 +36,8 @@ import "./about/edit"
 
 import "./contacts/edit"
 
-import "./feedback//edit"
+import "./feedback/edit"
+import "./feedback/changestatus"
 
 import "./faq/create"
 import "./faq/edit"

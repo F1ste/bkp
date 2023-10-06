@@ -27,12 +27,23 @@
 											{{$mysubarr['sel']}}
 										</div>
 										<div class="feedback__info-item">
-											Статус отклика: Одобрено
+											Статус отклика: {{$feedback->status}}
 										</div>
 										<div class="feedback__info-item">
 											{{$mysubarr['inp']}}
 										</div>
 									</div>
+								</div>
+								<div class="feedback__buttons feedback-status">
+									<button href="" class="feedback__btn btn btn-white">
+									Перейти в диалог
+									</button>
+									<button data-update="{{ route('profile.feedback.decline') }}" data-status="decline" class="feedback__btn btn btn-white">
+										Отклонить
+									</button>
+									<button data-update="{{ route('profile.feedback.accept') }}" data-status="aprove" class="feedback__btn btn btn-filled" >
+										Принять
+									</button>
 								</div>
 							</div>
 							<div class="feedback__project-request">
