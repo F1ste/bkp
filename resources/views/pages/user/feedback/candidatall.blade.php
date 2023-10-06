@@ -18,7 +18,11 @@
 							</div>
 							<div class="feedback__heading">
                                 <table class="my-feedbacks__table">
-                                    <thead>
+                                    
+                                        @if($feedback == null && $mysubarr == null)
+                                        <div>Вы не откликнулись ни на один проект</div>
+                                        @else
+                                        <thead>
                                         <tr class="my-feedbacks__table-heading">
                                             <th>№</th>
                                             <th>Проект</th>
