@@ -69,36 +69,63 @@ class FeedbackController extends Controller
     public function owner_all(){
         $feedback = Collection::with('feedbacks')->where('user_id', auth()->user()->id)->get();
         $mysubarr = [];
-        foreach($feedback as $item){
-        $serch = json_decode($item->serch,true);
-        if(isset($item->feedbacks)){
-            $feedback=null;
-            $mysubarr=null;
-            break;
+        foreach($feedback as $key=>$item){
+
+        if($item->feedbacks->isEmpty()){
+            $feedback->forget($key);
         }
-        else{
-        foreach ($serch as $subarr) {
-            if ($subarr['sel'] == $item->feedbacks['role_name']) {
-                $mysubarr = $subarr;
-                break;
+    }
+    $feedback = collect($feedback);
+
+    foreach($feedback as $item){
+        $serch = json_decode($item->serch,true);
+
+        foreach ($item->feedbacks as $el) {
+
+            foreach ($serch as $subarr) {
+
+                        if ($subarr['sel'] == $el->role_name) {
+                            $mysubarr = $subarr;
+                            break;
+                        }
             }
         }
+
     }
-       
-    }
+
         return view('pages.user.feedback.ownerall',[
             'feedback' => $feedback,
             'mysubarr' => $mysubarr
         ]);
     }
+/*     public function owner_all(){
+        $feedback = Collection::with('feedbacks')->where('user_id', auth()->user()->id)->get();
+        $feedbacksList = [];
+    
+        foreach($feedback as $item){
+            if(isset($item->feedbacks) && $item->feedbacks->isNotEmpty()){
+                foreach ($item->feedbacks as $feedbackItem) {
+                    // Выводите здесь информацию о каждом feedbackItem
+                    // Например, можно добавить в массив для вывода
+                    $feedbacksList[] = $feedbackItem;
+                }
+            }
+        }
+    //dd($feedback);
+        return view('pages.user.feedback.ownerall',[
+            'feedback' => $feedback,
+            'feedbacksList' => $feedbacksList
+        ]);
+    } */
+    
     public function candidat_all(){
         $feedback = Feedback::with('service')->where('user_id', auth()->user()->id)->get();
         $mysubarr = [];
         foreach ($feedback as $item){
         $serch = json_decode($item->service->serch,true);
         if(isset($feedback->service)){
-            $feedback==null;
-            $mysubarr==null;
+            $feedback=null;
+            $mysubarr=null;
         }
         else{
         foreach ($serch as $subarr) {

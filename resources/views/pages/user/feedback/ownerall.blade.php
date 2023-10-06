@@ -19,7 +19,7 @@
 							<div class="feedback__heading">
                                 <table class="my-feedbacks__table">
 
-                                     
+                                
                                         @if($mysubarr == [])
                                             <div>На Ваши проекты еще никто не откликнулся</div>
                                         @else
@@ -39,7 +39,7 @@
                                             <td class="my-feedbacks__table-item">
                                                 <div class="table-number">1</div>
                                             </td>
-                                            <td class="my-feedbacks__table-item">{{$item->service->name_proj}}</td>
+                                            <td class="my-feedbacks__table-item">{{$item->name_proj}}</td>
                                             <td class="my-feedbacks__table-item">{{$item->name}}</td>
                                             <td class="my-feedbacks__table-item">{{$mysubarr['inp']}}</td>
                                             <td class="my-feedbacks__table-item">Просмотрено</td>
