@@ -39,7 +39,10 @@ class Collection extends Model
         'img5',
         'img6',
     ];
-    public function feedback (){
+    public function feedbacks (){
         return $this->hasMany(Feedback::class);
+    }   
+    public function feedback (){
+    return $this->hasOne(Feedback::class, 'service_id', 'id');
     }
 }

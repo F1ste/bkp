@@ -55,6 +55,20 @@
 									Все отклики
 								</a>
 							</div>
+							<div class="my-projects__projects-items">
+								<div class="my-projects__item">
+									<a href="{{ route('profile.feedback.candidat.all') }}">
+										Мои отклики
+									</a>
+								</div>
+							</div>
+							<div class="my-projects__projects-items">
+								<div class="my-projects__item">
+									<a href="{{ route('profile.feedback.owner.all') }}">
+										Отклики на мои проекты
+									</a>
+								</div>
+							</div>
 							<table class="my-feedbacks__table">
 								<thead>
 									<tr class="my-feedbacks__table-heading">

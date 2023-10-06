@@ -3,8 +3,8 @@
 @section('title', 'Отклики на проекты')
 
 @section('content')
-<div class="page__container">
 
+<div class="page__container">
 				<section class="feedback personal-account">
 					<div class="feedback__container">
 						<div class="feedback__content">
@@ -16,32 +16,26 @@
 									</svg>
 								</a>
 							</div>
-							{{dd($serch)}}
-						
-						@foreach ($serch as $item )
-							{{dd($item->sel)}}
-						@endforeach
-							
 							<div class="feedback__heading">
 								<div class="feedback__heading-info">
 									<div class="feedback__title">
-
+										{{$feedback->service->name_proj}}
 									</div>
 									<div class="feedback__info">
 										<div class="feedback__info-item">
-											
+											{{$mysubarr['sel']}}
 										</div>
 										<div class="feedback__info-item">
 											Статус отклика: Одобрено
 										</div>
 										<div class="feedback__info-item">
-											Дата: До 29.08.2023
+											{{$mysubarr['inp']}}
 										</div>
 									</div>
 								</div>
 								<div class="feedback__buttons">
 									<button class="feedback__btn btn btn-white">
-										Перейти в диалог
+									Перейти в диалог
 									</button>
 									<button class="feedback__btn btn btn-white">
 										Отклонить
@@ -58,29 +52,15 @@
 								<div class="feedback__text main-text">
 									{{$feedback->cover_letter}}
 									<br><br>
-									{{$feedback->service->name}}
+									Имя Фамилия Отчество
 								</div>
 							</div>
 							<div class="feedback__project-request">
 								<div class="feedback__title">
-									Сопроводительное письмо
+									Текст вакансии
 								</div>
 								<div class="feedback__text main-text">
-									Ищем любителей природы! Станьте волонтером незабываемого инновационный культурного интернет-проекта!
-									Вы увлечены природой и стремитесь оказать положительное влияние на нашу окружающую среду? Мы рады объявить о фантастической возможности для вас продемонстрировать свою любовь
-									к отдыху на свежем воздухе! Мы организуем замечательное мероприятие, направленное на празднование и популяризацию чудес природы в нашем городском ландшафте.
-									Мы сердечно приглашаем людей, которые любят Мать-природу и разделяют наше видение более зеленого мира, присоединиться к нам в качестве волонтеров на этом экстраординарном
-									мероприятии. Это отличный шанс окунуться в сообщество людей, заботящихся об окружающей среде, и внести свой вклад в значимое дело.
-
-
-									<br><br>
-									Волонтер Обязанности
-									В качестве волонтера вы будете помогать нам в организации и проведении различных мероприятий во время мероприятия, включая:
-									Прогулки на природе с гидом и пешие походы
-									Образовательные семинары по устойчивым практикам
-									Содействие интерактивным детским мероприятиям и играм
-									Установка стендов и дисплеев
-									Предоставление информации и помощи участникам
+									{{$mysubarr['tex']}}
 									<br><br>
 									Зарегистрируйтесь сегодня!
 								</div>

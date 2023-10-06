@@ -50,6 +50,9 @@ Route::prefix('/profile')->middleware('auth')->group(function () {
         Route::post('/',[FeedbackController::class,'store'])->name('profile.feedback.create');
         Route::put('/',[FeedbackController::class,'update'])->name('profile.feedback.update');
         Route::get('/candidat-{id}',[FeedbackController::class,'candidat_index'])->name('profile.feedback.candidat');
+        Route::get('/owner-{id}',[FeedbackController::class,'owner_index'])->name('profile.feedback.owner');
+        Route::get('/owner',[FeedbackController::class,'owner_all'])->name('profile.feedback.owner.all');
+        Route::get('/candidat',[FeedbackController::class,'candidat_all'])->name('profile.feedback.candidat.all');
     });
 });
 
