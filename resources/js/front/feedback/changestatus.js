@@ -18,12 +18,13 @@ import { } from "../libs/ckeditor/ckeditor";
 
         if (status === 'aprove') {
             let updateRoute = currentTarget.getAttribute('data-update');
-
+            console.log(updateRoute);
             axios.put(updateRoute, {
 
     
             }).then(e => {
                 alert('Статус отклика изменен')
+                location.reload();
             }).catch(error => {
                 console.log(error.response)
             }) 
@@ -34,6 +35,7 @@ import { } from "../libs/ckeditor/ckeditor";
 
             }).then(e => {
                 alert('Статус отклика изменен')
+                location.reload();
             }).catch(error => {
                 console.log(error.response)
             })
