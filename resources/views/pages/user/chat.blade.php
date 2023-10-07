@@ -6,7 +6,7 @@
 
 
 			<div class="page__container">
-				<section class="chat personal-account">
+				<section class="chat personal-account" id="personal-chat">
 					<div class="chat__container">
 						<div class="chat__menu">
 							<form class="chat__search-form form">
@@ -159,23 +159,25 @@
 									</div>
 								</div>
 							</div>
-							<div class="chat__chat-footer">
+							<form id="chat-form" class="chat__chat-footer">
 								<div class="chat__chat-input">
 
 									<div class="chat__form-item form__item">
 										<button class="chat__emoji-input _icon-emoji"></button>
-										<input id="chatInput" type="text" name="chat" class="chat__form-input form__input">
+										<input id="chatInput" type="text" name="message" class="chat__form-input form__input">
 									</div>
 								</div>
 								<div class="chat__footer-buttons">
 									<button class="chat__attach-input _icon-attach"></button>
-									<button class="chat__send-input _icon-send"></button>
+									<button type="submit" id="message-input" class="chat__send-input _icon-send"></button>
 								</div>
-							</div>
+							</form>
 						</div>
 					</div>
 				</section>
 			</div>
+
+            <script src="https://js.pusher.com/7.0/pusher.min.js"></script>
 
 
 @endsection
