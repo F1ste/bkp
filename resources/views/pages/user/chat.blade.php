@@ -6,7 +6,7 @@
 
 
 			<div class="page__container">
-				<section class="chat personal-account" id="personal-chat">
+				<section class="chat personal-account" id="personal-chat" data-id="{{ $chat->user_id }}">
 					<div class="chat__container">
 						<div class="chat__menu">
 							<form class="chat__search-form form">

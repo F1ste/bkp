@@ -55,20 +55,21 @@ import {notification} from "../utils/notification";
     });
 
     const messageInput = document.getElementById('chatInput');
-
+    const userId = 
     document.getElementById('chat-form').addEventListener('submit', function (e) {
         e.preventDefault();
         let message = messageInput.value;
+
         console.log(message);
 
-        axios.post('/profile/chat', { message: message })
+        axios.post('/profile/chat', { message: message, user_id: userId })
             .then(function (response) {
                 console.log(response);
                 // Обработка успешной отправки
                 messageInput.value = '';
             })
             .catch(function (error) {
-                console.log(error);
+                console.log(error.response);
                 // Обработка ошибок
             });
     });
