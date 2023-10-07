@@ -12,5 +12,5 @@ class Chat extends Model
         'message',
         'service_id'
     ];
-    protected $fillable = ['message'];
+
 }
