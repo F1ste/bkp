@@ -7,6 +7,7 @@ use App\Http\Controllers\SettingUserController;
 use App\Http\Controllers\UserPageController;
 use App\Http\Controllers\AdminPageController;
 use App\Http\Controllers\AdminUserController;
+use App\Http\Controllers\ChatController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\FAQController;
 use App\Http\Controllers\FeedbackController;
@@ -27,6 +28,20 @@ Route::prefix('/profile')->middleware('auth')->group(function () {
         Route::get('/', [SettingUserController::class, 'setting'])->name('profile.setting');
         Route::post('/update', [SettingUserController::class, 'update'])->name('profile.setting.update');
         Route::post('/avatar', [SettingUserController::class, 'avatar'])->name('profile.setting.avatar');
+    });
+    Route::prefix('/setting')->group(function () {
+        Route::get('/', [SettingUserController::class, 'setting'])->name('profile.setting');
+        Route::post('/update', [SettingUserController::class, 'update'])->name('profile.setting.update');
+        Route::post('/avatar', [SettingUserController::class, 'avatar'])->name('profile.setting.avatar');
+    });
+    Route::prefix('/setting')->group(function () {
+        Route::get('/', [SettingUserController::class, 'setting'])->name('profile.setting');
+        Route::post('/update', [SettingUserController::class, 'update'])->name('profile.setting.update');
+        Route::post('/avatar', [SettingUserController::class, 'avatar'])->name('profile.setting.avatar');
+    });
+    Route::prefix('/chat')->group(function () {
+        Route::get('/', [ChatController::class, 'index'])->name('profile.chat');
+        Route::post('/', [ChatController::class, 'store'])->name('profile.chat.update');
     });
 
     Route::prefix('/services')->group(function () {

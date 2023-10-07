@@ -11,7 +11,7 @@ use Illuminate\Http\Request;
 class ChatController extends Controller
 {   
     public function index (){
-        $chat = Chat::all();
+        $chat = Chat::latest()->get();
         return view ('pages.user.chat')->with('chat', $chat); 
     }
     public function store (ChatRequest $request ){
