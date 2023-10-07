@@ -62,7 +62,7 @@ import {notification} from "../utils/notification";
 
         console.log(message);
 
-        axios.post('/profile/chat', { message: message, user_id: userId })
+        axios.post('/profile/chat', { message: message })
             .then(function (response) {
                 console.log(response);
                 // Обработка успешной отправки
