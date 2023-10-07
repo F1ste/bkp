@@ -59,33 +59,28 @@
 								<div class="chat__chat-name">Иван Иванов</div>
 							</div>
 							<div class="chat__chat-body">
-								<div class="chat__msg-stack _msg-from">
-									<div class="chat__stack-photo">
-										<div class="chat__stack-media media-block">
-											<picture><source srcset="img/chat/avatar1.webp" type="image/webp"><img src="img/chat/avatar1.jpg" alt="Изображение пользователя"></picture>
-										</div>
-									</div>
-									<div class="chat__stack-content">
-										<div class="chat__stack-info">
-											<div class="chat__stack-date chat-date">
-												10:16
-											</div>
-										</div>
-										<div class="chat__stack-message">
-											<div class="chat__message-text">
-												Доброго дня, информация информация
-											</div>
-											<div class="chat__message-text">
-												Очень понравился ваш проект!
-											</div>
-											<div class="chat__message-text">
-												Хочу в нем поучаствовать!С кем я могу связаться?
-											</div>
-
-										</div>
-									</div>
-								</div>
-								<div class="chat__msg-stack _msg-to">
+                                @foreach ($chat as $msg)
+                                    <div class="chat__msg-stack _msg-from">
+                                        <div class="chat__stack-photo">
+                                            <div class="chat__stack-media media-block">
+                                                <picture><source srcset="img/chat/avatar1.webp" type="image/webp"><img src="img/chat/avatar1.jpg" alt="Изображение пользователя"></picture>
+                                            </div>
+                                        </div>
+                                        <div class="chat__stack-content">
+                                            <div class="chat__stack-info">
+                                                <div class="chat__stack-date chat-date">
+                                                    {{$msg->created_at}}
+                                                </div>
+                                            </div>
+                                            <div class="chat__stack-message">
+                                                <div class="chat__message-text">
+                                                    {{$msg->message}}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                @endforeach
+<!-- 								<div class="chat__msg-stack _msg-to">
 									<div class="chat__stack-content">
 										<div class="chat__stack-info">
 											<div class="chat__stack-date chat-date">
@@ -102,64 +97,8 @@
 											</div>
 										</div>
 									</div>
-								</div>
-								<div class="chat__msg-stack _msg-from">
-									<div class="chat__stack-photo">
-										<div class="chat__stack-media media-block">
-											<picture><source srcset="img/chat/avatar1.webp" type="image/webp"><img src="img/chat/avatar1.jpg" alt="Изображение пользователя"></picture>
-										</div>
-									</div>
-									<div class="chat__stack-content">
-										<div class="chat__stack-info">
-											<div class="chat__stack-date chat-date">
-												11:04
-											</div>
-										</div>
-										<div class="chat__stack-message">
-											<div class="chat__message-text">
-												Да, мне удобно в 18:00
-											</div>
-											<div class="chat__message-text">
-												Я отправлю вам инвайт в зум.
-											</div>
-										</div>
-									</div>
-								</div>
-								<div class="chat__msg-stack _msg-to">
-									<div class="chat__stack-content">
-										<div class="chat__stack-info">
-											<div class="chat__stack-date chat-date">
-												12:37
-											</div>
-										</div>
-										<div class="chat__stack-message">
-											<div class="chat__message-text">
-												Отлично, жду ссылку!
-											</div>
-										</div>
-									</div>
-								</div>
-								<div class="chat__msg-stack _msg-from">
-									<div class="chat__stack-photo">
-										<div class="chat__stack-media media-block">
-											<picture><source srcset="img/chat/avatar1.webp" type="image/webp"><img src="img/chat/avatar1.jpg" alt="Изображение пользователя"></picture>
-										</div>
-									</div>
-									<div class="chat__stack-content">
-										<div class="chat__stack-info">
-											<div class="chat__stack-date chat-date">
-												13:04
-											</div>
-										</div>
-										<div class="chat__stack-message">
-											<div class="chat__message-text">
-												Хорошо, договорились
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-							<form id="chat-form" class="chat__chat-footer">
+								</div> -->
+							<form id="chat-form" class="chat__chat-footer" style="margin-top: auto; padding-top: 65px">
 								<div class="chat__chat-input">
 
 									<div class="chat__form-item form__item">
@@ -179,5 +118,13 @@
 
             <script src="https://js.pusher.com/7.0/pusher.min.js"></script>
 
-
+            <script>
+                (()=>{
+                    let currentUrl = window.location.href;
+                    if (currentUrl.includes('/profile/chat')) {
+                        let page = document.querySelector('.page');
+                        page.classList.add('chat-page');
+                    }
+                })()
+            </script>
 @endsection
