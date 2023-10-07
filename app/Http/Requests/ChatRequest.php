@@ -25,7 +25,7 @@ class ChatRequest extends FormRequest
     {
         return [
            'message'=>'string|required',
-           'user_id'=>'exists:users,id',
+
         ];
     }
 }
