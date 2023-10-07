@@ -4,66 +4,7 @@
 
 @section('content')
 
-<main class="page chat-page">
-			<div class="sidebar">
-				<div class="sidebar__items">
-					<div data-spollers data-one-spoller class="spollers">
-						<div class="spollers__item">
-							<button type="button" data-spoller class="sidebar__item _icon-dashboard" dataText="Страницы">
-							</button>
-							<div class="spollers__body">
-								<div class="spollers__wrapper">
-									<a href="#" class="sidebar__item _icon-dashboard sidebar__item_active" dataText="Главная"></a>
-									<a href="#" class="sidebar__item _icon-dashboard" dataText="О Бирже"></a>
-									<a href="#" class="sidebar__item _icon-dashboard" dataText="Вопрос-ответ"></a>
-									<a href="#" class="sidebar__item _icon-dashboard" dataText="Контакты"></a>
-								</div>
-							</div>
-						</div>
-						<div class="spollers__item">
-							<button type="button" data-spoller class="sidebar__item _icon-bookmark" dataText="Проекты">
-							</button>
-							<div class="spollers__body">
-								<div class="spollers__wrapper">
-									<a href="#" class="sidebar__item _icon-bookmark" dataText="Модерация"></a>
-									<a href="#" class="sidebar__item _icon-bookmark" dataText="Опубликованные"></a>
-									<a href="#" class="sidebar__item _icon-bookmark" dataText="Архив"></a>
-									<a href="#" class="sidebar__item _icon-bookmark" dataText="Отклоненные"></a>
-								</div>
-							</div>
-						</div>
-					</div>
-					<a href="#" class="sidebar__item _icon-person" dataText="Новости"></a>
-					<a href="#" class="sidebar__item _icon-edit" dataText="Отклики"></a>
-					<a href="#" class="sidebar__item _icon-chat" dataText="Диалоги"></a>
-					<a href="#" class="sidebar__item _icon-notification" dataText="Уведомления"></a>
-					<a href="#" class="sidebar__item _icon-settings" dataText="Статистика"></a>
-				</div>
-				<div data-da=".sidebar, 991" class="sidebar__expand"><button type="button" class="sidebar__item _icon-chevron" dataText="Назад"></button></div>
-				<div class="sidebar__info">
-					<div class="sidebar__info-item">
-						8 800 555 35 35
-					</div>
-					<div class="sidebar__info-item">
-						<a href="mailto:mss.soboleva@gmail.com">mss.soboleva@gmail.com</a>
-					</div>
-					<div class="sidebar__info-item">
-						Копирайт
-					</div>
-					<div class="sidebar__info-socials socials">
-						<a href="" class="socials__social-item icon-telegram">
-							<i class="socials__icon _icon-telegram"></i>
-						</a>
-						<a href="" class="socials__social-item icon-vk">
-							<i class="socials__icon _icon-vk"></i>
-						</a>
-						<a href="" class="socials__social-item icon-youtube">
-							<i class="socials__icon _icon-youtube"></i>
-						</a>
-					</div>
-				</div>
-				<a href="#" class="sidebar__item _icon-logout" dataText="Выход"></a>
-			</div>
+
 			<div class="page__container">
 				<section class="chat personal-account">
 					<div class="chat__container">
@@ -235,6 +176,6 @@
 					</div>
 				</section>
 			</div>
-		</main>
-        
+
+
 @endsection
