@@ -19,10 +19,11 @@ class ChatController extends Controller
         $user = auth()->user()->id;
         $chat = new Chat;
         $chat->message = $request->message;
+        $chat->service_id = $request -> service_id;
         $chat->user_id = $user;
         $chat->save();
 
-        broadcast(new StoreChatEvent($chat->message, $chat->user_id))->toOthers();
+        broadcast(new StoreChatEvent($chat->message, $chat->user_id, $chat->service_id))->toOthers();
       
         
         return $chat;
