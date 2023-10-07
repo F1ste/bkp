@@ -6,6 +6,7 @@ use App\Http\Controllers\AdminCollectionController;
 use App\Http\Controllers\SettingUserController;
 use App\Http\Controllers\UserPageController;
 use App\Http\Controllers\AdminPageController;
+use App\Http\Controllers\AdminUserController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\FAQController;
 use App\Http\Controllers\FeedbackController;
@@ -68,6 +69,12 @@ Route::middleware(['role:admin'])->prefix('/admin')->group(function () {
      Route::prefix('/services')->group(function () {
         Route::get('/services-{id}', [AdminCollectionController::class, 'single'])->name('admin.services.single');
         Route::post('/edit', [AdminCollectionController::class, 'edit'])->name('admin.services.edit');
+    });
+
+    Route::prefix('/user')->group(function(){
+        Route::get('/',[AdminUserController::class,'index'])->name('admin.user');
+        Route::get('/edit-{id}',[AdminUserController::class,'edit'])->name('admin.user.edit');
+        Route::post('{user}/update',[AdminUserController::class,'update'])->name('admin.user.update');
     });
 
 

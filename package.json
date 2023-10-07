@@ -12,10 +12,12 @@
     "devDependencies": {
         "autoprefixer": "^10.4.2",
         "axios": "^0.25",
+        "laravel-echo": "^1.15.3",
         "laravel-mix": "^6.0.6",
         "lodash": "^4.17.19",
         "postcss": "^8.4.6",
         "postcss-import": "^14.0.2",
+        "pusher-js": "^8.3.0",
         "resolve-url-loader": "^5.0.0",
         "sass": "^1.50.0",
         "sass-loader": "^12.1.0"

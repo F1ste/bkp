@@ -34,7 +34,8 @@ class User extends Authenticatable
         'facebook',
         'about',
         'google_auth',
-        'facebook_auth'
+        'facebook_auth',
+        'rating',
     ];
 
     /**
@@ -54,5 +55,19 @@ class User extends Authenticatable
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
+    ];
+
+    public const RATING = [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
     ];
 }
