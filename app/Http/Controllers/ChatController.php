@@ -17,9 +17,13 @@ class ChatController extends Controller
     public function store (ChatRequest $request ){
         $request->validated();
         $user = auth()->user()->id;
+        $chat = new Chat;
+        $chat->message = $request->message;
+        $chat->user_id = $user;
+        $chat->save();
 
-        broadcast(new StoreChatEvent($request->message, $user))->toOthers();
-        $chat = Chat::create($request->validated());
+        broadcast(new StoreChatEvent($chat->message, $chat->user_id))->toOthers();
+      
         
         return $chat;
     }
