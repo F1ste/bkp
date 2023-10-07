@@ -4,8 +4,7 @@
 
 @section('content')
 
-
-			<div class="page__container">
+<div class="page__container">
 				<section class="chat personal-account" id="personal-chat">
 					<div class="chat__container">
 						<div class="chat__menu">
@@ -59,7 +58,7 @@
 								<div class="chat__chat-name">Иван Иванов</div>
 							</div>
 							<div class="chat__chat-body">
-                                @foreach ($chat as $msg)
+                            @foreach ($chat as $msg)
                                     <div class="chat__msg-stack _msg-from">
                                         <div class="chat__stack-photo">
                                             <div class="chat__stack-media media-block">
@@ -97,8 +96,9 @@
 											</div>
 										</div>
 									</div>
-								</div> -->
-							<form id="chat-form" class="chat__chat-footer" style="margin-top: auto; padding-top: 65px">
+-->
+							</div>
+							<form id="chat-form" class="chat__chat-footer">
 								<div class="chat__chat-input">
 
 									<div class="chat__form-item form__item">
@@ -115,6 +115,7 @@
 					</div>
 				</section>
 			</div>
+			
 
             <script src="https://js.pusher.com/7.0/pusher.min.js"></script>
 
