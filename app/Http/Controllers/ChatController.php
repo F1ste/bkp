@@ -12,9 +12,13 @@ use Illuminate\Http\Request;
 
 class ChatController extends Controller
 {   
-    public function index (){
+    public function index (Request $request){
         $chat = Chat::with('messages','user')->where('first_user_id', auth()->user()->id)->latest()->get();
-        return view ('pages.user.chat')->with('chat', $chat); 
+        $current_chat = Chat::with('messages','user')->where('id', $request->id)->first();
+        return view('pages.user.chat', [
+            'chat' => $chat,
+            'current_chat' => $current_chat,
+        ]);
     }
 
     
