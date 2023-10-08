@@ -50,3 +50,5 @@ import "./ficon/edit"
 
 import "./fpage/create"
 import "./fpage/edit"
+
+import "./chat/chat"
