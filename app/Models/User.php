@@ -57,6 +57,8 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+  
+
     public const RATING = [
         0,
         1,

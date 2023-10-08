@@ -13,7 +13,7 @@ use Illuminate\Http\Request;
 class ChatController extends Controller
 {   
     public function index (){
-        $chat = Chat::with('messages')->where('first_user_id', auth()->user()->id )->latest()->get();
+        $chat = Chat::with('messages','user')->where('first_user_id', auth()->user()->id)->latest()->get();
         return view ('pages.user.chat')->with('chat', $chat); 
     }
 
@@ -22,8 +22,14 @@ class ChatController extends Controller
         $chat = new Chat;
         $chat->first_user_id = $request->first_user_id;
         $chat->second_user_id = $request->second_user_id;
-        $chat->save();        
-        return $chat;
+        if((!Chat::where('first_user_id', '=', $request->input('first_user_id'))->exists())&&(!Chat::where('second_user_id', '=', $request->input('second_user_id'))->exists())){
+            $chat->save();        
+            return $chat;
+        }
+        else {
+            return $chat;
+        }
+       
     }
 
     public function sendMessage (ChatRequest $request ){
