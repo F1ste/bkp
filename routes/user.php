@@ -41,7 +41,7 @@ Route::prefix('/profile')->middleware('auth')->group(function () {
     });
     Route::prefix('/chat')->group(function () {
         Route::get('/', [ChatController::class, 'index'])->name('profile.chat');
-        Route::post('/', [ChatController::class, 'store'])->name('profile.chat.update');
+        Route::post('/', [ChatController::class, 'store'])->name('profile.chat.create');
         Route::post('/sendmessage', [ChatController::class, 'sendMessage'])->name('profile.message');
     });
 
