@@ -15,17 +15,20 @@
 								</div>
 							</form>
 							<div class="chat__contact-wrapper">
-								<a href="#" class="chat__contact-item _contact-active">
-									<div class="chat__contact-photo">
-										<div class="chat__contact-media media-block">
-											<picture><source srcset="img/chat/avatar1.webp" type="image/webp"><img src="img/chat/avatar1.jpg" alt="Изображение пользователя"></picture>
-										</div>
-										<div class="chat__user-status user-status_online"></div>
-									</div>
-									<div class="chat__contact-name">Иван Иванов</div>
-									<div class="chat__contact-date chat-date">13:04</div>
-								</a>
-								<a href="#" class="chat__contact-item">
+                                @foreach ($chat as $chat_id)
+                                    <a href="{{$chat_id->id}}" class="chat__contact-item _contact-active">
+                                        <div class="chat__contact-photo">
+                                            <div class="chat__contact-media media-block">
+                                                <picture><source srcset="img/chat/avatar1.webp" type="image/webp"><img src="img/chat/avatar1.jpg" alt="Изображение пользователя"></picture>
+                                            </div>
+                                            <div class="chat__user-status user-status_online"></div>
+                                        </div>
+                                        <div class="chat__contact-name">Иван Иванов</div>
+                                        <div class="chat__contact-date chat-date">13:04</div>
+                                    </a>
+                                @endforeach
+						
+<!-- 								<a href="#" class="chat__contact-item">
 									<div class="chat__contact-photo">
 										<div class="chat__contact-media media-block">
 											<picture><source srcset="img/chat/avatar2.webp" type="image/webp"><img src="img/chat/avatar2.jpg" alt="Изображение пользователя"></picture>
@@ -44,7 +47,7 @@
 									</div>
 									<div class="chat__contact-name">Руслан Батькович</div>
 									<div class="chat__contact-date chat-date">11:04</div>
-								</a>
+								</a> -->
 							</div>
 						</div>
 						<div class="chat__dialogue">
@@ -106,6 +109,7 @@
 										<input id="chatInput" type="text" name="message" class="chat__form-input form__input">
 									</div>
 								</div>
+                                {{}}
 								<div class="chat__footer-buttons">
 									<button class="chat__attach-input _icon-attach"></button>
 									<button type="submit" id="message-input" class="chat__send-input _icon-send"></button>

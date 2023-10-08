@@ -13,18 +13,15 @@ use Illuminate\Http\Request;
 class ChatController extends Controller
 {   
     public function index (){
-        $chat = Chat::with('messages')->latest()->get();
+        $chat = Chat::with('messages')->where('first_user_id', auth()->user()->id )->latest()->get();
         return view ('pages.user.chat')->with('chat', $chat); 
     }
 
     
-    public function store (){
-        $feedback = Feedback::with('service')->where('user_id',auth()->user()->id )->first();
-        $first_user = $feedback->user_id;
-        $second_user = $feedback->service->user_id;
+    public function store (Request $request){
         $chat = new Chat;
-        $chat->first_user_id = $first_user;
-        $chat->second_user_id = $second_user;
+        $chat->first_user_id = $request->first_user_id;
+        $chat->second_user_id = $request->second_user_id;
         $chat->save();        
         return $chat;
     }

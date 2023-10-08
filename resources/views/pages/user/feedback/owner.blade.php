@@ -40,9 +40,10 @@
 										</div>
 									</div>
 								</div>
+
 								<div class="feedback__buttons feedback-status">
-									<button href="" class="feedback__btn btn btn-white">
-									Перейти в диалог
+									<button data-update="{{ route('profile.chat.create') }}" data-user1="{{ $feedback->service->user_id }}" data-user2="{{ $feedback->user_id }}" id="getChat" class="feedback__btn btn btn-white">
+										Перейти в диалог
 									</button>
 									<button data-update="{{ route('profile.feedback.decline', ['id'=>$feedback->id]) }}" data-status="decline" class="feedback__btn btn btn-white">
 										Отклонить

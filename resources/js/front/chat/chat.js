@@ -62,17 +62,16 @@ import {notification} from "../utils/notification";
     });
 
     const messageInput = document.getElementById('chatInput');
-    const serviceId = 13;
+    const chat_id = 13;
     document.getElementById('chat-form').addEventListener('submit', function (e) {
         e.preventDefault();
         let message = messageInput.value;
-
+        let chatId = messageInput.value;
         console.log(message);
 
-        axios.post('/profile/chat', { 
+        axios.post('/profile/chat/sendmessage', { 
             message: message, 
-            service_id: serviceId, 
-
+            chat_id: chatId,
         })
             .then(function (response) {
                 console.log(response);
