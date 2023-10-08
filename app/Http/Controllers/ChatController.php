@@ -17,7 +17,7 @@ class ChatController extends Controller
     }
 
     
-    public function store (ChatRequest $request ){
+    public function store (){
         $request->validated();
         $first_user = auth()->user()->id;
         $second_user = auth()->user()->id;
@@ -25,15 +25,18 @@ class ChatController extends Controller
         $chat->service_id = $request -> service_id;
         $chat->first_user_id = $first_user;
         $chat->second_user_id = $second_user;
-        $chat->save();
+        $chat->save();        
+        return $chat;
+    }
+
+    public function sendMessage (ChatRequest $request ){
         $message = new Message;
         $message -> message = $request -> message;
-        $message->chat_id = $chat->id;
+        $message->chat_id = $request->chat_id;
         $message->save();
 
-        broadcast(new StoreChatEvent($message->message, $chat->first_user_id, $chat->second_user_id))->toOthers();
-      
-        
-        return $chat;
+        broadcast(new StoreChatEvent($message->message,auth()->user()->id,auth()->user()->id))->toOthers();
+
+        return response()->json($message);
     }
 }
