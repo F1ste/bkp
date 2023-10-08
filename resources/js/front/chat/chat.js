@@ -48,21 +48,32 @@ import {notification} from "../utils/notification";
     });
 
     let channel = pusher.subscribe('store_chat');
-    channel.bind('App\\Events\\StoreChatEvent', function(data) {
-        // Обработка приходящего сообщения
-        console.log(data.message);
-        // Отобразите сообщение на странице
+    channel.bind('store_chat', function(data) {
+        axios.get('/profile/chat', { message: data.message })
+            .then(function (response) {
+                console.log(response);
+                // Обработка успешной отправки
+                messageInput.value = '';
+            })
+            .catch(function (error) {
+                console.log(error.response);
+                // Обработка ошибок
+            });
     });
 
     const messageInput = document.getElementById('chatInput');
-    const userId = 
+    const serviceId = 13;
     document.getElementById('chat-form').addEventListener('submit', function (e) {
         e.preventDefault();
         let message = messageInput.value;
 
         console.log(message);
 
-        axios.post('/profile/chat', { message: message })
+        axios.post('/profile/chat', { 
+            message: message, 
+            service_id: serviceId, 
+
+        })
             .then(function (response) {
                 console.log(response);
                 // Обработка успешной отправки

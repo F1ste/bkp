@@ -17,18 +17,19 @@ class StoreChatEvent implements ShouldBroadcast
 
 
     private $message;
-    private $user;
+    private $first_user;
+    private $second_user;
     private $service;
     /**
      * Create a new event instance.
      *
      * @return void
      */
-    public function __construct($message,$user,$service)
+    public function __construct($message,$first_user,$second_user)
     {
         $this->message = $message;
-        $this->user = $user;
-        $this->service;
+        $this->first_user = $first_user;
+        $this->second_user = $second_user;
     }
 
     /**
@@ -38,7 +39,7 @@ class StoreChatEvent implements ShouldBroadcast
      */
     public function broadcastOn()
     {
-        return new PrivateChannel('store_chat_' . $this->user . $this->service   );
+        return new Channel('store_chat_' . $this->first_user . '_' . $this->second_user);
     }
     public function broadcastAs(): string
 {
