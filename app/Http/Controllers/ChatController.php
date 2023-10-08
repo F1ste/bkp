@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Events\StoreChatEvent;
 use App\Http\Requests\ChatRequest;
 use App\Models\Chat;
+use App\Models\Feedback;
 use App\Models\Message;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -18,11 +19,10 @@ class ChatController extends Controller
 
     
     public function store (){
-        $request->validated();
-        $first_user = auth()->user()->id;
-        $second_user = auth()->user()->id;
+        $feedback = Feedback::with('service')->where('user_id',auth()->user()->id )->first();
+        $first_user = $feedback->user_id;
+        $second_user = $feedback->service->user_id;
         $chat = new Chat;
-        $chat->service_id = $request -> service_id;
         $chat->first_user_id = $first_user;
         $chat->second_user_id = $second_user;
         $chat->save();        
@@ -34,8 +34,8 @@ class ChatController extends Controller
         $message -> message = $request -> message;
         $message->chat_id = $request->chat_id;
         $message->save();
-
-        broadcast(new StoreChatEvent($message->message,auth()->user()->id,auth()->user()->id))->toOthers();
+        $chat = Chat::where('id',$message->chat_id)->first();
+        broadcast(new StoreChatEvent($message->message,$chat->first_user_id,$chat->second_user_id))->toOthers();
 
         return response()->json($message);
     }
