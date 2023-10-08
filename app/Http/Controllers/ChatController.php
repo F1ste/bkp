@@ -40,6 +40,7 @@ class ChatController extends Controller
         $message = new Message;
         $message -> message = $request -> message;
         $message->chat_id = $request->chat_id;
+        $message->user_id = $request->user_id;
         $message->save();
         $chat = Chat::where('id',$message->chat_id)->first();
         broadcast(new StoreChatEvent($message->message,$chat->first_user_id,$chat->second_user_id))->toOthers();
