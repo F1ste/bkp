@@ -11,25 +11,73 @@ import {notification} from "../utils/notification";
         encrypted: true
     });
 
-    const dialogueBlock = document.querySelector('.chat__dialogue');
-    const firstId = dialogueBlock.dataset.first_user;
-    const secondId = dialogueBlock.dataset.second_user;
-
-    let channel = pusher.subscribe(`store_chat_${firstId}_${secondId}`);
-    channel.bind('store_chat', function(data) {
-        axios.get('/profile/chat', { message: data.message })
-            .then(function (response) {
-                console.log(json(response));
-                // Обработка успешной отправки
-                messageInput.value = '';
-            })
-            .catch(function (error) {
-                console.log(error.response);
-                // Обработка ошибок
-            });
-    });
 
     const messageInput = document.getElementById('chatInput');
+
+
+
+    const dialogueBlock = document.querySelector('.chat__dialogue');
+    if (dialogueBlock) {
+        const messageInput = document.getElementById('chatInput');
+        
+        const firstId = dialogueBlock.dataset.first_user;
+        const secondId = dialogueBlock.dataset.second_user;
+
+        let channel = pusher.subscribe(`store_chat_${firstId}_${secondId}`);
+        channel.bind('store_chat', (data) => {
+            
+            if (data.user_id.original !== messageInput.dataset.user) {
+                axios.get('/profile/chat/getmessage', { 
+                    params: {
+                        message: data.message.original,
+                        chat_id: data.chat_id.original,
+                        user_id: data.user_id.original
+                    }
+                })
+                .then(function (response) {
+                    let messageData = response.data;
+                    let newMessageElement = document.createElement('div');
+                    
+                    newMessageElement.innerHTML = `
+                        <div class="chat__msg-stack _msg-from">
+                            <div class="chat__stack-photo">
+                            <div class="chat__stack-media media-block">
+                            <picture><source srcset="/image/chat/default.jpg" type="image/webp"><img src="/image/chat/default.jpg" alt="Изображение пользователя"></picture>
+                        </div>
+                            </div>
+                            <div class="chat__stack-content">
+                                <div class="chat__stack-info">
+                                    <div class="chat__stack-date chat-date">
+                                        ${messageData.created_at}
+                                    </div>
+                                </div>
+                                <div class="chat__stack-message">
+                                    <div class="chat__message-text">
+                                        ${messageData.message}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                
+                    let chatContainer = document.querySelector('.chat__chat-body');
+                    chatContainer.appendChild(newMessageElement);
+                
+                    messageInput.value = '';
+                })
+                .catch(function (error) {
+                    console.log(error.response);
+                });
+            }
+            
+/*             console.log(
+                `Event store_chat was triggered with data: ${JSON.stringify(data)}`
+            ); */
+        });
+    }
+
+
+
     if (messageInput) {
         document.getElementById('chat-form').addEventListener('submit', function (e) {
             e.preventDefault();
@@ -53,13 +101,35 @@ import {notification} from "../utils/notification";
                 user_id: userId
             })
                 .then(function (response) {
-    /*                 console.log(response); */
-                    // Обработка успешной отправки
+                    let messageData = response.data;
+                    let newMessageElement = document.createElement('div');
+                    
+                    newMessageElement.innerHTML = `
+                        <div class="chat__msg-stack _msg-to">
+                            <div class="chat__stack-photo">
+                            </div>
+                            <div class="chat__stack-content">
+                                <div class="chat__stack-info">
+                                    <div class="chat__stack-date chat-date">
+                                    ${messageData.created_at}
+                                    </div>
+                                </div>
+                                <div class="chat__stack-message">
+                                    <div class="chat__message-text">
+                                        ${messageData.message}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                
+                    let chatContainer = document.querySelector('.chat__chat-body');
+                    chatContainer.appendChild(newMessageElement);
+                
                     messageInput.value = '';
                 })
                 .catch(function (error) {
                     console.log(error.response);
-                    // Обработка ошибок
                 });
         });
     }

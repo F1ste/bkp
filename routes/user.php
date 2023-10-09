@@ -43,6 +43,7 @@ Route::prefix('/profile')->middleware('auth')->group(function () {
         Route::get('/', [ChatController::class, 'index'])->name('profile.chat');
         Route::post('/', [ChatController::class, 'store'])->name('profile.chat.create');
         Route::post('/sendmessage', [ChatController::class, 'sendMessage'])->name('profile.message');
+        Route::get('/getmessage', [ChatController::class, 'getMessage'])->name('profile.message_get');
     });
 
     Route::prefix('/services')->group(function () {

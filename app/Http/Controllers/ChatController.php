@@ -9,15 +9,18 @@ use App\Models\Feedback;
 use App\Models\Message;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
 
 class ChatController extends Controller
 {   
     public function index (Request $request){
-        $chat = Chat::with('messages','user')->where('first_user_id', auth()->user()->id)->latest()->get();
-        $current_chat = Chat::with('messages','user')->where('id', $request->id)->first();
+        $chat = Chat::with('messages','first_user', 'second_user')->where('first_user_id', auth()->user()->id)->latest()->get();
+        $chat_second_user = Chat::with('messages','first_user', 'second_user')->where('second_user_id', auth()->user()->id)->latest()->get();
+        $current_chat = Chat::with('messages','first_user', 'second_user')->where('id', $request->id)->first();
         
         return view('pages.user.chat', [
             'chat' => $chat,
+            'chat_second_user' => $chat_second_user,
             'current_chat' => $current_chat,
         ]);
     }
@@ -44,8 +47,25 @@ class ChatController extends Controller
         $message->user_id = $request->user_id;
         $message->save();
         $chat = Chat::where('id',$message->chat_id)->first();
-        broadcast(new StoreChatEvent($message->message,$chat->first_user_id,$chat->second_user_id))->toOthers();
+
+        broadcast(new StoreChatEvent($message->message,$chat->first_user_id,$chat->second_user_id,$message->chat_id, $message->user_id))->toOthers();
         
-        return response()->json($message);
+        return response()->json([
+            'message' => $message->message,
+            'chat_id' => $message->chat_id,
+            'user_id' => $message->user_id,
+            'created_at' => Carbon::parse($message->created_at)->timezone('Europe/Moscow')->format('H:i')
+        ]);
+    }
+
+    public function getMessage (Request $request){
+
+        $message = Message::where('chat_id', $request->chat_id)->where('user_id',$request->user_id)->get()->last();
+        return response()->json([
+            'message' => $message->message,
+            'chat_id' => $message->chat_id,
+            'user_id' => $message->user_id,
+            'created_at' => Carbon::parse($message->created_at)->timezone('Europe/Moscow')->format('H:i')
+        ]);
     }
 }
