@@ -12,22 +12,25 @@ import {notification} from "../utils/notification";
     });
 
     const dialogueBlock = document.querySelector('.chat__dialogue');
-    const firstId = dialogueBlock.dataset.first_user;
-    const secondId = dialogueBlock.dataset.second_user;
+    if (dialogueBlock) {
+        
+        const firstId = dialogueBlock.dataset.first_user;
+        const secondId = dialogueBlock.dataset.second_user;
+        let channel = pusher.subscribe(`store_chat_${firstId}_${secondId}`);
+        channel.bind('store_chat', function(data) {
+            axios.get('/profile/chat', { message: data.message })
+                .then(function (response) {
+                    console.log(json(response));
+                    // Обработка успешной отправки
+                    messageInput.value = '';
+                })
+                .catch(function (error) {
+                    console.log(error.response);
+                    // Обработка ошибок
+                });
+        });
+    }
 
-    let channel = pusher.subscribe(`store_chat_${firstId}_${secondId}`);
-    channel.bind('store_chat', function(data) {
-        axios.get('/profile/chat', { message: data.message })
-            .then(function (response) {
-                console.log(json(response));
-                // Обработка успешной отправки
-                messageInput.value = '';
-            })
-            .catch(function (error) {
-                console.log(error.response);
-                // Обработка ошибок
-            });
-    });
 
     const messageInput = document.getElementById('chatInput');
     if (messageInput) {
@@ -53,13 +56,38 @@ import {notification} from "../utils/notification";
                 user_id: userId
             })
                 .then(function (response) {
-    /*                 console.log(response); */
-                    // Обработка успешной отправки
+                    console.log(response);
+                    let messageData = response.data;
+                    let messageTime = new Date(messageData.created_at);
+                    let formattedTime = messageTime.toLocaleTimeString('ru-RU', { hour: '2-digit', minute: '2-digit' });
+                    let newMessageElement = document.createElement('div');
+                    
+                    newMessageElement.innerHTML = `
+                        <div class="chat__msg-stack _msg-to">
+                            <div class="chat__stack-photo">
+                            </div>
+                            <div class="chat__stack-content">
+                                <div class="chat__stack-info">
+                                    <div class="chat__stack-date chat-date">
+                                        ${formattedTime}
+                                    </div>
+                                </div>
+                                <div class="chat__stack-message">
+                                    <div class="chat__message-text">
+                                        ${messageData.message}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                
+                    let chatContainer = document.querySelector('.chat__chat-body');
+                    chatContainer.appendChild(newMessageElement);
+                
                     messageInput.value = '';
                 })
                 .catch(function (error) {
                     console.log(error.response);
-                    // Обработка ошибок
                 });
         });
     }
