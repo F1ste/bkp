@@ -69,6 +69,10 @@
   display: block;
 }
 
+._icon-rate:before {
+  content: "\e921";
+}
+
 ._icon-categories:before {
   content: "\e918";
 }

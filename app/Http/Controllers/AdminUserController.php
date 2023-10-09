@@ -9,10 +9,12 @@ use Illuminate\Http\Request;
 class AdminUserController extends Controller
 {
     public function index(Request $request)
-    {   if($request->has('created_at')){
+    {   
+        $sort_by = $request->input('sort_by', '');
+        if($sort_by === 'created_at'){
         $user = User::orderBy('created_at','desc')->paginate(8);
     }
-    elseif($request->has('rating')){
+    elseif($sort_by === 'rating'){
         $user = User::orderBy('rating','desc')->paginate(8);
     }
     else{

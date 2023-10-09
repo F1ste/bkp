@@ -22,7 +22,7 @@
 
                                         {{-- {{ dd(get_defined_vars()) }} --}}
                                         @if($mysubarr == [] )
-                                        <div>Вы не откликнулись ни на нодин проект</div>
+                                        <div>Вы еще не откликались на проекты</div>
                                         @else
                                         @foreach ($feedback as $item )
                                         <thead>

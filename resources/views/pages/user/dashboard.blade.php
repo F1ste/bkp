@@ -51,7 +51,7 @@
 								<div class="my-feedbacks__title personal__title">
 									Мои отклики
 								</div>
-								<a href="#" class="my-feedbacks__all-feedbacks all-btn">
+								<a href="{{route('profile.feedback')}}" class="my-feedbacks__all-feedbacks all-btn">
 									Все отклики
 								</a>
 							</div>

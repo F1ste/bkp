@@ -64,6 +64,7 @@ Route::prefix('/profile')->middleware('auth')->group(function () {
         Route::post('/delete', [CollectionController::class, 'delete'])->name('profile.services.delete');
     });
     Route::prefix('/feedback')->group(function(){
+        Route::get('/', [FeedbackController::class, 'index'])->name('profile.feedback');
         Route::post('/',[FeedbackController::class,'store'])->name('profile.feedback.create');
         Route::put('/accept-{id}',[FeedbackController::class,'accept'])->name('profile.feedback.accept');
         Route::put('/decline-{id}',[FeedbackController::class,'decline'])->name('profile.feedback.decline');

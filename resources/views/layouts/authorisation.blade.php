@@ -13,11 +13,11 @@
            <main class="page">
             <div class="sidebar">
                 <div class="sidebar__items">
-                    <a href="/profile/dashboard" class="sidebar__item _icon-dashboard" dataText="Главная"></a>
+                    <!-- <a href="/profile/dashboard" class="sidebar__item _icon-dashboard" dataText="Главная"></a> -->
                     <a href="/profile/setting" class="sidebar__item _icon-person" dataText="Профиль"></a>
-                    <a href="#" class="sidebar__item _icon-bookmark" dataText="Проекты"></a>
-                    <a href="#" class="sidebar__item _icon-edit" dataText="Отклики"></a>
-                    <a href="#" class="sidebar__item _icon-chat" dataText="Диалоги"></a>
+                    <a href="{{route('profile.services')}}" class="sidebar__item _icon-bookmark" dataText="Проекты"></a>
+                    <a href="{{route('profile.feedback')}}" class="sidebar__item _icon-edit" dataText="Отклики"></a>
+                    <a href="/profile/chat" class="sidebar__item _icon-chat" dataText="Диалоги"></a>
                     <a href="/profile/notifications" class="sidebar__item _icon-notification" dataText="Уведомления"></a>
                     <a href="#" class="sidebar__item _icon-settings" dataText="Помощь"></a>
                 </div>

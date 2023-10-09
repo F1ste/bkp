@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Collection;
+use App\Models\Notifications;
 use App\Models\User;
 use App\Models\Region;
 use App\Models\Roles;
@@ -19,10 +20,12 @@ class CollectionController extends Controller
      */
     public function services()
     {
-        $collection = Collection::where('user_id', auth()->user()->id)->get();
+        $collections = Collection::where('user_id', auth()->user()->id)->orderByDesc('id')->get();
+        $notifications = Notifications::where('id_uzer', auth()->user()->id)->orderByDesc('id')->get();
 
         return view('pages.user.services.services', [
-            'collection'    => $collection
+            'collections'    => $collections,
+            'notifications'    => $notifications,
         ]);
     }
 

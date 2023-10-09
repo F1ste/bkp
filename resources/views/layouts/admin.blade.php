@@ -21,7 +21,7 @@
                                 <div class="spollers__wrapper">
                                     <a href="/admin/dashboard" class="sidebar__item _icon-dashboard" dataText="Главная"></a>
                                     <a href="{{route('admin.about.edit',['id'=>1])}}" class="sidebar__item _icon-dashboard" dataText="О Бирже"></a>
-                                    <a href="{{route("admin.faq")}}" class="sidebar__item _icon-dashboard" dataText="Вопрос-ответ"></a>
+                                    <a href="{{route('admin.faq')}}" class="sidebar__item _icon-dashboard" dataText="Вопрос-ответ"></a>
                                     <a href="{{route('admin.contact.edit', ['id'=>1])}}" class="sidebar__item _icon-dashboard" dataText="Контакты"></a>
                                     <a href="/admin/footer" class="sidebar__item _icon-dashboard" dataText="Настройки футера"></a>
                                 </div>
@@ -50,6 +50,7 @@
                     <a href="/admin/teg" class="sidebar__item _icon-categories" dataText="Теги проекта"></a>
                     <a href="/admin/partners" class="sidebar__item _icon-categories" dataText="Кого ищем"></a>
                     <a href="/admin/banners" class="sidebar__item _icon-image" dataText="Рекламные баннеры"></a>
+                    <a href="/admin/user" class="sidebar__item _icon-rate" dataText="Рейтинг пользователей"></a>
                 </div>
 <!--                 <div class="sidebar__info">
                 </div> -->
