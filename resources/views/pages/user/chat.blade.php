@@ -28,10 +28,41 @@
                                             </div>
                                             <div class="chat__user-status user-status_online"></div>
                                         </div>
-                                        <div class="chat__contact-name">{{ $chat_id->user->name }}</div>
+
+                                        <div class="chat__contact-name">                                       
+                                            @if ($chat_id->first_user->id == auth()->user()->id)
+                                                {{ $chat_id->second_user->name }}
+                                            @else
+                                                {{ $chat_id->first_user->name }}
+                                            @endif
+                                        </div>
                                         <div class="chat__contact-date chat-date">{{ Carbon\Carbon::parse($chat_id->messages->last()->created_at)->timezone('Europe/Moscow')->format('H:i')}}</div>
                                     </button>
                                 @endforeach
+
+                                @foreach ($chat_second_user as $chat_id)
+                                @php
+                                    $chatId = $chat_id->id;
+                                    $isActive = request()->query('id') == $chatId;
+                                @endphp
+                                <button data-chat="{{$chat_id->id}}" type="button" class="chat__contact-item @if($isActive) _contact-active @endif">
+                                    <div class="chat__contact-photo">
+                                        <div class="chat__contact-media media-block">
+                                            <picture><source srcset="{{asset('image/chat/default.jpg')}}" type="image/webp"><img src="{{asset('image/chat/default.jpg')}}" alt="Изображение пользователя"></picture>
+                                        </div>
+                                        <div class="chat__user-status user-status_online"></div>
+                                    </div>
+
+                                    <div class="chat__contact-name">                                       
+                                        @if ($chat_id->first_user->id == auth()->user()->id)
+                                            {{ $chat_id->second_user->name }}
+                                        @else
+                                            {{ $chat_id->first_user->name }}
+                                        @endif
+                                    </div>
+                                    <div class="chat__contact-date chat-date">{{ Carbon\Carbon::parse($chat_id->messages->last()->created_at)->timezone('Europe/Moscow')->format('H:i')}}</div>
+                                </button>
+                            @endforeach
                             </form>
 						</div>
                         @if(!$current_chat == null)
@@ -43,8 +74,14 @@
 									</div>
 								</div>
 								<div class="chat__dialogue-status user-status_online"></div>
-								<div class="chat__chat-name">{{$current_chat->user->name}}</div>
-							</div>
+								<div class="chat__chat-name">                                        
+                                        @if ($current_chat->first_user->id == auth()->user()->id)
+                                            {{ $current_chat->second_user->name }}
+                                        @else
+                                            {{ $current_chat->first_user->name }}
+                                        @endif
+                                    </div>
+							    </div>
 							<div class="chat__chat-body">
                             
                             @foreach ($current_chat->messages as $msg)

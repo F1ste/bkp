@@ -20,16 +20,22 @@ class StoreChatEvent implements ShouldBroadcast
     private $first_user;
     private $second_user;
     private $service;
+    private $chat_id;
+
+    private $user_id;
+
     /**
      * Create a new event instance.
      *
      * @return void
      */
-    public function __construct($message,$first_user,$second_user)
+    public function __construct($message,$first_user,$second_user,$chat_id, $user_id)
     {
         $this->message = $message;
         $this->first_user = $first_user;
         $this->second_user = $second_user;
+        $this->chat_id = $chat_id;
+        $this->user_id = $user_id;
     }
 
     /**
@@ -45,5 +51,11 @@ class StoreChatEvent implements ShouldBroadcast
 {
     return 'store_chat';
 }
-
+public function broadcastWith():array{
+    return [
+        'message'=>response()->json($this->message),
+        'chat_id'=>response()->json($this->chat_id),
+        'user_id'=>response()->json($this->user_id)
+    ];
+}
 }
