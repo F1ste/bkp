@@ -9,6 +9,13 @@ use Illuminate\Http\Request;
 
 class FeedbackController extends Controller
 {
+    public function index()
+    {
+
+        return view('pages.user.feedback.index', [
+
+        ]);
+    }
     public function store(FeedbackRequest $request)
     {
         $request->validated();
@@ -142,5 +149,7 @@ class FeedbackController extends Controller
     ]);
     return response()->json($feedback, 201);
 }
+
+
 
 }
