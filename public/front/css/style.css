@@ -1110,7 +1110,10 @@ select {
 }
 
 .qs-datepicker .qs-square.qs-range-date-middle {
-  background: #d4ebf2;
+  background: #D1F4E3;
+}
+.qs-range-middle{
+  background: #D1F4E3;
 }
 
 .qs-datepicker .qs-square.qs-range-date-middle:not(.qs-range-date-0):not(.qs-range-date-6) {
@@ -1138,6 +1141,9 @@ select {
 
 .qs-datepicker .qs-square.qs-disabled {
   cursor: not-allowed;
+}
+.qs-disabled{
+  opacity: .5;
 }
 
 .qs-datepicker .qs-square.qs-day {

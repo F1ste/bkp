@@ -10426,8 +10426,11 @@
             const pickers = document.querySelectorAll("[data-datepicker]");
             if (pickers.length === 0) return false;
             let countPicker = 1;
+            let datepickerOptions;
             for (let index = 0; index < pickers.length; index++) {
-                datepicker_min(`[data-datepicker_${countPicker}]`, {
+
+
+                datepickerOptions = {
                     customDays: [ "Пн", "Вт", "Ср", "Чт", "Пт", "Сб", "Вс" ],
                     customMonths: [ "Янв", "Фев", "Мар", "Апр", "Май", "Июн", "Июл", "Авг", "Сен", "Окт", "Ноя", "Дек" ],
                     overlayButton: "Применить",
@@ -10438,10 +10441,35 @@
                         input.value = value;
                     },
                     onSelect: function(input, instance, date) {}
-                });
+                };
+                const initialValue = pickers[index].value;
+        
+                if (countPicker === 1 || countPicker === 2) {
+                    datepickerOptions.id = 1;
+                }
+                if (initialValue === '') {
+                    datepickerOptions.minDate = new Date();
+                    const picker = datepicker_min(`[data-datepicker_${countPicker}]`, datepickerOptions);
+                }
+
+                if (initialValue) {
+                    const initialDateParts = initialValue.split('.');
+                    if (initialDateParts.length === 3) {
+                        const initialDate = new Date(
+                            parseInt(initialDateParts[2], 10),
+                            parseInt(initialDateParts[1], 10) - 1,
+                            parseInt(initialDateParts[0], 10)
+                        );
+                        datepickerOptions.minDate = initialDate;
+                        const picker = datepicker_min(`[data-datepicker_${countPicker}]`, datepickerOptions);
+                        picker.setDate(initialDate);
+                    }
+                }
+                
                 countPicker++;
             }
         })();
+        
         window["FLS"] = false;
         isWebp();
         removeLoadingClass();
