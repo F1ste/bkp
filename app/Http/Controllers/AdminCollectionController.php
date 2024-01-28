@@ -118,7 +118,7 @@ class AdminCollectionController extends Controller
             'date_service_from'  => $request->date_service_from,
             'date_service_to'  => $request->date_service_to,
             'price'         => $request->price,
-            'created_at'    => date('d.m.Y'),
+            'created_at'    => date('Y-m-d'),
             'region'    =>  $request->region,
             'tip'    =>  $request->tip,
             'teg'    =>  $request->teg,

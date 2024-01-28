@@ -28,7 +28,7 @@
 							</div>
 							<div class="project-main__brief-info brief-info__col main-text">
 								<div class="project-main__project-duration">
-									{{ $collection->date_service_from }} - {{ $collection->date_service_to }}
+									{{ Carbon\Carbon::parse($collection->date_service_from)->format('d.m.Y') }} — {{ Carbon\Carbon::parse($collection->date_service_to)->format('d.m.Y') }}
 								</div>
 								<div class="project-main__brief-item project-info__item">
 									<a href="#">{{ $user->sait }}</a>

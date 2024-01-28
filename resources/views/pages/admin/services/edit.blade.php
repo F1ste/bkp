@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 
-@section('title', 'Редактировать услугу')
+@section('title', 'Редактировать проект')
 
 @section('content')
 
@@ -49,11 +49,11 @@
                                             </div>
                                             <div class="create-project__form-item form__item">
                                                 <label for="date_service_from" class="create-project__form-label form__label">Сроки начала проекта</label>
-                                                <input data-datepicker data-datepicker_1 id="date_service_from" type="text" name="projectName" value="{{ $collection->date_service_from }}" class="create-project__form-input form__input" placeholder="C" data-placeholder="C">
+                                                <input data-datepicker data-datepicker_1 id="date_service_from" type="text" name="projectName" value="{{ Carbon\Carbon::parse($collection->date_service_from)->format('d.m.Y') }}" class="create-project__form-input form__input" placeholder="C" data-placeholder="C">
                                             </div>
                                             <div class="create-project__form-item form__item">
                                                 <label for="date_service_to" class="create-project__form-label form__label">Сроки окончания проекта</label>
-                                                <input data-datepicker data-datepicker_2 id="date_service_to" type="text" name="projectName" value="{{ $collection->date_service_to }}" class="create-project__form-input form__input" placeholder="До" data-placeholder="До">
+                                                <input data-datepicker data-datepicker_2 id="date_service_to" type="text" name="projectName" value="{{ Carbon\Carbon::parse($collection->date_service_to)->format('d.m.Y') }}" class="create-project__form-input form__input" placeholder="До" data-placeholder="До">
                                             </div>
                                         </div>
                                         <div class="create-project__main-col">

@@ -171,7 +171,7 @@
 											{{ $el->name_proj }}
 										</div>
 										<div class="popular-projects__project-date">
-											От {{ $el->date_service_from }}
+											От {{ Carbon\Carbon::parse($el->date_service_from)->format('d.m.Y') }}
 										</div>
 										<div class="popular-projects__project-image media-block">
 											<a href="{{ route('projects.project', ['id' => $el->id]) }}">
