@@ -54,15 +54,15 @@
 				<div class="footer__company-info">
 					<div class="company-info__col">
 						<div class="company-info__item">
-							АНО «Дирекция Санкт-Петербургского международного культурного форума»
+							АНО «КультПросвет»
 						</div>
 						<div class="company-info__item">
-							Малая Морская ул., 8, Санкт-Петербург, 191186
+							191124, г. Санкт-Петербург, Смольный проспект, 6-43
 						</div>
 						<div class="footer__bank-details">
-							<div class="bank-details__item">ОГРН 1147800004505</div>
-							<div class="bank-details__item">ИНН 7840291213</div>
-							<div class="bank-details__item">КПП 784001001</div>
+							<div class="bank-details__item">ОГРН 1207800032692</div>
+							<div class="bank-details__item">ИНН 7842179714</div>
+							<div class="bank-details__item">КПП 784201001</div>
 						</div>
 					</div>
 

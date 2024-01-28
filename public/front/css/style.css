@@ -1114,6 +1114,7 @@ select {
 }
 .qs-range-middle{
   background: #D1F4E3;
+  background: #d4ebf2;
 }
 
 .qs-datepicker .qs-square.qs-range-date-middle:not(.qs-range-date-0):not(.qs-range-date-6) {
@@ -5986,10 +5987,10 @@ body::after {
   display: flex;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
-  gap: 6.125rem;
+  /*gap: 6.125rem;*/
 }
 
-@supports (gap: clamp( 1.875rem , 1.025rem  +  4.25vw , 6.125rem )) {
+/*@supports (gap: clamp( 1.875rem , 1.025rem  +  4.25vw , 6.125rem )) {
   .how-it-works__content {
     gap: clamp( 1.875rem , 1.025rem  +  4.25vw , 6.125rem );
   }
@@ -5999,6 +6000,10 @@ body::after {
   .how-it-works__content {
     gap: calc(1.875rem + 4.25 * (100vw - 20rem) / 100);
   }
+}*/
+
+.how-it-works__question a{
+      border-bottom: 1px solid #a5a5a5;
 }
 
 .how-it-works__item {

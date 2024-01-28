@@ -111,18 +111,7 @@
                                             <input id="portfol" type="text" class="profile__form-input form__input" placeholder="Ссылка на соц. сети или портфолио" data-placeholder="Ссылка на соц. сети или портфолио" value='{{ auth()->user()->portfol}}'>
                                         </div>
                                         <div class="profile__checkbox-wrapper">
-                                            <div class="profile__form-item form__item checkbox__item">
-                                                <div class="profile__checkbox checkbox">
-                                                    <input data-no-focus-classes="" id="news" type="checkbox" name="news" class="profile__checkbox-input checkbox__input">
-                                                    <label for="news" class="profile__form-label checkbox__label "><span>Я согласен получать новости о проектах Культурной биржи</a></span></label>
-                                                </div>
-                                            </div>
-                                            <div class="profile__form-item form__item checkbox__item">
-                                                <div class="profile__checkbox checkbox">
-                                                    <input data-no-focus-classes="" id="dataProcede" type="checkbox" name="dataProcede" class="profile__checkbox-input checkbox__input">
-                                                    <label for="dataProcede" class="profile__form-label checkbox__label "><span>Я согласен на <a href="">обработку моих персональных данных</a></span></label>
-                                                </div>
-                                            </div>
+
                                         </div>
                                     </div>
                                 </div>
