@@ -4386,20 +4386,33 @@
             validateInput(formRequiredItem) {
                 let error = 0;
                 if (formRequiredItem.dataset.required === "email") {
-                    formRequiredItem.value = formRequiredItem.value.replace(" ", "");
+                    formRequiredItem.value = formRequiredItem.value.replace(/\s/g, ""); // Remove spaces
                     if (this.emailTest(formRequiredItem)) {
                         this.addError(formRequiredItem);
                         error++;
-                    } else this.removeError(formRequiredItem);
+                    } else {
+                        this.removeError(formRequiredItem);
+                    }
+                } else if (formRequiredItem.dataset.required === "phone") {
+                    // Check for a valid phone number in the format 8 000 000 00 00
+                    const phonePattern = /^\d{1} \d{3} \d{3} \d{2} \d{2}$/;
+                    if (!phonePattern.test(formRequiredItem.value)) {
+                        this.addError(formRequiredItem);
+                        error++;
+                    } else {
+                        this.removeError(formRequiredItem);
+                    }
                 } else if (formRequiredItem.type === "checkbox" && !formRequiredItem.checked) {
                     this.addError(formRequiredItem);
                     error++;
                 } else if (!formRequiredItem.value) {
                     this.addError(formRequiredItem);
                     error++;
-                } else this.removeError(formRequiredItem);
+                } else {
+                    this.removeError(formRequiredItem);
+                }
                 return error;
-            },
+            },            
             addError(formRequiredItem) {
                 formRequiredItem.classList.add("_form-error");
                 formRequiredItem.parentElement.classList.add("_form-error");
@@ -10319,7 +10332,7 @@
                 const findPartnerBlock = findPartnerSect.querySelectorAll(".find-partners__partner-block");
                 const dataSelect = document.querySelectorAll("select");
                 let partnerCount = findPartnerBlock.length;
-                let partnerBlockTempl = `\n        <div class="find-partners__partner-block">\n            <div class="create-project__form-select">\n                <label class="create-project__form-label form__label">Кого ищем</label>\n                <select id="selectElement${partnerCount}" data-id="${dataSelect.length + +1}" data-scroll name="form[]" class="form__select">\n                    <option value="" selected>Выбрать</option>\n                </select>\n            </div>\n            <div class="create-project__form-item form__item">\n                <label for="FormProjectRoleUntil${partnerCount + +1}" class="create-project__form-label form__label">До какого числа принимаются заявки</label>\n                <input id="FormProjectRoleUntil${partnerCount + +1}" autocomplete="off" data-datepicker data-datepicker_${partnerCount + +2} type="text" name="projectName" class="create-project__form-input form__input" placeholder="До 10.09.2023" data-placeholder="До 10.09.2023">\n            </div>\n            <div class="create-project__role-description form__item">\n                <label for="FormProjectPartnerDescription${partnerCount}" class="create-project__form-label form__label">Описание</label>\n                <textarea id="FormProjectPartnerDescription${partnerCount}" type="text" name="roleDescription"\n                class="create-project__form-input form__input project-description" placeholder="Не более 10000 символов" data-placeholder="Не более 10000 символов"></textarea>\n            </div>\n\n        </div>\n        `;
+                let partnerBlockTempl = `\n        <div class="find-partners__partner-block">\n            <div class="create-project__form-select">\n                <label class="create-project__form-label form__label">Кого ищем</label>\n                <select id="selectElement${partnerCount}" data-id="${dataSelect.length + +1}" data-scroll name="form[]" class="form__select">\n                    <option value="" selected>Выбрать</option>\n                </select>\n            </div>\n            <div class="create-project__form-item form__item">\n                <label for="FormProjectRoleUntil${partnerCount + +1}" class="create-project__form-label form__label">До какого числа принимаются заявки</label>\n                <input id="FormProjectRoleUntil${partnerCount + +1}" autocomplete="off" data-datepicker data-datepicker_${partnerCount + +2} type="text" name="projectName" class="create-project__form-input form__input" placeholder="До 10.09.2023" data-placeholder="До 10.09.2023" data-validate data-required data-error="Выберите дату окончания заявки">\n            </div>\n            <div class="create-project__role-description form__item">\n                <label for="FormProjectPartnerDescription${partnerCount}" class="create-project__form-label form__label">Описание</label>\n                <textarea id="FormProjectPartnerDescription${partnerCount}" type="text" name="roleDescription"\n                class="create-project__form-input form__input project-description" placeholder="Не более 10000 символов" data-placeholder="Не более 10000 символов"></textarea>\n            </div>\n\n        </div>\n        `;
                 findPartnerContent.insertAdjacentHTML("beforeend", partnerBlockTempl);
                 var selectElement = document.getElementById(`selectElement${partnerCount}`);
                 const urlRoles = "/rol";

@@ -154,7 +154,7 @@ if (projectDescriptionBtn) {
                 </div>
             <div class="create-project__form-item form__item">
                 <label for="FormProjectRoleUntil" class="create-project__form-label form__label">До какого числа принимаются заявки</label>
-                <input id="FormProjectRoleUntil" autocomplete="off" data-datepicker data-datepicker_partner_${partnerCount + + 1} type="text" name="projectName" class="create-project__form-input form__input" placeholder="До 10.09.2023" data-placeholder="До 10.09.2023">
+                <input id="FormProjectRoleUntil" autocomplete="off" data-datepicker data-datepicker_partner_${partnerCount + + 1} type="text" name="projectName" class="create-project__form-input form__input" placeholder="До 10.09.2023" data-placeholder="До 10.09.2023" data-validate data-required data-error="Выберите дату окончания заявки">
             </div>
         </div>
         `

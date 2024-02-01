@@ -42,15 +42,26 @@
                                         <div class="create-project__main-col">
                                             <div class="create-project__form-item form__item">
                                                 <label for="name_proj" class="create-project__form-label form__label">Название проекта</label>
-                                                <input id="name_proj" type="text" name="projectName" class="create-project__form-input form__input" placeholder="Название проекта" data-placeholder="Название проекта">
+                                                <input id="name_proj" 
+                                                type="text" name="projectName" 
+                                                class="create-project__form-input form__input" 
+                                                placeholder="Название проекта" data-placeholder="Название проекта"
+                                                data-validate data-required data-error="Заполните данное поле">
                                             </div>
                                             <div class="create-project__form-item form__item">
                                                 <label for="date_service_from" class="create-project__form-label form__label">Сроки начала проекта</label>
-                                                <input data-datepicker data-datepicker_1 id="date_service_from" type="text" name="projectName" class="create-project__form-input form__input" placeholder="C" data-placeholder="C">
+                                                <input data-datepicker 
+                                                data-datepicker_1 id="date_service_from" type="text" 
+                                                name="projectName" class="create-project__form-input form__input" 
+                                                placeholder="C" data-placeholder="C"
+                                                data-validate data-required data-error="Выберите дату начала проекта">>
                                             </div>
                                             <div class="create-project__form-item form__item">
                                                 <label for="date_service_to" class="create-project__form-label form__label">Сроки окончания проекта</label>
-                                                <input data-datepicker data-datepicker_2 id="date_service_to" type="text" name="projectName" class="create-project__form-input form__input" placeholder="До" data-placeholder="До">
+                                                <input data-datepicker data-datepicker_2 id="date_service_to" 
+                                                type="text" name="projectName" class="create-project__form-input form__input" 
+                                                placeholder="До" data-placeholder="До"
+                                                data-validate data-required data-error="Выберите дату окончания проекта">
                                             </div>
                                         </div>
                                         <div class="create-project__main-col">
@@ -196,7 +207,10 @@
 
                                             <div class="create-project__form-item form__item">
                                                 <label for="FormProjectRoleUntil" class="create-project__form-label form__label">До какого числа принимаются заявки</label>
-                                                <input id="FormProjectRoleUntil" autocomplete="off" data-datepicker data-datepicker_3 type="text" name="projectName" class="create-project__form-input form__input" placeholder="До 10.09.2023" data-placeholder="До 10.09.2023">
+                                                <input id="FormProjectRoleUntil" autocomplete="off" data-datepicker data-datepicker_3 
+                                                type="text" name="projectName" class="create-project__form-input form__input" placeholder="До 10.09.2023" 
+                                                data-placeholder="До 10.09.2023"
+                                                data-validate data-required data-error="Выберите дату окончания заявки">
                                             </div>
                                             <div class="create-project__role-description form__item">
                                                 <label for="FormProjectPartnerDescription" class="create-project__form-label form__label">Описание</label>
@@ -223,7 +237,9 @@
                                             <label for="name" class="create-project__form-label form__label">
                                                 Имя Фамилия*
                                             </label>
-                                            <input id="name" type="text" name="projectName" class="create-project__form-input form__input" placeholder="Контакт" data-placeholder="Контакт">
+                                            <input id="name" type="text" name="projectName" class="create-project__form-input form__input" 
+                                            placeholder="Контакт" data-placeholder="Контакт"
+                                            data-validate data-required data-error="Заполните данное поле">
                                         </div>
                                         <div class="create-project__form-item form__item">
                                             <label for="tel" class="create-project__form-label form__label">
@@ -231,13 +247,18 @@
                                                 <button type="button" data-tippy-content="Укажите телефон контактного лица, которому можно позвонить,
                                                     если возникнут технические вопросы." class="_icon-info"></button>
                                             </label>
-                                            <input id="tel" type="text" name="projectName" class="create-project__form-input form__input" placeholder="8 000 000 00 00" data-placeholder="8 000 000 00 00" data-inputmask="'mask': '8 999 999 99 99'">
+                                            <input id="tel" type="text" name="projectName" 
+                                            class="create-project__form-input form__input" placeholder="8 000 000 00 00" 
+                                            data-placeholder="8 000 000 00 00" data-inputmask="'mask': '8 999 999 99 99'"
+                                            data-validate data-required="phone" data-error="Введен некорректный телефон">
                                         </div>
                                         <div class="create-project__form-item form__item">
                                             <label for="Femail" class="create-project__form-label form__label">
                                                 Почта*
                                             </label>
-                                            <input id="email" type="text" name="projectName" class="create-project__form-input form__input" placeholder="Email" data-placeholder="Email">
+                                            <input id="email" type="text" name="projectName" class="create-project__form-input form__input" 
+                                            placeholder="Email" data-placeholder="Email"
+                                            data-validate data-required="email" data-error="Введен некорректный Email">
                                         </div>
                                     </div>
                                     <div class="create-project__buttons">

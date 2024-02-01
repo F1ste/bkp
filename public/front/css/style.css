@@ -336,6 +336,36 @@ h6 {
   padding: 0 1.15625rem;
 }
 
+._form-error{
+  color: red;
+}
+
+._form-error input{
+  border-color: red !important;
+}
+
+._form-error .form__input{
+  border-color: red !important;
+}
+
+._form-error .select__title{
+  border-color: red !important;
+}
+
+._form-error .select__option{
+  color: #1D1D1B !important;
+}
+
+._form-error .cke{
+  border-color: red !important;
+}
+
+.form__error{
+  margin-top: 5px;
+  color: red;
+  font-size: clamp( 0.875rem , 0.85rem  +  0.125vw , 1rem );
+}
+
 .form .search-submit {
   position: absolute;
   right: 0;

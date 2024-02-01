@@ -58,7 +58,8 @@
                                     проекта</label>
                                 <input value="{{ $collection->name_proj }}" id="name_proj" type="text"
                                     name="projectName" class="create-project__form-input form__input"
-                                    placeholder="Название проекта" data-placeholder="Название проекта">
+                                    placeholder="Название проекта" data-placeholder="Название проекта" 
+                                    data-validate data-required data-error="Заполните данное поле">
                             </div>
                             <div class="create-project__form-item form__item">
                                 <label for="date_service_from" class="create-project__form-label form__label">Сроки
@@ -66,7 +67,8 @@
                                 <input data-datepicker data-datepicker_1 id="date_service_from" type="text"
                                     name="projectName"
                                     value="{{ Carbon\Carbon::parse($collection->date_service_from)->format('d.m.Y') }}"
-                                    class="create-project__form-input form__input" placeholder="C" data-placeholder="C">
+                                    class="create-project__form-input form__input" placeholder="C" data-placeholder="C"
+                                    data-validate data-required data-error="Выберите дату начала проекта">
                             </div>
                             <div class="create-project__form-item form__item">
                                 <label for="date_service_to" class="create-project__form-label form__label">Сроки
@@ -75,7 +77,8 @@
                                     name="projectName"
                                     value="{{ Carbon\Carbon::parse($collection->date_service_to)->format('d.m.Y') }}"
                                     class="create-project__form-input form__input" placeholder="До"
-                                    data-placeholder="До">
+                                    data-placeholder="До"
+                                    data-validate data-required data-error="Выберите дату окончания проекта">
                             </div>
                         </div>
                         <div class="create-project__main-col">
@@ -388,7 +391,8 @@
                                 <input id="FormProjectRoleUntil" autocomplete="off" data-datepicker
                                     data-datepicker_{{$count}} type="text" name="projectName"
                                     class="create-project__form-input form__input" value='{{ $serchs->inp }}'
-                                    placeholder="До 10.09.2023" data-placeholder="До 10.09.2023">
+                                    placeholder="До 10.09.2023" data-placeholder="До 10.09.2023"
+                                    data-validate data-required data-error="Выберите дату окончания заявки">
                             </div>
                             <div class="create-project__role-description form__item">
                                 <label for="FormProjectPartnerDescription"
@@ -425,7 +429,8 @@
                             </label>
                             <input id="name" type="text" name="projectName"
                                 class="create-project__form-input form__input" value="{{ $collection->name }}"
-                                placeholder="Контакт" data-placeholder="Контакт">
+                                placeholder="Контакт" data-placeholder="Контакт"
+                                data-validate data-required data-error="Заполните данное поле">
                         </div>
                         <div class="create-project__form-item form__item">
                             <label for="tel" class="create-project__form-label form__label">
@@ -436,7 +441,8 @@
                             <input id="tel" type="text" name="projectName"
                                 class="create-project__form-input form__input" placeholder="8 000 000 00 00"
                                 data-placeholder="8 000 000 00 00" value="{{ $collection->tel }}"
-                                data-inputmask="'mask': '8 999 999 99 99'">
+                                data-inputmask="'mask': '8 999 999 99 99'"
+                                data-validate data-required="phone" data-error="Введен некорректный телефон">
                         </div>
                         <div class="create-project__form-item form__item">
                             <label for="Femail" class="create-project__form-label form__label">
@@ -444,7 +450,8 @@
                             </label>
                             <input id="email" type="text" name="projectName"
                                 class="create-project__form-input form__input" placeholder="Email"
-                                data-placeholder="Email" value="{{ $collection->email }}">
+                                data-placeholder="Email" value="{{ $collection->email }}"
+                                data-validate data-required="email" data-error="Введен некорректный Email">
                         </div>
                     </div>
                     <div class="create-project__buttons">
