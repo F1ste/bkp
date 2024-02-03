@@ -49,7 +49,7 @@
                                 @endif
                             </div>
                         </div>
-                        <div class="create-project__photo-propetries">550x545 px, до 100 мб</div>
+                        <div class="create-project__photo-propetries">950x310 px, до 1 Мб</div>
                     </div>
                     <div class="create-project__main-info">
                         <div class="create-project__main-col">
