@@ -195,7 +195,7 @@
 							</div>
 							<div class="popular-projects__content">
 								@foreach($collections as $el)
-								<div class="popular-projects__item">
+								<a href="{{ route('projects.project', ['id' => $el->id]) }}" class="popular-projects__item">
 									<div class="popular-projects__project-type">
 										{{ $el->tema }}
 									</div>
@@ -206,16 +206,14 @@
 										От {{ Carbon\Carbon::parse($el->date_service_from)->format('d.m.Y') }}
 									</div>
 									<div class="popular-projects__project-image media-block">
-										<a href="{{ route('projects.project', ['id' => $el->id]) }}">
-											<picture><source srcset="{{ $el->img1}}" type="image/webp"><img src="{{ $el->img1}}" alt="Изображение проекта"></picture>
-										</a>
+										<picture><source srcset="{{ $el->img1}}" type="image/webp"><img src="{{ $el->img1}}" alt="Изображение проекта"></picture>
 									</div>
 									<div class="popular-projects__info">
 										<div class="popular-projects__project-geo _icon-geo">
 											{{ $el->region}}
 										</div>
 										<div class="popular-projects__organization-name">
-											<a href="#">{{ $el->region}}</a>
+											{{ $el->region }}
 										</div>
 									</div>
 									<div class="popular-projects__partners-tags partners-tags">
@@ -227,16 +225,16 @@
 												$json = json_decode($el->serch);
 											@endphp
 											@foreach($json as $serchs)
-											<a href="#" class="tags__item btn btn-white">
+											<span class="tags__item btn btn-white">
 												{{$serchs->sel}}
-											</a>
+                                            </span>
 											@endforeach
 										</div>
 									</div>
 									<div class="popular-projects__subscribe">
-										<a href="{{ route('projects.project', ['id' => $el->id]) }}" class="popular-projects__subscribe-btn _fw btn btn-filled">Подробнее</a>
+										<span class="popular-projects__subscribe-btn _fw btn btn-filled">Подробнее</span>
 									</div>
-								</div>
+								</a>
 								@endforeach
 							</div>
 
