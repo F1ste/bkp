@@ -8398,6 +8398,18 @@ body::after {
   }
 }
 
+@media (min-width: 29.99875em) and (max-width: 1400px) {
+    .how-it-works__content {
+        margin-top: 0.625rem;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .how-it-works__item {
+        margin-bottom: 2rem;
+    }
+}
+
 @media (any-hover: hover) {
   .btn-white:hover {
     border: 1px solid #00AF66;
