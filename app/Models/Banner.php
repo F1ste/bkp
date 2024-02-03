@@ -9,11 +9,21 @@ class Banner extends Model
 {
     use HasFactory;
 
+    /**
+     * Indicates if the model should be timestamped.
+     *
+     * @var bool
+     */
+    public $timestamps = false;
+
     protected $table = 'banner';
 
     protected $fillable = [
-        'id',
         'name',
         'img',
+        'advertisement',
+        'org_name',
+        'org_inn',
+        'erid',
     ];
 }

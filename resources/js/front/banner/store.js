@@ -1,8 +1,8 @@
 import axios from "axios";
 import {notification} from "../utils/notification";
 import {} from "../libs/ckeditor/ckeditor";
-(() => {
 
+(() => {
     const collectionStore = document.getElementById('banner-store')
 
     if(!collectionStore) return false
@@ -11,11 +11,14 @@ import {} from "../libs/ckeditor/ckeditor";
 
     var img1 = '';
 
-
     const select = {
         img1: 'img1',
         name: 'name',
-        storeButton: 'store-button'
+        storeButton: 'store-button',
+        advertisement: 'advertisement',
+        org_name: 'orgName',
+        org_inn: 'orgINN',
+        erid: 'erid'
     }
 
    document.getElementById(select.img1).addEventListener('click', e => {
@@ -39,28 +42,27 @@ import {} from "../libs/ckeditor/ckeditor";
     })
 
 
-
-
-
-
     document.getElementById(select.storeButton).addEventListener('click', e => {
         let name = document.getElementById(select.name).value;
-
-
+        let advertisement = document.getElementById(select.advertisement).value;
+        let org_name = document.getElementById(select.org_name).value;
+        let org_inn = document.getElementById(select.org_inn).value;
+        let erid = document.getElementById(select.erid).value;
 
         if(name == ''){
             alert('Заполните все поля!');
             return false
         }
 
-
         document.getElementById(select.storeButton).innerHTML = `Подождите...`
-
-
 
         axios.post(storeRoute, {
             name: name,
-            img1: img1
+            img1: img1,
+            advertisement: advertisement,
+            org_name: org_name,
+            org_inn: org_inn,
+            erid: erid
         }).then(e => {
             window.location.href = e.data
         }).catch(error => {
@@ -68,29 +70,4 @@ import {} from "../libs/ckeditor/ckeditor";
             notification('Упс, что-то пошло не так', 'Не удалось создать услугу... Попробуйте позже')
         })
     })
-
-
-})()
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+})();
