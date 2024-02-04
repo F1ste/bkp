@@ -5972,6 +5972,42 @@ body::after {
   margin-top: 2.5rem;
 }
 
+.policy__heading{
+  justify-content: center;
+}
+.policy__title{
+  text-align: center;
+}
+
+.policy__article-title{
+  margin-top: 20px;
+}
+
+.policy__article-text p{
+  margin-top: 5px;
+}
+
+
+.policy__content{
+  padding-bottom: 70px;
+}
+.policy__content a{
+  color: #00AF66;
+}
+
+.policy__content a:hover{
+  text-decoration: underline;
+}
+
+.policy__content ul {
+  padding-left: 15px;
+}
+
+.policy__subtitle{
+  font-weight: 700;
+  margin-top: 20px;
+}
+
 .how-it-works {
   margin-top: 5rem;
 }
