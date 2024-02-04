@@ -121,8 +121,8 @@ class CollectionController extends Controller
      * POST Store Collection
      */
     public function store(Request $request)
-    {
-
+    {   
+        $serch = $this->unsetRole($request->serch);
         $collection = Collection::create([
             'name'          => $request->name,
             'images'        => $request->images,
@@ -140,7 +140,7 @@ class CollectionController extends Controller
             'email'    =>  $request->email,
             'name_proj'    =>  $request->name_proj,
             'video'    =>  $request->video,
-            'serch' =>  $request->serch,
+            'serch' =>  $serch,
             'img1' =>  $request->img1,
             'img2' =>  $request->img2,
             'img3' =>  $request->img3,
@@ -157,6 +157,7 @@ class CollectionController extends Controller
      */
     public function edit(Request $request)
     {
+        $serch = $this->unsetRole($request->serch);
         $collection = Collection::where('id', $request->id)->update([
             'name'          => $request->name,
             'images'        => $request->images,
@@ -174,7 +175,7 @@ class CollectionController extends Controller
             'email'    =>  $request->email,
             'name_proj'    =>  $request->name_proj,
             'video'    =>  $request->video,
-            'serch' =>  $request->serch,
+            'serch' =>  $serch,
             'img1' =>  $request->img1,
             'img2' =>  $request->img2,
             'img3' =>  $request->img3,
@@ -285,6 +286,16 @@ class CollectionController extends Controller
         return $link;
     }
 
+
+private function unsetRole($serch)
+{
+    foreach ($serch as $item){
+        if($item['sel']==$item['sel']){
+            unset($item);
+        }
+    }
+    return $serch;
+}
 
 }
 
