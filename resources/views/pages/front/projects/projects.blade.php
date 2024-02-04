@@ -194,7 +194,7 @@
 								</form>
 							</div>
 							<div class="popular-projects__content">
-								@foreach($collections as $el)
+								@foreach($collections->sortBy('date_service_from') as $el)
 								<div class="popular-projects__item">
 									<div class="popular-projects__project-type">
 										{{ $el->tema }}
