@@ -120,19 +120,6 @@ import {} from "../libs/ckeditor/ckeditor";
         });
     }
 
-/*     const removePartnerBtns = findPartnerSect.querySelectorAll(".remove-partner");
-
-    if (removePartnerBtns.length !== 0) {
-        removePartnerBtns.forEach((el) => {
-            el.addEventListener("click", () => {
-                partnersEditors = document.querySelectorAll(
-                    ".find-partners__partner-block"
-                );
-                editorsCount = partnersEditors.length;
-            })
-        })
-    } */
-
     const uploadRoute = collectionEdit.dataset.image,
         updateRoute = collectionEdit.dataset.update,
         id = collectionEdit.dataset.id;
