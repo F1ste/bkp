@@ -4,6 +4,7 @@ use App\Http\Controllers\AboutController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\FAQController;
 use App\Http\Controllers\PageController;
+use App\Http\Controllers\PolicyController;
 use App\Http\Controllers\SearchResultsController;
 use App\Http\Requests\FilterRequest;
 use Illuminate\Support\Facades\Route;
@@ -48,6 +49,7 @@ Route::get('/partners', function () {
 Route::get('/about/', [AboutController::class,'index'])->name('about');
 Route::get('/contacts/', [ContactController::class,'index'])->name('contact');
 Route::get('/faq/', [FAQController::class,'index'])->name('faq');
+Route::get('/policy/', [PolicyController::class,'index'])->name('about');
 
 Route::get('storage/{filename}', [PageController::class, 'image']);
 
