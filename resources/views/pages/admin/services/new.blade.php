@@ -43,11 +43,15 @@
                                             </div>
                                             <div class="create-project__form-item form__item">
                                                 <label for="date_service_from" class="create-project__form-label form__label">Сроки начала проекта</label>
-                                                <input ata-datepicker data-datepicker_1 id="date_service_from" type="text" name="projectName" class="create-project__form-input form__input" placeholder="C" data-placeholder="C">
+                                                <input ata-datepicker data-datepicker_1 
+                                                id="date_service_from" autocomplete="off" type="text" name="projectName" 
+                                                class="create-project__form-input form__input" placeholder="C" data-placeholder="C">
                                             </div>
                                             <div class="create-project__form-item form__item">
                                                 <label for="date_service_to" class="create-project__form-label form__label">Сроки окончания проекта</label>
-                                                <input ata-datepicker data-datepicker_2 id="date_service_to" type="text" name="projectName" class="create-project__form-input form__input" placeholder="До" data-placeholder="До">
+                                                <input ata-datepicker data-datepicker_2 id="date_service_to" 
+                                                autocomplete="off" type="text" name="projectName" class="create-project__form-input form__input" 
+                                                placeholder="До" data-placeholder="До">
                                             </div>
                                         </div>
                                         <div class="create-project__main-col">
@@ -178,7 +182,10 @@
                                             </div>
                                             <div class="create-project__form-item form__item">
                                                 <label for="FormProjectRoleUntil" class="create-project__form-label form__label">До какого числа принимаются заявки</label>
-                                                <input id="FormProjectRoleUntil" autocomplete="off" data-datepicker data-datepicker_3 type="text" name="projectName" class="create-project__form-input form__input" placeholder="До 10.09.2023" data-placeholder="До 10.09.2023">
+                                                <input id="FormProjectRoleUntil" autocomplete="off" 
+                                                data-datepicker data-datepicker_3 type="text" name="projectName" 
+                                                class="create-project__form-input form__input" placeholder="До 10.09.2023" 
+                                                data-placeholder="До 10.09.2023">
                                             </div>
                                             <div class="create-project__role-description form__item">
                                                 <label for="FormProjectPartnerDescription" class="create-project__form-label form__label">Описание</label>

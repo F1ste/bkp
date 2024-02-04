@@ -68,7 +68,8 @@
                                     name="projectName"
                                     value="{{ Carbon\Carbon::parse($collection->date_service_from)->format('d.m.Y') }}"
                                     class="create-project__form-input form__input" placeholder="C" data-placeholder="C"
-                                    data-validate data-required data-error="Выберите дату начала проекта">
+                                    readonly autocomplete="off"
+                                    >
                             </div>
                             <div class="create-project__form-item form__item">
                                 <label for="date_service_to" class="create-project__form-label form__label">Сроки
@@ -78,7 +79,8 @@
                                     value="{{ Carbon\Carbon::parse($collection->date_service_to)->format('d.m.Y') }}"
                                     class="create-project__form-input form__input" placeholder="До"
                                     data-placeholder="До"
-                                    data-validate data-required data-error="Выберите дату окончания проекта">
+                                    readonly autocomplete="off"
+                                    >
                             </div>
                         </div>
                         <div class="create-project__main-col">
@@ -369,9 +371,10 @@
                 <div class="create-project__find-partners">
                     <div class="create-project__title personal__title">Кого ищем</div>
                     <div class="find-partners__content">
-                        @php $count = 3; @endphp
+                        @php $count = 3; $partnerCount = 1; @endphp
                         @foreach($serch as $serchs)
                         <div class="find-partners__partner-block">
+
                             <div class="create-project__form-select">
                                 <label class="create-project__form-label form__label">Кого ищем</label>
                                 <select data-scroll name="form[]" class="form__select">
@@ -384,7 +387,6 @@
 
                                 </select>
                             </div>
-
                             <div class="create-project__form-item form__item">
                                 <label for="FormProjectRoleUntil" class="create-project__form-label form__label">До
                                     какого числа принимаются заявки</label>
@@ -392,7 +394,8 @@
                                     data-datepicker_{{$count}} type="text" name="projectName"
                                     class="create-project__form-input form__input" value='{{ $serchs->inp }}'
                                     placeholder="До 10.09.2023" data-placeholder="До 10.09.2023"
-                                    data-validate data-required data-error="Выберите дату окончания заявки">
+                                    readonly autocomplete="off"
+                                    >
                             </div>
                             <div class="create-project__role-description form__item">
                                 <label for="FormProjectPartnerDescription"
@@ -401,6 +404,9 @@
                                     class="create-project__form-input form__input project-description"
                                     placeholder="Не более 10000 символов"
                                     data-placeholder="Не более 10000 символов">{{ $serchs->tex }}</textarea>
+                            </div>
+                            <div class="create-project__remove-partner">
+                                <button type="button" class="remove-partner btn btn-filled">Удалить роль</button>
                             </div>
                         </div>
                         @php $count++; @endphp
