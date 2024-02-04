@@ -1156,6 +1156,10 @@ select {
   background: #D1F4E3;
   background: #d4ebf2;
 }
+.qs-range-start, .qs-range-end{
+  background: #00AF66;
+  color: #F8F8F8;
+}
 
 .qs-datepicker .qs-square.qs-range-date-middle:not(.qs-range-date-0):not(.qs-range-date-6) {
   border-radius: 0;
@@ -1299,7 +1303,7 @@ body::after {
   padding: 30px 20px;
   width: 100%;
   max-width: 600px;
-  border-radius: 20px;
+  border-radius: 10px;
 }
 
 .lock .popup__content {
@@ -1309,8 +1313,8 @@ body::after {
 .popup__close {
   cursor: pointer;
   position: absolute;
-  top: 10px;
-  right: 10px;
+  top: 30px;
+  right: 20px;
   width: 24px;
   height: 24px;
   -webkit-transition: -webkit-transform 0.2s ease;
@@ -5202,6 +5206,16 @@ body::after {
       -ms-flex-align: center;
           align-items: center;
   gap: 0.75rem;
+}
+.create-project__remove-partner{
+  margin-left: auto;
+  display: flex;
+  align-self: flex-end;
+}
+.remove-partner{
+  margin-left: auto;
+  align-items: center;
+  height: 64px;
 }
 
 .create-project .add-partner__input {
