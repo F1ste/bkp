@@ -12,7 +12,7 @@
 
                      <div class="create-project__container">
                         <div class="create-project__content">
-                            <div class="create-project__title personal__title">Создание проекта</div>
+                            <div class="create-project__title personal__title">Редактирование проекта</div>
 
                                 <div class="create-project__general-info">
                                     <div class="create-project__form-img">
@@ -420,7 +420,7 @@
                                         <!--<a href="#" class="create-project__btn btn btn-white btn-border_black">Сохранить черновик</a>-->
                                         <button  style="
     margin-top: 20px;
-" id='store-button' class="create-project__btn btn btn-filled">Опубликовать проект</button>
+" id='store-button' class="create-project__btn btn btn-filled">Cохранить изменения</button>
                                         <button id='store-button2' class="create-project__btn btn btn-filled">Перенести в архив</button>
                                         <button id='store-button3' class="create-project__btn btn btn-filled">Отклонить</button>
                                         <button id='store-button4' class="create-project__btn btn btn-filled">Продлить проект</button>
