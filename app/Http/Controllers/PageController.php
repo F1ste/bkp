@@ -27,9 +27,12 @@ class PageController extends Controller
     {
          $news = News::orderByDesc('id')->get();
          $collection = Collection::where('price', '1')->orderByDesc('id')->get();
+         $userIds = $collection->pluck('user_id')->unique();
+         $users = User::whereIn('id', $userIds)->get();
         return view('pages.front.home.home', [
                  'collections'    => $collection,
-                'news'        => $news
+                'news'        => $news,
+                'users' => $users,
             ]);
     }
 
@@ -129,6 +132,9 @@ class PageController extends Controller
             return $roles;
         })->unique();
 
+        $userIds = $collection->pluck('user_id')->unique();
+        $users = User::whereIn('id', $userIds)->get();
+
         return view('pages.front.projects.projects', [
             'collections'    => $collection,
             'years' => $years,
@@ -136,7 +142,8 @@ class PageController extends Controller
             'event_type' => $eventType,
             'tema' => $tema,
             'teg' => $teg,
-            'roles' => $roles
+            'roles' => $roles,
+            'users' => $users,
         ]);
 
     }
