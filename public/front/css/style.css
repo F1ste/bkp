@@ -2087,6 +2087,10 @@ body::after {
   white-space: nowrap;
 }
 
+.menu__link:hover {
+    color: #00AF66;
+}
+
 .menu__accordion-menu {
   display: -webkit-inline-box;
   display: -ms-inline-flexbox;
