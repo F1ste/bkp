@@ -5066,8 +5066,8 @@ blockquote p::after {
 
 .create-project__main-info .create-project__form-item:first-child {
   -webkit-box-flex: 1;
-      -ms-flex: 1 1 auto;
-          flex: 1 1 auto;
+      -ms-flex: 1 1 527px;
+          flex: 1 1 527px;
 }
 
 .create-project__main-info .create-project__form-item .form__input {
