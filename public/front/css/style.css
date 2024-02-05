@@ -5125,7 +5125,6 @@ blockquote p::after {
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
   gap: 0.9375rem;
-  flex-direction: column;
 }
 
 .create-project__main-col:nth-child(2) {
