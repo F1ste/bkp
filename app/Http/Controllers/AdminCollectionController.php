@@ -347,8 +347,7 @@ class AdminCollectionController extends Controller
     }
 
 
-
- public function banners()
+    public function banners()
     {
         $collection = Banner::get();
 
@@ -357,39 +356,34 @@ class AdminCollectionController extends Controller
         ]);
     }
 
-     public function banner_new()
+    public function banner_new()
     {
-
         return view('pages.admin.baner.new');
     }
 
     public function banner_store(Request $request)
     {
-
         $collection = Banner::create([
             'name'          => $request->name,
             'img'           => $request->img1,
+            'advertisement' => boolval($request->advertisement),
+            'org_name'      => $request->org_name,
+            'org_inn'       => $request->org_inn,
+            'erid'          => $request->erid,
         ]);
 
         return response()->json(route('admin.banner.single', ['id' => $collection->id]), 201);
     }
 
-        public function banner_single($id)
+    public function banner_single($id)
     {
-        $collection =  Banner::where('id', $id)->get();
+        $collection =  Banner::find($id);
 
-        if(count($collection) > 0) {
-
-            $collection = $collection[0];
-
-
-            return view('pages.admin.baner.edit', [
-                'collection'    => $collection,
-                'id'            => $id,
-            ]);
-        } else {
-            return redirect(route('pages.admin.banner.new'));
+        if (is_null($collection)) {
+            return redirect()->route('pages.admin.banner.new');
         }
+
+        return view('pages.admin.baner.edit', compact('collection', 'id'));
     }
 
 
@@ -403,23 +397,17 @@ class AdminCollectionController extends Controller
 
     public function banner_edit(Request $request)
     {
-
-
-        $collection = Banner::where('id', $request->id)->update([
+        $collection = Banner::find($request->id)->update([
             'name'          => $request->name,
             'img'           => $request->img1,
+            'advertisement' => $request->advertisement,
+            'org_name'      => $request->org_name,
+            'org_inn'       => $request->org_inn,
+            'erid'          => $request->erid,
         ]);
 
         return response()->json($collection, 201);
     }
-
-
-
-
-
-
-
-
 
      public function rubric()
     {

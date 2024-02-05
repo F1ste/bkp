@@ -322,7 +322,7 @@ h6 {
 }
 
 /*
-(i) Стили будут применяться ко 
+(i) Стили будут применяться ко
 всем классам содержащим *__container
 Например header__container, main__container и т.д.
 Снипет (HTML): cnt
@@ -397,6 +397,16 @@ h6 {
   .form__label {
     font-size: calc(0.875rem + 0.125 * (100vw - 20rem) / 100);
   }
+}
+
+input.remove-arrows::-webkit-outer-spin-button,
+input.remove-arrows::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input.remove-arrows[type=number]{
+    -moz-appearance: textfield;
 }
 
 .search-item {
@@ -5321,6 +5331,26 @@ blockquote p::after {
   border-color: #00AF66;
 }
 
+.create-project__adv {
+    border: 1px solid #00AF66;
+    padding: 1rem;
+    border-radius: 10px;
+}
+
+.create-project__form-group {
+    margin-bottom: 1rem;
+}
+
+.create-project__adv-label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.create-project__adv-input {
+    border: 1px solid #aaa;
+    padding: 5px 10px;
+}
+
 .chat-page {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -8495,6 +8525,18 @@ blockquote p::after {
         -ms-flex-direction: column;
             flex-direction: column;
   }
+}
+
+@media (min-width: 29.99875em) and (max-width: 1400px) {
+    .how-it-works__content {
+        margin-top: 0.625rem;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .how-it-works__item {
+        margin-bottom: 2rem;
+    }
 }
 
 @media (any-hover: hover) {
