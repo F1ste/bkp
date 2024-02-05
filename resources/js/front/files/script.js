@@ -7,42 +7,19 @@ import datepicker from 'js-datepicker';
 
 (() => {
     const sidebar = document.querySelector('.sidebar');
-    
+
     if (!sidebar) {
         return false;
     }
 
     const header = document.querySelector('.header');
-    const sidebarExpand = sidebar.querySelector('.sidebar__expand .sidebar__item');
-    const sidebarItems = sidebar.querySelectorAll('.sidebar__item');
-    const sidebarInfo = sidebar.querySelector('.sidebar__info')
-    
-    sidebarExpand.addEventListener('click', () => {
-        sidebar.classList.toggle('sidebar__expanded');
-        const expandedEl = document.querySelector('.sidebar__expanded');
-        
-        sidebarInfo.style.display = "block";
-            
-        sidebarItems.forEach(item => {
-            let textAtr = item.getAttribute('dataText');
-            item.innerHTML = textAtr;
-        });
-
-        if (!expandedEl) {
-            sidebarItems.forEach(item => {
-                item.innerHTML = '';
-            });
-            sidebarInfo.style.display = "none";
-        }
-       
-    })
 
     let headerHeight = header.getBoundingClientRect().height;
 
     const stickyNav = function (entries) {
         const [entry] = entries;
         //console.log(entry);
-      
+
         if (!entry.isIntersecting) {
             sidebar.classList.add('fixed');
         }
@@ -50,16 +27,16 @@ import datepicker from 'js-datepicker';
             sidebar.classList.remove('fixed');
         };
       };
-      
+
     const headerObserver = new IntersectionObserver(stickyNav, {
         root: null,
         threshold: 1.0,
         rootMargin: `${headerHeight}px`,
     });
-      
+
     headerObserver.observe(header);
 
-    
+
 
 })();
 
@@ -84,7 +61,7 @@ if (dropArea.length != 0 ) {
     dropArea.forEach(element => {
         element.addEventListener('click', handleClick, false);
     });
- 
+
 
     function handleClick(e) {
         fileInput.click();
@@ -120,23 +97,23 @@ if (projectDescriptionBtn) {
 
 
 (() => {
-    
+
     const findPartnerSect = document.querySelector('.create-project__find-partners');
-    
+
     if (!findPartnerSect) {
         return false;
     }
-    
+
     const addPartnerBtn = findPartnerSect.querySelector('.add-partner__input');
-    
+
     const findPartnerContent = findPartnerSect.querySelector('.find-partners__content');
-    
+
     function addPartner(e) {
         const clickedEl = e.target
         const findPartnerBlock = findPartnerSect.querySelectorAll('.find-partners__partner-block');
 
         let partnerCount = findPartnerBlock.length;
-        let partnerBlockTempl = 
+        let partnerBlockTempl =
         `
         <div class="find-partners__partner-block">
             <div class="create-project__form-select">

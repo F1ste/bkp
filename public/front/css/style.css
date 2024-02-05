@@ -4536,6 +4536,19 @@ blockquote p::after {
   font-size: 1.5rem;
 }
 
+.sidebar__item--chevron::after {
+  content: "\203A";
+  transform: rotate(90deg);
+  font-size: 2rem;
+  margin-left: auto;
+  transition: all .3s ease-out;
+}
+
+.sidebar__item--chevron._spoller-active::after {
+  transform: rotate(270deg);
+  margin-right: 5px;
+}
+
 .sidebar__item_active {
   background: #fff;
   color: #00AF66;
@@ -4544,6 +4557,11 @@ blockquote p::after {
 .sidebar__item:active {
   background: #fff;
   color: #00AF66;
+}
+
+.sidebar__item._spoller-active {
+    background-color: #fff;
+    color: #00AF66;
 }
 
 .sidebar__expand {
@@ -4662,6 +4680,7 @@ blockquote p::after {
 
 .sidebar .spollers__wrapper {
   margin-top: 0.3125rem;
+  margin-left: .5rem;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -4670,6 +4689,7 @@ blockquote p::after {
       -ms-flex-direction: column;
           flex-direction: column;
   gap: 0.3125rem;
+  border-left: 2px solid rgba(255,255,255,.4)
 }
 
 .my-projects {

@@ -8,58 +8,60 @@
         <title>@yield('title') - БКП</title>
     </head>
     <body>
-
         <x-header />
-           <main class="page">
-            <div class="sidebar">
+
+        <main class="page">
+            <div class="sidebar sidebar__expanded">
                 <div class="sidebar__items">
+                    <a href="/admin/news" class="sidebar__item _icon-invoice">Новости</a>
                     <div data-spollers data-one-spoller class="spollers">
                         <div class="spollers__item">
-                            <button type="button" data-spoller class="sidebar__item _icon-dashboard" dataText="Страницы">
+                            <button type="button" data-spoller class="sidebar__item _icon-bookmark sidebar__item--chevron">
+                                Проекты
                             </button>
                             <div class="spollers__body">
                                 <div class="spollers__wrapper">
-                                    <a href="/admin/dashboard" class="sidebar__item _icon-dashboard" dataText="Главная"></a>
-                                    <a href="{{route('admin.about.edit',['id'=>1])}}" class="sidebar__item _icon-dashboard" dataText="О Бирже"></a>
-                                    <a href="{{route('admin.faq')}}" class="sidebar__item _icon-dashboard" dataText="Вопрос-ответ"></a>
-                                    <a href="{{route('admin.contact.edit', ['id'=>1])}}" class="sidebar__item _icon-dashboard" dataText="Контакты"></a>
-                                    <a href="/admin/footer" class="sidebar__item _icon-dashboard" dataText="Настройки футера"></a>
+                                    <a href="/admin/dashboard" class="sidebar__item _icon-sand-watch">Модерация</a>
+                                    <a href="/admin/onpublic" class="sidebar__item _icon-aprooved">Опубликованные</a>
+                                    <a href="/admin/arhiv" class="sidebar__item _icon-cloud-check">Архив</a>
+                                    <a href="/admin/otclon" class="sidebar__item _icon-trash">Отклоненные</a>
                                 </div>
                             </div>
                         </div>
                         <div class="spollers__item">
-                            <button type="button" data-spoller class="sidebar__item _icon-bookmark" dataText="Проекты">
-                            </button>
+                            <button type="button" data-spoller class="sidebar__item _icon-edit sidebar__item--chevron">Страницы</button>
                             <div class="spollers__body">
                                 <div class="spollers__wrapper">
-                                    <a href="/admin/dashboard" class="sidebar__item _icon-sand-watch" dataText="Модерация"></a>
-                                    <a href="/admin/onpublic" class="sidebar__item _icon-aprooved" dataText="Опубликованные"></a>
-                                    <a href="/admin/arhiv" class="sidebar__item _icon-cloud-check" dataText="Архив"></a>
-                                    <a href="/admin/otclon" class="sidebar__item _icon-trash" dataText="Отклоненные"></a>
+                                    <a href="/admin/dashboard" class="sidebar__item _icon-pencil">Главная</a>
+                                    <a href="{{route('admin.about.edit',['id'=>1])}}" class="sidebar__item _icon-pencil">О Бирже</a>
+                                    <a href="{{route('admin.faq')}}" class="sidebar__item _icon-pencil">Вопрос-ответ</a>
+                                    <a href="{{route('admin.contact.edit', ['id'=>1])}}" class="sidebar__item _icon-pencil">Контакты</a>
+                                    <a href="/admin/footer" class="sidebar__item _icon-pencil">Настройки футера</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="spollers__item">
+                            <button type="button" data-spoller class="sidebar__item _icon-settings sidebar__item--chevron">Настройки</button>
+                            <div class="spollers__body">
+                                <div class="spollers__wrapper">
+                                    <a href="/admin/rubric" class="sidebar__item _icon-categories">Рубрики для новостей</a>
+                                    <a href="/admin/tema" class="sidebar__item _icon-categories">Тематика проекта</a>
+                                    <a href="/admin/tip" class="sidebar__item _icon-categories">Тип события</a>
+                                    <a href="/admin/teg" class="sidebar__item _icon-categories">Теги проекта</a>
+                                    <a href="/admin/banners" class="sidebar__item _icon-image">Рекламные баннеры</a>
+                                    <a href="/admin/partners" class="sidebar__item _icon-categories">Роли</a>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <a href="/admin/news" class="sidebar__item _icon-invoice" dataText="Новости"></a>
-                    <!--<a href="#" class="sidebar__item _icon-coment-plus" dataText="Отклики"></a>
-                    <a href="#" class="sidebar__item _icon-statistic" dataText="Статистика"></a>-->
 
-                    <a href="/admin/rubric" class="sidebar__item _icon-categories" dataText="Рубрики для новостей"></a>
-                    <a href="/admin/tema" class="sidebar__item _icon-categories" dataText="Тематика проекта"></a>
-                    <a href="/admin/tip" class="sidebar__item _icon-categories" dataText="Тип события"></a>
-                    <a href="/admin/teg" class="sidebar__item _icon-categories" dataText="Теги проекта"></a>
-                    <a href="/admin/partners" class="sidebar__item _icon-categories" dataText="Кого ищем"></a>
-                    <a href="/admin/banners" class="sidebar__item _icon-image" dataText="Рекламные баннеры"></a>
-                    <a href="/admin/user" class="sidebar__item _icon-rate" dataText="Рейтинг пользователей"></a>
+                    <a href="/admin/user" class="sidebar__item _icon-rate">Рейтинг пользователей</a>
                 </div>
-<!--                 <div class="sidebar__info">
-                </div> -->
-                <div class="sidebar__expand"><button type="button" class="sidebar__item _icon-chevron" dataText=""></button></div>
-                <a href="/logout" class="sidebar__item _icon-logout" dataText="Выход"></a>
+                <a href="/logout" class="sidebar__item _icon-logout">Выход</a>
             </div>
-        @yield('content')
-            </main>
-    
+            @yield('content')
+        </main>
+
         <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
         <script src="{{ asset('/plugins/ckeditor/ckeditor.js') }}"></script>
         <script src="{{ asset('/plugins/ckfinder/ckfinder.js') }}"></script>
