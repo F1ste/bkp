@@ -3866,7 +3866,7 @@ blockquote p::after {
 }
 .partners-searching__partner-description ul{
   padding-left: 15px;
-  
+
 }
 
 .partners-searching__partner-description a{
@@ -5114,6 +5114,16 @@ blockquote p::after {
   letter-spacing: 0.42px;
 }
 
+.create-project__form-group {
+    width: 100%;
+    margin-bottom: 1rem;
+}
+
+.create-project__form-row {
+    display: flex;
+    gap: 1rem;
+}
+
 .create-project__main-info .form-label {
   white-space: nowrap;
 }
@@ -5329,26 +5339,6 @@ blockquote p::after {
 
 .create-project .select__options {
   border-color: #00AF66;
-}
-
-.create-project__adv {
-    border: 1px solid #00AF66;
-    padding: 1rem;
-    border-radius: 10px;
-}
-
-.create-project__form-group {
-    margin-bottom: 1rem;
-}
-
-.create-project__adv-label {
-    display: block;
-    margin-bottom: 5px;
-}
-
-.create-project__adv-input {
-    border: 1px solid #aaa;
-    padding: 5px 10px;
 }
 
 .chat-page {
