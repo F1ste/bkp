@@ -8,6 +8,7 @@
 						<div class="projects__heading-text section__heading-text">
 							<div class="projects__title section__title">
 								ПРОЕКТЫ
+                                <sup class="sup-count help" title="Количество проектов">{{ $projects_count }}</sup>
 							</div>
 						</div>
 					</div>
@@ -50,7 +51,7 @@
 													Узнайте о событиях
 												</div>
 												<div class="join-us__text-desrcription">
-													Ознакомьтесь с новостями проектов и 
+													Ознакомьтесь с новостями проектов и
 													культурной биржи
 												</div>
 											</div>
@@ -250,16 +251,16 @@
 		</main>
 		<script>
 (()=>{
-	
+
 	const currentURL = window.location.href;
 
 	function getQueryParams(url) {
     const queryParams = {};
     const params = url.split('?')[1];
     if (params) {
-        const paramPairs = params.split('&'); 
+        const paramPairs = params.split('&');
         for (const paramPair of paramPairs) {
-            const [key, value] = paramPair.split('='); 
+            const [key, value] = paramPair.split('=');
             const decodedKey = decodeURIComponent(key);
             const decodedValue = decodeURIComponent(value.replace(/\+/g, ' '));
             if (!queryParams[decodedKey]) {

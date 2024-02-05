@@ -104,7 +104,7 @@
 									<a href="/projects?tip%5B%5D=Архитектура">
 										<div class="projects-category__media media-block">
 										<picture><source srcset="{{ asset('image/projects-category/architecture.webp') }}" type="image/webp"><img src="{{ asset('image/projects-category/architecture.png') }}" alt="Архитектура"></picture>
-											
+
 										</div>
 										<div class="projects-category__category-name">
 											Архитектура
@@ -153,6 +153,7 @@
 						<div class="popular-projects__heading-text section__heading-text">
 							<div class="popular-projects__title main-page__section-title">
 								Проекты
+                                <sup class="sup-count help" title="Количество проектов">{{ $projects_count }}</sup>
 							</div>
 						</div>
 						<a data-da=".popular-projects__container,768" href="/projects" class="news-block__all-news _fw btn btn-white">
@@ -218,7 +219,7 @@
 								@else
 									@break
 								@endif
-							
+
 							@endforeach
 
 					</div>

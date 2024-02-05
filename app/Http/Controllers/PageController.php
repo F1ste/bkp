@@ -25,15 +25,12 @@ class PageController extends Controller
      */
     public function home()
     {
-         $news = News::orderByDesc('id')->get();
-         $collection = Collection::where('price', '1')->orderByDesc('id')->get();
-         $userIds = $collection->pluck('user_id')->unique();
-         $users = User::whereIn('id', $userIds)->get();
-        return view('pages.front.home.home', [
-                 'collections'    => $collection,
-                'news'        => $news,
-                'users' => $users,
-            ]);
+        $news = News::orderByDesc('id')->get();
+        $collections = Collection::where('price', '1')->orderByDesc('id')->get();
+        $userIds = $collections->pluck('user_id')->unique();
+        $users = User::whereIn('id', $userIds)->get();
+        $projects_count = Collection::where('date_service_to', '>', Carbon::now())->count();
+        return view('pages.front.home.home', compact('collections', 'news', 'users', 'projects_count'));
     }
 
     /**
@@ -103,11 +100,11 @@ class PageController extends Controller
        public function projects(FilterRequest $request)
     {
         $data = $request->validated();
-      
+
         $filter = app()-> make(PageProjectsFilter::class, ['queryParams' => array_filter($data)]);
 
         $collection = Collection::where('price', 1)->orderByDesc('id')->filter($filter)->paginate(12);
- 
+
         $years = Collection::where('price', 1)->distinct()->orderBy('date_service_from', 'desc')->pluck('date_service_from')->map(function ($date) {
             return Carbon::parse($date)->format('Y');
         })->unique();
@@ -119,7 +116,7 @@ class PageController extends Controller
         $eventType = Subject::distinct()->orderBy('name', 'asc')->pluck('name')->map(function ($eventType) {
             return $eventType;
         })->unique();
-        
+
         $tema = Event::distinct()->orderBy('name', 'asc')->pluck('name')->map(function ($tema) {
             return $tema;
         })->unique();
@@ -134,6 +131,7 @@ class PageController extends Controller
 
         $userIds = $collection->pluck('user_id')->unique();
         $users = User::whereIn('id', $userIds)->get();
+        $projects_count = Collection::where('date_service_to', '>', Carbon::now())->count();
 
         return view('pages.front.projects.projects', [
             'collections'    => $collection,
@@ -144,6 +142,7 @@ class PageController extends Controller
             'teg' => $teg,
             'roles' => $roles,
             'users' => $users,
+            'projects_count' => $projects_count,
         ]);
 
     }
@@ -181,11 +180,11 @@ class PageController extends Controller
     public function news(FilterRequest $request)
     {
         $data = $request->validated();
-        
+
         $filter = app()-> make(PageNewsFilter::class, ['queryParams' => array_filter($data)]);
 
         $collection = News::orderByDesc('id')->filter($filter)->paginate(10);
- 
+
         $years = News::distinct()->orderBy('date', 'desc')->pluck('date')->map(function ($date) {
             return Carbon::parse($date)->format('Y');
         })->unique();
