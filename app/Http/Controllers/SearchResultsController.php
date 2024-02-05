@@ -14,12 +14,12 @@ class SearchResultsController extends Controller
     {
         $data = $request->validated();
         
-        $filter = app()-> make(GlobalSearch::class, ['queryParams' => array_filter($data)]);
+        /* $filter = app()-> make(GlobalSearch::class, ['queryParams' => array_filter($data)]); */
         
-        $collection = Collection::where('price', 1)->orderByDesc('id')->filter($filter)->get();
+        $collection = Collection::where('price', 1)->where('name_proj', 'like', "%{$request->searchText}%")->orderByDesc('id')->get();
 
-        $news = News::orderByDesc('id')->filter($filter)->get();
-        //dd($collection);
+        $news = News::orderByDesc('id')->where('name', 'like', "%{$request->searchText}%")->get();
+
         $response = [
             'news' => $news,
             'collections' => $collection,

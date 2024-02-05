@@ -10,13 +10,13 @@ import {} from "../libs/ckeditor/ckeditor";
     const excerptEl = document.querySelector("#excerpt");
     const mainImg = document.querySelector("#img1_fin");
     const projectType = document.querySelector("#tip");
-    const projectRegion = document.querySelector("#region");
-    const projectTheme = document.querySelector("#tema");
+    const projectRegion = document.querySelector("#region")
+    const projectTheme = document.querySelector("#tema")
+    const phoneInput = document.querySelector("#tel");
+    const emailInput = document.querySelector("#email");
 
     function showValidateError(targetElement, isError, hintMessage) {
-        const parentElement = targetElement.closest(
-            ".create-project__form-item, .create-project__form-img, .create-project__form-select"
-        );
+        const parentElement = targetElement.closest('.create-project__form-item, .create-project__form-img, .create-project__form-select');
         const labelElement = parentElement.querySelector("label");
 
         if (isError) {
@@ -54,8 +54,8 @@ import {} from "../libs/ckeditor/ckeditor";
     }
 
     function validateEmail(formRequiredItem) {
-        return !/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,8})+$/.test(
-            formRequiredItem.value
+        return /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,8})+$/.test(
+            formRequiredItem
         );
     }
 
@@ -69,13 +69,15 @@ import {} from "../libs/ckeditor/ckeditor";
             editorData[fieldName] = currentEditor.getData();
             currentEditor.on("change", function () {
                 editorData[fieldName] = currentEditor.getData();
-                var isContentExceedingLimit =
-                    editorData["excerpt"].length >= 1000;
-                showValidateError(
-                    excerptEl,
-                    isContentExceedingLimit,
-                    "Не более 1000 символов"
-                );
+                if (currentEditor.id === 'cke_1') {
+                    var isContentExceedingLimit =
+                        editorData[fieldName].length >= 1000;
+                    showValidateError(
+                        excerptEl,
+                        isContentExceedingLimit,
+                        "Не более 1000 символов"
+                    );
+                }
             });
         })(editor, excerptFieldName);
     });
@@ -377,7 +379,7 @@ import {} from "../libs/ckeditor/ckeditor";
                 email.length === 0 ||
                 !validateEmail(email) ||
                 tel === 0 ||
-                !validatePhone(tel) === 0 ||
+                !validatePhone(tel) ||
                 excerpt.length === 0 ||
                 name_proj.length === 0 ||
                 teg.length === 0 ||
@@ -398,6 +400,9 @@ import {} from "../libs/ckeditor/ckeditor";
                 showValidateError(projectType, tip.length === 0, "");
                 showValidateError(projectRegion, region.length === 0, "");
                 showValidateError(projectTheme, tema.length === 0, "");
+                showValidateError(phoneInput, !validatePhone(tel), "");
+                showValidateError(emailInput, !validateEmail(email), "");
+
 
                 for (let i = 0; i < serch_mas.length; i++) {
                     showValidateError(
@@ -408,6 +413,11 @@ import {} from "../libs/ckeditor/ckeditor";
                 }
 
                 alert("Заполните все поля выделенные красным");
+                return false;
+            }
+
+            if (!date_service_from || !date_service_to) {
+                alert("Заполните сроки проекта");
                 return false;
             }
 

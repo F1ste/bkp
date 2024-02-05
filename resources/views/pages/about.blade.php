@@ -106,7 +106,7 @@
 						<div class="join-us__content">
 							<div class="join-us__item">
 								<div class="join-us__media media-block">
-									<a href="#">
+									<a href="/profile/dashboard">
 										<picture>
 											<source srcset="{{ asset('image/join-us1.webp') }}" type="image/webp">
 											<img src="{{ asset('image/join-us1.png') }}" alt="Изображение">
@@ -123,12 +123,12 @@
 											какая помощь вам нужна
 										</div>
 									</div>
-									<a href="#" class="join-us__btn _fw btn btn-filled">Перейти</a>
+									<a href="/profile/dashboard" class="join-us__btn _fw btn btn-filled">Перейти</a>
 								</div>
 							</div>
 							<div class="join-us__item">
 								<div class="join-us__media media-block">
-									<a href="#">
+									<a href="/news">
 										<picture>
 											<source srcset="{{ asset('image/join-us2.webp') }}" type="image/webp">
 											<img src="{{ asset('image/join-us2.png') }}" alt="Изображение">
@@ -145,7 +145,7 @@
                                             культурной биржи
 										</div>
 									</div>
-									<a href="#" class="join-us__btn _fw btn btn-filled">Перейти</a>
+									<a href="/news" class="join-us__btn _fw btn btn-filled">Перейти</a>
 								</div>
 							</div>
 						</div>

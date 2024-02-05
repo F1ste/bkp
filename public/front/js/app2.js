@@ -10408,8 +10408,6 @@
                 if (headerSearchInput.value !== "" && headerResultItem) {
                     headerSearchResults.classList.add("_results-active");
                     fetch(`/search?searchText=${query}`).then((response => response.json())).then((data => {
-                        console.log(data.news.length);
-                        console.log(data.collections);
                         const newsArray = data.news || [];
                         const collectionsArray = data.collections || [];
                         headerSearchResults.innerHTML = "";
@@ -10441,7 +10439,7 @@
                                     const listItem = document.createElement("div");
                                     listItem.classList.add("search-results__item");
                                     const title = document.createElement("a");
-                                    title.textContent = item.name;
+                                    title.textContent = item.name_proj;
                                     title.href = "/projects/project/" + item.id;
                                     listItem.appendChild(title);
                                     headerSearchResults.appendChild(listItem);

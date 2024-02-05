@@ -44,7 +44,7 @@
                                     <div class="auth-form__form-item form__item checkbox__item">
                                         <div class="auth-form__checkbox checkbox">
                                             <input data-no-focus-classes="" id="terms" required type="checkbox" name="terms" class="auth-form__checkbox-input checkbox__input">
-                                            <label for="terms" class="auth-form__form-label checkbox__label "><span>Я согласен с <a href="">условиями пользования сервисом</a></span></label>
+                                            <label for="terms" class="auth-form__form-label checkbox__label "><span>Я согласен с <a href="/policy">условиями пользования сервисом</a></span></label>
                                         </div>
                                     </div>
 
