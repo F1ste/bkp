@@ -8,7 +8,7 @@
 						<div class="projects__heading-text section__heading-text">
 							<div class="projects__title section__title">
 								ПРОЕКТЫ
-                                <sup class="sup-count help" title="Количество проектов">{{ $projects_count }}</sup>
+                                <sup class="sup-count help" title="Количество проектов">{{ $collections->total() }}</sup>
 							</div>
 						</div>
 					</div>

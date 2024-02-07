@@ -153,7 +153,7 @@
 						<div class="popular-projects__heading-text section__heading-text">
 							<div class="popular-projects__title main-page__section-title">
 								Проекты
-                                <sup class="sup-count help" title="Количество проектов">{{ $projects_count }}</sup>
+                                <sup class="sup-count help" title="Количество проектов">{{ $collections->count() }}</sup>
 							</div>
 						</div>
 						<a data-da=".popular-projects__container,768" href="/projects" class="news-block__all-news _fw btn btn-white">

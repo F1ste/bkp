@@ -29,8 +29,7 @@ class PageController extends Controller
         $collections = Collection::where('price', '1')->orderByDesc('id')->get();
         $userIds = $collections->pluck('user_id')->unique();
         $users = User::whereIn('id', $userIds)->get();
-        $projects_count = Collection::where('date_service_to', '>', Carbon::now())->count();
-        return view('pages.front.home.home', compact('collections', 'news', 'users', 'projects_count'));
+        return view('pages.front.home.home', compact('collections', 'news', 'users'));
     }
 
     /**
@@ -131,7 +130,6 @@ class PageController extends Controller
 
         $userIds = $collection->pluck('user_id')->unique();
         $users = User::whereIn('id', $userIds)->get();
-        $projects_count = Collection::where('date_service_to', '>', Carbon::now())->count();
 
         return view('pages.front.projects.projects', [
             'collections'    => $collection,
@@ -142,7 +140,6 @@ class PageController extends Controller
             'teg' => $teg,
             'roles' => $roles,
             'users' => $users,
-            'projects_count' => $projects_count,
         ]);
 
     }
