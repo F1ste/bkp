@@ -315,6 +315,7 @@ h6 {
   -webkit-box-flex: 1;
       -ms-flex: 1 1 auto;
           flex: 1 1 auto;
+          margin-top: 55px 
 }
 
 .wrapper > * {
@@ -1952,7 +1953,7 @@ body::after {
 }
 
 .header {
-  position: relative;
+  position: fixed;
   width: 100%;
   z-index: 1001;
   min-height: 95px;
@@ -4291,7 +4292,7 @@ body::after {
 }
 
 .contacts {
-  margin-top: 3.0625rem;
+  margin-top: 65px;
 }
 
 .contacts:last-child {
@@ -6810,6 +6811,10 @@ body::after {
 
   .news-block__items-wrapper .big-news__banner .media-block {
     max-width: none;
+  }
+
+  .news-block__items-wrapper .news-block__items-content{
+    display:none;
   }
 
   .create-project__form-select {
