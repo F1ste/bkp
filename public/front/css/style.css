@@ -2840,6 +2840,15 @@ body::after {
   padding: 0.6875rem 1.25rem;
 }
 
+.tags__item--disabled,
+.tags__item--disabled:hover {
+  background-color: #ccc !important;
+  color: inherit !important;
+  border: inherit;
+  opacity: .5;
+  pointer-events: none;
+}
+
 .project-duration {
   white-space: nowrap;
   font-size: 0.8125rem;

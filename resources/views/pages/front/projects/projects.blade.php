@@ -224,14 +224,19 @@
 											Ищем:
 										</div>
 										<div class="partners-tags__tags-wrapper tags">
-											@php
-												$json = json_decode($el->serch);
-											@endphp
-											@foreach($json as $serchs)
+                                        @php
+                                            $json = array_map(function ($item) { $item->last_date = \Illuminate\Support\Carbon::parse($item->inp); return $item; }, json_decode($el->serch));
+                                            usort($json, function ($a, $b) { return $a->last_date->lt($b->last_date); });
+                                        @endphp
+                                        @foreach($json as $serchs)
+                                            @if ($serchs->last_date->gte(now()))
 											<a href="#" class="tags__item btn btn-white">
 												{{$serchs->sel}}
 											</a>
-											@endforeach
+                                            @else
+                                            <span class="tags__item tags__item--disabled btn btn-white">{{$serchs->sel}}</span>
+                                            @endif
+										@endforeach
 										</div>
 									</div>
 									<div class="popular-projects__subscribe">
