@@ -8638,3 +8638,71 @@ blockquote p::after {
 .help {
     cursor: help;
 }
+
+.flex,
+.flex-col,
+.flex-row {
+    display: flex;
+}
+
+.flex-col {
+    flex-direction: column;
+}
+
+.flex-row {
+    flex-direction: row;
+}
+
+@media (min-width: 1024px) {
+    .lg\:flex,
+    .lg\:flex-col,
+    .lg\:flex-row {
+        display: flex;
+    }
+
+    .lg\:flex-col {
+        flex-direction: column;
+    }
+    .flex-row {
+        flex-direction: row;
+    }
+}
+
+.justify-between {
+    justify-content: space-between;
+}
+
+.banners {
+    margin-top: 15px;
+}
+
+.banner {
+    background-color: #f3f4f5;
+    max-width: 100%;
+    width: 400px;
+    object-fit: contain;
+    overflow: hidden;
+    margin-bottom: 15px;
+}
+
+.banner img {
+    width: 100%;
+}
+
+.banner--adv {
+    position: relative;
+}
+
+.banner__adv-from {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    padding: 5px;
+    font-size: 12px;
+    opacity: .8rem;
+    color: #fff;
+    text-align: right;
+    text-shadow: 0 0 2px #000;
+    border-radius: 5px 0 0 0;
+}
+

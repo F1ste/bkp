@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\FilterRequest;
+use App\Models\Banner;
 use App\Models\Collection;
 use App\Models\User;
 use App\Models\News;
@@ -208,10 +209,10 @@ class PageController extends Controller
     }
 
 
-     public function tidings($id)
+    public function tidings($id)
     {
-         $collection = News::where('id', $id)->get();
-          $collection = $collection[0];
+        $collection = News::find($id);
+        $banners = Banner::query()->get();
 
         return view('pages.front.news.tidings', [
                 'collection'    => $collection,
