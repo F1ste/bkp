@@ -2810,6 +2810,10 @@ body::after {
   font-weight: 700;
 }
 
+.popular-projects__empty {
+    width: 100%;
+}
+
 .partners-tags__title {
   font-size: 1rem;
   font-weight: 700;
@@ -8706,3 +8710,33 @@ blockquote p::after {
     border-radius: 5px 0 0 0;
 }
 
+.popular-projects__empty {
+    padding-top: 30px;
+    padding-bottom: 30px;
+    display: flex;
+    flex-direction: column;
+    row-gap: 2rem;
+    text-align: center;
+    width: 100%;
+    grid-column: 1/4;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.emoji {
+    font-family: Apple Color Emoji, "Segoe UI Emoji", "Noto Color Emoji";
+}
+
+.text-xxl {
+    font-size: 4rem;
+}
+
+.text-xl {
+    font-size: 3rem;
+}
+
+.text-lg {
+    font-size: 2rem;
+}
