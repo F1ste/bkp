@@ -6076,6 +6076,14 @@ blockquote p::after {
           justify-content: center;
 }
 
+.about__text-paragraph p {
+    margin-bottom: 1rem;
+}
+
+.about__text-paragraph ol {
+    padding-left: 2rem;
+}
+
 .about__text-paragraph:not(:first-child) {
   margin-top: 2.5rem;
 }
