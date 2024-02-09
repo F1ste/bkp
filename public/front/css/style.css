@@ -8676,11 +8676,11 @@ blockquote p::after {
     justify-content: space-between;
 }
 
-.banners {
+.adv-banners {
     margin-top: 15px;
 }
 
-.banner {
+.adv-banner {
     background-color: #f3f4f5;
     max-width: 100%;
     width: 400px;
@@ -8689,15 +8689,15 @@ blockquote p::after {
     margin-bottom: 15px;
 }
 
-.banner img {
+.adv-banner img {
     width: 100%;
 }
 
-.banner--adv {
+.adv-banner--adv {
     position: relative;
 }
 
-.banner__adv-from {
+.adv-banner__adv-from {
     position: absolute;
     right: 0;
     bottom: 0;
