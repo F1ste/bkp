@@ -1719,7 +1719,7 @@ body::after {
 
 @supports (margin-left: clamp( 2.8125rem , 58.3rem  +  -46vw , 7.125rem )) {
   .personal-account {
-    margin-left: clamp( 2.8125rem , 58.3rem  +  -46vw , 7.125rem );
+    margin-left: 270px;
   }
 }
 
