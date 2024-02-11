@@ -191,9 +191,9 @@
                                 <div class="popular-projects__project-type">
                                     {{ $el->tema }}
                                 </div>
-                                <div class="popular-projects__project-name">
+                                <a href="{{ route('projects.project', ['id' => $el->id]) }}" class="popular-projects__project-name">
                                     {{ $el->name_proj }}
-                                </div>
+                                </a>
                                 <div class="popular-projects__project-date">
                                     От {{ Carbon\Carbon::parse($el->date_service_from)->format('d.m.Y') }}
                                 </div>
