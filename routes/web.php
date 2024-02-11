@@ -22,13 +22,7 @@ Route::get('/clear', function () {
     return "Сброс кэша выполнен!";
 });
 
-
-require __DIR__.'/page.php';
-require __DIR__.'/user.php';
-require __DIR__.'/auth.php';
-
-Route::get('/storage/{filename}', function ($filename)
-{
+Route::get('/storage/{filename}', function ($filename) {
     $path = storage_path('app\public\\' . $filename);
 
     if (!File::exists($path)) {
