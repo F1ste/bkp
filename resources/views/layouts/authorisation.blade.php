@@ -10,7 +10,7 @@
     <body>
 
         <x-header />
-           <main class="page">
+        <main class="page">
             <div class="sidebar sidebar__expanded">
                 <div class="sidebar__items">
                     <a href="/profile/setting" class="sidebar__item _icon-person">Профиль</a>
@@ -44,8 +44,8 @@
                 </div>
                 <a href="/logout" class="sidebar__item _icon-logout">Выход</a>
             </div>
-        @yield('content')
-            </main>
+            @yield('content')
+        </main>
 
         <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
         <script src="{{ asset('/plugins/ckeditor/ckeditor.js') }}"></script>
@@ -53,8 +53,5 @@
         <script src="{{ asset('front/js/editor.js') }}"></script>
         <script src="{{ asset('front/js/app.js') }}"></script>
         <script src="{{ asset('front/js/app2.js') }}"></script>
-
-
-
     </body>
 </html>
