@@ -13,9 +13,8 @@
             </div>
             <div class="auth__content">
                 <div class="auth__heading">
-                    <a href="" class="">
-                        <img src="image/logo.svg" alt="Культурная биржа">
-                        <span>Культурная <br> биржа</span>
+                    <a href="/">
+                        <img src="image/logo-with-text.png" alt="Культурная биржа">
                     </a>
                 </div>
                 <div data-tabs class="auth__form tabs">

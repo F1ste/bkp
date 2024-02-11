@@ -2,8 +2,7 @@
     <header class="header">
         <div class="header__container">
             <a href="/" class="header__logo">
-                <img src="{{ asset('image/logo.svg') }}" alt="Культурная Биржа">
-                <div class="logo__text">Культурная <br> Биржа</div>
+                <img src="{{ asset('image/logo-with-text.png') }}" alt="Культурная Биржа">
             </a>
 
             <div class="header__menu menu">

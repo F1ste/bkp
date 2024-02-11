@@ -2000,7 +2000,7 @@ body::after {
 }
 
 .header__logo img {
-  width: 4.25rem;
+  /* width: 4.25rem; */
   height: 3rem;
   -webkit-transition: -webkit-transform 0.2s ease;
   transition: -webkit-transform 0.2s ease;
@@ -2009,9 +2009,9 @@ body::after {
 }
 
 .header__logo img:hover {
-  -webkit-transform: scale(1.3);
-      -ms-transform: scale(1.3);
-          transform: scale(1.3);
+  -webkit-transform: scale(1.03);
+      -ms-transform: scale(1.03);
+          transform: scale(1.03);
 }
 
 .header__login-btn {
@@ -3084,7 +3084,7 @@ body::after {
 }
 
 .auth__heading img {
-  max-width: 48px;
+  /* max-width: 48px; */
   max-height: 34px;
   width: 100%;
   height: 100%;
@@ -7296,7 +7296,7 @@ blockquote p::after {
   }
 
   .header__logo img {
-    width: 2.25rem;
+    /* width: 2.25rem; */
     height: 1.625rem;
   }
 
