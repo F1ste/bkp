@@ -275,7 +275,7 @@
                                             </div>
                                             <div class="create-project__role-description form__item">
                                                 <label for="FormProjectPartnerDescription" class="create-project__form-label form__label">Описание</label>
-                                                <textarea id="FormProjectPartnerDescription" type="text" name="roleDescription" class="create-project__form-input form__input project-description" placeholder="Не более 10000 символов" data-placeholder="Не более 10000 символов">{{ $serchs->tex }}</textarea>
+                                                <textarea id="FormProjectPartnerDescription" type="text" name="roleDescription" class="create-project__form-input form__input project-description" placeholder="Не более 10000 символов" data-placeholder="Не более 10000 символов">{{ $serchs->tex ?? '' }}</textarea>
                                             </div>
                                         </div>
                                         @endforeach
