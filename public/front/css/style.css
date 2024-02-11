@@ -5519,6 +5519,12 @@ blockquote p::after {
           flex-direction: column;
 }
 
+.chat__dialogue.chat__empty{
+  text-align: center;
+  display: grid;
+  place-content: center;
+}
+
 .chat__chat-heading {
   margin-top: 1.125rem;
   display: -webkit-box;
