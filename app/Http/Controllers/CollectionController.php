@@ -193,101 +193,13 @@ class CollectionController extends Controller
     {
         $size = $request->file('file')->getSize();
         $type = $request->file('file')->extension();
-
         $name = $size . '_' . 'image' . '.' . $type;
-
         $request->file('file')->storeAs(
             'public',
             $name
         );
 
         $link = '/storage/' . $name;
-
-        return $link;
-    }
-
-    public function img2(Request $request)
-    {
-        $size = $request->file('file')->getSize();
-        $type = $request->file('file')->extension();
-
-        $name = $size . '_' . 'image' . '.' . $type;
-
-        $request->file('file')->storeAs(
-            'public',
-            $name
-        );
-
-        $link = '/storage/' . $name;
-
-        return $link;
-    }
-
-    public function img3(Request $request)
-    {
-        $size = $request->file('file')->getSize();
-        $type = $request->file('file')->extension();
-
-        $name = $size . '_' . 'image' . '.' . $type;
-
-        $request->file('file')->storeAs(
-            'public',
-            $name
-        );
-
-        $link = '/storage/' . $name;
-
-        return $link;
-    }
-
-    public function img4(Request $request)
-    {
-        $size = $request->file('file')->getSize();
-        $type = $request->file('file')->extension();
-
-        $name = $size . '_' . 'image' . '.' . $type;
-
-        $request->file('file')->storeAs(
-            'public',
-            $name
-        );
-
-        $link = '/storage/' . $name;
-
-        return $link;
-    }
-
-    public function img5(Request $request)
-    {
-        $size = $request->file('file')->getSize();
-        $type = $request->file('file')->extension();
-
-        $name = $size . '_' . 'image' . '.' . $type;
-
-        $request->file('file')->storeAs(
-            'public',
-            $name
-        );
-
-        $link = '/storage/' . $name;
-
-        return $link;
-    }
-
-    public function img6(Request $request)
-    {
-        $size = $request->file('file')->getSize();
-        $type = $request->file('file')->extension();
-
-        $name = $size . '_' . 'image' . '.' . $type;
-
-        $request->file('file')->storeAs(
-            'public',
-            $name
-        );
-
-        $link = '/storage/' . $name;
-
         return $link;
     }
 }

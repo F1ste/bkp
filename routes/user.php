@@ -51,13 +51,7 @@ Route::prefix('/profile')->middleware('auth')->group(function () {
         Route::get('/services-{id}', [CollectionController::class, 'single'])->name('profile.services.single');
         Route::get('/new', [CollectionController::class, 'new'])->name('profile.services.new');
 
-        Route::post('/img1', [CollectionController::class, 'img1'])->name('profile.services.img1');
-        Route::post('/img2', [CollectionController::class, 'img2'])->name('profile.services.img2');
-        Route::post('/img3', [CollectionController::class, 'img3'])->name('profile.services.img3');
-        Route::post('/img4', [CollectionController::class, 'img4'])->name('profile.services.img4');
-        Route::post('/img5', [CollectionController::class, 'img5'])->name('profile.services.img5');
-        Route::post('/img6', [CollectionController::class, 'img6'])->name('profile.services.img6');
-        Route::post('/img7', [CollectionController::class, 'img6'])->name('profile.services.img7');
+        Route::post('/img', [CollectionController::class, 'img'])->name('profile.services.img');
 
         Route::post('/store', [CollectionController::class, 'store'])->name('profile.services.store');
         Route::post('/edit', [CollectionController::class, 'edit'])->name('profile.services.edit');

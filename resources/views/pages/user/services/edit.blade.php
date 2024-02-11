@@ -19,7 +19,7 @@
                     <div class="create-project__form-img">
                         <label class="create-project__form-label form__label">Основное фото проекта</label>
                         <div class="create-project__main-photo form__input add-photo">
-                            <div data-img="{{ route('profile.services.img1') }}"
+                            <div data-img="{{ route('profile.services.img') }}"
                                 class="create-project__drag-and-drop drag-and-drop" id='img1'>
                                 @if($collection->img1 == '')
                                 <div class="create-project__drag-wrapper drag-wrapper" id='img1_box'>
@@ -58,7 +58,7 @@
                                     проекта</label>
                                 <input value="{{ $collection->name_proj }}" id="name_proj" type="text"
                                     name="projectName" class="create-project__form-input form__input"
-                                    placeholder="Название проекта" data-placeholder="Название проекта" 
+                                    placeholder="Название проекта" data-placeholder="Название проекта"
                                     data-validate data-required data-error="Заполните данное поле">
                             </div>
                             <div class="create-project__form-item form__item">
@@ -158,7 +158,7 @@
 
 
                                 @if($collection->img2 == '')
-                                <div data-img="{{ route('profile.services.img2') }}"
+                                <div data-img="{{ route('profile.services.img') }}"
                                     class="create-project__drag-and-drop drag-and-drop" id='img2'>
                                     <div class="create-project__drag-wrapper drag-wrapper" id='img2_box'>
                                         <form id='form_img_2'><input id='img2_input' type="file" name="file"
@@ -172,7 +172,7 @@
                                 </div>
                                 @else
 
-                                <div data-img="{{ route('profile.services.img2') }}"
+                                <div data-img="{{ route('profile.services.img') }}"
                                     class="create-project__drag-and-drop drag-and-drop" id='img2'>
                                     <div style="display: none;" class="create-project__drag-wrapper drag-wrapper"
                                         id='img2_box'>
@@ -199,7 +199,7 @@
 
 
                                 @if($collection->img3 == '')
-                                <div data-img="{{ route('profile.services.img3') }}"
+                                <div data-img="{{ route('profile.services.img') }}"
                                     class="create-project__drag-and-drop drag-and-drop" id='img3'>
                                     <div class="create-project__drag-wrapper drag-wrapper" id='img3_box'>
                                         <form id='form_img_3'><input id='img3_input' type="file" name="file"
@@ -213,7 +213,7 @@
                                 @else
 
 
-                                <div data-img="{{ route('profile.services.img3') }}"
+                                <div data-img="{{ route('profile.services.img') }}"
                                     class="create-project__drag-and-drop drag-and-drop" id='img3'>
                                     <div style="display: none;" class="create-project__drag-wrapper drag-wrapper"
                                         id='img3_box'>
@@ -241,7 +241,7 @@
                             <div class="create-project__gallery form__input add-photo">
 
                                 @if($collection->img4 == '')
-                                <div data-img="{{ route('profile.services.img4') }}"
+                                <div data-img="{{ route('profile.services.img') }}"
                                     class="create-project__drag-and-drop drag-and-drop" id='img4'>
                                     <div class="create-project__drag-wrapper drag-wrapper" id='img4_box'>
                                         <form id='form_img_4'><input id='img4_input' type="file" name="file"
@@ -254,7 +254,7 @@
                                 </div>
                                 @else
 
-                                <div data-img="{{ route('profile.services.img4') }}"
+                                <div data-img="{{ route('profile.services.img') }}"
                                     class="create-project__drag-and-drop drag-and-drop" id='img4'>
                                     <div style="display: none;" class="create-project__drag-wrapper drag-wrapper"
                                         id='img4_box'>
@@ -281,7 +281,7 @@
 
 
                                 @if($collection->img5 == '')
-                                <div data-img="{{ route('profile.services.img5') }}"
+                                <div data-img="{{ route('profile.services.img') }}"
                                     class="create-project__drag-and-drop drag-and-drop" id='img5'>
                                     <div class="create-project__drag-wrapper drag-wrapper" id='img5_box'>
                                         <form id='form_img_5'><input id='img5_input' type="file" name="file"
@@ -294,7 +294,7 @@
                                 </div>
                                 @else
 
-                                <div data-img="{{ route('profile.services.img5') }}"
+                                <div data-img="{{ route('profile.services.img') }}"
                                     class="create-project__drag-and-drop drag-and-drop" id='img5'>
                                     <div style="display: none;" class="create-project__drag-wrapper drag-wrapper"
                                         id='img5_box'>
@@ -320,7 +320,7 @@
                             <div class="create-project__gallery form__input add-photo">
 
                                 @if($collection->img5 == '')
-                                <div data-img="{{ route('profile.services.img6') }}"
+                                <div data-img="{{ route('profile.services.img') }}"
                                     class="create-project__drag-and-drop drag-and-drop" id='img6'>
                                     <div class="create-project__drag-wrapper drag-wrapper" id='img6_box'>
                                         <form id='form_img_6'><input id='img6_input' type="file" name="file"
@@ -333,7 +333,7 @@
                                 </div>
                                 @else
 
-                                <div data-img="{{ route('profile.services.img6') }}"
+                                <div data-img="{{ route('profile.services.img') }}"
                                     class="create-project__drag-and-drop drag-and-drop" id='img6'>
                                     <div style="display: none;" class="create-project__drag-wrapper drag-wrapper"
                                         id='img6_box'>

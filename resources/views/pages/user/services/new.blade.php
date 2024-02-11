@@ -25,7 +25,7 @@
                                     <div class="create-project__form-img">
                                         <label class="create-project__form-label form__label">Основное фото проекта</label>
                                         <div  class="create-project__main-photo form__input add-photo">
-                                            <div data-img="{{ route('profile.services.img1') }}" class="create-project__drag-and-drop drag-and-drop" id='img1'>
+                                            <div data-img="{{ route('profile.services.img') }}" class="create-project__drag-and-drop drag-and-drop" id='img1'>
                                                 <div class="create-project__drag-wrapper drag-wrapper" id='img1_box'>
                                                     <form id='form_img_1'><input id='img1_input' type="file" name="file" class="file__input" accept=".jpeg, .jpg, .png" hidden></form>
                                                     <div class="create-project__upload-logo"><img src="/image/iconsFont/add-img.svg" alt="Загрузите основное фото проекта"></div>
@@ -42,25 +42,25 @@
                                         <div class="create-project__main-col">
                                             <div class="create-project__form-item form__item">
                                                 <label for="name_proj" class="create-project__form-label form__label">Название проекта</label>
-                                                <input id="name_proj" 
-                                                type="text" name="projectName" 
-                                                class="create-project__form-input form__input" 
+                                                <input id="name_proj"
+                                                type="text" name="projectName"
+                                                class="create-project__form-input form__input"
                                                 placeholder="Название проекта" data-placeholder="Название проекта"
                                                 >
                                             </div>
                                             <div class="create-project__form-item form__item">
                                                 <label for="date_service_from" class="create-project__form-label form__label">Сроки начала проекта</label>
-                                                <input data-datepicker 
-                                                data-datepicker_1 id="date_service_from" type="text" 
-                                                name="projectName" class="create-project__form-input form__input" 
+                                                <input data-datepicker
+                                                data-datepicker_1 id="date_service_from" type="text"
+                                                name="projectName" class="create-project__form-input form__input"
                                                 placeholder="C" data-placeholder="C"
                                                 readonly autocomplete="off"
                                                 >
                                             </div>
                                             <div class="create-project__form-item form__item">
                                                 <label for="date_service_to" class="create-project__form-label form__label">Сроки окончания проекта</label>
-                                                <input data-datepicker data-datepicker_2 id="date_service_to" 
-                                                type="text" name="projectName" class="create-project__form-input form__input" 
+                                                <input data-datepicker data-datepicker_2 id="date_service_to"
+                                                type="text" name="projectName" class="create-project__form-input form__input"
                                                 placeholder="До" data-placeholder="До"
                                                 readonly autocomplete="off"
                                                 >
@@ -119,7 +119,7 @@
                                             <label class="create-project__form-label form__label">Галерея проекта</label>
                                             <div class="create-project__gallery-big form__input add-photo">
 
-                                                <div data-img="{{ route('profile.services.img2') }}" class="create-project__drag-and-drop drag-and-drop" id='img2'>
+                                                <div data-img="{{ route('profile.services.img') }}" class="create-project__drag-and-drop drag-and-drop" id='img2'>
                                                     <div class="create-project__drag-wrapper drag-wrapper" id='img2_box'>
                                                         <form id='form_img_2'><input id='img2_input' type="file" name="file" class="file__input" accept=".jpeg, .jpg, .png" hidden></form>
                                                         <div class="create-project__upload-logo"><img src="/image/iconsFont/add-img_thin.svg" alt="Загрузите фото "></div>
@@ -133,7 +133,7 @@
                                         <div class="create-project__form-img">
                                             <div class="create-project__gallery form__input add-photo">
 
-                                                <div data-img="{{ route('profile.services.img3') }}" class="create-project__drag-and-drop drag-and-drop" id='img3'>
+                                                <div data-img="{{ route('profile.services.img') }}" class="create-project__drag-and-drop drag-and-drop" id='img3'>
                                                     <div class="create-project__drag-wrapper drag-wrapper" id='img3_box'>
                                                         <form id='form_img_3'><input id='img3_input' type="file" name="file" class="file__input" accept=".jpeg, .jpg, .png" hidden></form>
                                                         <div class="create-project__upload-logo"><img src="/image/iconsFont/add-img_thin.svg" alt="Загрузите фото "></div>
@@ -146,7 +146,7 @@
                                         <div class="create-project__form-img">
                                             <div class="create-project__gallery form__input add-photo">
 
-                                                <div data-img="{{ route('profile.services.img4') }}" class="create-project__drag-and-drop drag-and-drop" id='img4'>
+                                                <div data-img="{{ route('profile.services.img') }}" class="create-project__drag-and-drop drag-and-drop" id='img4'>
                                                     <div class="create-project__drag-wrapper drag-wrapper" id='img4_box'>
                                                         <form id='form_img_4'><input id='img4_input' type="file" name="file" class="file__input" accept=".jpeg, .jpg, .png" hidden></form>
                                                         <div class="create-project__upload-logo"><img src="/image/iconsFont/add-img_thin.svg" alt="Загрузите фото "></div>
@@ -159,7 +159,7 @@
                                         <div class="create-project__form-img">
                                             <div class="create-project__gallery form__input add-photo">
 
-                                                <div data-img="{{ route('profile.services.img5') }}" class="create-project__drag-and-drop drag-and-drop" id='img5'>
+                                                <div data-img="{{ route('profile.services.img') }}" class="create-project__drag-and-drop drag-and-drop" id='img5'>
                                                     <div class="create-project__drag-wrapper drag-wrapper" id='img5_box'>
                                                         <form id='form_img_5'><input id='img5_input' type="file" name="file" class="file__input" accept=".jpeg, .jpg, .png" hidden></form>
                                                         <div class="create-project__upload-logo"><img src="/image/iconsFont/add-img_thin.svg" alt="Загрузите фото "></div>
@@ -172,7 +172,7 @@
                                         <div class="create-project__form-img">
                                             <div class="create-project__gallery form__input add-photo">
 
-                                                <div data-img="{{ route('profile.services.img6') }}" class="create-project__drag-and-drop drag-and-drop" id='img6'>
+                                                <div data-img="{{ route('profile.services.img') }}" class="create-project__drag-and-drop drag-and-drop" id='img6'>
                                                     <div class="create-project__drag-wrapper drag-wrapper" id='img6_box'>
                                                         <form id='form_img_6'><input id='img6_input' type="file" name="file" class="file__input" accept=".jpeg, .jpg, .png" hidden></form>
                                                         <div class="create-project__upload-logo"><img src="/image/iconsFont/add-img_thin.svg" alt="Загрузите фото "></div>
@@ -209,8 +209,8 @@
 
                                             <div class="create-project__form-item form__item">
                                                 <label for="FormProjectRoleUntil" class="create-project__form-label form__label">До какого числа принимаются заявки</label>
-                                                <input id="FormProjectRoleUntil" autocomplete="off" data-datepicker data-datepicker_3 
-                                                type="text" name="projectName" class="create-project__form-input form__input" placeholder="До 10.09.2023" 
+                                                <input id="FormProjectRoleUntil" autocomplete="off" data-datepicker data-datepicker_3
+                                                type="text" name="projectName" class="create-project__form-input form__input" placeholder="До 10.09.2023"
                                                 data-placeholder="До 10.09.2023"
                                                 readonly autocomplete="off"
                                                 >
@@ -240,7 +240,7 @@
                                             <label for="name" class="create-project__form-label form__label">
                                                 Имя Фамилия*
                                             </label>
-                                            <input id="name" type="text" name="projectName" class="create-project__form-input form__input" 
+                                            <input id="name" type="text" name="projectName" class="create-project__form-input form__input"
                                             placeholder="Контакт" data-placeholder="Контакт"
                                             data-validate data-required data-error="Заполните данное поле">
                                         </div>
@@ -250,8 +250,8 @@
                                                 <button type="button" data-tippy-content="Укажите телефон контактного лица, которому можно позвонить,
                                                     если возникнут технические вопросы." class="_icon-info"></button>
                                             </label>
-                                            <input id="tel" type="text" name="projectName" 
-                                            class="create-project__form-input form__input" placeholder="8 000 000 00 00" 
+                                            <input id="tel" type="text" name="projectName"
+                                            class="create-project__form-input form__input" placeholder="8 000 000 00 00"
                                             data-placeholder="8 000 000 00 00" data-inputmask="'mask': '8 999 999 99 99'"
                                             data-validate data-required="phone" data-error="Введен некорректный телефон">
                                         </div>
@@ -259,7 +259,7 @@
                                             <label for="Femail" class="create-project__form-label form__label">
                                                 Почта*
                                             </label>
-                                            <input id="email" type="text" name="projectName" class="create-project__form-input form__input" 
+                                            <input id="email" type="text" name="projectName" class="create-project__form-input form__input"
                                             placeholder="Email" data-placeholder="Email"
                                             data-validate data-required="email" data-error="Введен некорректный Email">
                                         </div>
@@ -273,7 +273,7 @@
 
                         </div>
                     </div>
-                </section>                
+                </section>
 
 @endsection
 
