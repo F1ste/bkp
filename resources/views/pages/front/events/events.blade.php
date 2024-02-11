@@ -3,7 +3,6 @@
 @section('title', 'Мероприятия')
 
 @section('content')
-
     <main class="main__container">
         <section class="events">
             <div class="events__container">
@@ -119,15 +118,21 @@
             <div class="slider-track">
                 <div class="slider-item">
                     <img src="/image/7af33bb9bf8a0c19898795b2d642099d.jpg" alt="Первый слайд">
-                    <div class="slideText"><p>Одежда</p></div>
+                    <div class="slideText">
+                        <p>Одежда</p>
+                    </div>
                 </div>
                 <div class="slider-item">
                     <img src="/image/pexels-ray-piedra-1502352.png" alt="Второй слайд">
-                    <div class="slideText"><p>Обувь</p></div>
+                    <div class="slideText">
+                        <p>Обувь</p>
+                    </div>
                 </div>
                 <div class="slider-item">
                     <img src="/image/f7480deb63101bf92c01b1673adf5c77.jpg" alt="Третий слайд">
-                    <div class="slideText"><p>Одежда</p></div>
+                    <div class="slideText">
+                        <p>Одежда</p>
+                    </div>
                 </div>
             </div>
             <div class="prev"><span>&#10094</span></div>
@@ -181,8 +186,9 @@
             </a>
         </div>
         <button class="btn btn-article">Читать все статьи</button>
-        <div class="static-article"><p>Креатив в дизайне, прагматичность в деле</p></div>
+        <div class="static-article">
+            <p>Креатив в дизайне, прагматичность в деле</p>
+        </div>
 
     </div>
-
 @endsection

@@ -1,19 +1,19 @@
 @extends('layouts.index')
-@section('content')
 
-<main class="page">
-    <section class="projects">
-        <div class="projects__container">
-            <div class="projects__heading section__heading">
-                <div class="projects__heading-text section__heading-text">
-                    <div class="projects__title section__title">
-                        ПРОЕКТЫ
-                        <sup class="sup-count help" title="Количество проектов">{{ $collections->total() }}</sup>
+@section('content')
+    <main class="page">
+        <section class="projects">
+            <div class="projects__container">
+                <div class="projects__heading section__heading">
+                    <div class="projects__heading-text section__heading-text">
+                        <div class="projects__title section__title">
+                            ПРОЕКТЫ
+                            <sup class="sup-count help" title="Количество проектов">{{ $collections->total() }}</sup>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="join-us">
+            <div class="join-us">
                 <div class="join-us__container">
                     <div class="join-us__wrapper">
                         <div class="join-us__heading section__heading">
@@ -61,8 +61,8 @@
                         </div>
                     </div>
                 </div>
-        </div>
-        <div class="projects__wrapper">
+            </div>
+            <div class="projects__wrapper">
                 <div class="projects__container">
                     <div class="projects__filters">
                         <form id="pageFilter" class="news-block__filter-form">
@@ -220,79 +220,72 @@
                             </div>
                         </div>
                         @endforeach
-                        @else
-                            <div class="popular-projects__empty">
-                                <div>
-                                    <img src="/image/search-engine.png" width="90" alt="">
-                                </div>
-                                <div class="info-title text-lg text-bold">В этой категории еще ничего нет</div>
-                                <div class="text-md">Станьте первым, кто опубликует свой проект!</div>
-                                <div class="popular-projects__btn-group">
-                                    <a href="/profile/services/new" class="btn btn-filled">Создать проект</a>
-                                    <button onclick="window.location.search = ''" class="btn">Сбросить фильтры</button>
-                                </div>
+                    @else
+                        <div class="popular-projects__empty">
+                            <div>
+                                <img src="/image/search-engine.png" width="90" alt="">
                             </div>
-                        @endif
+                            <div class="info-title text-lg text-bold">В этой категории еще ничего нет</div>
+                            <div class="text-md">Станьте первым, кто опубликует свой проект!</div>
+                            <div class="popular-projects__btn-group">
+                                <a href="/profile/services/new" class="btn btn-filled">Создать проект</a>
+                                <button onclick="window.location.search = ''" class="btn">Сбросить фильтры</button>
+                            </div>
+                        </div>
+                    @endif
                     </div>
 
-                    {{$collections->withQueryString()->links('pagination::default')}}
-
-                    </div>
-
+                    {{ $collections->withQueryString()->links('pagination::default') }}
                 </div>
+            </div>
         </section>
     </main>
-<script>
-(()=>{
+    <script>
+    (()=>{
+        const currentURL = window.location.href;
 
-	const currentURL = window.location.href;
-
-	function getQueryParams(url) {
-    const queryParams = {};
-    const params = url.split('?')[1];
-    if (params) {
-        const paramPairs = params.split('&');
-        for (const paramPair of paramPairs) {
-            const [key, value] = paramPair.split('=');
-            const decodedKey = decodeURIComponent(key);
-            const decodedValue = decodeURIComponent(value.replace(/\+/g, ' '));
-            if (!queryParams[decodedKey]) {
-                queryParams[decodedKey] = [];
+        function getQueryParams(url) {
+            const queryParams = {};
+            const params = url.split('?')[1];
+            if (params) {
+                const paramPairs = params.split('&');
+                for (const paramPair of paramPairs) {
+                    const [key, value] = paramPair.split('=');
+                    const decodedKey = decodeURIComponent(key);
+                    const decodedValue = decodeURIComponent(value.replace(/\+/g, ' '));
+                    if (!queryParams[decodedKey]) {
+                        queryParams[decodedKey] = [];
+                    }
+                    queryParams[decodedKey].push(decodedValue);
+                }
             }
-            queryParams[decodedKey].push(decodedValue);
+            return queryParams;
         }
-    }
-    	return queryParams;
-	}
 
-	const queryParams = getQueryParams(currentURL);
+        const queryParams = getQueryParams(currentURL);
 
-	const checkboxes = document.querySelectorAll('input[name]');
+        const checkboxes = document.querySelectorAll('input[name]');
 
-	checkboxes.forEach((checkbox) => {
-		const checkboxName = checkbox.name;
-		if (queryParams.hasOwnProperty(checkboxName)) {
-			const checkboxValue = checkbox.value;
-			if (queryParams[checkboxName].includes(checkboxValue)) {
-				checkbox.checked = true;
-			}
-		}
-	});
+        checkboxes.forEach((checkbox) => {
+            const checkboxName = checkbox.name;
+            if (queryParams.hasOwnProperty(checkboxName)) {
+                const checkboxValue = checkbox.value;
+                if (queryParams[checkboxName].includes(checkboxValue)) {
+                    checkbox.checked = true;
+                }
+            }
+        });
 
-	const pageFilter = document.getElementById('pageFilter');
+        const pageFilter = document.getElementById('pageFilter');
 
-	const PageCheckboxes = pageFilter.querySelectorAll('input[type="checkbox"]');
+        const PageCheckboxes = pageFilter.querySelectorAll('input[type="checkbox"]');
 
-	PageCheckboxes.forEach((checkbox) => {
-		checkbox.addEventListener('change', function () {
+        PageCheckboxes.forEach((checkbox) => {
+            checkbox.addEventListener('change', function () {
 
-			pageFilter.submit();
-		});
-	});
-
-
-
-
-})();
-</script>
+                pageFilter.submit();
+            });
+        });
+    })();
+    </script>
 @endsection
