@@ -23,9 +23,9 @@ class Collection extends Model
         'date_service_to',
         'price',
         'created_at',
-        'region' ,
-        'tip' ,
-        'teg' ,
+        'region',
+        'tip',
+        'teg',
         'tema',
         'tel',
         'email',
@@ -39,10 +39,14 @@ class Collection extends Model
         'img5',
         'img6',
     ];
-    public function feedbacks (){
-        return $this->hasMany(Feedback::class,'service_id','id');
-    }   
-    public function feedback (){
-    return $this->hasOne(Feedback::class, 'service_id', 'id');
+
+    public function feedbacks()
+    {
+        return $this->hasMany(Feedback::class, 'service_id', 'id');
+    }
+
+    public function feedback()
+    {
+        return $this->hasOne(Feedback::class, 'service_id', 'id');
     }
 }

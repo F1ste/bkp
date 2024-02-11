@@ -16,4 +16,3 @@ class Subject extends Model
         'name'
     ];
 }
-
