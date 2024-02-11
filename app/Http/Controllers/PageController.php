@@ -142,38 +142,27 @@ class PageController extends Controller
             'roles' => $roles,
             'users' => $users,
         ]);
-
     }
 
-           public function project($id)
+    public function project($id)
     {
-         $collection = Collection::with('feedbacks')->where('id', $id)->get();
-         foreach($collection as $item){
-         $counter = $item->feedbacks->count();
-        }
-        $id_user = $collection[0]->user_id;
-        $user = User::where('id', $id_user)->get();
+        $collection = Collection::with('feedbacks')->find($id);
+        $count = $collection->feedbacks->count();
+        $user = User::find($collection->user_id);
+        $images = json_decode($collection->images)->images;
+        $teg = json_decode($collection->teg);
+        $serch = json_decode($collection->serch);
 
-         $collection = $collection[0];
-            $user = $user[0];
-            $images = json_decode($collection->images)->images;
-            $teg = json_decode($collection->teg);
-            $serch = json_decode($collection->serch);
-
-            return view('pages.front.projects.project', [
-                 'collection'    => $collection,
-                'images'        => $images,
-                'id'            => $id,
-                'teg'            => $teg,
-                'serch'            => $serch,
-                'user'            => $user,
-                'counter'         => $counter
-            ]);
-
+        return view('pages.front.projects.project', [
+            'collection' => $collection,
+            'images' => $images,
+            'id' => $id,
+            'teg' => $teg,
+            'serch' => $serch,
+            'user' => $user,
+            'counter' => $count,
+        ]);
     }
-
-
-
 
     public function news(FilterRequest $request)
     {
