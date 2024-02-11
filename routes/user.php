@@ -181,7 +181,7 @@ Route::middleware(['role:admin'])->prefix('/admin')->group(function () {
 
     Route::prefix('/contact')->group(function () {
         Route::get('/', [ContactController::class,'contact'])->name('admin.contact');
-        Route::get('/edit-{id}', [ContactController::class,'edit'])->name('admin.contact.edit');
+        Route::get('/edit-{contact}', [ContactController::class,'edit'])->name('admin.contact.edit');
         Route::post('/update', [ContactController::class,'update'])->name('admin.contact.update');
     });
 

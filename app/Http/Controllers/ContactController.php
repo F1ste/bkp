@@ -13,18 +13,12 @@ class ContactController extends Controller
         return view('pages.contacts')->with('contact', $contact);
     }
 
-    public function edit($id)
+    public function edit(Contact $contact)
     {
-        $contact = Contact::where('id', $id)->get();
-
-        if (count($contact) > 0) {
-            $contact = $contact[0];
-
-            return view('pages.admin.contact.edit', [
-                'contact' => $contact,
-                'id' => $id,
-            ]);
-        }
+        return view('pages.admin.contact.edit', [
+            'contact' => $contact,
+            'id' => $contact->id,
+        ]);
     }
 
     public function update(ContactRequest $request)

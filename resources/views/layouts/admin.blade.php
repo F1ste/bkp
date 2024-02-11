@@ -35,7 +35,7 @@
                                     <a href="/admin/dashboard" class="sidebar__item _icon-pencil">Главная</a>
                                     <a href="{{route('admin.about.edit',['id'=>1])}}" class="sidebar__item _icon-pencil">О Бирже</a>
                                     <a href="{{route('admin.faq')}}" class="sidebar__item _icon-pencil">Вопрос-ответ</a>
-                                    <a href="{{route('admin.contact.edit', ['id'=>1])}}" class="sidebar__item _icon-pencil">Контакты</a>
+                                    <a href="{{route('admin.contact.edit', ['contact' => 1])}}" class="sidebar__item _icon-pencil">Контакты</a>
                                     <a href="/admin/footer" class="sidebar__item _icon-pencil">Настройки футера</a>
                                 </div>
                             </div>
