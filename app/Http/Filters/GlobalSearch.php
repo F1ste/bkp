@@ -1,15 +1,12 @@
 <?php
 
-
 namespace App\Http\Filters;
-
 
 use Illuminate\Database\Eloquent\Builder;
 
 class GlobalSearch extends AbstractFilter
 {
     public const SEARCHTEXT = 'searchText';
-
 
     protected function getCallbacks(): array
     {
@@ -23,6 +20,4 @@ class GlobalSearch extends AbstractFilter
     {
         $builder->where('name', 'like', "%{$value}%");
     }
-
-   
 }
