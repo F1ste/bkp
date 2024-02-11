@@ -106,12 +106,12 @@
         </section>
 
     @if (
-        $collection->img6 != '' or
-        $collection->img2 != '' or
-        $collection->img3 != '' or
-        $collection->img4 != '' or
-        $collection->img5 != '' or
-        $collection->img6 != ''
+        $collection->video ||
+        $collection->img2 ||
+        $collection->img3 ||
+        $collection->img4 ||
+        $collection->img5 ||
+        $collection->img6
     )
         <div class="project-gallery">
             <div class="project-gallery__container">
@@ -119,47 +119,53 @@
                     <div class="swiper-wrapper">
                         <!-- Slides -->
 
-                        @if ($collection->img2 != '')
+                        @if ($collection->video)
+                            <div class="swiper-slide media-block">
+                                {!! $collection->video !!}
+                            </div>
+                        @endif
+
+                        @if ($collection->img2)
                             <div class="swiper-slide media-block">
                                 <picture>
-                                    <source srcset="{{ $collection->img2 }}" type="image/webp"><img
-                                        src="{{ $collection->img2 }}" alt="Изображение галереи">
+                                    <source srcset="{{ $collection->img2 }}" type="image/webp">
+                                    <img src="{{ $collection->img2 }}" alt="Изображение галереи">
                                 </picture>
                             </div>
                         @endif
 
-                        @if ($collection->img3 != '')
+                        @if ($collection->img3)
                             <div class="swiper-slide media-block">
                                 <picture>
-                                    <source srcset="{{ $collection->img3 }}" type="image/webp"><img
-                                        src="{{ $collection->img3 }}" alt="Изображение галереи">
+                                    <source srcset="{{ $collection->img3 }}" type="image/webp">
+                                    <img src="{{ $collection->img3 }}" alt="Изображение галереи">
                                 </picture>
                             </div>
                         @endif
 
-                        @if ($collection->img4 != '')
+                        @if ($collection->img4)
                             <div class="swiper-slide media-block">
                                 <picture>
-                                    <source srcset="{{ $collection->img4 }}" type="image/webp"><img
-                                        src="{{ $collection->img4 }}" alt="Изображение галереи">
+                                    <source srcset="{{ $collection->img4 }}" type="image/webp">
+                                    <img src="{{ $collection->img4 }}" alt="Изображение галереи">
                                 </picture>
                             </div>
                         @endif
 
-                        @if ($collection->img5 != '')
+                        @if ($collection->img5)
                             <div class="swiper-slide media-block">
                                 <picture>
-                                    <source srcset="{{ $collection->img5 }}" type="image/webp"><img
-                                        src="{{ $collection->img5 }}" alt="Изображение галереи">
+                                    <source srcset="{{ $collection->img5 }}" type="image/webp">
+                                    <img src="{{ $collection->img5 }}" alt="Изображение галереи">
                                 </picture>
                             </div>
                         @endif
 
-                        @if ($collection->img6 != '')
+                        @if ($collection->img6)
                             <div class="swiper-slide media-block">
                                 <picture>
-                                    <source srcset="{{ $collection->img6 }}" type="image/webp"><img
-                                        src="{{ $collection->img6 }}" alt="Изображение галереи">
+                                    <source srcset="{{ $collection->img6 }}" type="image/webp">
+                                    <img src="{{ $collection->img6 }}" alt="Изображение галереи">
                                 </picture>
                             </div>
                         @endif
