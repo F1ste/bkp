@@ -49,18 +49,18 @@
                                             </div>
                                             <div class="create-project__form-item form__item">
                                                 <label for="date_service_from" class="create-project__form-label form__label">Сроки начала проекта</label>
-                                                <input data-datepicker data-datepicker_1 id="date_service_from" type="text" 
-                                                readonly autocomplete="off" name="projectName" 
-                                                value="{{ Carbon\Carbon::parse($collection->date_service_from)->format('d.m.Y') }}" 
-                                                class="create-project__form-input form__input" 
+                                                <input data-datepicker data-datepicker_1 id="date_service_from" type="text"
+                                                readonly autocomplete="off" name="projectName"
+                                                value="{{ Carbon\Carbon::parse($collection->date_service_from)->format('d.m.Y') }}"
+                                                class="create-project__form-input form__input"
                                                 placeholder="C" data-placeholder="C">
                                             </div>
                                             <div class="create-project__form-item form__item">
                                                 <label for="date_service_to" class="create-project__form-label form__label">Сроки окончания проекта</label>
-                                                <input 
-                                                data-datepicker data-datepicker_2 id="date_service_to" 
-                                                type="text" readonly autocomplete="off" 
-                                                name="projectName" value="{{ Carbon\Carbon::parse($collection->date_service_to)->format('d.m.Y') }}" 
+                                                <input
+                                                data-datepicker data-datepicker_2 id="date_service_to"
+                                                type="text" readonly autocomplete="off"
+                                                name="projectName" value="{{ Carbon\Carbon::parse($collection->date_service_to)->format('d.m.Y') }}"
                                                 class="create-project__form-input form__input" placeholder="До" data-placeholder="До"
                                                 >
                                             </div>
@@ -253,7 +253,7 @@
                                 <div class="create-project__find-partners">
                                     <div class="create-project__title personal__title">Кого ищем</div>
                                     <div class="find-partners__content">
-                                        
+
                                         @foreach($serch as $key => $serchs)
                                         <div class="find-partners__partner-block">
                                             <div class="create-project__form-select">
@@ -268,9 +268,9 @@
                                             </div>
                                             <div class="create-project__form-item form__item">
                                                 <label for="FormProjectRoleUntil" class="create-project__form-label form__label">До какого числа принимаются заявки</label>
-                                                <input id="FormProjectRoleUntil" autocomplete="off" 
-                                                data-datepicker data-datepicker_{{ $key + 3 }} type="text" 
-                                                name="projectName" class="create-project__form-input form__input" 
+                                                <input id="FormProjectRoleUntil" autocomplete="off"
+                                                data-datepicker data-datepicker_{{ $key + 3 }} type="text"
+                                                name="projectName" class="create-project__form-input form__input"
                                                 value='{{ $serchs->inp }}' placeholder="До 10.09.2023" data-placeholder="До 10.09.2023">
                                             </div>
                                             <div class="create-project__role-description form__item">

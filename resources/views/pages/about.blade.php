@@ -5,7 +5,7 @@
             <div class="about__container">
                 <div class="about__heading section__heading">
                     <div class="about__heading-text section__heading-text">
-                        
+
                         <div class="about__title section__title">
 						@foreach ($about as $item)
                             {{ $item->title }}
@@ -24,11 +24,11 @@
 						@endforeach
                         </div>
                         <div class="about__main-text">
-                            @foreach ($about as $item)
-                                <div class="about__text-paragraph">
-									{!! $item->description !!}
-                                </div>
-                            @endforeach
+                        @foreach ($about as $item)
+                            <div class="about__text-paragraph">
+                                {!! $item->description !!}
+                            </div>
+                        @endforeach
                         </div>
                     </div>
                     <div class="about__how-it-works how-it-works">
@@ -141,7 +141,7 @@
                                             Узнайте о событиях
 										</div>
 										<div class="join-us__text-desrcription">
-                                            Ознакомьтесь с новостями проектов и 
+                                            Ознакомьтесь с новостями проектов и
                                             культурной биржи
 										</div>
 									</div>
