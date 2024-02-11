@@ -6076,10 +6076,12 @@ blockquote p::after {
           justify-content: center;
 }
 
+.faq__question-text p,
 .about__text-paragraph p {
     margin-bottom: 1rem;
 }
 
+.faq__question-text ol,
 .about__text-paragraph ol {
     padding-left: 2rem;
 }
