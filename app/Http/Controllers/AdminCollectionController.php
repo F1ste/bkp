@@ -37,9 +37,13 @@ class AdminCollectionController extends Controller
      */
     public function single($id)
     {
-        $collection = Collection::where('id', $id)->get();
-        $id_user = $collection[0]->user_id;
-        $user = User::where('id', $id_user)->get();
+        $collection = Collection::find($id);
+
+        if (is_null($collection)) {
+            return redirect(route('pages.admin.services.new'));
+        }
+
+        $user = User::find($collection->user_id);
 
         $regoin = Region::get();
         $roles = Roles::get();
@@ -47,30 +51,24 @@ class AdminCollectionController extends Controller
         $tegs = Tags::get();
         $event = Event::get();
 
-        if (count($collection) > 0) {
-            $collection = $collection[0];
-            $user = $user[0];
-            $images = json_decode($collection->images)->images;
-            $teg = json_decode($collection->teg);
-            $serch = json_decode($collection->serch);
+        $images = json_decode($collection->images)->images;
+        $teg = json_decode($collection->teg);
+        $serch = json_decode($collection->serch);
 
-            return view('pages.admin.services.edit', [
-                'collection' => $collection,
-                'images' => $images,
-                'id' => $id,
-                'teg' => $teg,
-                'serch' => $serch,
-                'user' => $user,
-                'region' => $regoin,
-                'roles' => $roles,
-                'subject' => $subject,
-                'tegs' => $tegs,
-                'event' => $event,
-                'id_uzer' => $id_user
-            ]);
-        } else {
-            return redirect(route('pages.admin.services.new'));
-        }
+        return view('pages.admin.services.edit', [
+            'collection' => $collection,
+            'images' => $images,
+            'id' => $id,
+            'teg' => $teg,
+            'serch' => $serch,
+            'user' => $user,
+            'region' => $regoin,
+            'roles' => $roles,
+            'subject' => $subject,
+            'tegs' => $tegs,
+            'event' => $event,
+            'id_uzer' => $user->id
+        ]);
     }
 
     /**
@@ -88,16 +86,13 @@ class AdminCollectionController extends Controller
     {
         $size = $request->file('file')->getSize();
         $type = $request->file('file')->extension();
-
         $name = $size . '_' . 'image' . '.' . $type;
-
         $request->file('file')->storeAs(
             'img',
             $name
         );
 
         $link = '/storage/' . $name;
-
         return $link;
     }
 
@@ -134,39 +129,17 @@ class AdminCollectionController extends Controller
      */
     public function edit(Request $request)
     {
-        if ($request->price == 1) {
-            $idp = $request->id;
-            $idu = $request->idu;
-            $name = $request->name;
-            $text = 'Проект ' . $name . ' опубликован!';
-            Notifications::create([
-                'id_uzer' => $idu,
-                'id_project' => $idp,
-                'name' => $text,
-            ]);
-        }
+        if (in_array($request->price, [1, 2, 3])) {
+            $action = [
+                1 => 'опубликован!',
+                2 => 'перенесен в архив.',
+                3 => 'отклонен.',
+            ][$request->price];
 
-        if ($request->price == 2) {
-            $idp = $request->id;
-            $idu = $request->idu;
-            $name = $request->name;
-            $text = 'Проект ' . $name . ' перенесен в архив.';
             Notifications::create([
-                'id_uzer' => $idu,
-                'id_project' => $idp,
-                'name' => $text,
-            ]);
-        }
-
-        if ($request->price == 3) {
-            $idp = $request->id;
-            $idu = $request->idu;
-            $name = $request->name;
-            $text = 'Проект ' . $name . ' отклонен.';
-            Notifications::create([
-                'id_uzer' => $idu,
-                'id_project' => $idp,
-                'name' => $text,
+                'id_uzer' => $request->idu,
+                'id_project' => $request->id,
+                'name' => "Проект {$request->name} {$action}",
             ]);
         }
 
@@ -179,7 +152,6 @@ class AdminCollectionController extends Controller
 
     public function news(FilterRequest $request)
     {
-        //$date = Carbon::parse($request->date)->format('d.m.Y');
         $data = $request->validated();
 
         $filter = app()->make(NewsFilter::class, ['queryParams' => array_filter($data)]);
@@ -204,24 +176,23 @@ class AdminCollectionController extends Controller
      */
     public function news_single($id)
     {
-        $collection = News::where('id', $id)->get();
+        $collection = News::find($id);
+
+        if (is_null($collection)) {
+            return redirect(route('pages.admin.news.new'));
+        }
 
         $collections = Collection::get();
         $newsr = Newsr::get();
         $banner = Banner::get();
-        if (count($collection) > 0) {
-            $collection = $collection[0];
 
-            return view('pages.admin.news.edit', [
-                'collection' => $collection,
-                'id' => $id,
-                'collections' => $collections,
-                'newsr' => $newsr,
-                'banner' => $banner,
-            ]);
-        } else {
-            return redirect(route('pages.admin.news.new'));
-        }
+        return view('pages.admin.news.edit', [
+            'collection' => $collection,
+            'id' => $id,
+            'collections' => $collections,
+            'newsr' => $newsr,
+            'banner' => $banner,
+        ]);
     }
 
     /**
@@ -274,16 +245,13 @@ class AdminCollectionController extends Controller
     {
         $size = $request->file('file')->getSize();
         $type = $request->file('file')->extension();
-
         $name = $size . '_' . 'image' . '.' . $type;
-
         $request->file('file')->storeAs(
             'public',
             $name
         );
 
         $link = '/storage/' . $name;
-
         return $link;
     }
 
@@ -411,18 +379,16 @@ class AdminCollectionController extends Controller
 
     public function rubric_single($id)
     {
-        $collection = Newsr::where('id', $id)->get();
+        $collection = Newsr::find($id);
 
-        if (count($collection) > 0) {
-            $collection = $collection[0];
-
-            return view('pages.admin.rubric.edit', [
-                'collection' => $collection,
-                'id' => $id,
-            ]);
-        } else {
+        if (is_null($collection)) {
             return redirect(route('pages.admin.rubric.new'));
         }
+
+        return view('pages.admin.rubric.edit', [
+            'collection' => $collection,
+            'id' => $id,
+        ]);
     }
 
 
@@ -467,18 +433,16 @@ class AdminCollectionController extends Controller
 
     public function tema_single($id)
     {
-        $collection = Subject::where('id', $id)->get();
+        $collection = Subject::find($id);
 
-        if (count($collection) > 0) {
-            $collection = $collection[0];
-
-            return view('pages.admin.tema.edit', [
-                'collection' => $collection,
-                'id' => $id,
-            ]);
-        } else {
+        if (is_null($collection)) {
             return redirect(route('pages.admin.tema.new'));
         }
+
+        return view('pages.admin.tema.edit', [
+            'collection' => $collection,
+            'id' => $id,
+        ]);
     }
 
     public function tema_delete(Request $request)
@@ -522,18 +486,16 @@ class AdminCollectionController extends Controller
 
     public function tip_single($id)
     {
-        $collection = Event::where('id', $id)->get();
+        $collection = Event::find($id);
 
-        if (count($collection) > 0) {
-            $collection = $collection[0];
-
-            return view('pages.admin.tip.edit', [
-                'collection' => $collection,
-                'id' => $id,
-            ]);
-        } else {
+        if (is_null($collection)) {
             return redirect(route('pages.admin.tip.new'));
         }
+
+        return view('pages.admin.tip.edit', [
+            'collection' => $collection,
+            'id' => $id,
+        ]);
     }
 
 
@@ -578,18 +540,16 @@ class AdminCollectionController extends Controller
 
     public function teg_single($id)
     {
-        $collection = Tags::where('id', $id)->get();
+        $collection = Tags::find($id);
 
-        if (count($collection) > 0) {
-            $collection = $collection[0];
-
-            return view('pages.admin.teg.edit', [
-                'collection' => $collection,
-                'id' => $id,
-            ]);
-        } else {
+        if (is_null($collection)) {
             return redirect(route('pages.admin.teg.new'));
         }
+
+        return view('pages.admin.teg.edit', [
+            'collection' => $collection,
+            'id' => $id,
+        ]);
     }
 
     public function teg_delete(Request $request)
@@ -633,18 +593,16 @@ class AdminCollectionController extends Controller
 
     public function partners_single($id)
     {
-        $collection = Roles::where('id', $id)->get();
+        $collection = Roles::find($id);
 
-        if (count($collection) > 0) {
-            $collection = $collection[0];
-
-            return view('pages.admin.partners.edit', [
-                'collection' => $collection,
-                'id' => $id,
-            ]);
-        } else {
+        if (is_null($collection)) {
             return redirect(route('pages.admin.partners.new'));
         }
+
+        return view('pages.admin.partners.edit', [
+            'collection' => $collection,
+            'id' => $id,
+        ]);
     }
 
     public function partners_delete(Request $request)
