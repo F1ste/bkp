@@ -55,7 +55,8 @@ class ChatController extends Controller
         $message->chat_id = $request->chat_id;
         $message->user_id = $request->user_id;
         $message->save();
-        $chat = Chat::where('id', $message->chat_id)->first();
+
+        $chat = Chat::find($message->chat_id);
 
         broadcast(
             new StoreChatEvent(
