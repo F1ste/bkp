@@ -9,35 +9,36 @@ use Illuminate\Http\Request;
 class AdminUserController extends Controller
 {
     public function index(Request $request)
-    {   
+    {
         $sort_by = $request->input('sort_by', '');
-        if($sort_by === 'created_at'){
-        $user = User::orderBy('created_at','desc')->paginate(8);
-    }
-    elseif($sort_by === 'rating'){
-        $user = User::orderBy('rating','desc')->paginate(8);
-    }
-    else{
-        $user = User::paginate(8);
-    }
+        if ($sort_by === 'created_at') {
+            $user = User::orderBy('created_at', 'desc')->paginate(8);
+        } elseif ($sort_by === 'rating') {
+            $user = User::orderBy('rating', 'desc')->paginate(8);
+        } else {
+            $user = User::paginate(8);
+        }
+
         return view('pages.admin.user.index')->with('user', $user);
     }
+
     public function edit($id)
     {
-        $user =  User::where('id', $id)->first();
+        $user = User::where('id', $id)->first();
         $user_rating = User::RATING;
         return view('pages.admin.user.edit', [
-            'user'      => $user,
-            'id'       => $id,
+            'user' => $user,
+            'id' => $id,
             'user_rating' => $user_rating
 
         ]);
     }
-    
-    public function update (UserRatingRequest $request, User $user){
+
+    public function update(UserRatingRequest $request, User $user)
+    {
         $request->validated();
-        $user ->update([
-            'rating'=>$request->rating
+        $user->update([
+            'rating' => $request->rating
         ]);
         return redirect()->route('admin.user');
     }

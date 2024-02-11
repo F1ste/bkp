@@ -21,24 +21,24 @@ class SettingUserController extends Controller
     public function update(Request $request)
     {
         $user = User::where('id', auth()->user()->id)->update([
-            'surname'       => $request->surname,
-            'first_name'    => $request->firstname,
-            'city'          => $request->city,
-            'phone'         => $request->phone,
-            'youtube'       => $request->youtube,
-            'vk'            => $request->vk,
-            'about'         => $request->about,
-            'org'           => $request->org,
-            'ruk'           => $request->ruk,
-            'inn'           => $request->inn,
-            'napr'          => $request->napr,
-            'tel_org'       => $request->tel_org,
-            'sait'          => $request->sait,
-            'telegram'      => $request->telegram,
-            'dpl'           => $request->dpl,
-            'name'          => $request->name,
-            'email'         => $request->email,
-            'portfol'       => $request->portfol
+            'surname' => $request->surname,
+            'first_name' => $request->firstname,
+            'city' => $request->city,
+            'phone' => $request->phone,
+            'youtube' => $request->youtube,
+            'vk' => $request->vk,
+            'about' => $request->about,
+            'org' => $request->org,
+            'ruk' => $request->ruk,
+            'inn' => $request->inn,
+            'napr' => $request->napr,
+            'tel_org' => $request->tel_org,
+            'sait' => $request->sait,
+            'telegram' => $request->telegram,
+            'dpl' => $request->dpl,
+            'name' => $request->name,
+            'email' => $request->email,
+            'portfol' => $request->portfol
         ]);
 
         return response()->json($user, 201);
@@ -52,40 +52,19 @@ class SettingUserController extends Controller
         $size = $request->file('file')->getSize();
         $type = $request->file('file')->extension();
 
-        $name = $size.'_'.'image'.'.'.$type;
+        $name = $size . '_' . 'image' . '.' . $type;
 
-        $path = $request->file('file')->storeAs(
-            'img', $name
+        $request->file('file')->storeAs(
+            'img',
+            $name
         );
 
-        $link = '/storage/'.$name;
+        $link = '/storage/' . $name;
 
         User::where('id', auth()->user()->id)->update([
-            'avatar'    => $link
+            'avatar' => $link
         ]);
 
         return $link;
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

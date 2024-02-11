@@ -8,74 +8,75 @@ use App\Models\Traits\ImageTrait;
 use Illuminate\Http\Request;
 
 class FAQController extends Controller
-{   
+{
     use ImageTrait;
+
     public function index()
     {
         $faq = FAQ::all();
         return view('pages.faq')->with('faq', $faq);
     }
-    
 
     public function edit($id)
     {
-        $faq =  FAQ::where('id', $id)->get();
+        $faq = FAQ::where('id', $id)->get();
 
-        if(count($faq) > 0) {
-
+        if (count($faq) > 0) {
             $faq = $faq[0];
-            
 
-            return view('pages.admin.faq.edit', [ 
-                'faq'      => $faq,
-                'id'       => $id,
-                
+            return view('pages.admin.faq.edit', [
+                'faq' => $faq,
+                'id' => $id,
+
             ]);
         } else {
             return redirect(route('pages.admin.faq.create'));
         }
     }
 
-    public function img(Request $request){
+    public function img(Request $request)
+    {
         return $this->imgStore($request);
     }
+
     public function update(FAQRequest $request)
     {
         $request->validated();
-        
+
         $faq = FAQ::where('id', $request->id)->update([
-            'quest'         => $request->quest,
-            'img'           => $request->img,
-            'description'   => $request->description,
-            
+            'quest' => $request->quest,
+            'img' => $request->img,
+            'description' => $request->description,
         ]);
-        
+
         return response()->json($faq, 201);
     }
+
     public function create()
     {
-        return view('pages.admin.faq.create',[
-        ]);
+        return view('pages.admin.faq.create');
     }
 
     public function store(FAQRequest $request)
     {
         $request->validated();
-        $faq=new FAQ;
-        $faq->quest=$request->quest;
-        $faq->description=$request->description;
-        $faq->img=$request->img;
+        $faq = new FAQ();
+        $faq->quest = $request->quest;
+        $faq->description = $request->description;
+        $faq->img = $request->img;
         $faq->save();
         return response()->json(route('admin.faq.edit', ['id' => $faq->id]), 201);
     }
 
-    public function faq (){
-        $faq=FAQ::all();
+    public function faq()
+    {
+        $faq = FAQ::all();
         return view('pages.admin.faq.index')->with('faq', $faq);
     }
 
-    public function delete(Request $request){
-       FAQ::where('id', $request->id)->delete();
-       return true;
+    public function delete(Request $request)
+    {
+        FAQ::where('id', $request->id)->delete();
+        return true;
     }
 }

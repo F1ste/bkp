@@ -7,12 +7,10 @@ use App\Models\Banner;
 use App\Models\Collection;
 use App\Models\User;
 use App\Models\News;
-use App\Models\Region;
 use App\Models\Roles;
 use App\Models\Subject;
 use App\Models\Tags;
 use App\Models\Event;
-use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Response;
@@ -83,35 +81,44 @@ class PageController extends Controller
         $designer = User::where('id', $id)->get();
         $collection = Collection::where('user_id', $id)->get();
 
-        if(count($designer) > 0) {
+        if (count($designer) > 0) {
             $designer = $designer[0];
 
             return view('pages.front.designer.designer', [
-                'designer'      => $designer,
-                'collection'    => $collection
+                'designer' => $designer,
+                'collection' => $collection
             ]);
         } else {
             return redirect(route('home'));
         }
     }
 
-
-
-       public function projects(FilterRequest $request)
+    public function projects(FilterRequest $request)
     {
         $data = $request->validated();
 
-        $filter = app()-> make(PageProjectsFilter::class, ['queryParams' => array_filter($data)]);
+        $filter = app()->make(PageProjectsFilter::class, ['queryParams' => array_filter($data)]);
 
         $collection = Collection::where('price', 1)->orderByDesc('id')->filter($filter)->paginate(12);
 
-        $years = Collection::where('price', 1)->distinct()->orderBy('date_service_from', 'desc')->pluck('date_service_from')->map(function ($date) {
-            return Carbon::parse($date)->format('Y');
-        })->unique();
+        $years = Collection::query()
+            ->where('price', 1)
+            ->distinct()
+            ->orderBy('date_service_from', 'desc')
+            ->pluck('date_service_from')
+            ->map(function ($date) {
+                return Carbon::parse($date)->format('Y');
+            })
+            ->unique();
 
-        $months = Collection::distinct()->orderBy('date_service_from', 'asc')->pluck('date_service_from')->map(function ($date) {
-            return Carbon::parse($date)->isoFormat('MMMM');
-        })->unique();
+        $months = Collection::query()
+            ->distinct()
+            ->orderBy('date_service_from', 'asc')
+            ->pluck('date_service_from')
+            ->map(function ($date) {
+                return Carbon::parse($date)->isoFormat('MMMM');
+            })
+            ->unique();
 
         $eventType = Subject::distinct()->orderBy('name', 'asc')->pluck('name')->map(function ($eventType) {
             return $eventType;
@@ -133,7 +140,7 @@ class PageController extends Controller
         $users = User::whereIn('id', $userIds)->get();
 
         return view('pages.front.projects.projects', [
-            'collections'    => $collection,
+            'collections' => $collection,
             'years' => $years,
             'months' => $months,
             'event_type' => $eventType,
@@ -168,7 +175,7 @@ class PageController extends Controller
     {
         $data = $request->validated();
 
-        $filter = app()-> make(PageNewsFilter::class, ['queryParams' => array_filter($data)]);
+        $filter = app()->make(PageNewsFilter::class, ['queryParams' => array_filter($data)]);
 
         $collection = News::orderByDesc('id')->filter($filter)->paginate(10);
 
@@ -189,7 +196,7 @@ class PageController extends Controller
         })->unique();
 
         return view('pages.front.news.news', [
-            'collections'    => $collection,
+            'collections' => $collection,
             'years' => $years,
             'months' => $months,
             'categories' => $categories,
@@ -197,41 +204,14 @@ class PageController extends Controller
         ]);
     }
 
-
     public function tidings($id)
     {
         $collection = News::find($id);
         $banners = Banner::query()->get();
 
         return view('pages.front.news.tidings', [
-                'collection'    => $collection,
-                'id'            => $id,
-            ]);
+            'collection' => $collection,
+            'id' => $id,
+        ]);
     }
-
-
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

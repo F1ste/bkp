@@ -5,21 +5,18 @@ namespace App\Http\Controllers;
 use App\Http\Requests\FeedbackRequest;
 use App\Models\Collection;
 use App\Models\Feedback;
-use Illuminate\Http\Request;
 
 class FeedbackController extends Controller
 {
     public function index()
     {
-
-        return view('pages.user.feedback.index', [
-
-        ]);
+        return view('pages.user.feedback.index');
     }
+
     public function store(FeedbackRequest $request)
     {
         $request->validated();
-        $feedback = new Feedback;
+        $feedback = new Feedback();
         $feedback->cover_letter = $request->cover_letter;
         $feedback->status = null;
         $feedback->user_id = auth()->user()->id;
@@ -37,10 +34,11 @@ class FeedbackController extends Controller
         ]);
         return response()->json($feedback, 201);
     }
+
     public function candidat_index($id)
     {
         $feedback = Feedback::where('id', $id)->with('service')->where('user_id', auth()->user()->id)->first();
-        $serch = json_decode($feedback->service->serch,true);
+        $serch = json_decode($feedback->service->serch, true);
         $mysubarr = [];
         foreach ($serch as $subarr) {
             if ($subarr['sel'] == $feedback['role_name']) {
@@ -48,6 +46,7 @@ class FeedbackController extends Controller
                 break;
             }
         }
+
         return view('pages.user.feedback.candidat', [
             'feedback' => $feedback,
             'mysubarr' => $mysubarr
@@ -56,10 +55,15 @@ class FeedbackController extends Controller
 
     public function owner_index($id)
     {
-        $feedback = Feedback::with('service')->where('service_id', $id)->whereHas('service', function($q) {
-            $q->where('user_id', auth()->user()->id);
-        })->first();
-        $serch = json_decode($feedback->service->serch,true);
+        $feedback = Feedback::query()
+            ->with('service')
+            ->where('service_id', $id)
+            ->whereHas('service', function ($q) {
+                $q->where('user_id', auth()->user()->id);
+            })
+            ->first();
+
+        $serch = json_decode($feedback->service->serch, true);
         $mysubarr = [];
         foreach ($serch as $subarr) {
             if ($subarr['sel'] == $feedback['role_name']) {
@@ -67,89 +71,88 @@ class FeedbackController extends Controller
                 break;
             }
         }
-        return view('pages.user.feedback.owner',[
+
+        return view('pages.user.feedback.owner', [
             'feedback' => $feedback,
             'mysubarr' => $mysubarr
         ]);
     }
 
-    public function owner_all(){
+    public function owner_all()
+    {
         $feedback = Collection::with('feedbacks')->where('user_id', auth()->user()->id)->get();
         $mysubarr = [];
-        foreach($feedback as $key=>$item){
-
-            if($item->feedbacks->isEmpty()){
+        foreach ($feedback as $key => $item) {
+            if ($item->feedbacks->isEmpty()) {
                 $feedback->forget($key);
             }
         }
         $feedback = collect($feedback);
 
-        foreach($feedback as $item){
-            $serch = json_decode($item->serch,true);
+        foreach ($feedback as $item) {
+            $serch = json_decode($item->serch, true);
 
             foreach ($item->feedbacks as $el) {
-
                 foreach ($serch as $subarr) {
-
-                            if ($subarr['sel'] == $el->role_name) {
-                                $mysubarr = $subarr;
-                                break;
-                            }
+                    if ($subarr['sel'] == $el->role_name) {
+                        $mysubarr = $subarr;
+                        break;
+                    }
                 }
             }
-
         }
 
-        return view('pages.user.feedback.ownerall',[
+        return view('pages.user.feedback.ownerall', [
             'feedback' => $feedback,
             'mysubarr' => $mysubarr
         ]);
     }
 
-    public function candidat_all(){
+    public function candidat_all()
+    {
         $feedback = Feedback::with('service')->where('user_id', auth()->user()->id)->get();
         $mysubarr = [];
-        foreach ($feedback as $item){
-        $serch = json_decode($item->service->serch,true);
-        if(isset($feedback->service)){
-            $feedback=null;
-            $mysubarr=null;
-        }
-        else{
-        foreach ($serch as $subarr) {
-            if ($subarr['sel'] == $item['role_name']) {
-                $mysubarr = $subarr;
+        foreach ($feedback as $item) {
+            $serch = json_decode($item->service->serch, true);
+            if (isset($feedback->service)) {
+                $feedback = null;
+                $mysubarr = null;
+            } else {
+                foreach ($serch as $subarr) {
+                    if ($subarr['sel'] == $item['role_name']) {
+                        $mysubarr = $subarr;
+                    }
+                }
             }
         }
-        
+
+        return view('pages.user.feedback.candidatall', [
+            'feedback' => $feedback,
+            'mysubarr' => $mysubarr
+        ]);
     }
-    
-    }
-    return view('pages.user.feedback.candidatall',[
-        'feedback' => $feedback,
-        'mysubarr' => $mysubarr
-]);
-       
-}
-    public function accept($id){
+
+    public function accept($id)
+    {
         $feedback = Feedback::where('id', $id)->update([
             'status' => 1
         ]);
         return response()->json($feedback, 201);
     }
-    public function decline($id){
+
+    public function decline($id)
+    {
         $feedback = Feedback::where('id', $id)->update([
             'status' => 2
         ]);
         return response()->json($feedback, 201);
-}
-    public function viewed($id){
+    }
+
+    public function viewed($id)
+    {
         $feedback = Feedback::where($id)->update([
             'status' => 3
-    ]);
-    return response()->json($feedback, 201);
-}
-
-
-
+        ]);
+        return response()->json($feedback, 201);
+    }
 }

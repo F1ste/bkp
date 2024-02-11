@@ -15,23 +15,21 @@ class FooterController extends Controller
 {
     public function index()
     {
-
         $footer_ar = [
             'icons' => Ficon::all(),
             'pages' => Fpage::all(),
             'descr' => Fdescr::all(),
         ];
-        return View::share('components.footer-index')->with('footer_ar', $footer_ar); 
+        return View::share('components.footer-index')->with('footer_ar', $footer_ar);
     }
 
     public function fdescr_create()
     {
-
         return view('pages.admin.footer.fdescr.create', []);
     }
+
     public function ficon_create()
     {
-
         return view('pages.admin.footer.ficon.create', []);
     }
 
@@ -39,6 +37,7 @@ class FooterController extends Controller
     {
         return view('pages.admin.footer.fpage.create', []);
     }
+
     public function fdescr_store(FdescrRequest $request)
     {
         $request->validated();
@@ -47,6 +46,7 @@ class FooterController extends Controller
         $fdescr->save();
         return response()->json(route('admin.fdescr.edit', ['id' => $fdescr->id]), 201);
     }
+
     public function ficon_store(FiconRequest $request)
     {
         $request->validated();
@@ -65,6 +65,7 @@ class FooterController extends Controller
         $fpage->save();
         return response()->json(route('admin.fpage.edit', ['id' => $fpage->id]), 201);
     }
+
     public function fdescr_update(FdescrRequest $request)
     {
         $request->validated();
@@ -73,6 +74,7 @@ class FooterController extends Controller
         ]);
         return response()->json($fdescr, 201);
     }
+
     public function ficon_update(FiconRequest $request)
     {
         $request->validated();
@@ -81,6 +83,7 @@ class FooterController extends Controller
         ]);
         return response()->json($ficon, 201);
     }
+
     public function fpage_update(FpageRequest $request)
     {
         $request->validated();
@@ -90,46 +93,51 @@ class FooterController extends Controller
         ]);
         return response()->json($fpage, 201);
     }
+
     public function fdescr_edit($id)
     {
-        $fdescr =  Fdescr::where('id', $id)->get();
+        $fdescr = Fdescr::where('id', $id)->get();
         if (count($fdescr) > 0) {
             $fdescr = $fdescr[0];
             return view('pages.admin.footer.fdescr.edit', [
-                'fdescr'      => $fdescr,
-                'id'       => $id,
+                'fdescr' => $fdescr,
+                'id' => $id,
             ]);
         } else {
             return redirect(route('admin.footer.fdescr.edit'));
         }
     }
+
     public function ficon_edit($id)
     {
-        $ficon =  Ficon::where('id', $id)->get();
+        $ficon = Ficon::where('id', $id)->get();
         if (count($ficon) > 0) {
             $ficon = $ficon[0];
             return view('pages.admin.footer.ficon.edit', [
-                'ficon'      => $ficon,
-                'id'       => $id,
+                'ficon' => $ficon,
+                'id' => $id,
             ]);
         } else {
             return redirect(route('admin.footer.ficon.create'));
         }
     }
+
     public function fpage_edit($id)
     {
-        $fpage =  Fpage::where('id', $id)->get();
+        $fpage = Fpage::where('id', $id)->get();
         if (count($fpage) > 0) {
             $fpage = $fpage[0];
             return view('pages.admin.footer.fpage.edit', [
-                'fpage'      => $fpage,
-                'id'       => $id,
+                'fpage' => $fpage,
+                'id' => $id,
             ]);
         } else {
             return redirect(route('admin.footer.fpage.create'));
         }
     }
-    public function footer(){
+
+    public function footer()
+    {
         $footer_ar = [
             'icons' => Ficon::all(),
             'pages' => Fpage::all(),
@@ -137,17 +145,22 @@ class FooterController extends Controller
         ];
         return view('pages.admin.footer.index')->with('footer_ar', $footer_ar);
     }
-    public function fdescr_delete(Request $request){
+
+    public function fdescr_delete(Request $request)
+    {
         Fdescr::where('id', $request->id)->delete();
         return true;
-     }
-     public function ficon_delete(Request $request){
+    }
+
+    public function ficon_delete(Request $request)
+    {
         Ficon::where('id', $request->id)->delete();
         return true;
-     }
-     public function fpage_delete(Request $request){
+    }
+
+    public function fpage_delete(Request $request)
+    {
         Fpage::where('id', $request->id)->delete();
         return true;
-     }
-    
+    }
 }
