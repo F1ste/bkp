@@ -206,7 +206,7 @@
                                 @endphp
                                 @foreach($json as $serchs)
                                     @if ($serchs->last_date->gte(now()))
-                                    <a href="#" class="tags__item btn btn-white">
+                                    <a href="{{ route('projects.project', ['id' => $el->id, '#roles']) }}" class="tags__item btn btn-white">
                                         {{$serchs->sel}}
                                     </a>
                                     @else

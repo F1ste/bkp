@@ -63,7 +63,7 @@
                 </div>
             </div>
         </section>
-        <section class="partners-searching">
+        <section id="roles" class="partners-searching">
             <div class="partners-searching__container">
                 <div class="partners-searching__content">
                     <div class="partners-searching__title">

@@ -222,9 +222,13 @@
                                     @endphp
 
                                     @foreach ($json as $serchs)
-                                        <a href="#" class="tags__item btn btn-white">
-                                            {{ $serchs->sel }}
+                                        @if (\Illuminate\Support\Carbon::parse($serchs->inp)->gte(now()))
+                                        <a href="{{ route('projects.project', ['id' => $el->id, '#roles']) }}" class="tags__item btn btn-white">
+                                            {{$serchs->sel}}
                                         </a>
+                                        @else
+                                        <span class="tags__item tags__item--disabled btn btn-white">{{$serchs->sel}}</span>
+                                        @endif
                                     @endforeach
                                     </div>
                                 </div>
