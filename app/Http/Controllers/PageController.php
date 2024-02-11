@@ -158,7 +158,11 @@ class PageController extends Controller
         $user = User::find($collection->user_id);
         $images = json_decode($collection->images)->images;
         $teg = json_decode($collection->teg);
-        $serch = json_decode($collection->serch);
+        $serch = collect(json_decode($collection->serch))
+            ->sort(function ($a, $b) {
+                return Carbon::parse($a->inp)->lt(Carbon::parse($b->inp));
+            })
+            ->values();
 
         return view('pages.front.projects.project', [
             'collection' => $collection,

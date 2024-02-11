@@ -73,7 +73,11 @@
                         <nav data-tabs-titles class="partners-searching__heading tabs__navigation">
                         @foreach ($serch as $key => $serchs)
                             <button type="button" class="partners-searching__heading-item {{ $key === 0 ? '_tab-active' : '' }}">
+                            @if (\Illuminate\Support\Carbon::parse($serchs->inp)->gte(now()))
                                 {{ $serchs->sel }}
+                            @else
+                                <s>{{ $serchs->sel }}</s>
+                            @endif
                             </button>
                         @endforeach
                         </nav>
@@ -93,9 +97,15 @@
                                     <div class="partners-searching__replies">
                                         <b>Откликнулось:</b> {{ $counter }}
                                     </div>
+                                @if ($collection->price == 1 && \Illuminate\Support\Carbon::parse($serchs->inp)->gte(now()))
                                     <button type="button" data-popup="#feedbackPopup" data-role="{{ $serchs->sel }}" class="partners-searching__btn btn btn-filled _fw">
                                         Откликнуться
                                     </button>
+                                @else
+                                    <button type="button" class="partners-searching__btn btn btn-disabled _fw" disabled>
+                                        В архиве
+                                    </button>
+                                @endif
                                 </div>
                             </div>
                         @endforeach

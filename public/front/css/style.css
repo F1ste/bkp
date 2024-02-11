@@ -434,6 +434,13 @@ input.remove-arrows[type=number]{
   color: #fff;
 }
 
+.btn-disabled {
+    background-color: #cacbcc;
+    color: #777;
+    cursor: not-allowed;
+}
+
+.btn-disabled._fw,
 .btn-filled._fw {
   width: 100%;
 }
