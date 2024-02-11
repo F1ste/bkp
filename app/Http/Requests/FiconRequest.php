@@ -24,7 +24,7 @@ class FiconRequest extends FormRequest
     public function rules()
     {
         return [
-            'style'=>'string|required'
+            'style' => 'string|required'
         ];
     }
 }

@@ -24,11 +24,11 @@ class FeedbackRequest extends FormRequest
     public function rules()
     {
         return [
-            'cover_letter'=>'required|string',
-            'status'=>'integer',
-            'user_id'=>'exists:users,id',
-            'service_id'=>'exists:services,id',
-            'role_name'=>'string|required'
+            'cover_letter' => 'required|string',
+            'status' => 'integer',
+            'user_id' => 'exists:users,id',
+            'service_id' => 'exists:services,id',
+            'role_name' => 'string|required'
         ];
     }
 }
