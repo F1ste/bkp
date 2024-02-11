@@ -1,16 +1,11 @@
 <?php
 
-
 namespace App\Http\Filters;
-
 
 use Illuminate\Database\Eloquent\Builder;
 
 class NewsFilter extends AbstractFilter
 {
-
-
-
     public const NAME = 'name';
     public const TEXT = 'text';
     public const DATE = 'date';
@@ -19,7 +14,7 @@ class NewsFilter extends AbstractFilter
 
     public const GLAV = 'glav';
     public const PROJECT = 'project';
-    
+
 
     protected function getCallbacks(): array
     {
@@ -47,7 +42,7 @@ class NewsFilter extends AbstractFilter
     {
         $startDate = null;
         $endDate = null;
-    
+
         // Проверяем, если в запросе присутствует символ "-"
         if (strpos($value, '-') !== false) {
             list($startDate, $endDate) = explode('-', $value);
@@ -55,7 +50,7 @@ class NewsFilter extends AbstractFilter
             // Если символ "-" отсутствует, то дата - это начальная дата
             $endDate = $value;
         }
-        
+
         // Преобразуем даты в формат YYYY-MM-DD
         if ($startDate) {
             $startDate = \Illuminate\Support\Carbon::parse($startDate)->format('Y-m-d');
@@ -64,15 +59,15 @@ class NewsFilter extends AbstractFilter
         if ($endDate) {
             $endDate = \Illuminate\Support\Carbon::parse($endDate)->format('Y-m-d');
             //dd($endDate);
-        } 
-        
+        }
+
         // Ищем записи в зависимости от заданных дат
         if ($startDate && $endDate) {
             // Если указаны обе даты, ищем в диапазоне
             $builder->whereBetween('date', [$startDate, $endDate]);
         } elseif ($startDate) {
             // Если указана только начальная дата, ищем с нее и до конца
-            $builder->where('date', '>=', $startDate);  
+            $builder->where('date', '>=', $startDate);
         } elseif ($endDate) {
             // Если указана только конечная дата, ищем до нее
             $builder->where('date', '<=', $endDate);

@@ -6,11 +6,9 @@ use App\Http\Controllers\Controller;
 use App\Models\User;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Auth\Events\Registered;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Laravel\Socialite\Facades\Socialite;
-use Exception;
 
 class AuthSocialController extends Controller
 {
@@ -31,13 +29,13 @@ class AuthSocialController extends Controller
 
         $user = User::where('email', $google->email)->get();
 
-        if(count($user) > 0) { 
+        if (count($user) > 0) {
             $user = $user[0];
 
             User::where('email', $google->email)->update([
-                'google_auth'  => $google->id
+                'google_auth' => $google->id
             ]);
-            
+
             Auth::loginUsingId($user->id);
 
             return redirect(RouteServiceProvider::HOME);
@@ -45,10 +43,10 @@ class AuthSocialController extends Controller
             $google = Socialite::driver('google')->user();
 
             $user = User::create([
-                'name'      => $google->name,
-                'email'     => $google->email,
-                'password'  => Hash::make($google->email),
-                'google_auth'  => $google->id
+                'name' => $google->name,
+                'email' => $google->email,
+                'password' => Hash::make($google->email),
+                'google_auth' => $google->id
             ]);
 
             event(new Registered($user));
@@ -78,13 +76,13 @@ class AuthSocialController extends Controller
 
         $user = User::where('email', $facebook->email)->get();
 
-        if(count($user) > 0) { 
+        if (count($user) > 0) {
             $user = $user[0];
 
             User::where('email', $facebook->email)->update([
-                'facebook'  => $facebook->id
+                'facebook' => $facebook->id
             ]);
-            
+
             Auth::loginUsingId($user->id);
 
             return redirect(RouteServiceProvider::HOME);
@@ -92,10 +90,10 @@ class AuthSocialController extends Controller
             $facebook = Socialite::driver('facebook')->user();
 
             $user = User::create([
-                'name'      => $facebook->name,
-                'email'     => $facebook->email,
-                'password'  => Hash::make($facebook->email),
-                'facebook'  => $facebook->id
+                'name' => $facebook->name,
+                'email' => $facebook->email,
+                'password' => Hash::make($facebook->email),
+                'facebook' => $facebook->id
             ]);
 
             event(new Registered($user));
@@ -108,15 +106,3 @@ class AuthSocialController extends Controller
         }
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-

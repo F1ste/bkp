@@ -16,4 +16,3 @@ class Roles extends Model
         'name'
     ];
 }
-

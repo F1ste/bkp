@@ -3,15 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\FilterRequest;
+use App\Models\Banner;
 use App\Models\Collection;
 use App\Models\User;
 use App\Models\News;
-use App\Models\Region;
 use App\Models\Roles;
 use App\Models\Subject;
 use App\Models\Tags;
 use App\Models\Event;
-use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Response;
@@ -25,15 +24,11 @@ class PageController extends Controller
      */
     public function home()
     {
-         $news = News::orderByDesc('id')->get();
-         $collection = Collection::where('price', '1')->orderByDesc('id')->get();
-         $userIds = $collection->pluck('user_id')->unique();
-         $users = User::whereIn('id', $userIds)->get();
-        return view('pages.front.home.home', [
-                 'collections'    => $collection,
-                'news'        => $news,
-                'users' => $users,
-            ]);
+        $news = News::orderByDesc('id')->get();
+        $collections = Collection::where('price', '1')->orderByDesc('id')->get();
+        $userIds = $collections->pluck('user_id')->unique();
+        $users = User::whereIn('id', $userIds)->get();
+        return view('pages.front.home.home', compact('collections', 'news', 'users'));
     }
 
     /**
@@ -86,40 +81,49 @@ class PageController extends Controller
         $designer = User::where('id', $id)->get();
         $collection = Collection::where('user_id', $id)->get();
 
-        if(count($designer) > 0) {
+        if (count($designer) > 0) {
             $designer = $designer[0];
 
             return view('pages.front.designer.designer', [
-                'designer'      => $designer,
-                'collection'    => $collection
+                'designer' => $designer,
+                'collection' => $collection
             ]);
         } else {
             return redirect(route('home'));
         }
     }
 
-
-
-       public function projects(FilterRequest $request)
+    public function projects(FilterRequest $request)
     {
         $data = $request->validated();
-      
-        $filter = app()-> make(PageProjectsFilter::class, ['queryParams' => array_filter($data)]);
+
+        $filter = app()->make(PageProjectsFilter::class, ['queryParams' => array_filter($data)]);
 
         $collection = Collection::where('price', 1)->orderByDesc('id')->filter($filter)->paginate(12);
- 
-        $years = Collection::where('price', 1)->distinct()->orderBy('date_service_from', 'desc')->pluck('date_service_from')->map(function ($date) {
-            return Carbon::parse($date)->format('Y');
-        })->unique();
 
-        $months = Collection::distinct()->orderBy('date_service_from', 'asc')->pluck('date_service_from')->map(function ($date) {
-            return Carbon::parse($date)->isoFormat('MMMM');
-        })->unique();
+        $years = Collection::query()
+            ->where('price', 1)
+            ->distinct()
+            ->orderBy('date_service_from', 'desc')
+            ->pluck('date_service_from')
+            ->map(function ($date) {
+                return Carbon::parse($date)->format('Y');
+            })
+            ->unique();
+
+        $months = Collection::query()
+            ->distinct()
+            ->orderBy('date_service_from', 'asc')
+            ->pluck('date_service_from')
+            ->map(function ($date) {
+                return Carbon::parse($date)->isoFormat('MMMM');
+            })
+            ->unique();
 
         $eventType = Subject::distinct()->orderBy('name', 'asc')->pluck('name')->map(function ($eventType) {
             return $eventType;
         })->unique();
-        
+
         $tema = Event::distinct()->orderBy('name', 'asc')->pluck('name')->map(function ($tema) {
             return $tema;
         })->unique();
@@ -136,7 +140,7 @@ class PageController extends Controller
         $users = User::whereIn('id', $userIds)->get();
 
         return view('pages.front.projects.projects', [
-            'collections'    => $collection,
+            'collections' => $collection,
             'years' => $years,
             'months' => $months,
             'event_type' => $eventType,
@@ -145,47 +149,40 @@ class PageController extends Controller
             'roles' => $roles,
             'users' => $users,
         ]);
-
     }
 
-           public function project($id)
+    public function project($id)
     {
-         $collection = Collection::with('feedbacks')->where('id', $id)->get();
-         foreach($collection as $item){
-         $counter = $item->feedbacks->count();
-        }
-        $id_user = $collection[0]->user_id;
-        $user = User::where('id', $id_user)->get();
+        $collection = Collection::with('feedbacks')->find($id);
+        $count = $collection->feedbacks->count();
+        $user = User::find($collection->user_id);
+        $images = json_decode($collection->images)->images;
+        $teg = json_decode($collection->teg);
+        $serch = collect(json_decode($collection->serch))
+            ->sort(function ($a, $b) {
+                return Carbon::parse($a->inp)->lt(Carbon::parse($b->inp));
+            })
+            ->values();
 
-         $collection = $collection[0];
-            $user = $user[0];
-            $images = json_decode($collection->images)->images;
-            $teg = json_decode($collection->teg);
-            $serch = json_decode($collection->serch);
-
-            return view('pages.front.projects.project', [
-                 'collection'    => $collection,
-                'images'        => $images,
-                'id'            => $id,
-                'teg'            => $teg,
-                'serch'            => $serch,
-                'user'            => $user,
-                'counter'         => $counter
-            ]);
-
+        return view('pages.front.projects.project', [
+            'collection' => $collection,
+            'images' => $images,
+            'id' => $id,
+            'teg' => $teg,
+            'serch' => $serch,
+            'user' => $user,
+            'counter' => $count,
+        ]);
     }
-
-
-
 
     public function news(FilterRequest $request)
     {
         $data = $request->validated();
-        
-        $filter = app()-> make(PageNewsFilter::class, ['queryParams' => array_filter($data)]);
+
+        $filter = app()->make(PageNewsFilter::class, ['queryParams' => array_filter($data)]);
 
         $collection = News::orderByDesc('id')->filter($filter)->paginate(10);
- 
+
         $years = News::distinct()->orderBy('date', 'desc')->pluck('date')->map(function ($date) {
             return Carbon::parse($date)->format('Y');
         })->unique();
@@ -203,7 +200,7 @@ class PageController extends Controller
         })->unique();
 
         return view('pages.front.news.news', [
-            'collections'    => $collection,
+            'collections' => $collection,
             'years' => $years,
             'months' => $months,
             'categories' => $categories,
@@ -211,41 +208,14 @@ class PageController extends Controller
         ]);
     }
 
-
-     public function tidings($id)
+    public function tidings($id)
     {
-         $collection = News::where('id', $id)->get();
-          $collection = $collection[0];
+        $collection = News::find($id);
+        $banners = Banner::query()->get();
 
         return view('pages.front.news.tidings', [
-                'collection'    => $collection,
-                'id'            => $id,
-            ]);
+            'collection' => $collection,
+            'id' => $id,
+        ]);
     }
-
-
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -1,16 +1,11 @@
 <?php
 
-
 namespace App\Http\Filters;
-
 
 use Illuminate\Database\Eloquent\Builder;
 
 class PageNewsFilter extends AbstractFilter
 {
-
-
-
     public const MONTH = 'month';
     public const YEAR = 'year';
 
@@ -29,7 +24,6 @@ class PageNewsFilter extends AbstractFilter
 
     public function month(Builder $builder, $value)
     {
-        
         $months = $value;
         $monthMappings = [
             'январь' => '01',
@@ -45,17 +39,17 @@ class PageNewsFilter extends AbstractFilter
             'ноябрь' => '11',
             'декабрь' => '12',
         ];
+
         $builder->where(function ($query) use ($months, $monthMappings) {
             foreach ($months as $month) {
                 $numericMonth = $monthMappings[strtolower($month)];
                 $year = date('Y');
                 $startOfMonth = "{$year}-{$numericMonth}-01";
                 $endOfMonth = "{$year}-{$numericMonth}-" . date('t', strtotime($numericMonth));
-                
+
                 $query->orWhereBetween('date', [$startOfMonth, $endOfMonth]);
             }
         });
-
     }
 
     public function year(Builder $builder, $value)
@@ -66,11 +60,10 @@ class PageNewsFilter extends AbstractFilter
             foreach ($years as $year) {
                 $startOfYear = "{$year}-01-01";
                 $endOfYear = "{$year}-12-31";
-                
+
                 $query->orWhereBetween('date', [$startOfYear, $endOfYear]);
             }
         });
-        
     }
 
     public function rubrica(Builder $builder, $value)
@@ -82,6 +75,7 @@ class PageNewsFilter extends AbstractFilter
             }
         });
     }
+
     public function project(Builder $builder, $value)
     {
         $values = $value;
@@ -91,5 +85,4 @@ class PageNewsFilter extends AbstractFilter
             }
         });
     }
-
 }

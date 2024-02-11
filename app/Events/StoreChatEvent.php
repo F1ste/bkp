@@ -13,7 +13,9 @@ use Illuminate\Queue\SerializesModels;
 
 class StoreChatEvent implements ShouldBroadcast
 {
-    use Dispatchable, InteractsWithSockets, SerializesModels;
+    use Dispatchable;
+    use InteractsWithSockets;
+    use SerializesModels;
 
 
     private $message;
@@ -29,7 +31,7 @@ class StoreChatEvent implements ShouldBroadcast
      *
      * @return void
      */
-    public function __construct($message,$first_user,$second_user,$chat_id, $user_id)
+    public function __construct($message, $first_user, $second_user, $chat_id, $user_id)
     {
         $this->message = $message;
         $this->first_user = $first_user;
@@ -48,14 +50,15 @@ class StoreChatEvent implements ShouldBroadcast
         return new Channel('store_chat_' . $this->first_user . '_' . $this->second_user);
     }
     public function broadcastAs(): string
-{
-    return 'store_chat';
-}
-public function broadcastWith():array{
-    return [
-        'message'=>response()->json($this->message),
-        'chat_id'=>response()->json($this->chat_id),
-        'user_id'=>response()->json($this->user_id)
-    ];
-}
+    {
+        return 'store_chat';
+    }
+    public function broadcastWith(): array
+    {
+        return [
+            'message' => response()->json($this->message),
+            'chat_id' => response()->json($this->chat_id),
+            'user_id' => response()->json($this->user_id)
+        ];
+    }
 }

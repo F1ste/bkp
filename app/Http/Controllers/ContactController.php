@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\ContactRequest;
 use App\Models\Contact;
-use Illuminate\Http\Request;
 
 class ContactController extends Controller
 {
@@ -13,38 +12,30 @@ class ContactController extends Controller
         $contact = Contact::get();
         return view('pages.contacts')->with('contact', $contact);
     }
-    
-    public function edit($id)
+
+    public function edit(Contact $contact)
     {
-        $contact =  Contact::where('id', $id)->get();
-
-        if(count($contact) > 0) {
-
-            $contact = $contact[0];
-            
-
-            return view('pages.admin.contact.edit', [ 
-                'contact'    => $contact,
-                'id'       => $id,
-                
-            ]);
-        } 
+        return view('pages.admin.contact.edit', [
+            'contact' => $contact,
+            'id' => $contact->id,
+        ]);
     }
+
     public function update(ContactRequest $request)
     {
         $request->validated();
-    
+
         $contact = Contact::where('id', $request->id)->update([
-            'description'   => $request->description,
-            'map'=>$request->map
-            
+            'description' => $request->description,
+            'map' => $request->map
         ]);
-        
+
         return response()->json($contact, 201);
     }
 
-    public function contact(){
-        $contact=Contact::all();
+    public function contact()
+    {
+        $contact = Contact::all();
         return view('pages.admin.contact.index')->with('contact', $contact);
     }
 }

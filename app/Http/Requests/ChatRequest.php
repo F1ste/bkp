@@ -24,8 +24,8 @@ class ChatRequest extends FormRequest
     public function rules()
     {
         return [
-           'message'=>'string|required',
-           'chat_id'=>'exists:chats,id',
+            'message' => 'string|required',
+            'chat_id' => 'exists:chats,id',
         ];
     }
 }

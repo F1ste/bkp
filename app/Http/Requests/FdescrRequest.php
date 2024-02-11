@@ -24,7 +24,7 @@ class FdescrRequest extends FormRequest
     public function rules()
     {
         return [
-            'descr'=>'string|required'
+            'descr' => 'string|required'
         ];
     }
 }

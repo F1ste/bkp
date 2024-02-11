@@ -14,7 +14,7 @@ class FooterIndex extends Component
      * Create a new component instance.
      *
      * @return void
-     */ public $footer_ar;
+     */public $footer_ar;
     public function __construct(Ficon $ficon, Fpage $fpage, Fdescr $fdescr)
     {
         $footer_ar = [
@@ -22,7 +22,7 @@ class FooterIndex extends Component
             'pages' => $fpage::all(),
             'descr' => $fdescr::all(),
         ];
-            $this->footer_ar=$footer_ar;   
+        $this->footer_ar = $footer_ar;
     }
 
     /**
@@ -31,7 +31,7 @@ class FooterIndex extends Component
      * @return \Illuminate\Contracts\View\View|\Closure|string
      */
     public function render()
-    {   
+    {
         return view('components.footer-index');
     }
 }

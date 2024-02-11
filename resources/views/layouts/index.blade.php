@@ -10,23 +10,23 @@
     </head>
     <body>
         <div class="wrapper">
-        <x-header />
+            <x-header />
 
-        @yield('content')
+            @yield('content')
 
-        <x-footer-index />
-        <x-feedback-popup/>
+            <x-footer-index />
+            <x-feedback-popup/>
         </div>
         <script src="{{ asset('front/js/app.js') }}"></script>
         <script src="{{ asset('front/js/app2.js') }}"></script>
         <script src="{{ asset('plugins/bvi/dist/js/bvi.min.js') }}"></script>
         <script>
-        new isvek.Bvi({
-            target: '.impaired-togler',
-            fontSize: 24,
-            theme: 'white'
-            //...etc
-        });
+            new isvek.Bvi({
+                target: '.impaired-togler',
+                fontSize: 24,
+                theme: 'white'
+                //...etc
+            });
         </script>
     </body>
 </html>

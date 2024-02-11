@@ -24,9 +24,8 @@ class ContactRequest extends FormRequest
     public function rules()
     {
         return [
-            'description'=>'string|required',
-            'map'=>'string|required',
-            
+            'description' => 'string|required',
+            'map' => 'string|required',
         ];
     }
 }

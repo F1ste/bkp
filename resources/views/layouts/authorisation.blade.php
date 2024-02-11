@@ -10,18 +10,16 @@
     <body>
 
         <x-header />
-           <main class="page">
-            <div class="sidebar">
+        <main class="page">
+            <div class="sidebar sidebar__expanded">
                 <div class="sidebar__items">
-                    <!-- <a href="/profile/dashboard" class="sidebar__item _icon-dashboard" dataText="Главная"></a> -->
-                    <a href="/profile/setting" class="sidebar__item _icon-person" dataText="Профиль"></a>
-                    <a href="{{route('profile.services')}}" class="sidebar__item _icon-bookmark" dataText="Проекты"></a>
-                    <a href="{{route('profile.feedback')}}" class="sidebar__item _icon-edit" dataText="Отклики"></a>
-                    <a href="/profile/chat" class="sidebar__item _icon-chat" dataText="Диалоги"></a>
-                    <a href="/profile/notifications" class="sidebar__item _icon-notification" dataText="Уведомления"></a>
-                    <a href="#" class="sidebar__item _icon-settings" dataText="Помощь"></a>
+                    <a href="/profile/setting" class="sidebar__item _icon-person">Профиль</a>
+                    <a href="{{route('profile.services')}}" class="sidebar__item _icon-bookmark">Проекты</a>
+                    <a href="{{route('profile.feedback')}}" class="sidebar__item _icon-edit">Отклики</a>
+                    <a href="/profile/chat" class="sidebar__item _icon-chat">Диалоги</a>
+                    <a href="/profile/notifications" class="sidebar__item _icon-notification">Уведомления</a>
+                    <a href="#" class="sidebar__item _icon-settings">Помощь</a>
                 </div>
-                <div class="sidebar__expand"><button type="button" class="sidebar__item _icon-chevron" dataText=""></button></div>
                 <div class="sidebar__info">
                     <div class="sidebar__info-item">
                         8 800 555 35 35
@@ -44,10 +42,10 @@
                         </a>
                     </div>
                 </div>
-                <a href="/logout" class="sidebar__item _icon-logout" dataText="Выход"></a>
+                <a href="/logout" class="sidebar__item _icon-logout">Выход</a>
             </div>
-        @yield('content')
-            </main>
+            @yield('content')
+        </main>
 
         <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
         <script src="{{ asset('/plugins/ckeditor/ckeditor.js') }}"></script>
@@ -55,8 +53,5 @@
         <script src="{{ asset('front/js/editor.js') }}"></script>
         <script src="{{ asset('front/js/app.js') }}"></script>
         <script src="{{ asset('front/js/app2.js') }}"></script>
-
-
-
     </body>
 </html>

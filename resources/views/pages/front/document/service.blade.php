@@ -3,7 +3,6 @@
 @section('title', 'Условиями пользования сервисом')
 
 @section('content')
-
     <section class="document">
         <div class="container">
             <h1 class="document-group__title">Политика в отношении обработки персональных данных</h1>
@@ -141,7 +140,6 @@
         </div>
         <h6 class="document-group__text">Креатив в дизайне, прагматичность в деле</h6>
     </section>
-
 @endsection
 
 

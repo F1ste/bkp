@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
-use App\Providers\RouteServiceProvider;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -21,10 +20,6 @@ class AdminAuthenticatedSessionController extends Controller
         return view('auth.admin');
     }
 
-
-
-
-
     /**
      * Handle an incoming authentication request.
      *
@@ -33,26 +28,18 @@ class AdminAuthenticatedSessionController extends Controller
      */
     public function store(Request $request)
     {
+        $user = User::where('name', $request->email)->first();
 
-
-
-         $user = User::where('name', $request->email)->first();
-
-
-        if(!isset($user)){
+        if (!isset($user)) {
             return redirect(route('authorization'));
         }
 
         $formFields = $request->only(['email', 'password']);
         $formFields['email'] = $user->email;
 
-
-
-        if(Auth::attempt($formFields)){
+        if (Auth::attempt($formFields)) {
             return redirect()->intended(route('admin.dashboard'));
         }
         return redirect(route('authorization'));
     }
-
-
 }
