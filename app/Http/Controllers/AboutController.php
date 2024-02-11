@@ -19,19 +19,17 @@ class AboutController extends Controller
 
     public function edit($id)
     {
-        $about = About::where('id', $id)->get();
+        $about = About::find($id);
 
-        if (count($about) > 0) {
-            $about = $about[0];
-
-            return view('pages.admin.about.edit', [
-                'about' => $about,
-                'id' => $id,
-
-            ]);
-        } else {
+        if (is_null($about)) {
             return redirect(route('admin.about.edit'));
         }
+
+        return view('pages.admin.about.edit', [
+            'about' => $about,
+            'id' => $id,
+
+        ]);
     }
 
     public function img(Request $request)
