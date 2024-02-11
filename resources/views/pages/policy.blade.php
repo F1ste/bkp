@@ -6,7 +6,7 @@
                 <div class="policy__heading section__heading">
                     <div class="policy__heading-text section__heading-text">
                         <div class="policy__title main-page__section-title">
-                            Политика конфеденциальности
+                            Политика конфиденциальности
                         </div>
                     </div>
                 </div>
