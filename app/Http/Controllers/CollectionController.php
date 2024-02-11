@@ -33,34 +33,33 @@ class CollectionController extends Controller
      */
     public function single($id)
     {
-        $collection = Collection::where('id', $id)->get();
+        $collection = Collection::find($id);
+
+        if (is_null($collection)) {
+            return redirect(route('pages.user.services.new'));
+        }
+
         $regoin = Region::get();
         $roles = Roles::get();
         $subject = Subject::get();
         $tegs = Tags::get();
         $event = Event::get();
+        $images = json_decode($collection->images)->images;
+        $teg = json_decode($collection->teg);
+        $serch = json_decode($collection->serch);
 
-        if (count($collection) > 0) {
-            $collection = $collection[0];
-            $images = json_decode($collection->images)->images;
-            $teg = json_decode($collection->teg);
-            $serch = json_decode($collection->serch);
-
-            return view('pages.user.services.edit', [
-                'collection' => $collection,
-                'images' => $images,
-                'id' => $id,
-                'teg' => $teg,
-                'serch' => $serch,
-                'region' => $regoin,
-                'roles' => $roles,
-                'subject' => $subject,
-                'tegs' => $tegs,
-                'event' => $event
-            ]);
-        } else {
-            return redirect(route('pages.user.services.new'));
-        }
+        return view('pages.user.services.edit', [
+            'collection' => $collection,
+            'images' => $images,
+            'id' => $id,
+            'teg' => $teg,
+            'serch' => $serch,
+            'region' => $regoin,
+            'roles' => $roles,
+            'subject' => $subject,
+            'tegs' => $tegs,
+            'event' => $event
+        ]);
     }
 
     /**
@@ -100,20 +99,13 @@ class CollectionController extends Controller
     {
         $size = $request->file('file')->getSize();
         $type = $request->file('file')->extension();
-
         $name = $size . '_' . 'image' . '.' . $type;
-
         $request->file('file')->storeAs(
             'img',
             $name
         );
 
         $link = '/storage/' . $name;
-
-        /*         User::where('id', auth()->user()->id)->update([
-                    'avatar'    => $link
-                ]); */
-
         return $link;
     }
 
@@ -122,7 +114,6 @@ class CollectionController extends Controller
      */
     public function store(Request $request)
     {
-
         $collection = Collection::create([
             'name' => $request->name,
             'images' => $request->images,
