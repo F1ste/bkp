@@ -19,19 +19,16 @@ class FAQController extends Controller
 
     public function edit($id)
     {
-        $faq = FAQ::where('id', $id)->get();
+        $faq = FAQ::find($id);
 
-        if (count($faq) > 0) {
-            $faq = $faq[0];
-
-            return view('pages.admin.faq.edit', [
-                'faq' => $faq,
-                'id' => $id,
-
-            ]);
-        } else {
+        if (is_null($faq)) {
             return redirect(route('pages.admin.faq.create'));
         }
+
+        return view('pages.admin.faq.edit', [
+            'faq' => $faq,
+            'id' => $id,
+        ]);
     }
 
     public function img(Request $request)
