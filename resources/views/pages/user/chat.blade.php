@@ -65,6 +65,16 @@
                             @endforeach
                             </form>
 						</div>
+                        @if($current_chat == null && $chat_second_user->isNotEmpty())
+                            <div class="chat__dialogue chat__empty main-text">
+                                Выберите контакт, чтобы начать переписку
+                            </div>
+                        @elseif($current_chat == null)
+                        <div class="chat__dialogue chat__empty main-text">
+                                На Ваш проект еще нет откликов <br>
+                                Опубликуйте проект, чтобы получить первый отклик
+                            </div>
+                        @endif
                         @if(!$current_chat == null)
 						<div class="chat__dialogue" data-first_user="{{$current_chat->first_user_id}}" data-second_user="{{$current_chat->second_user_id}}">
 							<div class="chat__chat-heading">
