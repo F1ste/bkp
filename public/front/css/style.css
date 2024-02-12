@@ -4489,10 +4489,6 @@ blockquote p::after {
   font-weight: 300;
 }
 
-.contacts__media {
-  max-height: 494px;
-}
-
 .page {
   position: relative;
 }
@@ -8781,4 +8777,8 @@ blockquote p::after {
 
 .justify-center {
     justify-content: center;
+}
+
+.mw-100 {
+    max-width: 100%;
 }

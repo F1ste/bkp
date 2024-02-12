@@ -17,7 +17,8 @@
                                 <a href="/projects?tip%5B%5D=Дизайн">
                                     <div class="projects-category__media media-block">
                                         <picture>
-                                            <source srcset="{{ asset('image/projects-category/design.webp') }}" type="image/webp"><img src="{{ asset('image/projects-category/design.png') }}" alt="Дизайн">
+                                            <source srcset="{{ asset('image/projects-category/design.webp') }}" type="image/webp">
+                                            <img src="{{ asset('image/projects-category/design.jpg') }}" alt="Дизайн">
                                         </picture>
                                     </div>
                                     <div class="projects-category__category-name">
@@ -29,7 +30,8 @@
                                 <a href="/projects?tip%5B%5D=Литература">
                                     <div class="projects-category__media media-block">
                                         <picture>
-                                            <source srcset="{{ asset('image/projects-category/literature.webp') }}" type="image/webp"><img src="{{ asset('image/projects-category/literature.webp') }}" alt="Литература">
+                                            <source srcset="{{ asset('image/projects-category/literature.webp') }}" type="image/webp">
+                                            <img src="{{ asset('image/projects-category/literature.jpg') }}" alt="Литература">
                                         </picture>
                                     </div>
                                     <div class="projects-category__category-name">
@@ -41,7 +43,8 @@
                                 <a href="/projects?tip%5B%5D=Междисциплинарные+проекты">
                                     <div class="projects-category__media media-block">
                                         <picture>
-                                            <source srcset="{{ asset('image/projects-category/interdisciplinary.webp') }}" type="image/webp"><img src="{{ asset('image/projects-category/interdisciplinary.webp') }}" alt="Междисциплинарные проекты">
+                                            <source srcset="{{ asset('image/projects-category/interdisciplinary.webp') }}" type="image/webp">
+                                            <img src="{{ asset('image/projects-category/interdisciplinary.jpg') }}" alt="Междисциплинарные проекты">
                                         </picture>
                                     </div>
                                     <div class="projects-category__category-name">
@@ -55,7 +58,8 @@
                                 <a href="/projects?tip%5B%5D=Драмтеатр">
                                     <div class="projects-category__media media-block">
                                         <picture>
-                                            <source srcset="{{ asset('image/projects-category/dramtheatr.webp') }}" type="image/webp"><img src="{{ asset('image/projects-category/dramtheatr.webp') }}" alt="Драмтеатр">
+                                            <source srcset="{{ asset('image/projects-category/dramtheatr.webp') }}" type="image/webp">
+                                            <img src="{{ asset('image/projects-category/dramtheatr.jpg') }}" alt="Драмтеатр">
                                         </picture>
                                     </div>
                                     <div class="projects-category__category-name">
@@ -67,7 +71,8 @@
                                 <a href="/projects?tip%5B%5D=Визуальные+искусства">
                                     <div class="projects-category__media media-block">
                                         <picture>
-                                            <source srcset="{{ asset('image/projects-category/visual.webp') }}" type="image/webp"><img src="{{ asset('image/projects-category/visual.webp') }}" alt="Визуальные искусства">
+                                            <source srcset="{{ asset('image/projects-category/visual.webp') }}" type="image/webp">
+                                            <img src="{{ asset('image/projects-category/visual.jpg') }}" alt="Визуальные искусства">
                                         </picture>
                                     </div>
                                     <div class="projects-category__category-name">
@@ -81,7 +86,8 @@
                                 <a href="/projects?tip%5B%5D=Музыка">
                                     <div class="projects-category__media media-block">
                                         <picture>
-                                            <source srcset="{{ asset('image/projects-category/music.webp') }}" type="image/webp"><img src="{{ asset('image/projects-category/music.webp') }}" alt="Music">
+                                            <source srcset="{{ asset('image/projects-category/music.webp') }}" type="image/webp">
+                                            <img src="{{ asset('image/projects-category/music.jpg') }}" alt="Music">
                                         </picture>
                                     </div>
                                     <div class="projects-category__category-name">
@@ -93,7 +99,8 @@
                                 <a href="/projects?tip%5B%5D=Балет+и+танец">
                                     <div class="projects-category__media media-block">
                                         <picture>
-                                            <source srcset="{{ asset('image/projects-category/dance.webp') }}" type="image/webp"><img src="{{ asset('image/projects-category/dance.webp') }}" alt="Балет и танец">
+                                            <source srcset="{{ asset('image/projects-category/dance.webp') }}" type="image/webp">
+                                            <img src="{{ asset('image/projects-category/dance.jpg') }}" alt="Балет и танец">
                                         </picture>
                                     </div>
                                     <div class="projects-category__category-name">
@@ -105,7 +112,8 @@
                                 <a href="/projects?tip%5B%5D=Опера">
                                     <div class="projects-category__media media-block">
                                         <picture>
-                                            <source srcset="{{ asset('image/projects-category/opera.webp') }}" type="image/webp"><img src="{{ asset('image/projects-category/opera.webp') }}" alt="Опера">
+                                            <source srcset="{{ asset('image/projects-category/opera.webp') }}" type="image/webp">
+                                            <img src="{{ asset('image/projects-category/opera.jpg') }}" alt="Опера">
                                         </picture>
                                     </div>
                                     <div class="projects-category__category-name">
@@ -119,7 +127,8 @@
                                 <a href="/projects?tip%5B%5D=Архитектура">
                                     <div class="projects-category__media media-block">
                                         <picture>
-                                            <source srcset="{{ asset('image/projects-category/architecture.webp') }}" type="image/webp"><img src="{{ asset('image/projects-category/architecture.png') }}" alt="Архитектура">
+                                            <source srcset="{{ asset('image/projects-category/architecture.webp') }}" type="image/webp">
+                                            <img src="{{ asset('image/projects-category/architecture.jpg') }}" alt="Архитектура">
                                         </picture>
 
                                     </div>
@@ -132,7 +141,8 @@
                                 <a href="/projects?tip%5B%5D=Кино">
                                     <div class="projects-category__media media-block">
                                         <picture>
-                                            <source srcset="{{ asset('image/projects-category/film.webp') }}" type="image/webp"><img src="{{ asset('image/projects-category/film.webp') }}" alt="Кино">
+                                            <source srcset="{{ asset('image/projects-category/film.webp') }}" type="image/webp">
+                                            <img src="{{ asset('image/projects-category/film.jpg') }}" alt="Кино">
                                         </picture>
                                     </div>
                                     <div class="projects-category__category-name">
@@ -144,7 +154,8 @@
                                 <a href="/projects?tip%5B%5D=Цирк">
                                     <div class="projects-category__media media-block">
                                         <picture>
-                                            <source srcset="{{ asset('image/projects-category/circus.webp') }}" type="image/webp"><img src="{{ asset('image/projects-category/circus.webp') }}" alt="Цирк">
+                                            <source srcset="{{ asset('image/projects-category/circus.webp') }}" type="image/webp">
+                                            <img src="{{ asset('image/projects-category/circus.jpg') }}" alt="Цирк">
                                         </picture>
                                     </div>
                                     <div class="projects-category__category-name">
@@ -156,7 +167,8 @@
                                 <a href="/projects?tip%5B%5D=Другое">
                                     <div class="projects-category__media media-block">
                                         <picture>
-                                            <source srcset="{{ asset('image/projects-category/other.webp') }}" type="image/webp"><img src="{{ asset('image/projects-category/other.webp') }}" alt="Другое">
+                                            <source srcset="{{ asset('image/projects-category/other.webp') }}" type="image/webp">
+                                            <img src="{{ asset('image/projects-category/other.jpg') }}" alt="Другое">
                                         </picture>
                                     </div>
                                     <div class="projects-category__category-name">
@@ -200,7 +212,8 @@
                                 <div class="popular-projects__project-image media-block">
                                     <a href="{{ route('projects.project', ['id' => $el->id]) }}">
                                         <picture>
-                                            <source srcset="{{ $el->img1 }}" type="image/webp"><img src="{{ $el->img1 }}" alt="Изображение проекта">
+                                            <source srcset="{{ $el->img1 }}" type="image/webp">
+                                            <img src="{{ $el->img1 }}" alt="Изображение проекта">
                                         </picture>
                                     </a>
                                 </div>
@@ -263,7 +276,8 @@
                     <a href="{{ route('news.tidings', ['id' => $news[0]->id]) }}" class="big-news__item with-banner">
                         <div class="big-news__media media-block">
                             <picture>
-                                <source srcset="{{ $news[0]->img }}" type="image/webp"><img src="{{ $news[0]->img }}" alt="Изображение новости">
+                                <source srcset="{{ $news[0]->img }}" type="image/webp">
+                                <img src="{{ $news[0]->img }}" alt="Изображение новости">
                             </picture>
                         </div>
                         <div class="big-news__content">
@@ -295,7 +309,8 @@
                         <a href="{{ route('news.tidings', ['id' => $news[$i]->id]) }}">
                             <div class="news-block__item-media media-block">
                                 <picture>
-                                    <source srcset="{{ $news[$i]->img }}" type="image/webp"><img src="{{ $news[$i]->img }}" alt="Изображение новости">
+                                    <source srcset="{{ $news[$i]->img }}" type="image/webp">
+                                    <img src="{{ $news[$i]->img }}" alt="Изображение новости">
                                 </picture>
                             </div>
                             <div class="news-block__date">
@@ -324,7 +339,8 @@
                         <a href="{{ route('news.tidings', ['id' => $news[$i]->id]) }}">
                             <div class="news-block__item-media media-block">
                                 <picture>
-                                    <source srcset="{{ $news[$i]->img }}" type="image/webp"><img src="{{ $news[$i]->img }}" alt="Изображение новости">
+                                    <source srcset="{{ $news[$i]->img }}" type="image/webp">
+                                    <img src="{{ $news[$i]->img }}" alt="Изображение новости">
                                 </picture>
                             </div>
                             <div class="news-block__date">
@@ -367,7 +383,8 @@
                         <div class="join-us__media media-block">
                             <a href="/profile/dashboard">
                                 <picture>
-                                    <source srcset="image/join-us1.webp" type="image/webp"><img src="image/join-us1.png" alt="Изображение">
+                                    <source srcset="image/join-us1.webp" type="image/webp">
+                                    <img src="image/join-us1.png" alt="Изображение">
                                 </picture>
                             </a>
                         </div>
@@ -388,7 +405,8 @@
                         <div class="join-us__media media-block">
                             <a href="/projects">
                                 <picture>
-                                    <source srcset="{{ asset('image/join-us2.webp') }}" type="image/webp"><img src="{{ asset('image/join-us2.png') }}" alt="Изображение">
+                                    <source srcset="{{ asset('image/join-us2.webp') }}" type="image/webp">
+                                    <img src="{{ asset('image/join-us2.png') }}" alt="Изображение">
                                 </picture>
                             </a>
                         </div>
@@ -414,7 +432,8 @@
             <div class="banner__wrapper">
                 <a href="#" class="media-block">
                     <picture>
-                        <source srcset="{{ asset('image/bigbanner.webp') }}" type="image/webp"><img class="" src="{{ asset('image/bigbanner.png') }}" alt="Изображение баннера">
+                        <source srcset="{{ asset('image/bigbanner.webp') }}" type="image/webp">
+                        <img class="" src="{{ asset('image/bigbanner.png') }}" alt="Изображение баннера">
                     </picture>
                 </a>
             </div>
