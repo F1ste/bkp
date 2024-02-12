@@ -33,24 +33,26 @@
                                     <label for="name" class="create-project__form-label form__label">Ссылка баннера</label>
                                     <input id="name" type="text" name="projectName" class="create-project__form-input form__input" placeholder="Ссылка баннера" data-placeholder="Ссылка баннера">
                                 </div>
-                                <fieldset class="create-project__adv">
-                                    <legend>
-                                        <input id="advertisement" type="checkbox" name="advertisement">
-                                        <label for="advertisement" class="create-project__form-label form__label">Реклама</label>
-                                    </legend>
-                                    <div class="create-project__form-group">
-                                        <label for="orgName" class="create-project__adv-label">Название организации</label>
-                                        <input id="orgName" type="text" name="org_name" class="create-project__adv-input" placeholder="Название организации" data-placeholder="Название организации">
+                                <div>
+                                    <div class="create-project__form-item create-project__form-group form__item">
+                                        <input id="advertisement" type="checkbox" class="checkbox__input" name="advertisement">
+                                        <label for="advertisement" class="create-project__form-label checkbox__label">Реклама</label>
                                     </div>
-                                    <div class="create-project__form-group">
-                                        <label for="orgINN" class="create-project__adv-label">ИНН организации</label>
-                                        <input id="orgINN" type="number" name="orn_inn" class="create-project__adv-input remove-arrows" placeholder="ИНН организации" data-placeholder="ИНН организации">
+                                    <div class="create-project__form-row">
+                                        <div class="create-project__form-item form__item">
+                                            <label for="orgName" class="create-project__form-label form__label">Название организации</label>
+                                            <input id="orgName" type="text" name="org_name" class="create-project__form-input form__input" placeholder="Название организации" data-placeholder="Название организации" >
+                                        </div>
+                                        <div class="create-project__form-item form__item">
+                                            <label for="orgINN" class="create-project__form-label form__label">ИНН организации</label>
+                                            <input id="orgINN" type="number" name="orn_inn" class="create-project__form-input form__input remove-arrows" placeholder="ИНН организации" data-placeholder="ИНН организации" >
+                                        </div>
+                                        <div class="create-project__form-item form__item">
+                                            <label for="erid" class="create-project__form-label form__label">erid</label>
+                                            <input id="erid" type="text" name="erid" class="create-project__form-input form__input" placeholder="erid" data-placeholder="erid" >
+                                        </div>
                                     </div>
-                                    <div class="create-project__form-group">
-                                        <label for="erid" class="create-project__adv-label">erid</label>
-                                        <input id="erid" type="text" name="erid" class="create-project__adv-input" placeholder="erid" data-placeholder="erid">
-                                    </div>
-                                </fieldset>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -72,7 +74,7 @@
                 let checked = e.target.checked;
                 Array.from(document.querySelectorAll('#orgName, #orgINN, #erid')).forEach(input => {
                     input.disabled = !checked;
-                    input.previousElementSibling.style.color = checked ? null : '#aaa';
+                    input.parentNode.style.display = checked ? null : 'none';
                 })
             });
             adv.dispatchEvent(new Event("change"));
