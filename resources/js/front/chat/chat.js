@@ -153,5 +153,17 @@ import {notification} from "../utils/notification";
     }
     
     chatsMenu.addEventListener('click', getChatValue);
+    function scrollToLastMessage() {
+        const chatContainer = document.querySelector(".chat__chat-body");
+        if (!chatContainer) return;
+        const lastMessage = chatContainer.lastElementChild;
 
+        if (lastMessage) {
+            chatContainer.scrollTop = lastMessage.offsetTop;
+        }
+    }
+
+    document.addEventListener("DOMContentLoaded", function () {
+        scrollToLastMessage();
+    });
 })()
