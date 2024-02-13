@@ -3,7 +3,7 @@
         <div class="footer__menu">
             <div class="footer__menu-col">
                 <a href="/" class="footer__logo">
-                    <img src="{{ asset('image/logo-white.svg') }}" alt="Культурная Биржа">
+                    <img src="{{ asset('image/logo-white.png') }}" alt="Культурная Биржа">
                     <div class="logo__text">Культурная <br> Биржа</div>
                 </a>
                 <div class="with-support" style="display: none;">
