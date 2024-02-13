@@ -31,9 +31,9 @@ jobs:
 
       - name: Update code
         run: |
-          ssh production 'cd "$PROJECT_DIR" &&
+          ssh production "cd $PROJECT_DIR &&
             git stash --include-untracked > /dev/null &&
             git checkout master &&
-            git pull'
+            git pull"
         env:
           PROJECT_DIR: ${{ vars.PROJECT_DIR }}
