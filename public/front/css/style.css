@@ -1620,7 +1620,7 @@ body::after {
 .main-page__section-title {
   font-size: 2.5rem;
   margin-left: -2px;
-  font-weight: 700;
+  font-weight: 400;
   line-height: 99%;
   /* 39.6px */
 }
@@ -2474,7 +2474,7 @@ body::after {
 
 .projects-category__subtitle {
   margin-top: 1.25rem;
-  font-size: 1.125rem;
+  font-size: 1.25rem;
   font-style: normal;
   font-weight: 300;
   line-height: 98%;
