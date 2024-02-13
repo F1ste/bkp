@@ -4,9 +4,6 @@ on:
   push:
     branches:
       - "master"
-  pull_request:
-    branches:
-      - "master"
 
 jobs:
   deploy:
@@ -37,6 +34,6 @@ jobs:
           ssh production 'cd "$PROJECT_DIR" &&
             git stash --include-untracked > /dev/null &&
             git checkout master &&
-            git pull
+            git pull'
         env:
           PROJECT_DIR: ${{ vars.PROJECT_DIR }}
