@@ -1379,6 +1379,17 @@ body::after {
   font-weight: 700;
 }
 
+.how-it-works-popup__title{
+  margin-bottom: 20px;
+  padding-right: 20px;
+}
+.how-it-works-popup__text{
+  font-size: 18px;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: 0.64px;
+}
+
 .tabs__navigation {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -4324,8 +4335,6 @@ blockquote p::after {
 .faq__content {
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: 1fr 1fr;
-  grid-template-columns: 1fr 1fr;
   gap: 80px;
 }
 
@@ -4337,6 +4346,15 @@ blockquote p::after {
       -ms-flex-align: baseline;
           align-items: baseline;
   gap: 97px;
+}
+
+.faq__row{
+  display: flex;
+  gap: 80px;
+}
+
+.faq__row.reverse-row{
+  flex-direction: row-reverse;
 }
 
 .faq__col {
@@ -6209,7 +6227,7 @@ blockquote p::after {
   }
 }*/
 
-.how-it-works__question a{
+.how-it-works__question button{
       border-bottom: 1px solid #a5a5a5;
 }
 

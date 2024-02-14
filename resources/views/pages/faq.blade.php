@@ -11,20 +11,22 @@
                     </div>
                 </div>
                 <div class="faq__content">
-                @foreach ($faq as $item)
-                    <div class="faq__col">
-                        <div class="faq__question-title">
-                            {{ $item->quest }}
+                @foreach ($faq as $key => $item)
+                    <div class="faq__row{{ $key % 2 !== 0 ? ' reverse-row' : '' }}">
+                        <div class="faq__col">
+                            <div class="faq__question-title">
+                                {{ $item->quest }}
+                            </div>
+                            <div class="faq__question-text">
+                                {!! $item->description !!}
+                            </div>
                         </div>
-                        <div class="faq__question-text">
-                            {!! $item->description !!}
-                        </div>
-                    </div>
-                    <div class="faq__col">
-                        <div class="faq__media media-block">
-                            <picture>
-                                <source srcset="{{ $item->img }}" type="image/webp"><img src="{{ $item->img }}" alt="">
-                            </picture>
+                        <div class="faq__col">
+                            <div class="faq__media media-block">
+                                <picture>
+                                    <source srcset="{{ $item->img }}" type="image/webp"><img src="{{ $item->img }}" alt="">
+                                </picture>
+                            </div>
                         </div>
                     </div>
                 @endforeach
