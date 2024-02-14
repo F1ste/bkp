@@ -4324,8 +4324,6 @@ blockquote p::after {
 .faq__content {
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: 1fr 1fr;
-  grid-template-columns: 1fr 1fr;
   gap: 80px;
 }
 
@@ -4337,6 +4335,15 @@ blockquote p::after {
       -ms-flex-align: baseline;
           align-items: baseline;
   gap: 97px;
+}
+
+.faq__row{
+  display: flex;
+  gap: 80px;
+}
+
+.faq__row.reverse-row{
+  flex-direction: row-reverse;
 }
 
 .faq__col {
