@@ -1379,6 +1379,17 @@ body::after {
   font-weight: 700;
 }
 
+.how-it-works-popup__title{
+  margin-bottom: 20px;
+  padding-right: 20px;
+}
+.how-it-works-popup__text{
+  font-size: 18px;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: 0.64px;
+}
+
 .tabs__navigation {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -6216,7 +6227,7 @@ blockquote p::after {
   }
 }*/
 
-.how-it-works__question a{
+.how-it-works__question button{
       border-bottom: 1px solid #a5a5a5;
 }
 

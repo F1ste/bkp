@@ -45,7 +45,7 @@
                                     карточку проекта
                                 </div>
                                 <div class="how-it-works__question">
-                                    <a href="#">Как создать проект?</a>
+                                    <button data-popup="#howItWorksPopup">Как создать проект?</button>
                                 </div>
 
                             </div>
@@ -58,7 +58,7 @@
                                     и откликается
                                 </div>
                                 <div class="how-it-works__question">
-                                    <a href="#">Как откликнуться на проект?</a>
+                                    <button data-popup="#howItWorksPopup">Как откликнуться на проект?</button>
                                 </div>
 
                             </div>
@@ -71,7 +71,7 @@
                                     партнера и связывается с ним
                                 </div>
                                 <div class="how-it-works__question">
-                                    <a href="#">Как работает наш чат?</a>
+                                    <button data-popup="#howItWorksPopup">Как работает наш чат?</button>
                                 </div>
 
                             </div>
@@ -85,7 +85,7 @@
                                     свое портфолио
                                 </div>
                                 <div class="how-it-works__question">
-                                    <a href="#">Посмотреть выполненные проекты</a>
+                                    <button data-popup="#howItWorksPopup">Посмотреть выполненные проекты</button>
                                 </div>
 
                             </div>
