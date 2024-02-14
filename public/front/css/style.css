@@ -6468,7 +6468,7 @@ blockquote p::after {
 }
 
 .news-single__main-image .media-block {
-  max-height: 450px;
+  /* max-height: 450px; */
 }
 
 .news-single__main-image .media-block img {
