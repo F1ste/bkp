@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Collection;
+use App\Models\Project;
 use App\Models\User;
 use App\Models\News;
 use App\Models\Region;
@@ -25,7 +25,7 @@ class AdminCollectionController extends Controller
      */
     public function services()
     {
-        $collection = Collection::where('user_id', auth()->user()->id)->get();
+        $collection = Project::where('user_id', auth()->user()->id)->get();
 
         return view('pages.user.services.services', [
             'collection' => $collection
@@ -37,7 +37,7 @@ class AdminCollectionController extends Controller
      */
     public function single($id)
     {
-        $collection = Collection::find($id);
+        $collection = Project::find($id);
 
         if (is_null($collection)) {
             return redirect(route('pages.admin.services.new'));
@@ -101,7 +101,7 @@ class AdminCollectionController extends Controller
      */
     public function store(Request $request)
     {
-        $collection = Collection::create([
+        $collection = Project::create([
             'name' => $request->name,
             'images' => $request->images,
             'user_id' => auth()->user()->id,
@@ -143,7 +143,7 @@ class AdminCollectionController extends Controller
             ]);
         }
 
-        $collection = Collection::where('id', $request->id)->update([
+        $collection = Project::where('id', $request->id)->update([
             'price' => $request->price
         ]);
 
@@ -182,7 +182,7 @@ class AdminCollectionController extends Controller
             return redirect(route('pages.admin.news.new'));
         }
 
-        $collections = Collection::get();
+        $collections = Project::get();
         $newsr = Newsr::get();
         $banner = Banner::get();
 
@@ -200,7 +200,7 @@ class AdminCollectionController extends Controller
      */
     public function news_new()
     {
-        $collection = Collection::get();
+        $collection = Project::get();
         $newsr = Newsr::get();
         $banner = Banner::get();
         return view('pages.admin.news.new', [

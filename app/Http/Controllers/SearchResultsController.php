@@ -3,14 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\FilterRequest;
-use App\Models\Collection;
+use App\Models\Project;
 use App\Models\News;
 
 class SearchResultsController extends Controller
 {
     public function index(FilterRequest $request)
     {
-        $collection = Collection::query()
+        $collection = Project::query()
             ->where('price', 1)
             ->where('name_proj', 'like', "%{$request->searchText}%")
             ->orderByDesc('id')

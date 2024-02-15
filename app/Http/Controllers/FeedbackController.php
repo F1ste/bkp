@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\FeedbackRequest;
-use App\Models\Collection;
+use App\Models\Project;
 use App\Models\Feedback;
 
 class FeedbackController extends Controller
@@ -80,7 +80,7 @@ class FeedbackController extends Controller
 
     public function owner_all()
     {
-        $feedback = Collection::with('feedbacks')->where('user_id', auth()->user()->id)->get();
+        $feedback = Project::with('feedbacks')->where('user_id', auth()->user()->id)->get();
         $mysubarr = [];
         foreach ($feedback as $key => $item) {
             if ($item->feedbacks->isEmpty()) {

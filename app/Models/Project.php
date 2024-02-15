@@ -6,7 +6,7 @@ use App\Models\Traits\Filterable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Collection extends Model
+class Project extends Model
 {
     use HasFactory;
     use Filterable;

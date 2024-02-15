@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\FilterRequest;
 use App\Models\Banner;
-use App\Models\Collection;
+use App\Models\Project;
 use App\Models\User;
 use App\Models\News;
 use App\Models\Roles;
@@ -25,7 +25,7 @@ class PageController extends Controller
     public function home()
     {
         $news = News::orderByDesc('id')->get();
-        $collections = Collection::where('price', '1')->orderByDesc('id')->get();
+        $collections = Project::where('price', '1')->orderByDesc('id')->get();
         $userIds = $collections->pluck('user_id')->unique();
         $users = User::whereIn('id', $userIds)->get();
         return view('pages.front.home.home', compact('collections', 'news', 'users'));
@@ -79,7 +79,7 @@ class PageController extends Controller
     public function designer($id)
     {
         $designer = User::where('id', $id)->get();
-        $collection = Collection::where('user_id', $id)->get();
+        $collection = Project::where('user_id', $id)->get();
 
         if (count($designer) > 0) {
             $designer = $designer[0];
@@ -99,9 +99,9 @@ class PageController extends Controller
 
         $filter = app()->make(PageProjectsFilter::class, ['queryParams' => array_filter($data)]);
 
-        $collection = Collection::where('price', 1)->orderByDesc('id')->filter($filter)->paginate(12);
+        $collection = Project::where('price', 1)->orderByDesc('id')->filter($filter)->paginate(12);
 
-        $years = Collection::query()
+        $years = Project::query()
             ->where('price', 1)
             ->distinct()
             ->orderBy('date_service_from', 'desc')
@@ -111,7 +111,7 @@ class PageController extends Controller
             })
             ->unique();
 
-        $months = Collection::query()
+        $months = Project::query()
             ->distinct()
             ->orderBy('date_service_from', 'asc')
             ->pluck('date_service_from')
@@ -153,7 +153,7 @@ class PageController extends Controller
 
     public function project($id)
     {
-        $collection = Collection::with('feedbacks')->find($id);
+        $collection = Project::with('feedbacks')->find($id);
         $count = $collection->feedbacks->count();
         $user = User::find($collection->user_id);
         $images = json_decode($collection->images)->images;

@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Collection;
+use App\Models\Project;
 use App\Models\Notifications;
 use App\Models\Region;
 use App\Models\Roles;
@@ -19,7 +19,7 @@ class CollectionController extends Controller
      */
     public function services()
     {
-        $collections = Collection::where('user_id', auth()->user()->id)->orderByDesc('id')->get();
+        $collections = Project::where('user_id', auth()->user()->id)->orderByDesc('id')->get();
         $notifications = Notifications::where('id_uzer', auth()->user()->id)->orderByDesc('id')->get();
 
         return view('pages.user.services.services', [
@@ -33,7 +33,7 @@ class CollectionController extends Controller
      */
     public function single($id)
     {
-        $collection = Collection::find($id);
+        $collection = Project::find($id);
 
         if (is_null($collection)) {
             return redirect(route('pages.user.services.new'));
@@ -114,7 +114,7 @@ class CollectionController extends Controller
      */
     public function store(Request $request)
     {
-        $collection = Collection::create([
+        $collection = Project::create([
             'name' => $request->name,
             'images' => $request->images,
             'user_id' => auth()->user()->id,
@@ -148,7 +148,7 @@ class CollectionController extends Controller
      */
     public function edit(Request $request)
     {
-        $collection = Collection::where('id', $request->id)->update([
+        $collection = Project::where('id', $request->id)->update([
             'name' => $request->name,
             'images' => $request->images,
             'user_id' => auth()->user()->id,
