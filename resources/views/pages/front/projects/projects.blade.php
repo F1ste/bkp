@@ -108,7 +108,7 @@
                                             <div class="filter__form-item form__item">
                                                 <div class="filter__checkbox checkbox">
                                                     <input data-no-focus-classes id="{{ $rubric }}" value="{{ $rubric }}" type="checkbox" name="tip[]" class="filter__checkbox-input checkbox__input">
-                                                    <label for="{{ $rubric }}" class="filter__form-label checkbox__label "><span>{{ Str::title($rubric) }}</span></label>
+                                                    <label for="{{ $rubric }}" class="filter__form-label checkbox__label "><span>{{ $rubric }}</span></label>
                                                 </div>
                                             </div>
                                         @endif
@@ -125,7 +125,7 @@
                                             <div class="filter__form-item form__item">
                                                 <div class="filter__checkbox checkbox">
                                                     <input data-no-focus-classes id="{{ $rubric }}" value="{{ $rubric }}" type="checkbox" name="tema[]" class="filter__checkbox-input checkbox__input">
-                                                    <label for="{{ $rubric }}" class="filter__form-label checkbox__label "><span>{{ Str::title($rubric) }}</span></label>
+                                                    <label for="{{ $rubric }}" class="filter__form-label checkbox__label "><span>{{ $rubric }}</span></label>
                                                 </div>
                                             </div>
                                         @endif
@@ -142,7 +142,7 @@
                                             <div class="filter__form-item form__item">
                                                 <div class="filter__checkbox checkbox">
                                                     <input data-no-focus-classes id="{{ $rubric }}" value="{{ $rubric }}" type="checkbox" name="teg[]" class="filter__checkbox-input checkbox__input">
-                                                    <label for="{{ $rubric }}" class="filter__form-label checkbox__label "><span>{{ Str::title($rubric) }}</span></label>
+                                                    <label for="{{ $rubric }}" class="filter__form-label checkbox__label "><span>{{ $rubric }}</span></label>
                                                 </div>
                                             </div>
                                         @endif
@@ -159,7 +159,7 @@
                                             <div class="filter__form-item form__item">
                                                 <div class="filter__checkbox checkbox">
                                                     <input data-no-focus-classes id="{{ $rubric }}" value="{{ $rubric }}" type="checkbox" name="role[]" class="filter__checkbox-input checkbox__input">
-                                                    <label for="{{ $rubric }}" class="filter__form-label checkbox__label "><span>{{ Str::title($rubric) }}</span></label>
+                                                    <label for="{{ $rubric }}" class="filter__form-label checkbox__label "><span>{{ $rubric }}</span></label>
                                                 </div>
                                             </div>
                                         @endif
