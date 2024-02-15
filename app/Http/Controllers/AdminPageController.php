@@ -12,7 +12,7 @@ class AdminPageController extends Controller
      */
     public function dashboard()
     {
-        $collections = Project::where('price', 0)->orderByDesc('id')->get();
+        $collections = Project::where('status', Project::STATUS_MODERATION)->orderByDesc('id')->get();
 
         return view('pages.admin.dashboard', [
             'collections' => $collections,
@@ -21,7 +21,7 @@ class AdminPageController extends Controller
 
     public function arhiv()
     {
-        $collections = Project::where('price', 2)->orderByDesc('id')->get();
+        $collections = Project::where('status', Project::STATUS_ARCHIVED)->orderByDesc('id')->get();
 
         return view('pages.admin.dashboard2', [
             'collections' => $collections,
@@ -30,7 +30,7 @@ class AdminPageController extends Controller
 
     public function onpublic()
     {
-        $collections = Project::where('price', 1)->orderByDesc('id')->get();
+        $collections = Project::where('status', Project::STATUS_PUBLISHED)->orderByDesc('id')->get();
 
         return view('pages.admin.dashboard1', [
             'collections' => $collections,
@@ -39,7 +39,7 @@ class AdminPageController extends Controller
 
     public function otclon()
     {
-        $collections = Project::where('price', 3)->orderByDesc('id')->get();
+        $collections = Project::where('status', Project::STATUS_DECLINED)->orderByDesc('id')->get();
 
         return view('pages.admin.dashboard3', [
             'collections' => $collections,

@@ -11,7 +11,7 @@ class SearchResultsController extends Controller
     public function index(FilterRequest $request)
     {
         $collection = Project::query()
-            ->where('price', 1)
+            ->where('status', Project::STATUS_PUBLISHED)
             ->where('name_proj', 'like', "%{$request->searchText}%")
             ->orderByDesc('id')
             ->get();

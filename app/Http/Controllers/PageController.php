@@ -25,7 +25,7 @@ class PageController extends Controller
     public function home()
     {
         $news = News::orderByDesc('id')->get();
-        $collections = Project::where('price', '1')->orderByDesc('id')->get();
+        $collections = Project::where('status', Project::STATUS_PUBLISHED)->orderByDesc('id')->get();
         $userIds = $collections->pluck('user_id')->unique();
         $users = User::whereIn('id', $userIds)->get();
         return view('pages.front.home.home', compact('collections', 'news', 'users'));
@@ -99,10 +99,14 @@ class PageController extends Controller
 
         $filter = app()->make(PageProjectsFilter::class, ['queryParams' => array_filter($data)]);
 
-        $collection = Project::where('price', 1)->orderByDesc('id')->filter($filter)->paginate(12);
+        $collection = Project::query()
+            ->where('status', Project::STATUS_PUBLISHED)
+            ->orderByDesc('id')
+            ->filter($filter)
+            ->paginate(12);
 
         $years = Project::query()
-            ->where('price', 1)
+            ->where('status', Project::STATUS_PUBLISHED)
             ->distinct()
             ->orderBy('date_service_from', 'desc')
             ->pluck('date_service_from')
