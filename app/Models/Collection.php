@@ -11,7 +11,7 @@ class Collection extends Model
     use HasFactory;
     use Filterable;
 
-    protected $table = 'services';
+    protected $table = 'projects';
 
     protected $fillable = [
         'id',
