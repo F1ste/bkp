@@ -6,12 +6,17 @@ use App\Models\Traits\Filterable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Collection extends Model
+class Project extends Model
 {
     use HasFactory;
     use Filterable;
 
-    protected $table = 'services';
+    public const STATUS_MODERATION = 0;
+    public const STATUS_PUBLISHED = 1;
+    public const STATUS_ARCHIVED = 2;
+    public const STATUS_DECLINED = 3;
+
+    protected $table = 'projects';
 
     protected $fillable = [
         'id',
@@ -21,7 +26,7 @@ class Collection extends Model
         'excerpt',
         'date_service_from',
         'date_service_to',
-        'price',
+        'status',
         'created_at',
         'region',
         'tip',

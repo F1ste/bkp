@@ -97,7 +97,7 @@
                                     <div class="partners-searching__replies">
                                         <b>Откликнулось:</b> {{ $counter }}
                                     </div>
-                                @if ($collection->price == 1 && \Illuminate\Support\Carbon::parse($serchs->inp)->gte(now()))
+                                @if ($collection->status == \App\Models\Project::STATUS_PUBLISHED && \Illuminate\Support\Carbon::parse($serchs->inp)->gte(now()))
                                     <button type="button" data-popup="#feedbackPopup" data-role="{{ $serchs->sel }}" class="partners-searching__btn btn btn-filled _fw">
                                         Откликнуться
                                     </button>

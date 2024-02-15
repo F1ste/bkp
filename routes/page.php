@@ -41,7 +41,7 @@ Route::get('/partners', function () {
 Route::get('/about/', [AboutController::class,'index'])->name('about');
 Route::get('/contacts/', [ContactController::class,'index'])->name('contact');
 Route::get('/faq/', [FAQController::class,'index'])->name('faq');
-Route::get('/policy/', [PolicyController::class,'index'])->name('about');
+Route::get('/policy/', [PolicyController::class,'index'])->name('policy');
 
 Route::get('storage/{filename}', [PageController::class, 'image']);
 

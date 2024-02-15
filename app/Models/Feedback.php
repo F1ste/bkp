@@ -17,7 +17,7 @@ class Feedback extends Model
 
     public function service()
     {
-        return $this->belongsTo(Collection::class, 'service_id', 'id');
+        return $this->belongsTo(Project::class, 'service_id', 'id');
     }
 
     public function user()
