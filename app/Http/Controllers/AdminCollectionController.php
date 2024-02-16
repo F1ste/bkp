@@ -374,7 +374,7 @@ class AdminCollectionController extends Controller
             'name' => $request->name,
         ]);
 
-        return response()->json(route('admin.rubric.single', ['id' => $collection->id]), 201);
+        return response()->json(route('admin.news-categories.single', ['id' => $collection->id]), 201);
     }
 
     public function rubric_single($id)
@@ -428,7 +428,7 @@ class AdminCollectionController extends Controller
             'name' => $request->name,
         ]);
 
-        return response()->json(route('admin.tema.single', ['id' => $collection->id]), 201);
+        return response()->json(route('admin.project-subjects.single', ['id' => $collection->id]), 201);
     }
 
     public function tema_single($id)
@@ -481,7 +481,7 @@ class AdminCollectionController extends Controller
             'name' => $request->name,
         ]);
 
-        return response()->json(route('admin.tip.single', ['id' => $collection->id]), 201);
+        return response()->json(route('admin.event-types.single', ['id' => $collection->id]), 201);
     }
 
     public function tip_single($id)
@@ -535,7 +535,7 @@ class AdminCollectionController extends Controller
             'name' => $request->name,
         ]);
 
-        return response()->json(route('admin.teg.single', ['id' => $collection->id]), 201);
+        return response()->json(route('admin.project-tags.single', ['id' => $collection->id]), 201);
     }
 
     public function teg_single($id)
@@ -588,7 +588,7 @@ class AdminCollectionController extends Controller
             'name' => $request->name,
         ]);
 
-        return response()->json(route('admin.partners.single', ['id' => $collection->id]), 201);
+        return response()->json(route('admin.project-roles.single', ['id' => $collection->id]), 201);
     }
 
     public function partners_single($id)

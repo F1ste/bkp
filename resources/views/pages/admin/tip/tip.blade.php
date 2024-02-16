@@ -15,14 +15,14 @@
 
                     <div style="display: flex;justify-content: space-between;margin-top: 20px;">
                         <div>
-                            <a href="{{ route('admin.tip.new') }}" class="my-projects__btn btn btn-white">Создать Тип</a>
+                            <a href="{{ route('admin.event-types.new') }}" class="my-projects__btn btn btn-white">Создать Тип</a>
                         </div>
                     </div>
 
                     <div style="margin-top: 20px; margin-bottom: 20px;">
                     @foreach ($collections as $el)
                         <div class="my-projects__item" style="margin-bottom: 15px;">
-                            <a href="{{ route('admin.tip.single', ['id' => $el->id]) }}">
+                            <a href="{{ route('admin.event-types.single', ['id' => $el->id]) }}">
                                 <div class="my-projects__project-name">
                                     {{ $el->name }}
                                 </div>
