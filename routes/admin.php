@@ -6,6 +6,7 @@ use App\Http\Controllers\AdminUserController;
 use App\Http\Controllers\Admin\ProjectController;
 use App\Http\Controllers\Admin\Projects\EventController;
 use App\Http\Controllers\Admin\Projects\SubjectController;
+use App\Http\Controllers\Admin\Projects\TagController;
 use App\Http\Controllers\CollectionController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\FAQController;
@@ -20,6 +21,7 @@ Route::prefix('/projects')->name('projects.')->group(function () {
 
     Route::resource('/subjects', SubjectController::class)->except('show');
     Route::resource('/events', EventController::class)->except('show');
+    Route::resource('/tags', TagController::class)->except('show');
 });
 
 Route::prefix('/services')->group(function () {
@@ -63,16 +65,6 @@ Route::prefix('/rubric')->group(function () {
     Route::post('/store', [AdminCollectionController::class, 'rubric_store'])->name('news-categories.store');
     Route::post('/edit', [AdminCollectionController::class, 'rubric_edit'])->name('news-categories.edit');
         Route::post('/delete', [AdminCollectionController::class, 'rubric_delete'])->name('news-categories.delete');
-});
-
-Route::prefix('/teg')->group(function () {
-    Route::get('/', [AdminCollectionController::class, 'teg'])->name('project-tags');
-    Route::get('/teg-{id}', [AdminCollectionController::class, 'teg_single'])->name('project-tags.single');
-    Route::get('/new', [AdminCollectionController::class, 'teg_new'])->name('project-tags.new');
-    Route::post('/img1', [CollectionController::class, 'img1'])->name('project-tags.img1');
-    Route::post('/store', [AdminCollectionController::class, 'teg_store'])->name('project-tags.store');
-    Route::post('/edit', [AdminCollectionController::class, 'teg_edit'])->name('project-tags.edit');
-    Route::post('/delete', [AdminCollectionController::class, 'teg_delete'])->name('project-tags.delete');
 });
 
 Route::prefix('/partners')->group(function () {

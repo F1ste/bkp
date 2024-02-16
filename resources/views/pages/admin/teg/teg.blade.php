@@ -15,14 +15,14 @@
 
                     <div style="display: flex;justify-content: space-between;margin-top: 20px;">
                         <div>
-                            <a href="{{ route('admin.project-tags.new') }}" class="my-projects__btn btn btn-white">Создать Тег</a>
+                            <a href="{{ route('admin.projects.tags.create') }}" class="my-projects__btn btn btn-white">Создать Тег</a>
                         </div>
                     </div>
 
                     <div style="margin-top: 20px; margin-bottom: 20px;">
                     @foreach ($collections as $el)
                         <div class="my-projects__item" style="margin-bottom: 15px;">
-                            <a href="{{ route('admin.project-tags.single', ['id' => $el->id]) }}">
+                            <a href="{{ route('admin.projects.tags.edit', $el) }}">
                                 <div class="my-projects__project-name">
                                     {{ $el->name }}
                                 </div>
