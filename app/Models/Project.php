@@ -45,6 +45,26 @@ class Project extends Model
         'img6',
     ];
 
+    public function scopeOnModeration($query)
+    {
+        return $query->where('status', self::STATUS_MODERATION);
+    }
+
+    public function scopePublished($query)
+    {
+        return $query->where('status', self::STATUS_PUBLISHED);
+    }
+
+    public function scopeArchived($query)
+    {
+        return $query->where('status', self::STATUS_ARCHIVED);
+    }
+
+    public function scopeDeclined($query)
+    {
+        return $query->where('status', self::STATUS_DECLINED);
+    }
+
     public function feedbacks()
     {
         return $this->hasMany(Feedback::class, 'service_id', 'id');
