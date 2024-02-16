@@ -108,7 +108,7 @@ class AdminCollectionController extends Controller
             'excerpt' => $request->excerpt,
             'date_service_from' => $request->date_service_from,
             'date_service_to' => $request->date_service_to,
-            'price' => $request->price,
+            'status' => $request->price,
             'created_at' => date('Y-m-d'),
             'region' => $request->region,
             'tip' => $request->tip,
@@ -144,7 +144,7 @@ class AdminCollectionController extends Controller
         }
 
         $collection = Project::where('id', $request->id)->update([
-            'price' => $request->price
+            'status' => $request->price
         ]);
 
         return response()->json($collection, 201);
