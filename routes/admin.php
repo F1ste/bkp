@@ -10,10 +10,12 @@ use App\Http\Controllers\FAQController;
 use App\Http\Controllers\FooterController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/dashboard', [AdminPageController::class, 'dashboard'])->name('projects.moderation');
-Route::get('/arhiv', [AdminPageController::class, 'arhiv'])->name('projects.archive');
-Route::get('/onpublic', [AdminPageController::class, 'onpublic'])->name('projects.public');
-Route::get('/otclon', [AdminPageController::class, 'otclon'])->name('projects.declined');
+Route::prefix('/projects')->name('projects.')->group(function () {
+    Route::get('/moderation', [AdminPageController::class, 'dashboard'])->name('moderation');
+    Route::get('/archive', [AdminPageController::class, 'arhiv'])->name('archive');
+    Route::get('/published', [AdminPageController::class, 'onpublic'])->name('public');
+    Route::get('/declined', [AdminPageController::class, 'otclon'])->name('declined');
+});
 
 Route::prefix('/services')->group(function () {
     Route::get('/services-{id}', [AdminCollectionController::class, 'single'])->name('services.single');
