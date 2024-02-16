@@ -2,7 +2,7 @@
 
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\AdminCollectionController;
-use App\Http\Controllers\AdminPageController;
+use App\Http\Controllers\Admin\ProjectController;
 use App\Http\Controllers\AdminUserController;
 use App\Http\Controllers\CollectionController;
 use App\Http\Controllers\ContactController;
@@ -11,10 +11,10 @@ use App\Http\Controllers\FooterController;
 use Illuminate\Support\Facades\Route;
 
 Route::prefix('/projects')->name('projects.')->group(function () {
-    Route::get('/moderation', [AdminPageController::class, 'dashboard'])->name('moderation');
-    Route::get('/archive', [AdminPageController::class, 'arhiv'])->name('archive');
-    Route::get('/published', [AdminPageController::class, 'onpublic'])->name('public');
-    Route::get('/declined', [AdminPageController::class, 'otclon'])->name('declined');
+    Route::get('/moderation', [ProjectController::class, 'moderation'])->name('moderation');
+    Route::get('/archive', [ProjectController::class, 'archive'])->name('archive');
+    Route::get('/published', [ProjectController::class, 'published'])->name('public');
+    Route::get('/declined', [ProjectController::class, 'declined'])->name('declined');
 });
 
 Route::prefix('/services')->group(function () {
