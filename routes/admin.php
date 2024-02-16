@@ -2,8 +2,9 @@
 
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\AdminCollectionController;
-use App\Http\Controllers\Admin\ProjectController;
 use App\Http\Controllers\AdminUserController;
+use App\Http\Controllers\Admin\ProjectController;
+use App\Http\Controllers\Admin\Projects\SubjectController;
 use App\Http\Controllers\CollectionController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\FAQController;
@@ -15,6 +16,8 @@ Route::prefix('/projects')->name('projects.')->group(function () {
     Route::get('/archive', [ProjectController::class, 'archive'])->name('archive');
     Route::get('/published', [ProjectController::class, 'published'])->name('public');
     Route::get('/declined', [ProjectController::class, 'declined'])->name('declined');
+
+    Route::resource('/subjects', SubjectController::class)->except('show');
 });
 
 Route::prefix('/services')->group(function () {
@@ -59,17 +62,6 @@ Route::prefix('/rubric')->group(function () {
     Route::post('/edit', [AdminCollectionController::class, 'rubric_edit'])->name('news-categories.edit');
         Route::post('/delete', [AdminCollectionController::class, 'rubric_delete'])->name('news-categories.delete');
 });
-
-Route::prefix('/tema')->group(function () {
-    Route::get('/', [AdminCollectionController::class, 'tema'])->name('project-subjects');
-    Route::get('/tema-{id}', [AdminCollectionController::class, 'tema_single'])->name('project-subjects.single');
-    Route::get('/new', [AdminCollectionController::class, 'tema_new'])->name('project-subjects.new');
-    Route::post('/img1', [CollectionController::class, 'img1'])->name('project-subjects.img1');
-    Route::post('/store', [AdminCollectionController::class, 'tema_store'])->name('project-subjects.store');
-    Route::post('/edit', [AdminCollectionController::class, 'tema_edit'])->name('project-subjects.edit');
-    Route::post('/delete', [AdminCollectionController::class, 'tema_delete'])->name('project-subjects.delete');
-});
-
 Route::prefix('/tip')->group(function () {
     Route::get('/', [AdminCollectionController::class, 'tip'])->name('event-types');
     Route::get('/tip-{id}', [AdminCollectionController::class, 'tip_single'])->name('event-types.single');

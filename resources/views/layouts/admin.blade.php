@@ -45,7 +45,7 @@
                             <div class="spollers__body">
                                 <div class="spollers__wrapper">
                                     <a href="{{ route('admin.news-categories') }}" class="sidebar__item _icon-categories">Рубрики для новостей</a>
-                                    <a href="{{ route('admin.project-subjects') }}" class="sidebar__item _icon-categories">Тематика проекта</a>
+                                    <a href="{{ route('admin.projects.subjects.index') }}" class="sidebar__item _icon-categories">Тематика проекта</a>
                                     <a href="{{ route('admin.event-types') }}" class="sidebar__item _icon-categories">Тип события</a>
                                     <a href="{{ route('admin.project-tags') }}" class="sidebar__item _icon-categories">Теги проекта</a>
                                     <a href="{{ route('admin.banners') }}" class="sidebar__item _icon-image">Рекламные баннеры</a>
