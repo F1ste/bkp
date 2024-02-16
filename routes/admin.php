@@ -4,6 +4,7 @@ use App\Http\Controllers\AboutController;
 use App\Http\Controllers\AdminCollectionController;
 use App\Http\Controllers\AdminUserController;
 use App\Http\Controllers\Admin\ProjectController;
+use App\Http\Controllers\Admin\Projects\EventController;
 use App\Http\Controllers\Admin\Projects\SubjectController;
 use App\Http\Controllers\CollectionController;
 use App\Http\Controllers\ContactController;
@@ -18,6 +19,7 @@ Route::prefix('/projects')->name('projects.')->group(function () {
     Route::get('/declined', [ProjectController::class, 'declined'])->name('declined');
 
     Route::resource('/subjects', SubjectController::class)->except('show');
+    Route::resource('/events', EventController::class)->except('show');
 });
 
 Route::prefix('/services')->group(function () {
@@ -61,15 +63,6 @@ Route::prefix('/rubric')->group(function () {
     Route::post('/store', [AdminCollectionController::class, 'rubric_store'])->name('news-categories.store');
     Route::post('/edit', [AdminCollectionController::class, 'rubric_edit'])->name('news-categories.edit');
         Route::post('/delete', [AdminCollectionController::class, 'rubric_delete'])->name('news-categories.delete');
-});
-Route::prefix('/tip')->group(function () {
-    Route::get('/', [AdminCollectionController::class, 'tip'])->name('event-types');
-    Route::get('/tip-{id}', [AdminCollectionController::class, 'tip_single'])->name('event-types.single');
-    Route::get('/new', [AdminCollectionController::class, 'tip_new'])->name('event-types.new');
-    Route::post('/img1', [CollectionController::class, 'img1'])->name('event-types.img1');
-    Route::post('/store', [AdminCollectionController::class, 'tip_store'])->name('event-types.store');
-    Route::post('/edit', [AdminCollectionController::class, 'tip_edit'])->name('event-types.edit');
-    Route::post('/delete', [AdminCollectionController::class, 'tip_delete'])->name('event-types.delete');
 });
 
 Route::prefix('/teg')->group(function () {

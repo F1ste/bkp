@@ -5,7 +5,7 @@
 @section('content')
     <div class="page__container">
 
-        <section data-store="{{ route('admin.event-types.store') }}" id='tip-store' class="collection section-base create-project personal-account">
+        <section data-store="{{ route('admin.projects.events.store') }}" id='tip-store' class="collection section-base create-project personal-account">
 
             <div class="create-project__container">
                 <div data-one-select class="create-project__content">
