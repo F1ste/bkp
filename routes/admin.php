@@ -13,7 +13,10 @@ use App\Http\Controllers\FAQController;
 use App\Http\Controllers\FooterController;
 use Illuminate\Support\Facades\Route;
 
+Route::redirect('/', '/admin/projects/moderation');
+
 Route::prefix('/projects')->name('projects.')->group(function () {
+    Route::redirect('/', '/admin/projects/moderation');
     Route::get('/moderation', [ProjectController::class, 'moderation'])->name('moderation');
     Route::get('/archive', [ProjectController::class, 'archive'])->name('archive');
     Route::get('/published', [ProjectController::class, 'published'])->name('public');
