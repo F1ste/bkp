@@ -588,7 +588,7 @@ class AdminCollectionController extends Controller
             'name' => $request->name,
         ]);
 
-        return response()->json(route('admin.project-roles.single', ['id' => $collection->id]), 201);
+        return response()->json(route('admin.projects.roles.single', ['id' => $collection->id]), 201);
     }
 
     public function partners_single($id)

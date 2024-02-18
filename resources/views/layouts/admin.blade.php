@@ -49,7 +49,7 @@
                                     <a href="{{ route('admin.projects.events.index') }}" class="sidebar__item _icon-categories">Тип события</a>
                                     <a href="{{ route('admin.projects.tags.index') }}" class="sidebar__item _icon-categories">Теги проекта</a>
                                     <a href="{{ route('admin.banners.index') }}" class="sidebar__item _icon-image">Рекламные баннеры</a>
-                                    <a href="{{ route('admin.project-roles') }}" class="sidebar__item _icon-categories">Роли</a>
+                                    <a href="{{ route('admin.projects.roles.index') }}" class="sidebar__item _icon-categories">Роли</a>
                                 </div>
                             </div>
                         </div>
