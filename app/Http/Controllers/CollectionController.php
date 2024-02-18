@@ -180,7 +180,7 @@ class CollectionController extends Controller
     /**
      * POST Avatar
      */
-    public function img1(Request $request)
+    public function img(Request $request)
     {
         $size = $request->file('file')->getSize();
         $type = $request->file('file')->extension();

@@ -48,7 +48,7 @@ Route::prefix('/news')->group(function () {
     Route::get('/', [AdminCollectionController::class, 'news'])->name('news');
     Route::get('/news-{id}', [AdminCollectionController::class, 'news_single'])->name('news.single');
     Route::get('/new', [AdminCollectionController::class, 'news_new'])->name('news.new');
-    Route::post('/img1', [CollectionController::class, 'img1'])->name('news.img1');
+    Route::post('/img1', [CollectionController::class, 'img'])->name('news.img1');
 
     Route::post('/store', [AdminCollectionController::class, 'news_store'])->name('news.store');
     Route::post('/edit', [AdminCollectionController::class, 'news_edit'])->name('news.edit');
@@ -60,7 +60,7 @@ Route::prefix('/rubric')->group(function () {
     Route::get('/', [AdminCollectionController::class, 'rubric'])->name('news-categories');
     Route::get('/rubric-{id}', [AdminCollectionController::class, 'rubric_single'])->name('news-categories.single');
     Route::get('/new', [AdminCollectionController::class, 'rubric_new'])->name('news-categories.new');
-    Route::post('/img1', [CollectionController::class, 'img1'])->name('news-categories.img1');
+    Route::post('/img1', [CollectionController::class, 'img'])->name('news-categories.img1');
     Route::post('/store', [AdminCollectionController::class, 'rubric_store'])->name('news-categories.store');
     Route::post('/edit', [AdminCollectionController::class, 'rubric_edit'])->name('news-categories.edit');
         Route::post('/delete', [AdminCollectionController::class, 'rubric_delete'])->name('news-categories.delete');
