@@ -83,7 +83,7 @@
                     <div class="news-block__big-block big-news">
 
                     @if (isset($collections[0]) && $collections[0]->name != '')
-                        <a href="{{ route('news.tidings', ['id' => $collections[0]->id]) }}" class="big-news__item with-banner">
+                        <a href="{{ route('news.tidings', $collections[0]->i}" class="big-news__item with-banner">
                             <div class="big-news__media media-block">
                                 <picture>
                                     <source srcset="{{ $collections[0]->img }}" type="image/webp"><img src="{{ $collections[0]->img }}" alt="Изображение новости">
@@ -114,7 +114,7 @@
                     @for ($i = 1; $i < 3; $i++)
                     @if (isset($collections[$i]) && $collections[$i]->name != '')
                         <div class="news-block__item">
-                            <a href="{{ route('news.tidings', ['id' => $collections[$i]->id]) }}">
+                            <a href="{{ route('news.tidings', $collections[$i]) }}">
                                 <div class="news-block__item-media media-block">
                                     <picture>
                                         <source srcset="{{ $collections[$i]->img }}" type="image/webp"><img src="{{ $collections[$i]->img }}" alt="Изображение новости">
@@ -139,7 +139,7 @@
                     @for ($i = 3; $i < count($collections); $i++)
                     @if (isset($collections[$i]) && $collections[$i]->name != '')
                         <div class="news-block__item">
-                            <a href="{{ route('news.tidings', ['id' => $collections[$i]->id]) }}">
+                            <a href="{{ route('news.tidings', $collections[$i]) }}">
                                 <div class="news-block__item-media media-block">
                                     <picture>
                                         <source srcset="{{ $collections[$i]->img }}" type="image/webp"><img src="{{ $collections[$i]->img }}" alt="Изображение новости">

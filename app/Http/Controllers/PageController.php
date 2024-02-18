@@ -212,14 +212,13 @@ class PageController extends Controller
         ]);
     }
 
-    public function tidings($id)
+    public function tidings(News $news)
     {
-        $collection = News::find($id);
         $banners = Banner::query()->get();
 
         return view('pages.front.news.tidings', [
-            'collection' => $collection,
-            'id' => $id,
+            'collection' => $news,
+            'id' => $news->id,
         ]);
     }
 }

@@ -40,7 +40,7 @@ Route::prefix('/projects')->group(function () {
 
 Route::prefix('/news')->group(function () {
     Route::get('/', [PageController::class, 'news'])->name('news');
-    Route::get('/news/{id}', [PageController::class, 'tidings'])->name('news.tidings');
+    Route::get('/news/{news}', [PageController::class, 'tidings'])->name('news.tidings');
 });
 
 Route::prefix('/designer')->group(function () {

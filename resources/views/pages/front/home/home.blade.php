@@ -273,7 +273,7 @@
             <div class="news-block__items-wrapper">
                 <div class="news-block__big-block big-news">
                 @if (isset($news[0]) and $news[0]->name != '')
-                    <a href="{{ route('news.tidings', ['id' => $news[0]->id]) }}" class="big-news__item with-banner">
+                    <a href="{{ route('news.tidings', $news[0]) }}" class="big-news__item with-banner">
                         <div class="big-news__media media-block">
                             <picture>
                                 <source srcset="{{ $news[0]->img }}" type="image/webp">
@@ -306,7 +306,7 @@
                 @for ($i = 1; $i < 3; $i++)
                 @if (isset($news[$i]) && $news[$i]->name != '')
                     <div class="news-block__item">
-                        <a href="{{ route('news.tidings', ['id' => $news[$i]->id]) }}">
+                        <a href="{{ route('news.tidings', $news[$i]->id) }}">
                             <div class="news-block__item-media media-block">
                                 <picture>
                                     <source srcset="{{ $news[$i]->img }}" type="image/webp">
@@ -336,7 +336,7 @@
                 @for ($i = 3; $i < 7; $i++)
                 @if (isset($news[$i]) && $news[$i]->name != '')
                     <div class="news-block__item">
-                        <a href="{{ route('news.tidings', ['id' => $news[$i]->id]) }}">
+                        <a href="{{ route('news.tidings', $news[$i]->id) }}">
                             <div class="news-block__item-media media-block">
                                 <picture>
                                     <source srcset="{{ $news[$i]->img }}" type="image/webp">
