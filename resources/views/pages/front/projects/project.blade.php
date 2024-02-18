@@ -72,12 +72,12 @@
                     <div data-tabs data-tabs-animate="200" class="partners-searching__tabs tabs">
                         <nav data-tabs-titles class="partners-searching__heading tabs__navigation">
                         @foreach ($serch as $key => $serchs)
+                        @if (\Illuminate\Support\Carbon::parse($serchs->inp)->gte(now()))
                             <button type="button" class="partners-searching__heading-item {{ $key === 0 ? '_tab-active' : '' }}">
-                            @if (\Illuminate\Support\Carbon::parse($serchs->inp)->gte(now()))
+                        @else
+                            <button type="button" class="partners-searching__heading-item _tab-inactive">
+                        @endif
                                 {{ $serchs->sel }}
-                            @else
-                                <s>{{ $serchs->sel }}</s>
-                            @endif
                             </button>
                         @endforeach
                         </nav>
