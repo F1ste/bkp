@@ -83,7 +83,7 @@
                     <div class="news-block__big-block big-news">
 
                     @if (isset($collections[0]) && $collections[0]->name != '')
-                        <a href="{{ route('news.tidings', ['id' => $collections[0]->id]) }}" class="big-news__item with-banner">
+                        <a href="{{ route('news.tidings', $collections[0]) }}" class="big-news__item with-banner">
                             <div class="big-news__media media-block">
                                 <picture>
                                     <source srcset="{{ $collections[0]->img }}" type="image/webp"><img src="{{ $collections[0]->img }}" alt="Изображение новости">
@@ -100,21 +100,21 @@
                         </a>
                     @endif
 
-                        <div class="big-news__banner ">
+                        {{-- <div class="big-news__banner ">
                             <a href="#" class="media-block">
                                 <picture>
                                     <source srcset="{{ asset('image/banner1.webp') }}" type="image/webp">
                                     <img src="{{ asset('image/banner1.jpg') }}" alt="Баннер">
                                 </picture>
                             </a>
-                        </div>
+                        </div> --}}
 
                     </div>
                     <div class="news-block__big-items">
                     @for ($i = 1; $i < 3; $i++)
                     @if (isset($collections[$i]) && $collections[$i]->name != '')
                         <div class="news-block__item">
-                            <a href="{{ route('news.tidings', ['id' => $collections[$i]->id]) }}">
+                            <a href="{{ route('news.tidings', $collections[$i]) }}">
                                 <div class="news-block__item-media media-block">
                                     <picture>
                                         <source srcset="{{ $collections[$i]->img }}" type="image/webp"><img src="{{ $collections[$i]->img }}" alt="Изображение новости">
@@ -139,7 +139,7 @@
                     @for ($i = 3; $i < count($collections); $i++)
                     @if (isset($collections[$i]) && $collections[$i]->name != '')
                         <div class="news-block__item">
-                            <a href="{{ route('news.tidings', ['id' => $collections[$i]->id]) }}">
+                            <a href="{{ route('news.tidings', $collections[$i]) }}">
                                 <div class="news-block__item-media media-block">
                                     <picture>
                                         <source srcset="{{ $collections[$i]->img }}" type="image/webp"><img src="{{ $collections[$i]->img }}" alt="Изображение новости">
@@ -163,7 +163,7 @@
                     {{ $collections->withQueryString()->links('pagination::default') }}
                 </div>
         </section>
-        <section class="banner">
+        {{-- <section class="banner">
             <div class="banner__container">
                 <div class="banner__wrapper">
                     <a href="#" class="media-block">
@@ -173,7 +173,7 @@
                     </a>
                 </div>
             </div>
-        </section>
+        </section> --}}
     </main>
     <script>
         (() => {

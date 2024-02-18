@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Project;
 use App\Models\Notifications;
 use App\Models\Region;
-use App\Models\Roles;
+use App\Models\Role;
 use App\Models\Subject;
 use App\Models\Tags;
 use App\Models\Event;
@@ -40,7 +40,7 @@ class CollectionController extends Controller
         }
 
         $regoin = Region::get();
-        $roles = Roles::get();
+        $roles = Role::get();
         $subject = Subject::get();
         $tegs = Tags::get();
         $event = Event::get();
@@ -68,7 +68,7 @@ class CollectionController extends Controller
     public function new()
     {
         $regoin = Region::get();
-        $roles = Roles::get();
+        $roles = Role::get();
         $subject = Subject::get();
         $tegs = Tags::get();
         $event = Event::get();
@@ -88,7 +88,7 @@ class CollectionController extends Controller
      */
     public function roles()
     {
-        $roles = Roles::get();
+        $roles = Role::get();
         return $roles;
     }
 
@@ -180,7 +180,7 @@ class CollectionController extends Controller
     /**
      * POST Avatar
      */
-    public function img1(Request $request)
+    public function img(Request $request)
     {
         $size = $request->file('file')->getSize();
         $type = $request->file('file')->extension();

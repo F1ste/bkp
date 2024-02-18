@@ -4,7 +4,7 @@
 
 @section('content')
     <div class="page__container" style="min-height: 100vh;">
-        <section data-update="{{ route('admin.banner.edit') }}" data-id="{{ $id }}" id='banner-edit' class="collection section-base create-project personal-account">
+        <section data-update="{{ route('admin.banners.update', $collection) }}" data-id="{{ $id }}" id='banner-edit' class="collection section-base create-project personal-account">
 
             <div class="create-project__container">
                 <div data-one-select class="create-project__content">
@@ -70,7 +70,7 @@
 
                 <div class="create-project__footer">
                     <div class="create-project__buttons">
-                        <a data-del="{{ route('admin.banner.delete') }}" style="cursor: pointer;" id="del-button" class="create-project__btn btn btn-white btn-border_black">Удалить</a>
+                        <a data-del="{{ route('admin.banners.destroy', $collection) }}" style="cursor: pointer;" id="del-button" class="create-project__btn btn btn-white btn-border_black">Удалить</a>
                         <button id='store-button' class="create-project__btn btn btn-filled">Сохранить</button>
                     </div>
                 </div>

@@ -55,7 +55,7 @@ import {} from "../libs/ckeditor/ckeditor";
 
         document.getElementById(select.storeButton).innerHTML = `Подождите...`
 
-        axios.post(updateRoute, {
+        axios.patch(updateRoute, {
             name: name,
             id: id,
             img1: img1,
@@ -76,7 +76,7 @@ import {} from "../libs/ckeditor/ckeditor";
     document.getElementById(select.del).addEventListener('click', e => {
 
         let del = document.getElementById(select.del).dataset.del;
-        axios.post(del, {
+        axios.delete(del, {
             id: id
         }).then(e => {
             window.location.replace("/admin/banners");

@@ -15,14 +15,14 @@
 
                     <div style="display: flex;justify-content: space-between;margin-top: 20px;">
                         <div>
-                            <a href="{{ route('admin.banner.new') }}" class="my-projects__btn btn btn-white">Создать Баннер</a>
+                            <a href="{{ route('admin.banners.create') }}" class="my-projects__btn btn btn-white">Создать Баннер</a>
                         </div>
                     </div>
 
                     <div style="margin-top: 20px; margin-bottom: 20px;">
                     @foreach ($collections as $el)
                         <div class="my-projects__item" style="margin-bottom: 15px;">
-                            <a href="{{ route('admin.banner.single', ['id' => $el->id]) }}">
+                            <a href="{{ route('admin.banners.edit', $el) }}">
                                 <div class="my-projects__project-name">
                                     {{ $el->name }}
                                 </div>

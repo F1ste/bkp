@@ -5,7 +5,7 @@
 @section('content')
     <div class="page__container" style="min-height: 100vh;">
 
-        <section data-store="{{ route('admin.banner.store') }}" id='banner-store' class="collection section-base create-project personal-account">
+        <section data-store="{{ route('admin.banners.store') }}" id='banner-store' class="collection section-base create-project personal-account">
 
             <div class="create-project__container">
                 <div data-one-select class="create-project__content">

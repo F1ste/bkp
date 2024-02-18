@@ -36,6 +36,7 @@ class RegisteredUserController extends Controller
         $request->validate([
             'email' => ['required', 'string', 'max:255', 'unique:users','email'],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
+            'mailing-confirmation' => ['accepted'],
         ]);
 
         $user = User::create([
@@ -43,7 +44,9 @@ class RegisteredUserController extends Controller
             'password' => Hash::make($request->password),
         ]);
 
-        event(new Registered($user));
+        $user_with_password = clone $user;
+        $user_with_password->password = $request->password;
+        event(new Registered($user_with_password));
 
         $user->assignRole('user');
 

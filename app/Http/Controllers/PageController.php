@@ -7,7 +7,7 @@ use App\Models\Banner;
 use App\Models\Project;
 use App\Models\User;
 use App\Models\News;
-use App\Models\Roles;
+use App\Models\Role;
 use App\Models\Subject;
 use App\Models\Tags;
 use App\Models\Event;
@@ -136,7 +136,7 @@ class PageController extends Controller
             return $teg;
         })->unique();
 
-        $roles = Roles::distinct()->orderBy('name', 'asc')->pluck('name')->map(function ($roles) {
+        $roles = Role::distinct()->orderBy('name', 'asc')->pluck('name')->map(function ($roles) {
             return $roles;
         })->unique();
 
@@ -155,23 +155,23 @@ class PageController extends Controller
         ]);
     }
 
-    public function project($id)
+    public function project(Project $project)
     {
-        $collection = Project::with('feedbacks')->find($id);
-        $count = $collection->feedbacks->count();
-        $user = User::find($collection->user_id);
-        $images = json_decode($collection->images)->images;
-        $teg = json_decode($collection->teg);
-        $serch = collect(json_decode($collection->serch))
+        $project->load('feedbacks');
+        $count = $project->feedbacks->count();
+        $user = User::find($project->user_id);
+        $images = json_decode($project->images)->images;
+        $teg = json_decode($project->teg);
+        $serch = collect(json_decode($project->serch))
             ->sort(function ($a, $b) {
                 return Carbon::parse($a->inp)->lt(Carbon::parse($b->inp));
             })
             ->values();
 
         return view('pages.front.projects.project', [
-            'collection' => $collection,
+            'collection' => $project,
             'images' => $images,
-            'id' => $id,
+            'id' => $project->id,
             'teg' => $teg,
             'serch' => $serch,
             'user' => $user,
@@ -212,14 +212,13 @@ class PageController extends Controller
         ]);
     }
 
-    public function tidings($id)
+    public function tidings(News $news)
     {
-        $collection = News::find($id);
         $banners = Banner::query()->get();
 
         return view('pages.front.news.tidings', [
-            'collection' => $collection,
-            'id' => $id,
+            'collection' => $news,
+            'id' => $news->id,
         ]);
     }
 }

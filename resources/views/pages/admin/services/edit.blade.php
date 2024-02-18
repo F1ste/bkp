@@ -64,8 +64,8 @@
                                     <label class="create-project__form-label form__label">Тип события</label>
                                     <select id="tip" data-scroll name="form[]" class="form__select">
                                         <option value="" @if ($collection->tip == '') selected @endif>Выбрать</option>
-                                    @foreach ($subject as $el)
-                                        <option value="{{ $el->name }}" @if ($collection->tip == $el->name) selected @endif>{{ $el->name }}</option>
+                                    @foreach ($event as $el)
+                                        <option value="{{ $el->name }}" @if ($collection->tema == $el->name) selected @endif>{{ $el->name }}</option>
                                     @endforeach
                                     </select>
                                 </div>
@@ -73,8 +73,8 @@
                                     <label class="create-project__form-label form__label">Тематика проекта</label>
                                     <select id="tema" data-scroll name="form[]" class="form__select">
                                         <option value="" @if ($collection->tema == '') selected @endif>Выбрать</option>
-                                    @foreach ($event as $el)
-                                        <option value="{{ $el->name }}" @if ($collection->tema == $el->name) selected @endif>{{ $el->name }}</option>
+                                    @foreach ($subject as $el)
+                                        <option value="{{ $el->name }}" @if ($collection->tip == $el->name) selected @endif>{{ $el->name }}</option>
                                     @endforeach
                                     </select>
                                 </div>

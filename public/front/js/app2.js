@@ -10351,11 +10351,11 @@
                     onSelect: function(input, instance, date) {}
                 });
                 partnerCount++;
+                let removeButtons = findPartnerSect.querySelectorAll(".remove-partner");
+                removeButtons[0].style.display = (removeButtons.length === 1) ? 'none' : 'block';
             }
             addPartnerBtn.addEventListener("click", addPartner);
 
-            const removePartnerBtns = findPartnerSect.querySelectorAll(".remove-partner")
-            if (removePartnerBtns.length === 0) return false;
             function removePartner(e) {
                 const btn = e.target.closest('.remove-partner');
                 if (!btn) return false
@@ -10366,10 +10366,8 @@
                     partnerBlock.remove();
                 }
 
-                if (removePartnerBtns.length === 1) {
-                    const removePartnerBtn = findPartnerSect.querySelector(".remove-partner");
-                    removePartnerBtn.display = "none"
-                } else removePartnerBtn.display = "block"
+                let removeButtons = findPartnerSect.querySelectorAll(".remove-partner");
+                removeButtons[0].style.display = (removeButtons.length === 1) ? 'none' : 'block';
             }
             findPartnerSect.addEventListener("click", removePartner);
         })();

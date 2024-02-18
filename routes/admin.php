@@ -1,21 +1,37 @@
 <?php
 
 use App\Http\Controllers\AboutController;
+use App\Http\Controllers\Admin\BannerController;
+use App\Http\Controllers\Admin\Projects\RoleController;
 use App\Http\Controllers\AdminCollectionController;
-use App\Http\Controllers\Admin\ProjectController;
 use App\Http\Controllers\AdminUserController;
+use App\Http\Controllers\Admin\ProjectController;
+use App\Http\Controllers\Admin\Projects\EventController;
+use App\Http\Controllers\Admin\Projects\SubjectController;
+use App\Http\Controllers\Admin\Projects\TagController;
 use App\Http\Controllers\CollectionController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\FAQController;
 use App\Http\Controllers\FooterController;
 use Illuminate\Support\Facades\Route;
 
+Route::redirect('/', '/admin/projects/moderation');
+
 Route::prefix('/projects')->name('projects.')->group(function () {
+    Route::redirect('/', '/admin/projects/moderation');
     Route::get('/moderation', [ProjectController::class, 'moderation'])->name('moderation');
     Route::get('/archive', [ProjectController::class, 'archive'])->name('archive');
     Route::get('/published', [ProjectController::class, 'published'])->name('public');
     Route::get('/declined', [ProjectController::class, 'declined'])->name('declined');
+
+    Route::resource('/subjects', SubjectController::class)->except('show');
+    Route::resource('/events', EventController::class)->except('show');
+    Route::resource('/tags', TagController::class)->except('show');
+    Route::resource('/roles', RoleController::class)->except('show');
 });
+
+Route::resource('/banners', BannerController::class)->except('show');
+Route::post('/banners/img1', [CollectionController::class, 'img1'])->name('banner.img1');
 
 Route::prefix('/services')->group(function () {
     Route::get('/services-{id}', [AdminCollectionController::class, 'single'])->name('services.single');
@@ -32,7 +48,7 @@ Route::prefix('/news')->group(function () {
     Route::get('/', [AdminCollectionController::class, 'news'])->name('news');
     Route::get('/news-{id}', [AdminCollectionController::class, 'news_single'])->name('news.single');
     Route::get('/new', [AdminCollectionController::class, 'news_new'])->name('news.new');
-    Route::post('/img1', [CollectionController::class, 'img1'])->name('news.img1');
+    Route::post('/img1', [CollectionController::class, 'img'])->name('news.img1');
 
     Route::post('/store', [AdminCollectionController::class, 'news_store'])->name('news.store');
     Route::post('/edit', [AdminCollectionController::class, 'news_edit'])->name('news.edit');
@@ -40,65 +56,14 @@ Route::prefix('/news')->group(function () {
     Route::post('/delete', [AdminCollectionController::class, 'news_delete'])->name('news.delete');
 });
 
-Route::prefix('/banners')->group(function () {
-    Route::get('/', [AdminCollectionController::class, 'banners'])->name('banners');
-    Route::get('/banner-{id}', [AdminCollectionController::class, 'banner_single'])->name('banner.single');
-    Route::get('/new', [AdminCollectionController::class, 'banner_new'])->name('banner.new');
-    Route::post('/img1', [CollectionController::class, 'img1'])->name('banner.img1');
-    Route::post('/store', [AdminCollectionController::class, 'banner_store'])->name('banner.store');
-    Route::post('/edit', [AdminCollectionController::class, 'banner_edit'])->name('banner.edit');
-        Route::post('/delete', [AdminCollectionController::class, 'banner_delete'])->name('banner.delete');
-});
-
 Route::prefix('/rubric')->group(function () {
     Route::get('/', [AdminCollectionController::class, 'rubric'])->name('news-categories');
     Route::get('/rubric-{id}', [AdminCollectionController::class, 'rubric_single'])->name('news-categories.single');
     Route::get('/new', [AdminCollectionController::class, 'rubric_new'])->name('news-categories.new');
-    Route::post('/img1', [CollectionController::class, 'img1'])->name('news-categories.img1');
+    Route::post('/img1', [CollectionController::class, 'img'])->name('news-categories.img1');
     Route::post('/store', [AdminCollectionController::class, 'rubric_store'])->name('news-categories.store');
     Route::post('/edit', [AdminCollectionController::class, 'rubric_edit'])->name('news-categories.edit');
         Route::post('/delete', [AdminCollectionController::class, 'rubric_delete'])->name('news-categories.delete');
-});
-
-Route::prefix('/tema')->group(function () {
-    Route::get('/', [AdminCollectionController::class, 'tema'])->name('project-subjects');
-    Route::get('/tema-{id}', [AdminCollectionController::class, 'tema_single'])->name('project-subjects.single');
-    Route::get('/new', [AdminCollectionController::class, 'tema_new'])->name('project-subjects.new');
-    Route::post('/img1', [CollectionController::class, 'img1'])->name('project-subjects.img1');
-    Route::post('/store', [AdminCollectionController::class, 'tema_store'])->name('project-subjects.store');
-    Route::post('/edit', [AdminCollectionController::class, 'tema_edit'])->name('project-subjects.edit');
-    Route::post('/delete', [AdminCollectionController::class, 'tema_delete'])->name('project-subjects.delete');
-});
-
-Route::prefix('/tip')->group(function () {
-    Route::get('/', [AdminCollectionController::class, 'tip'])->name('event-types');
-    Route::get('/tip-{id}', [AdminCollectionController::class, 'tip_single'])->name('event-types.single');
-    Route::get('/new', [AdminCollectionController::class, 'tip_new'])->name('event-types.new');
-    Route::post('/img1', [CollectionController::class, 'img1'])->name('event-types.img1');
-    Route::post('/store', [AdminCollectionController::class, 'tip_store'])->name('event-types.store');
-    Route::post('/edit', [AdminCollectionController::class, 'tip_edit'])->name('event-types.edit');
-    Route::post('/delete', [AdminCollectionController::class, 'tip_delete'])->name('event-types.delete');
-});
-
-Route::prefix('/teg')->group(function () {
-    Route::get('/', [AdminCollectionController::class, 'teg'])->name('project-tags');
-    Route::get('/teg-{id}', [AdminCollectionController::class, 'teg_single'])->name('project-tags.single');
-    Route::get('/new', [AdminCollectionController::class, 'teg_new'])->name('project-tags.new');
-    Route::post('/img1', [CollectionController::class, 'img1'])->name('project-tags.img1');
-    Route::post('/store', [AdminCollectionController::class, 'teg_store'])->name('project-tags.store');
-    Route::post('/edit', [AdminCollectionController::class, 'teg_edit'])->name('project-tags.edit');
-    Route::post('/delete', [AdminCollectionController::class, 'teg_delete'])->name('project-tags.delete');
-});
-
-Route::prefix('/partners')->group(function () {
-    Route::get('/', [AdminCollectionController::class, 'partners'])->name('project-roles');
-    Route::get('/partners-{id}', [AdminCollectionController::class, 'partners_single'])
-        ->name('project-roles.single');
-    Route::get('/new', [AdminCollectionController::class, 'partners_new'])->name('project-roles.new');
-    Route::post('/img1', [CollectionController::class, 'img1'])->name('project-roles.img1');
-    Route::post('/store', [AdminCollectionController::class, 'partners_store'])->name('project-roles.store');
-    Route::post('/edit', [AdminCollectionController::class, 'partners_edit'])->name('project-roles.edit');
-    Route::post('/delete', [AdminCollectionController::class, 'partners_delete'])->name('project-roles.delete');
 });
 
 Route::prefix('/about')->group(function () {

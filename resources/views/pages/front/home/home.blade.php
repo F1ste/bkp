@@ -203,14 +203,14 @@
                                 <div class="popular-projects__project-type">
                                     {{ $el->tema }}
                                 </div>
-                                <a href="{{ route('projects.project', ['id' => $el->id]) }}" class="popular-projects__project-name">
+                                <a href="{{ route('projects.project', $el->id) }}" class="popular-projects__project-name">
                                     {{ $el->name_proj }}
                                 </a>
                                 <div class="popular-projects__project-date">
                                     От {{ Carbon\Carbon::parse($el->date_service_from)->format('d.m.Y') }}
                                 </div>
                                 <div class="popular-projects__project-image media-block">
-                                    <a href="{{ route('projects.project', ['id' => $el->id]) }}">
+                                    <a href="{{ route('projects.project', $el->id) }}">
                                         <picture>
                                             <source srcset="{{ $el->img1 }}" type="image/webp">
                                             <img src="{{ $el->img1 }}" alt="Изображение проекта">
@@ -236,7 +236,7 @@
 
                                     @foreach ($json as $serchs)
                                         @if (\Illuminate\Support\Carbon::parse($serchs->inp)->gte(now()))
-                                        <a href="{{ route('projects.project', ['id' => $el->id, '#roles']) }}" class="tags__item btn btn-white">
+                                        <a href="{{ route('projects.project', ['project' => $el->id, '#roles']) }}" class="tags__item btn btn-white">
                                             {{$serchs->sel}}
                                         </a>
                                         @else
@@ -246,7 +246,7 @@
                                     </div>
                                 </div>
                                 <div class="popular-projects__subscribe">
-                                    <a href="{{ route('projects.project', ['id' => $el->id]) }}" class="popular-projects__subscribe-btn _fw btn btn-filled">Подробнее</a>
+                                    <a href="{{ route('projects.project', $el->id) }}" class="popular-projects__subscribe-btn _fw btn btn-filled">Подробнее</a>
                                 </div>
                             </div>
                             @php $count++; @endphp
@@ -273,7 +273,7 @@
             <div class="news-block__items-wrapper">
                 <div class="news-block__big-block big-news">
                 @if (isset($news[0]) and $news[0]->name != '')
-                    <a href="{{ route('news.tidings', ['id' => $news[0]->id]) }}" class="big-news__item with-banner">
+                    <a href="{{ route('news.tidings', $news[0]) }}" class="big-news__item with-banner">
                         <div class="big-news__media media-block">
                             <picture>
                                 <source srcset="{{ $news[0]->img }}" type="image/webp">
@@ -292,21 +292,21 @@
                     </a>
                 @endif
 
-                    <div class="big-news__banner ">
+                    {{-- <div class="big-news__banner ">
                         <a href="#" class="media-block">
                             <picture>
                                 <source srcset="{{ asset('image/banner1.webp') }}" type="image/webp">
                                 <img src="{{ asset('image/banner1.jpg') }}" alt="Баннер">
                             </picture>
                         </a>
-                    </div>
+                    </div> --}}
 
                 </div>
                 <div class="news-block__big-items">
                 @for ($i = 1; $i < 3; $i++)
                 @if (isset($news[$i]) && $news[$i]->name != '')
                     <div class="news-block__item">
-                        <a href="{{ route('news.tidings', ['id' => $news[$i]->id]) }}">
+                        <a href="{{ route('news.tidings', $news[$i]->id) }}">
                             <div class="news-block__item-media media-block">
                                 <picture>
                                     <source srcset="{{ $news[$i]->img }}" type="image/webp">
@@ -336,7 +336,7 @@
                 @for ($i = 3; $i < 7; $i++)
                 @if (isset($news[$i]) && $news[$i]->name != '')
                     <div class="news-block__item">
-                        <a href="{{ route('news.tidings', ['id' => $news[$i]->id]) }}">
+                        <a href="{{ route('news.tidings', $news[$i]->id) }}">
                             <div class="news-block__item-media media-block">
                                 <picture>
                                     <source srcset="{{ $news[$i]->img }}" type="image/webp">
@@ -427,7 +427,7 @@
             </div>
         </div>
     </section>
-    <section class="banner">
+    {{-- <section class="banner">
         <div class="banner__container">
             <div class="banner__wrapper">
                 <a href="#" class="media-block">
@@ -438,7 +438,7 @@
                 </a>
             </div>
         </div>
-    </section>
+    </section> --}}
 </main>
 
 @endsection

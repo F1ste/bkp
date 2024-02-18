@@ -35,12 +35,12 @@ Route::prefix('/services')->group(function () {
 
 Route::prefix('/projects')->group(function () {
     Route::get('/', [PageController::class, 'projects'])->name('projects');
-    Route::get('/project/{id}', [PageController::class, 'project'])->name('projects.project');
+    Route::get('/project/{project}', [PageController::class, 'project'])->name('projects.project');
 });
 
 Route::prefix('/news')->group(function () {
     Route::get('/', [PageController::class, 'news'])->name('news');
-    Route::get('/news/{id}', [PageController::class, 'tidings'])->name('news.tidings');
+    Route::get('/news/{news}', [PageController::class, 'tidings'])->name('news.tidings');
 });
 
 Route::prefix('/designer')->group(function () {
