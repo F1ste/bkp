@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AboutController;
+use App\Http\Controllers\Admin\BannerController;
 use App\Http\Controllers\AdminCollectionController;
 use App\Http\Controllers\AdminUserController;
 use App\Http\Controllers\Admin\ProjectController;
@@ -27,6 +28,9 @@ Route::prefix('/projects')->name('projects.')->group(function () {
     Route::resource('/tags', TagController::class)->except('show');
 });
 
+Route::resource('/banners', BannerController::class)->except('show');
+Route::post('/banners/img1', [CollectionController::class, 'img1'])->name('banner.img1');
+
 Route::prefix('/services')->group(function () {
     Route::get('/services-{id}', [AdminCollectionController::class, 'single'])->name('services.single');
     Route::post('/edit', [AdminCollectionController::class, 'edit'])->name('services.edit');
@@ -48,16 +52,6 @@ Route::prefix('/news')->group(function () {
     Route::post('/edit', [AdminCollectionController::class, 'news_edit'])->name('news.edit');
     Route::post('/upload', [AdminCollectionController::class, 'news_upload'])->name('news.upload');
     Route::post('/delete', [AdminCollectionController::class, 'news_delete'])->name('news.delete');
-});
-
-Route::prefix('/banners')->group(function () {
-    Route::get('/', [AdminCollectionController::class, 'banners'])->name('banners');
-    Route::get('/banner-{id}', [AdminCollectionController::class, 'banner_single'])->name('banner.single');
-    Route::get('/new', [AdminCollectionController::class, 'banner_new'])->name('banner.new');
-    Route::post('/img1', [CollectionController::class, 'img1'])->name('banner.img1');
-    Route::post('/store', [AdminCollectionController::class, 'banner_store'])->name('banner.store');
-    Route::post('/edit', [AdminCollectionController::class, 'banner_edit'])->name('banner.edit');
-        Route::post('/delete', [AdminCollectionController::class, 'banner_delete'])->name('banner.delete');
 });
 
 Route::prefix('/rubric')->group(function () {

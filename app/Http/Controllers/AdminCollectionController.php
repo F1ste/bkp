@@ -319,7 +319,7 @@ class AdminCollectionController extends Controller
             'erid' => $request->erid,
         ]);
 
-        return response()->json(route('admin.banner.single', ['id' => $collection->id]), 201);
+        return response()->json(route('admin.banners.show', $collection->id), 201);
     }
 
     public function banner_single($id)
