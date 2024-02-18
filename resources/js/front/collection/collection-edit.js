@@ -172,7 +172,7 @@ import {} from "../libs/ckeditor/ckeditor";
 
         deleteButton.addEventListener("click", (e) => {
             img1 = "";
-            fin.removeAttribute("src");
+            fin.setAttribute("src", "");
             blox.style.display = "block";
             fin.style.display = "none";
             deleteButton.style.display = "none";
@@ -402,7 +402,7 @@ import {} from "../libs/ckeditor/ckeditor";
                 tip.length === 0 ||
                 region.length === 0 ||
                 tema.length === 0 ||
-                mainImg.src.length === 0 ||
+                mainImg.getAttribute('src').length === 0 ||
                 excerpt.length >= 1000 ||
                 serch.some(item => item.sel === '' || item.sel === undefined)
             ) {
@@ -411,7 +411,7 @@ import {} from "../libs/ckeditor/ckeditor";
                     excerpt.length >= 1000,
                     "Не более 1000 символов"
                 );
-                showValidateError(mainImg, mainImg.src.length === 0, "");
+                showValidateError(mainImg, mainImg.getAttribute('src').length === 0, "");
                 showValidateError(teg_mas, teg.length === 0, "");
                 showValidateError(projectType, tip.length === 0, "");
                 showValidateError(projectRegion, region.length === 0, "");
