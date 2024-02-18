@@ -35,7 +35,7 @@ Route::prefix('/services')->group(function () {
 
 Route::prefix('/projects')->group(function () {
     Route::get('/', [PageController::class, 'projects'])->name('projects');
-    Route::get('/project/{id}', [PageController::class, 'project'])->name('projects.project');
+    Route::get('/project/{project}', [PageController::class, 'project'])->name('projects.project');
 });
 
 Route::prefix('/news')->group(function () {

@@ -176,14 +176,14 @@
                             <div class="popular-projects__project-type">
                                 {{ $el->tema }}
                             </div>
-                            <a href="{{ route('projects.project', ['id' => $el->id]) }}" class="popular-projects__project-name">
+                            <a href="{{ route('projects.project', $el->id) }}" class="popular-projects__project-name">
                                 {{ $el->name_proj }}
                             </a>
                             <div class="popular-projects__project-date">
                                 От {{ Carbon\Carbon::parse($el->date_service_from)->format('d.m.Y') }}
                             </div>
                             <div class="popular-projects__project-image media-block">
-                                <a href="{{ route('projects.project', ['id' => $el->id]) }}">
+                                <a href="{{ route('projects.project', $el->id) }}">
                                     <picture><source srcset="{{ $el->img1}}" type="image/webp"><img src="{{ $el->img1}}" alt="Изображение проекта"></picture>
                                 </a>
                             </div>
@@ -206,7 +206,7 @@
                                 @endphp
                                 @foreach($json as $serchs)
                                     @if ($serchs->last_date->gte(now()))
-                                    <a href="{{ route('projects.project', ['id' => $el->id, '#roles']) }}" class="tags__item btn btn-white">
+                                    <a href="{{ route('projects.project', ['project' => $el->id, '#roles']) }}" class="tags__item btn btn-white">
                                         {{$serchs->sel}}
                                     </a>
                                     @else
@@ -216,7 +216,7 @@
                                 </div>
                             </div>
                             <div class="popular-projects__subscribe">
-                                <a href="{{ route('projects.project', ['id' => $el->id]) }}" class="popular-projects__subscribe-btn _fw btn btn-filled">Подробнее</a>
+                                <a href="{{ route('projects.project', $el->id) }}" class="popular-projects__subscribe-btn _fw btn btn-filled">Подробнее</a>
                             </div>
                         </div>
                         @endforeach
