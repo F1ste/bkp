@@ -292,14 +292,14 @@
                     </a>
                 @endif
 
-                    <div class="big-news__banner ">
+                    {{-- <div class="big-news__banner ">
                         <a href="#" class="media-block">
                             <picture>
                                 <source srcset="{{ asset('image/banner1.webp') }}" type="image/webp">
                                 <img src="{{ asset('image/banner1.jpg') }}" alt="Баннер">
                             </picture>
                         </a>
-                    </div>
+                    </div> --}}
 
                 </div>
                 <div class="news-block__big-items">
@@ -427,7 +427,7 @@
             </div>
         </div>
     </section>
-    <section class="banner">
+    {{-- <section class="banner">
         <div class="banner__container">
             <div class="banner__wrapper">
                 <a href="#" class="media-block">
@@ -438,7 +438,7 @@
                 </a>
             </div>
         </div>
-    </section>
+    </section> --}}
 </main>
 
 @endsection
