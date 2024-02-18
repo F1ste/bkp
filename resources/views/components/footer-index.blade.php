@@ -36,11 +36,6 @@
                 <i class="socials__icon _icon-vk"></i>
             </a>
         @endif
-        @if (strpos($icon, 'youtube.com') !== false)
-            <a href="{{ $icon->style }}" class="socials__social-item icon-youtube">
-                <i class="socials__icon _icon-youtube"></i>
-            </a>
-        @endif
         @endforeach
             <a href="#" class="impaired-togler" style="align-self: center;">
                 <svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
