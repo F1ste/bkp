@@ -7,7 +7,7 @@ use App\Models\Banner;
 use App\Models\Project;
 use App\Models\User;
 use App\Models\News;
-use App\Models\Roles;
+use App\Models\Role;
 use App\Models\Subject;
 use App\Models\Tags;
 use App\Models\Event;
@@ -136,7 +136,7 @@ class PageController extends Controller
             return $teg;
         })->unique();
 
-        $roles = Roles::distinct()->orderBy('name', 'asc')->pluck('name')->map(function ($roles) {
+        $roles = Role::distinct()->orderBy('name', 'asc')->pluck('name')->map(function ($roles) {
             return $roles;
         })->unique();
 

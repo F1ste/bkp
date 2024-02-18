@@ -6,7 +6,7 @@ use App\Models\Project;
 use App\Models\User;
 use App\Models\News;
 use App\Models\Region;
-use App\Models\Roles;
+use App\Models\Role;
 use App\Models\Subject;
 use App\Models\Tags;
 use App\Models\Event;
@@ -46,7 +46,7 @@ class AdminCollectionController extends Controller
         $user = User::find($collection->user_id);
 
         $regoin = Region::get();
-        $roles = Roles::get();
+        $roles = Role::get();
         $subject = Subject::get();
         $tegs = Tags::get();
         $event = Event::get();
@@ -570,7 +570,7 @@ class AdminCollectionController extends Controller
 
     public function partners()
     {
-        $collection = Roles::get();
+        $collection = Role::get();
 
         return view('pages.admin.partners.partners', [
             'collections' => $collection
@@ -584,7 +584,7 @@ class AdminCollectionController extends Controller
 
     public function partners_store(Request $request)
     {
-        $collection = Roles::create([
+        $collection = Role::create([
             'name' => $request->name,
         ]);
 
@@ -593,7 +593,7 @@ class AdminCollectionController extends Controller
 
     public function partners_single($id)
     {
-        $collection = Roles::find($id);
+        $collection = Role::find($id);
 
         if (is_null($collection)) {
             return redirect(route('pages.admin.partners.new'));
@@ -607,14 +607,14 @@ class AdminCollectionController extends Controller
 
     public function partners_delete(Request $request)
     {
-        Roles::where('id', $request->id)->delete();
+        Role::where('id', $request->id)->delete();
 
         return true;
     }
 
     public function partners_edit(Request $request)
     {
-        $collection = Roles::where('id', $request->id)->update([
+        $collection = Role::where('id', $request->id)->update([
             'name' => $request->name,
         ]);
 
