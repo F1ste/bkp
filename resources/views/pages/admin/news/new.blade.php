@@ -4,7 +4,7 @@
 
 @section('content')
     <div class="page__container">
-        <section data-image="{{ route('admin.news.upload') }}" data-store="{{ route('admin.news.store') }}" id='news-store' class="collection section-base create-project personal-account">
+        <section data-image="{{ route('admin.news.img1') }}" data-store="{{ route('admin.news.store') }}" id='news-store' class="collection section-base create-project personal-account">
             <div class="create-project__container">
                 <div data-one-select class="create-project__content">
                     <div class="create-project__title personal__title">Создание новости</div>

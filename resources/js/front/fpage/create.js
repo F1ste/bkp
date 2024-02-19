@@ -1,11 +1,11 @@
 import axios from "axios";
 import { notification } from "../utils/notification";
-import { } from "../libs/ckeditor/ckeditor";
+import {} from "../libs/ckeditor/ckeditor";
+
 (() => {
+    const collectionEdit = document.getElementById("fpage-store");
 
-    const collectionEdit = document.getElementById('fpage-store')
-
-    if (!collectionEdit) return false
+    if (!collectionEdit) return false;
 
     var editorData = {};
     var textareas = document.querySelectorAll("textarea:not(#video)");
@@ -20,58 +20,42 @@ import { } from "../libs/ckeditor/ckeditor";
             });
         })(editor, excerptFieldName);
     });
-  
+
     const uploadRoute = collectionEdit.dataset.image,
         updateRoute = collectionEdit.dataset.store,
         id = collectionEdit.dataset.id;
 
     const select = {
-        link: 'link',
-        page: 'page',
-        storeButton: 'store-button',
-    }
+        link: "link",
+        page: "page",
+        storeButton: "store-button",
+    };
 
-    document.getElementById(select.storeButton).addEventListener('click', e => {
-        let page = document.getElementById(select.page).value;
-        let link = document.getElementById(select.link).value;
-        if (page == '' || link =='') {
-            alert('Заполните поле!');
-            return false
-        }
+    document
+        .getElementById(select.storeButton)
+        .addEventListener("click", (e) => {
+            let page = document.getElementById(select.page).value;
+            let link = document.getElementById(select.link).value;
+            if (page == "" || link == "") {
+                alert("Заполните поле!");
+                return false;
+            }
 
+            document.getElementById(
+                select.storeButton
+            ).innerHTML = `Подождите...`;
 
-        document.getElementById(select.storeButton).innerHTML = `Подождите...`
-
-        axios.post(updateRoute, {
-            id: id,
-            page: page,
-            link: link,
-
-
-        }).then(e => {
-            window.location.href = e.data;
-        }).catch(error => {
-            console.log(error.response)
-        })
-    });
-
-})()
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+            axios
+                .post(updateRoute, {
+                    id: id,
+                    page: page,
+                    link: link,
+                })
+                .then((e) => {
+                    window.location.href = e.data;
+                })
+                .catch((error) => {
+                    console.log(error.response);
+                });
+        });
+})();

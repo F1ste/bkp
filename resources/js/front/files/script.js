@@ -1,18 +1,16 @@
-
 import { isMobile } from "./functions.js";
 // Подключение списка активных модулей
 import { flsModules } from "./modules.js";
-import datepicker from 'js-datepicker';
-
+import datepicker from "js-datepicker";
 
 (() => {
-    const sidebar = document.querySelector('.sidebar');
+    const sidebar = document.querySelector(".sidebar");
 
     if (!sidebar) {
         return false;
     }
 
-    const header = document.querySelector('.header');
+    const header = document.querySelector(".header");
 
     let headerHeight = header.getBoundingClientRect().height;
 
@@ -21,12 +19,11 @@ import datepicker from 'js-datepicker';
         //console.log(entry);
 
         if (!entry.isIntersecting) {
-            sidebar.classList.add('fixed');
+            sidebar.classList.add("fixed");
+        } else {
+            sidebar.classList.remove("fixed");
         }
-        else {
-            sidebar.classList.remove('fixed');
-        };
-      };
+    };
 
     const headerObserver = new IntersectionObserver(stickyNav, {
         root: null,
@@ -35,33 +32,28 @@ import datepicker from 'js-datepicker';
     });
 
     headerObserver.observe(header);
-
-
-
 })();
 
-
-const dropArea = document.querySelectorAll('.drag-and-drop');
-if (dropArea.length != 0 ) {
+const dropArea = document.querySelectorAll(".drag-and-drop");
+if (dropArea.length != 0) {
     const validFileExtensions = /(?<=\.|^)[^.]+(\.jpg|\.jpeg|\.png)$/i;
     let filesToUpload = [];
     const dragWrapper = document.querySelector(".drag-wrapper");
     const fileInput = document.querySelector(".file__input");
 
-    ;['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
-        dropArea.forEach(element => {
+    ["dragenter", "dragover", "dragleave", "drop"].forEach((eventName) => {
+        dropArea.forEach((element) => {
             element.addEventListener(eventName, preventDefaults, false);
         });
-    })
+    });
     function preventDefaults(e) {
         e.preventDefault();
         e.stopPropagation();
     }
 
-    dropArea.forEach(element => {
-        element.addEventListener('click', handleClick, false);
+    dropArea.forEach((element) => {
+        element.addEventListener("click", handleClick, false);
     });
-
 
     function handleClick(e) {
         fileInput.click();
@@ -69,8 +61,7 @@ if (dropArea.length != 0 ) {
     fileInput.onchange = () => {
         const files = fileInput.files;
         handleFiles(files);
-
-    }
+    };
     function handleDrop(e) {
         let dt = e.dataTransfer;
         let files = dt.files;
@@ -78,43 +69,47 @@ if (dropArea.length != 0 ) {
     }
     function handleFiles(files) {
         files = [...files];
-        files.forEach(file => {
+        files.forEach((file) => {
             console.log(file);
         });
     }
-
 }
 
-const projectDescriptionBtn = document.querySelector('.project-main__btn-description');
+const projectDescriptionBtn = document.querySelector(
+    ".project-main__btn-description"
+);
 
 if (projectDescriptionBtn) {
-    projectDescriptionBtn.addEventListener('click', () => {
-        const item = document.querySelector('.project-details');
+    projectDescriptionBtn.addEventListener("click", () => {
+        const item = document.querySelector(".project-details");
         let topPos = item.offsetTop;
-        window.scroll({top: topPos, left: 0, behavior: 'smooth'});
-    })
+        window.scroll({ top: topPos, left: 0, behavior: "smooth" });
+    });
 }
 
-
 (() => {
-
-    const findPartnerSect = document.querySelector('.create-project__find-partners');
+    const findPartnerSect = document.querySelector(
+        ".create-project__find-partners"
+    );
 
     if (!findPartnerSect) {
         return false;
     }
 
-    const addPartnerBtn = findPartnerSect.querySelector('.add-partner__input');
+    const addPartnerBtn = findPartnerSect.querySelector(".add-partner__input");
 
-    const findPartnerContent = findPartnerSect.querySelector('.find-partners__content');
+    const findPartnerContent = findPartnerSect.querySelector(
+        ".find-partners__content"
+    );
 
     function addPartner(e) {
-        const clickedEl = e.target
-        const findPartnerBlock = findPartnerSect.querySelectorAll('.find-partners__partner-block');
+        const clickedEl = e.target;
+        const findPartnerBlock = findPartnerSect.querySelectorAll(
+            ".find-partners__partner-block"
+        );
 
         let partnerCount = findPartnerBlock.length;
-        let partnerBlockTempl =
-        `
+        let partnerBlockTempl = `
         <div class="find-partners__partner-block">
             <div class="create-project__form-select">
                 <label class="create-project__form-label form__label">Кого ищем</label>
@@ -131,26 +126,42 @@ if (projectDescriptionBtn) {
                 </div>
             <div class="create-project__form-item form__item">
                 <label for="FormProjectRoleUntil" class="create-project__form-label form__label">До какого числа принимаются заявки</label>
-                <input id="FormProjectRoleUntil" autocomplete="off" data-datepicker data-datepicker_partner_${partnerCount + + 1} type="text" name="projectName" class="create-project__form-input form__input" placeholder="До 10.09.2023" data-placeholder="До 10.09.2023" data-validate data-required data-error="Выберите дату окончания заявки">
+                <input id="FormProjectRoleUntil" autocomplete="off" data-datepicker data-datepicker_partner_${
+                    partnerCount + +1
+                } type="text" name="projectName" class="create-project__form-input form__input" placeholder="До 10.09.2023" data-placeholder="До 10.09.2023" data-validate data-required data-error="Выберите дату окончания заявки">
             </div>
         </div>
-        `
-        findPartnerContent.insertAdjacentHTML('beforeend', partnerBlockTempl)
-
+        `;
+        findPartnerContent.insertAdjacentHTML("beforeend", partnerBlockTempl);
 
         // Инициализация нового select
         const selectInstance = flsModules.select;
         const newPartnerBlock = findPartnerContent.lastElementChild;
-        const newSelect = newPartnerBlock.querySelector('select');
+        const newSelect = newPartnerBlock.querySelector("select");
         selectInstance.selectInit(newSelect);
 
         // Создание календаря для нового партнера
-        const newDatePickerInput = newPartnerBlock.querySelector(`[data-datepicker_partner_${partnerCount + + 1}]`);
+        const newDatePickerInput = newPartnerBlock.querySelector(
+            `[data-datepicker_partner_${partnerCount + +1}]`
+        );
         const pickerPartner = datepicker(newDatePickerInput, {
             customDays: ["Пн", "Вт", "Ср", "Чт", "Пт", "Сб", "Вс"],
-            customMonths: ["Янв", "Фев", "Мар", "Апр", "Май", "Июн", "Июл", "Авг", "Сен", "Окт", "Ноя", "Дек"],
-            overlayButton: 'Применить',
-            overlayPlaceholder: 'Год (4 цифры)',
+            customMonths: [
+                "Янв",
+                "Фев",
+                "Мар",
+                "Апр",
+                "Май",
+                "Июн",
+                "Июл",
+                "Авг",
+                "Сен",
+                "Окт",
+                "Ноя",
+                "Дек",
+            ],
+            overlayButton: "Применить",
+            overlayPlaceholder: "Год (4 цифры)",
             startDay: 1,
             formatter: (input, date, instance) => {
                 const value = date.toLocaleDateString();
@@ -158,10 +169,9 @@ if (projectDescriptionBtn) {
             },
             onSelect: function (input, instance, date) {
                 // Your onSelect logic here
-            }
+            },
         });
     }
 
-    addPartnerBtn.addEventListener('click', addPartner);
+    addPartnerBtn.addEventListener("click", addPartner);
 })();
-

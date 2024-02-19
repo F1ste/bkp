@@ -10,7 +10,7 @@ use App\Models\Role;
 use App\Models\Subject;
 use App\Models\Tags;
 use App\Models\Event;
-use App\Models\Newsr;
+use App\Models\News\Category;
 use App\Models\Banner;
 use App\Models\Notifications;
 use Illuminate\Http\Request;
@@ -150,97 +150,6 @@ class AdminCollectionController extends Controller
         return response()->json($collection, 201);
     }
 
-    public function news(FilterRequest $request)
-    {
-        $data = $request->validated();
-
-        $filter = app()->make(NewsFilter::class, ['queryParams' => array_filter($data)]);
-
-        $collection = News::filter($filter)->paginate(3);
-
-        $projects = News::distinct()->orderBy('project', 'asc')->pluck('project')->map(function ($project) {
-            return $project;
-        })->unique();
-
-        $newsr = Newsr::get();
-
-        return view('pages.admin.news.news', [
-            'collections' => $collection,
-            'newsr' => $newsr,
-            'projects' => $projects
-        ]);
-    }
-
-    /**
-     * View Page Single
-     */
-    public function news_single($id)
-    {
-        $collection = News::find($id);
-
-        if (is_null($collection)) {
-            return redirect(route('pages.admin.news.new'));
-        }
-
-        $collections = Project::get();
-        $newsr = Newsr::get();
-        $banner = Banner::get();
-
-        return view('pages.admin.news.edit', [
-            'collection' => $collection,
-            'id' => $id,
-            'collections' => $collections,
-            'newsr' => $newsr,
-            'banner' => $banner,
-        ]);
-    }
-
-    /**
-     * View Page Collection New
-     */
-    public function news_new()
-    {
-        $collection = Project::get();
-        $newsr = Newsr::get();
-        $banner = Banner::get();
-        return view('pages.admin.news.new', [
-            'collection' => $collection,
-            'newsr' => $newsr,
-            'banner' => $banner,
-        ]);
-    }
-
-    public function news_store(Request $request)
-    {
-        if ($request->date != '') {
-            $dat = Carbon::parse($request->date)->format('Y-m-d');
-        } else {
-            $dat = Carbon::now()->format('Y-m-d');
-        }
-
-        $collection = News::create([
-            'name' => $request->name,
-            'img' => $request->img1,
-            'pod_text' => $request->pod_text,
-            'text' => $request->text,
-            'date' => $dat,
-            'project' => $request->project,
-            'rubrica' => $request->rubrica,
-            'banner' => $request->banner,
-            'glav' => $request->glav,
-            'pozits' => $request->pozits,
-            'img2' => $request->img2,
-            'img3' => $request->img3,
-            'img4' => $request->img4,
-            'img5' => $request->img5,
-            'img6' => $request->img6,
-            'img7' => $request->img7,
-            'video' => $request->video,
-        ]);
-
-        return response()->json(route('admin.news.single', ['id' => $collection->id]), 201);
-    }
-
     public function img1(Request $request)
     {
         $size = $request->file('file')->getSize();
@@ -253,98 +162,5 @@ class AdminCollectionController extends Controller
 
         $link = '/storage/' . $name;
         return $link;
-    }
-
-
-    public function news_edit(Request $request)
-    {
-        if ($request->date != '') {
-            $dat = Carbon::parse($request->date)->format('Y-m-d');
-        } else {
-            $dat = Carbon::now()->format('Y-m-d');
-        }
-
-        $collection = News::where('id', $request->id)->update([
-            'name' => $request->name,
-            'img' => $request->img1,
-            'pod_text' => $request->pod_text,
-            'text' => $request->text,
-            'date' => $dat,
-            'project' => $request->project,
-            'rubrica' => $request->rubrica,
-            'banner' => $request->banner,
-            'glav' => $request->glav,
-            'pozits' => $request->pozits,
-            'img2' => $request->img2,
-            'img3' => $request->img3,
-            'img4' => $request->img4,
-            'img5' => $request->img5,
-            'img6' => $request->img6,
-            'img7' => $request->img7,
-            'video' => $request->video,
-        ]);
-
-        return response()->json($collection, 201);
-    }
-
-    public function news_delete(Request $request)
-    {
-        News::where('id', $request->id)->delete();
-
-        return true;
-    }
-
-    public function rubric()
-    {
-        $collection = Newsr::get();
-
-        return view('pages.admin.rubric.rubric', [
-            'collections' => $collection
-        ]);
-    }
-
-    public function rubric_new()
-    {
-        return view('pages.admin.rubric.new');
-    }
-
-    public function rubric_store(Request $request)
-    {
-        $collection = Newsr::create([
-            'name' => $request->name,
-        ]);
-
-        return response()->json(route('admin.news-categories.single', ['id' => $collection->id]), 201);
-    }
-
-    public function rubric_single($id)
-    {
-        $collection = Newsr::find($id);
-
-        if (is_null($collection)) {
-            return redirect(route('pages.admin.rubric.new'));
-        }
-
-        return view('pages.admin.rubric.edit', [
-            'collection' => $collection,
-            'id' => $id,
-        ]);
-    }
-
-
-    public function rubric_delete(Request $request)
-    {
-        Newsr::where('id', $request->id)->delete();
-
-        return true;
-    }
-
-    public function rubric_edit(Request $request)
-    {
-        $collection = Newsr::where('id', $request->id)->update([
-            'name' => $request->name,
-        ]);
-
-        return response()->json($collection, 201);
     }
 }

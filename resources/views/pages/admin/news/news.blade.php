@@ -41,7 +41,7 @@
                             </div>
                             <div data-da=".dashboard-filters, 1440" class="dashboard-filters__buttons">
                                 <button type="submit" class="dashboard-filters__btn btn-search btn btn-white">Поиск</button>
-                                <a href="{{ route('admin.news.new') }}" class="dashboard-filters__btn btn-create btn btn-filled">Создать новость</a>
+                                <a href="{{ route('admin.news.create') }}" class="dashboard-filters__btn btn-create btn btn-filled">Создать новость</a>
                             </div>
                         </div>
 
@@ -86,7 +86,7 @@
                     <div style="margin-top: 20px; margin-bottom: 20px;">
                         @foreach ($collections as $el)
                             <div class="my-projects__item" style="margin-bottom: 15px;">
-                                <a href="{{ route('admin.news.single', ['id' => $el->id]) }}">
+                                <a href="{{ route('admin.news.edit', $el) }}">
                                     <div class="my-projects__project-name">
                                         {{ $el->name }}
                                     </div>

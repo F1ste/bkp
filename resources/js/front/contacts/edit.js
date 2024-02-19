@@ -1,13 +1,11 @@
 import axios from "axios";
 import { notification } from "../utils/notification";
-import { } from "../libs/ckeditor/ckeditor";
+import {} from "../libs/ckeditor/ckeditor";
+
 (() => {
+    const collectionEdit = document.getElementById("contact-edit");
 
-    const collectionEdit = document.getElementById('contact-edit')
-
-
-
-    if (!collectionEdit) return false
+    if (!collectionEdit) return false;
 
     var editorData = {};
     var textareas = document.querySelectorAll("textarea:not(#map)");
@@ -22,59 +20,42 @@ import { } from "../libs/ckeditor/ckeditor";
             });
         })(editor, excerptFieldName);
     });
-  
-    const uploadRoute = collectionEdit.dataset.image,
-        updateRoute = collectionEdit.dataset.update,
+
+    const updateRoute = collectionEdit.dataset.update,
         id = collectionEdit.dataset.id;
 
     const select = {
         description: editorData.description,
-        map: 'map',
-        storeButton: 'store-button',
-    }
+        map: "map",
+        storeButton: "store-button",
+    };
 
+    document
+        .getElementById(select.storeButton)
+        .addEventListener("click", (e) => {
+            let description = editorData.description;
+            let map = document.getElementById(select.map).value;
 
-    document.getElementById(select.storeButton).addEventListener('click', e => {
-        let description = editorData.description;
-        let map = document.getElementById(select.map).value;
+            if (description == "") {
+                alert("Заполните поле!");
+                return false;
+            }
 
-        if (description == '') {
-            alert('Заполните поле!');
-            return false
-        }
+            document.getElementById(
+                select.storeButton
+            ).innerHTML = `Подождите...`;
 
-
-        document.getElementById(select.storeButton).innerHTML = `Подождите...`
-
-        axios.post(updateRoute, {
-            id: id,
-            description: description,
-            map: map
-
-        }).then(e => {
-            location.reload()
-        }).catch(error => {
-            console.log(error.response)
-        })
-    });
-
-})()
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+            axios
+                .post(updateRoute, {
+                    id: id,
+                    description: description,
+                    map: map,
+                })
+                .then((e) => {
+                    location.reload();
+                })
+                .catch((error) => {
+                    console.log(error.response);
+                });
+        });
+})();

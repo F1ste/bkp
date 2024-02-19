@@ -13,7 +13,7 @@
         <main class="page">
             <div class="sidebar sidebar__expanded">
                 <div class="sidebar__items">
-                    <a href="{{ route('admin.news') }}" class="sidebar__item _icon-invoice">Новости</a>
+                    <a href="{{ route('admin.news.index') }}" class="sidebar__item _icon-invoice">Новости</a>
                     <div data-spollers data-one-spoller class="spollers">
                         <div class="spollers__item">
                             <button type="button" data-spoller class="sidebar__item _icon-bookmark sidebar__item--chevron">
@@ -44,7 +44,7 @@
                             <button type="button" data-spoller class="sidebar__item _icon-settings sidebar__item--chevron">Настройки</button>
                             <div class="spollers__body">
                                 <div class="spollers__wrapper">
-                                    <a href="{{ route('admin.news-categories') }}" class="sidebar__item _icon-categories">Рубрики для новостей</a>
+                                    <a href="{{ route('admin.news.categories.index') }}" class="sidebar__item _icon-categories">Рубрики для новостей</a>
                                     <a href="{{ route('admin.projects.subjects.index') }}" class="sidebar__item _icon-categories">Тематика проекта</a>
                                     <a href="{{ route('admin.projects.events.index') }}" class="sidebar__item _icon-categories">Тип события</a>
                                     <a href="{{ route('admin.projects.tags.index') }}" class="sidebar__item _icon-categories">Теги проекта</a>
