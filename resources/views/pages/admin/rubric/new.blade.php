@@ -4,7 +4,7 @@
 
 @section('content')
     <div class="page__container">
-        <section data-store="{{ route('admin.news-categories.store') }}" id='rubric-store' class="collection section-base create-project personal-account">
+        <section data-store="{{ route('admin.news.categories.store') }}" id='rubric-store' class="collection section-base create-project personal-account">
             <div class="create-project__container">
                 <div data-one-select class="create-project__content">
                     <div class="create-project__title personal__title">Создать Рубрику</div>

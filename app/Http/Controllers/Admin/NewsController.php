@@ -7,7 +7,7 @@ use App\Http\Filters\NewsFilter;
 use App\Http\Requests\FilterRequest;
 use App\Models\Banner;
 use App\Models\News;
-use App\Models\Newsr;
+use App\Models\News\Category;
 use App\Models\Project;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
@@ -29,7 +29,7 @@ class NewsController extends Controller
 
         $projects = News::query()->distinct()->orderBy('project')->pluck('project')->unique();
 
-        $newsr = Newsr::get();
+        $newsr = Category::get();
 
         return view('pages.admin.news.news', [
             'collections' => $collection,
@@ -47,7 +47,7 @@ class NewsController extends Controller
     {
         return view('pages.admin.news.new', [
             'collection' => Project::all(),
-            'newsr' => Newsr::all(),
+            'newsr' => Category::all(),
             'banner' => Banner::all(),
         ]);
     }
@@ -99,7 +99,7 @@ class NewsController extends Controller
             'collection' => $news,
             'id' => $news->id,
             'collections' => Project::all(),
-            'newsr' => Newsr::all(),
+            'newsr' => Category::all(),
             'banner' => Banner::all(),
         ]);
     }

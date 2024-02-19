@@ -44,7 +44,7 @@
                             <button type="button" data-spoller class="sidebar__item _icon-settings sidebar__item--chevron">Настройки</button>
                             <div class="spollers__body">
                                 <div class="spollers__wrapper">
-                                    <a href="{{ route('admin.news-categories') }}" class="sidebar__item _icon-categories">Рубрики для новостей</a>
+                                    <a href="{{ route('admin.news.categories.index') }}" class="sidebar__item _icon-categories">Рубрики для новостей</a>
                                     <a href="{{ route('admin.projects.subjects.index') }}" class="sidebar__item _icon-categories">Тематика проекта</a>
                                     <a href="{{ route('admin.projects.events.index') }}" class="sidebar__item _icon-categories">Тип события</a>
                                     <a href="{{ route('admin.projects.tags.index') }}" class="sidebar__item _icon-categories">Теги проекта</a>

@@ -10,7 +10,7 @@ use App\Models\Role;
 use App\Models\Subject;
 use App\Models\Tags;
 use App\Models\Event;
-use App\Models\Newsr;
+use App\Models\News\Category;
 use App\Models\Banner;
 use App\Models\Notifications;
 use Illuminate\Http\Request;
@@ -162,59 +162,5 @@ class AdminCollectionController extends Controller
 
         $link = '/storage/' . $name;
         return $link;
-    }
-
-    public function rubric()
-    {
-        $collection = Newsr::get();
-
-        return view('pages.admin.rubric.rubric', [
-            'collections' => $collection
-        ]);
-    }
-
-    public function rubric_new()
-    {
-        return view('pages.admin.rubric.new');
-    }
-
-    public function rubric_store(Request $request)
-    {
-        $collection = Newsr::create([
-            'name' => $request->name,
-        ]);
-
-        return response()->json(route('admin.news-categories.single', ['id' => $collection->id]), 201);
-    }
-
-    public function rubric_single($id)
-    {
-        $collection = Newsr::find($id);
-
-        if (is_null($collection)) {
-            return redirect(route('pages.admin.rubric.new'));
-        }
-
-        return view('pages.admin.rubric.edit', [
-            'collection' => $collection,
-            'id' => $id,
-        ]);
-    }
-
-
-    public function rubric_delete(Request $request)
-    {
-        Newsr::where('id', $request->id)->delete();
-
-        return true;
-    }
-
-    public function rubric_edit(Request $request)
-    {
-        $collection = Newsr::where('id', $request->id)->update([
-            'name' => $request->name,
-        ]);
-
-        return response()->json($collection, 201);
     }
 }

@@ -1,18 +1,15 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\News;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Newsr extends Model
+class Category extends Model
 {
     use HasFactory;
 
-    protected $table = 'news_rub';
-
     protected $fillable = [
-        'id',
         'name',
     ];
 }
