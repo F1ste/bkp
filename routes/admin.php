@@ -16,6 +16,7 @@ use App\Http\Controllers\FooterController;
 use Illuminate\Support\Facades\Route;
 
 Route::redirect('/', '/admin/projects/moderation');
+Route::redirect('/dashboard', '/admin/projects/moderation')->name('dashboard');
 
 Route::prefix('/projects')->name('projects.')->group(function () {
     Route::redirect('/', '/admin/projects/moderation');
