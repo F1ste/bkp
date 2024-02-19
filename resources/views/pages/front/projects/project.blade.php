@@ -33,7 +33,7 @@
                                 {{ Carbon\Carbon::parse($collection->date_service_to)->format('d.m.Y') }}
                             </div>
                             <div class="project-main__brief-item project-info__item">
-                                <a href="#">{{ $user->sait }}</a>
+                                <a href="{{ $user->sait }}">{{ $user->sait }}</a>
                             </div>
                             <div class="project-main__brief-item project-info__item">
                                 {{ $user->org }}
