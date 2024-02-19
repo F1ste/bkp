@@ -309,7 +309,7 @@ import {} from "../libs/ckeditor/ckeditor";
 
         document.getElementById(select.storeButton).innerHTML = `Подождите...`
 
-        axios.post(updateRoute, {
+        axios.patch(updateRoute, {
              name: name,
             pod_text: pod_text,
             text: text,
@@ -344,7 +344,7 @@ import {} from "../libs/ckeditor/ckeditor";
             let del = document.getElementById(select.del).dataset.del;
 
 
-            axios.post(del, {
+            axios.delete(del, {
             id: id
 
         }).then(e => {

@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\Admin\BannerController;
+use App\Http\Controllers\Admin\NewsController;
 use App\Http\Controllers\Admin\Projects\RoleController;
 use App\Http\Controllers\AdminCollectionController;
 use App\Http\Controllers\AdminUserController;
@@ -30,6 +31,9 @@ Route::prefix('/projects')->name('projects.')->group(function () {
     Route::resource('/roles', RoleController::class)->except('show');
 });
 
+Route::resource('/news', NewsController::class)->except('show');
+Route::post('/news/img1', [CollectionController::class, 'img'])->name('news.img1');
+
 Route::resource('/banners', BannerController::class)->except('show');
 Route::post('/banners/img1', [CollectionController::class, 'img1'])->name('banner.img1');
 
@@ -42,18 +46,6 @@ Route::prefix('/user')->group(function () {
     Route::get('/', [AdminUserController::class,'index'])->name('user');
     Route::get('/edit-{id}', [AdminUserController::class,'edit'])->name('user.edit');
     Route::post('{user}/update', [AdminUserController::class,'update'])->name('user.update');
-});
-
-Route::prefix('/news')->group(function () {
-    Route::get('/', [AdminCollectionController::class, 'news'])->name('news');
-    Route::get('/news-{id}', [AdminCollectionController::class, 'news_single'])->name('news.single');
-    Route::get('/new', [AdminCollectionController::class, 'news_new'])->name('news.new');
-    Route::post('/img1', [CollectionController::class, 'img'])->name('news.img1');
-
-    Route::post('/store', [AdminCollectionController::class, 'news_store'])->name('news.store');
-    Route::post('/edit', [AdminCollectionController::class, 'news_edit'])->name('news.edit');
-    Route::post('/upload', [AdminCollectionController::class, 'news_upload'])->name('news.upload');
-    Route::post('/delete', [AdminCollectionController::class, 'news_delete'])->name('news.delete');
 });
 
 Route::prefix('/rubric')->group(function () {

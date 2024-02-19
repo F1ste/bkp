@@ -13,7 +13,7 @@
         <main class="page">
             <div class="sidebar sidebar__expanded">
                 <div class="sidebar__items">
-                    <a href="{{ route('admin.news') }}" class="sidebar__item _icon-invoice">Новости</a>
+                    <a href="{{ route('admin.news.index') }}" class="sidebar__item _icon-invoice">Новости</a>
                     <div data-spollers data-one-spoller class="spollers">
                         <div class="spollers__item">
                             <button type="button" data-spoller class="sidebar__item _icon-bookmark sidebar__item--chevron">

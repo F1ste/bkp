@@ -4,7 +4,7 @@
 
 @section('content')
     <div class="page__container">
-        <section data-image="{{ route('admin.news.upload') }}" data-id="{{ $id }}" data-update="{{ route('admin.news.edit') }}" id='news-edit' class="collection section-base create-project personal-account">
+        <section data-image="{{ route('admin.news.img1') }}" data-id="{{ $id }}" data-update="{{ route('admin.news.update', $collection) }}" id='news-edit' class="collection section-base create-project personal-account">
             <div class="create-project__container">
                 <div data-one-select class="create-project__content">
                     <div class="create-project__title personal__title">Создание новости</div>
@@ -272,7 +272,7 @@
 
                     <div class="create-project__footer">
                         <div class="create-project__buttons">
-                            <a data-del="{{ route('admin.news.delete') }}" style="cursor: pointer;" id="del-button" class="create-project__btn btn btn-white btn-border_black">Удалить</a>
+                            <a data-del="{{ route('admin.news.destroy', $collection) }}" style="cursor: pointer;" id="del-button" class="create-project__btn btn btn-white btn-border_black">Удалить</a>
                             <button id='store-button' class="create-project__btn btn btn-filled">Сохранить</button>
                         </div>
                     </div>
