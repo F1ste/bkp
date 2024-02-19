@@ -11,7 +11,7 @@
                 </div>
             </div>
         </div>
-        <section data-image="{{ route('profile.services.upload') }}" data-store="{{ route('profile.services.store') }}" id='collection-store' class="collection section-base create-project personal-account">
+        <section data-image="{{ route('admin.projects.upload') }}" data-store="{{ route('admin.projects.store') }}" id='collection-store' class="collection section-base create-project personal-account">
             <div class="create-project__container">
                 <div class="create-project__content">
                     <div class="create-project__title personal__title">Создание проекта</div>
@@ -50,34 +50,36 @@
                                     <label class="create-project__form-label form__label">Регион</label>
                                     <select id="region" data-scroll name="form[]" class="form__select">
                                         <option value="" selected>Выбрать</option>
-                                        <option value="2">Пункт 1</option>
-                                        <option value="3">Пункт 2</option>
-                                        <option value="4">Пункт 3</option>
+                                        @foreach ($region as $el)
+                                            <option value="{{ $el->name }}">{{ $el->name }}</option>
+                                        @endforeach
                                     </select>
                                 </div>
                                 <div class="create-project__form-select">
                                     <label class="create-project__form-label form__label">Тип события</label>
                                     <select id="tip" data-scroll name="form[]" class="form__select">
                                         <option value="" selected>Выбрать</option>
-                                        <option value="2">Пункт 1</option>
-                                        <option value="3">Пункт 2</option>
+                                        @foreach ($subject as $el)
+                                            <option value="{{ $el->name }}">{{ $el->name }}</option>
+                                        @endforeach
                                     </select>
                                 </div>
                                 <div class="create-project__form-select">
                                     <label class="create-project__form-label form__label">Тематика проекта</label>
                                     <select id="tema" data-scroll name="form[]" class="form__select">
                                         <option value="" selected>Выбрать</option>
-                                        <option value="2">Пункт 1</option>
-                                        <option value="3">Пункт 2</option>
+                                        @foreach ($event as $el)
+                                            <option value="{{ $el->name }}">{{ $el->name }}</option>
+                                        @endforeach
                                     </select>
                                 </div>
                                 <div class="create-project__form-select">
                                     <label class="create-project__form-label form__label">Теги проекта</label>
                                     <select id="teg" data-scroll multiple name="form[]" class="form__select">
                                         <option value="" selected>Выбрать</option>
-                                        <option value="2">Пункт 1</option>
-                                        <option value="3">Пункт 2</option>
-                                        <option value="4">Пункт 3</option>
+                                        @foreach ($tegs as $el)
+                                            <option value="{{ $el->name }}">{{ $el->name }}</option>
+                                        @endforeach
                                     </select>
                                 </div>
                             </div>
@@ -165,8 +167,9 @@
                                     <label class="create-project__form-label form__label">Кого ищем</label>
                                     <select data-scroll name="form[]" class="form__select">
                                         <option value="" selected>Выбрать</option>
-                                        <option value="2">Пункт 1</option>
-                                        <option value="3">Пункт 2</option>
+                                        @foreach ($roles as $el)
+                                            <option value="{{ $el->name }}">{{ $el->name }}</option>
+                                        @endforeach
                                     </select>
                                 </div>
                                 <div class="create-project__form-item form__item">

@@ -3,20 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Project;
-use App\Models\User;
-use App\Models\News;
-use App\Models\Region;
-use App\Models\Role;
-use App\Models\Subject;
-use App\Models\Tags;
-use App\Models\Event;
-use App\Models\News\Category;
-use App\Models\Banner;
-use App\Models\Notifications;
 use Illuminate\Http\Request;
-use App\Http\Requests\FilterRequest;
-use App\Http\Filters\NewsFilter;
-use Illuminate\Support\Carbon;
 
 class AdminCollectionController extends Controller
 {
@@ -29,45 +16,6 @@ class AdminCollectionController extends Controller
 
         return view('pages.user.services.services', [
             'collection' => $collection
-        ]);
-    }
-
-    /**
-     * View Page Single
-     */
-    public function single($id)
-    {
-        $collection = Project::find($id);
-
-        if (is_null($collection)) {
-            return redirect(route('pages.admin.services.new'));
-        }
-
-        $user = User::find($collection->user_id);
-
-        $regoin = Region::get();
-        $roles = Role::get();
-        $subject = Subject::get();
-        $tegs = Tags::get();
-        $event = Event::get();
-
-        $images = json_decode($collection->images)->images;
-        $teg = json_decode($collection->teg);
-        $serch = json_decode($collection->serch);
-
-        return view('pages.admin.services.edit', [
-            'collection' => $collection,
-            'images' => $images,
-            'id' => $id,
-            'teg' => $teg,
-            'serch' => $serch,
-            'user' => $user,
-            'region' => $regoin,
-            'roles' => $roles,
-            'subject' => $subject,
-            'tegs' => $tegs,
-            'event' => $event,
-            'id_uzer' => $user->id
         ]);
     }
 
@@ -122,32 +70,6 @@ class AdminCollectionController extends Controller
         ]);
 
         return response()->json(route('profile.services.single', ['id' => $collection->id]), 201);
-    }
-
-    /**
-     * POST Update Collection
-     */
-    public function edit(Request $request)
-    {
-        if (in_array($request->price, [1, 2, 3])) {
-            $action = [
-                1 => 'опубликован!',
-                2 => 'перенесен в архив.',
-                3 => 'отклонен.',
-            ][$request->price];
-
-            Notifications::create([
-                'id_uzer' => $request->idu,
-                'id_project' => $request->id,
-                'name' => "Проект {$request->name} {$action}",
-            ]);
-        }
-
-        $collection = Project::where('id', $request->id)->update([
-            'status' => $request->price
-        ]);
-
-        return response()->json($collection, 201);
     }
 
     public function img1(Request $request)

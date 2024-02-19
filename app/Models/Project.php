@@ -74,4 +74,9 @@ class Project extends Model
     {
         return $this->hasOne(Feedback::class, 'service_id', 'id');
     }
+
+    public function user()
+    {
+        return $this->hasOne(User::class, 'id', 'user_id');
+    }
 }
