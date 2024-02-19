@@ -6,7 +6,11 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="{{ asset('front/css/style.css') }}"/>
         <link rel="stylesheet" href="{{ asset('plugins/bvi/dist/css/bvi.min.css') }}"/>
-        <title>@yield('title') - БКП</title>
+        @hasSection('title')
+            <title>@yield('title') &mdash; {{ config('app.name') }}</title>
+        @else
+            <title>{{ config('app.name') }}</title>
+        @endif
     </head>
     <body>
         <div class="wrapper">
