@@ -1,11 +1,11 @@
 import axios from "axios";
 import { notification } from "../utils/notification";
-import { } from "../libs/ckeditor/ckeditor";
+import {} from "../libs/ckeditor/ckeditor";
+
 (() => {
+    const collectionEdit = document.getElementById("fdescr-store");
 
-    const collectionEdit = document.getElementById('fdescr-store')
-
-    if (!collectionEdit) return false
+    if (!collectionEdit) return false;
 
     var editorData = {};
     var textareas = document.querySelectorAll("textarea:not(#video)");
@@ -20,56 +20,39 @@ import { } from "../libs/ckeditor/ckeditor";
             });
         })(editor, excerptFieldName);
     });
-  
-    const uploadRoute = collectionEdit.dataset.image,
-        updateRoute = collectionEdit.dataset.store,
+
+    const updateRoute = collectionEdit.dataset.store,
         id = collectionEdit.dataset.id;
 
     const select = {
         descr: editorData.descr,
-        storeButton: 'store-button',
-    }
+        storeButton: "store-button",
+    };
 
-    document.getElementById(select.storeButton).addEventListener('click', e => {
-        let descr = editorData.descr;
+    document
+        .getElementById(select.storeButton)
+        .addEventListener("click", (e) => {
+            let descr = editorData.descr;
 
-        if (descr == '') {
-            alert('Заполните поле!');
-            return false
-        }
+            if (descr == "") {
+                alert("Заполните поле!");
+                return false;
+            }
 
+            document.getElementById(
+                select.storeButton
+            ).innerHTML = `Подождите...`;
 
-        document.getElementById(select.storeButton).innerHTML = `Подождите...`
-
-        axios.post(updateRoute, {
-            id: id,
-            descr: descr,
-
-
-        }).then(e => {
-            window.location.href = e.data;
-        }).catch(error => {
-            console.log(error.response)
-        })
-    });
-
-})()
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+            axios
+                .post(updateRoute, {
+                    id: id,
+                    descr: descr,
+                })
+                .then((e) => {
+                    window.location.href = e.data;
+                })
+                .catch((error) => {
+                    console.log(error.response);
+                });
+        });
+})();

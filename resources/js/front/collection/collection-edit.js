@@ -1,6 +1,7 @@
 import axios from "axios";
 import { notification } from "../utils/notification";
 import {} from "../libs/ckeditor/ckeditor";
+
 (() => {
     const collectionEdit = document.getElementById("collection-edit");
 
@@ -9,13 +10,15 @@ import {} from "../libs/ckeditor/ckeditor";
     const excerptEl = document.querySelector("#excerpt");
     const mainImg = document.querySelector("#img1_fin");
     const projectType = document.querySelector("#tip");
-    const projectRegion = document.querySelector("#region")
-    const projectTheme = document.querySelector("#tema")
+    const projectRegion = document.querySelector("#region");
+    const projectTheme = document.querySelector("#tema");
     const phoneInput = document.querySelector("#tel");
     const emailInput = document.querySelector("#email");
 
     function showValidateError(targetElement, isError, hintMessage) {
-        const parentElement = targetElement.closest('.create-project__form-item, .create-project__form-img, .create-project__form-select');
+        const parentElement = targetElement.closest(
+            ".create-project__form-item, .create-project__form-img, .create-project__form-select"
+        );
         const labelElement = parentElement.querySelector("label");
 
         if (isError) {
@@ -77,7 +80,7 @@ import {} from "../libs/ckeditor/ckeditor";
             currentEditor.on("change", function () {
                 editorData[fieldName] = currentEditor.getData();
 
-                if (currentEditor.id === 'cke_1') {
+                if (currentEditor.id === "cke_1") {
                     var isContentExceedingLimit =
                         editorData[fieldName].length >= 1000;
                     showValidateError(
@@ -110,7 +113,6 @@ import {} from "../libs/ckeditor/ckeditor";
         }
 
         addPartnerBtn.addEventListener("click", () => {
-            
             setTimeout(() => {
                 var newTextareaId =
                     "FormProjectPartnerDescription" + editorsCount;
@@ -402,16 +404,20 @@ import {} from "../libs/ckeditor/ckeditor";
                 tip.length === 0 ||
                 region.length === 0 ||
                 tema.length === 0 ||
-                mainImg.getAttribute('src').length === 0 ||
+                mainImg.getAttribute("src").length === 0 ||
                 excerpt.length >= 1000 ||
-                serch.some(item => item.sel === '' || item.sel === undefined)
+                serch.some((item) => item.sel === "" || item.sel === undefined)
             ) {
                 showValidateError(
                     excerptEl,
                     excerpt.length >= 1000,
                     "Не более 1000 символов"
                 );
-                showValidateError(mainImg, mainImg.getAttribute('src').length === 0, "");
+                showValidateError(
+                    mainImg,
+                    mainImg.getAttribute("src").length === 0,
+                    ""
+                );
                 showValidateError(teg_mas, teg.length === 0, "");
                 showValidateError(projectType, tip.length === 0, "");
                 showValidateError(projectRegion, region.length === 0, "");
@@ -419,10 +425,11 @@ import {} from "../libs/ckeditor/ckeditor";
                 showValidateError(phoneInput, !validatePhone(tel), "");
                 showValidateError(emailInput, !validateEmail(email), "");
 
-
                 for (let i = 0; i < serch_mas.length; i++) {
                     showValidateError(
-                        serch_mas[i].querySelector('.create-project__form-select'),
+                        serch_mas[i].querySelector(
+                            ".create-project__form-select"
+                        ),
                         serch[i].sel.length === 0,
                         ""
                     );

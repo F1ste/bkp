@@ -10,13 +10,15 @@ import {} from "../libs/ckeditor/ckeditor";
     const excerptEl = document.querySelector("#excerpt");
     const mainImg = document.querySelector("#img1_fin");
     const projectType = document.querySelector("#tip");
-    const projectRegion = document.querySelector("#region")
-    const projectTheme = document.querySelector("#tema")
+    const projectRegion = document.querySelector("#region");
+    const projectTheme = document.querySelector("#tema");
     const phoneInput = document.querySelector("#tel");
     const emailInput = document.querySelector("#email");
 
     function showValidateError(targetElement, isError, hintMessage) {
-        const parentElement = targetElement.closest('.create-project__form-item, .create-project__form-img, .create-project__form-select');
+        const parentElement = targetElement.closest(
+            ".create-project__form-item, .create-project__form-img, .create-project__form-select"
+        );
         const labelElement = parentElement.querySelector("label");
 
         if (isError) {
@@ -69,7 +71,7 @@ import {} from "../libs/ckeditor/ckeditor";
             editorData[fieldName] = currentEditor.getData();
             currentEditor.on("change", function () {
                 editorData[fieldName] = currentEditor.getData();
-                if (currentEditor.id === 'cke_1') {
+                if (currentEditor.id === "cke_1") {
                     var isContentExceedingLimit =
                         editorData[fieldName].length >= 1000;
                     showValidateError(
@@ -388,7 +390,7 @@ import {} from "../libs/ckeditor/ckeditor";
                 tema.length === 0 ||
                 mainImg.src.length === 0 ||
                 excerpt.length >= 1000 ||
-                serch.some(item => item.sel === '' || item.sel === undefined)
+                serch.some((item) => item.sel === "" || item.sel === undefined)
             ) {
                 showValidateError(
                     excerptEl,
@@ -403,10 +405,11 @@ import {} from "../libs/ckeditor/ckeditor";
                 showValidateError(phoneInput, !validatePhone(tel), "");
                 showValidateError(emailInput, !validateEmail(email), "");
 
-
                 for (let i = 0; i < serch_mas.length; i++) {
                     showValidateError(
-                        serch_mas[i].querySelector('.create-project__form-select'),
+                        serch_mas[i].querySelector(
+                            ".create-project__form-select"
+                        ),
                         serch[i].sel.length === 0,
                         ""
                     );
