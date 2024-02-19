@@ -7,6 +7,7 @@ use App\Http\Controllers\ChatController;
 use App\Http\Controllers\FeedbackController;
 use Illuminate\Support\Facades\Route;
 
+Route::redirect('/', '/profile/dashboard');
 Route::get('/dashboard', [UserPageController::class, 'dashboard'])->name('dashboard');
 
 Route::get('/notifications', [UserPageController::class, 'notifications'])->name('notifications');
