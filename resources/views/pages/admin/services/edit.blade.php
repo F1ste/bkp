@@ -4,7 +4,7 @@
 
 @section('content')
     <div class="page__container">
-        <section class="create-project personal-account" id="admin-collection-edit" data-iduzer="{{ $id_uzer }}" data-id="{{ $id }}" data-image="{{ route('profile.services.upload') }}" data-update="{{ route('admin.services.edit') }}">
+        <section class="create-project personal-account" id="admin-collection-edit" data-iduzer="{{ $id_uzer }}" data-id="{{ $id }}" data-image="{{ route('profile.services.upload') }}" data-update="{{ route('admin.projects.update', $collection) }}">
             <div class="create-project__container">
                 <div class="create-project__content">
                     <div class="create-project__title personal__title">Редактирование проекта</div>

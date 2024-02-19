@@ -5,7 +5,6 @@ use App\Http\Controllers\Admin\BannerController;
 use App\Http\Controllers\Admin\News\CategoryController;
 use App\Http\Controllers\Admin\NewsController;
 use App\Http\Controllers\Admin\Projects\RoleController;
-use App\Http\Controllers\AdminCollectionController;
 use App\Http\Controllers\AdminUserController;
 use App\Http\Controllers\Admin\ProjectController;
 use App\Http\Controllers\Admin\Projects\EventController;
@@ -20,6 +19,7 @@ use Illuminate\Support\Facades\Route;
 Route::redirect('/', '/admin/projects/moderation');
 Route::redirect('/dashboard', '/admin/projects/moderation')->name('dashboard');
 
+Route::resource('/projects', ProjectController::class)->except(['index', 'show', 'destroy']);
 Route::prefix('/projects')->name('projects.')->group(function () {
     Route::redirect('/', '/admin/projects/moderation');
     Route::get('/moderation', [ProjectController::class, 'moderation'])->name('moderation');
@@ -41,11 +41,6 @@ Route::prefix('/news')->name('news.')->group(function () {
 
 Route::resource('/banners', BannerController::class)->except('show');
 Route::post('/banners/img1', [CollectionController::class, 'img1'])->name('banner.img1');
-
-Route::prefix('/services')->group(function () {
-    Route::get('/services-{id}', [AdminCollectionController::class, 'single'])->name('services.single');
-    Route::post('/edit', [AdminCollectionController::class, 'edit'])->name('services.edit');
-});
 
 Route::prefix('/user')->group(function () {
     Route::get('/', [AdminUserController::class,'index'])->name('user');

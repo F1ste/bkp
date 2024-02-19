@@ -16,7 +16,7 @@
                     <div class="my-projects__projects-items">
                     @foreach ($collections as $el)
                         <div class="my-projects__item">
-                            <a href="{{ route('admin.services.single', ['id' => $el->id]) }}">
+                            <a href="{{ route('admin.projects.edit', $el) }}">
                                 <div class="my-projects__project-name">
                                     {{ $el->name_proj }}
                                 </div>
