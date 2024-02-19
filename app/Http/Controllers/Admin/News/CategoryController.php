@@ -41,7 +41,7 @@ class CategoryController extends Controller
             'name' => $request->name,
         ]);
 
-        return response()->json(route('admin.news.categories.edit', $collection), 201);
+        return redirect()->route('admin.news.categories.edit', $collection);
     }
 
     /**
@@ -71,16 +71,18 @@ class CategoryController extends Controller
             'name' => $request->name,
         ]);
 
-        return response()->json($collection, 201);
+        return redirect()->route('admin.news.categories.edit', $collection);
     }
 
     /**
      * Remove the specified resource from storage.
      *
      * @param  \App\Models\News\Category  $category
+     * @return \Illuminate\Http\Response
      */
     public function destroy(Category $category)
     {
-        return $category->delete();
+        $category->delete();
+        return redirect()->route('admin.news.categories.index');
     }
 }
