@@ -27,7 +27,7 @@
 
                 <div class="create-project__footer">
                     <div class="create-project__buttons">
-                        <form action="{{ route('admin.projects.subjects.destroy', $collection) }}" method="POST">
+                        <form action="{{ route('admin.projects.subjects.destroy', $collection) }}" method="POST" onsubmit="return confirm('Вы уверены, что хотите удалить элемент?')">
                             @csrf
                             @method('DELETE')
                             <button type="submit" style="cursor: pointer;" class="create-project__btn btn btn-white btn-border_black">Удалить</button>
