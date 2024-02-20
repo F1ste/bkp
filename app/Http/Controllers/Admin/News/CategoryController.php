@@ -67,11 +67,11 @@ class CategoryController extends Controller
      */
     public function update(Request $request, Category $category)
     {
-        $collection = $category->update([
+        $category->update([
             'name' => $request->name,
         ]);
 
-        return redirect()->route('admin.news.categories.edit', $collection);
+        return redirect()->route('admin.news.categories.edit', $category);
     }
 
     /**

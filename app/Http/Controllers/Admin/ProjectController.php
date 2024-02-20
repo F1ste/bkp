@@ -9,7 +9,7 @@ use App\Models\Project;
 use App\Models\Region;
 use App\Models\Role;
 use App\Models\Subject;
-use App\Models\Tags;
+use App\Models\Tag;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 
@@ -47,7 +47,7 @@ class ProjectController extends Controller
         $regoin = Region::get();
         $roles = Role::get();
         $subject = Subject::get();
-        $tegs = Tags::get();
+        $tegs = Tag::get();
         $event = Event::get();
 
         return view('pages.admin.services.new', [
@@ -104,7 +104,7 @@ class ProjectController extends Controller
             'region' => Region::all(),
             'roles' => Role::all(),
             'subject' => Subject::all(),
-            'tegs' => Tags::all(),
+            'tegs' => Tag::all(),
             'event' => Event::all(),
             'id_uzer' => $user->id
         ]);

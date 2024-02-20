@@ -38,11 +38,11 @@ class RoleController extends Controller
      */
     public function store(Request $request)
     {
-        $collection = Role::create([
+        $role = Role::create([
             'name' => $request->name,
         ]);
 
-        return response()->json(route('admin.projects.roles.edit', $collection), 201);
+        return redirect()->route('admin.projects.roles.edit', $role);
     }
 
     /**
@@ -68,11 +68,11 @@ class RoleController extends Controller
      */
     public function update(Request $request, Role $role)
     {
-        $collection = $role->update([
+        $role->update([
             'name' => $request->name,
         ]);
 
-        return response()->json($collection, 201);
+        return redirect()->route('admin.projects.roles.edit', $role);
     }
 
     /**
@@ -82,6 +82,7 @@ class RoleController extends Controller
      */
     public function destroy(Role $role)
     {
-        return $role->delete();
+        $role->delete();
+        return redirect()->route('admin.projects.roles.index');
     }
 }

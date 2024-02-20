@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Admin\Projects;
 
 use App\Http\Controllers\Controller;
-use App\Models\Tags;
+use App\Models\Tag;
 use Illuminate\Http\Request;
 
 class TagController extends Controller
@@ -15,7 +15,7 @@ class TagController extends Controller
      */
     public function index()
     {
-        $collections = Tags::all();
+        $collections = Tag::all();
         return view('pages.admin.teg.teg', compact('collections'));
     }
 
@@ -37,20 +37,20 @@ class TagController extends Controller
      */
     public function store(Request $request)
     {
-        $collection = Tags::create([
+        $tag = Tag::create([
             'name' => $request->name,
         ]);
 
-        return response()->json(route('admin.projects.tags.edit', $collection->id), 201);
+        return redirect()->route('admin.projects.tags.edit', $tag);
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Tags  $tags
+     * @param  \App\Models\Tag  $tags
      * @return \Illuminate\View\View
      */
-    public function edit(Tags $tag)
+    public function edit(Tag $tag)
     {
         return view('pages.admin.teg.edit', [
             'collection' => $tag,
@@ -62,25 +62,26 @@ class TagController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Tags  $tags
+     * @param  \App\Models\Tag  $tags
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Tags $tag)
+    public function update(Request $request, Tag $tag)
     {
-        $collection = $tag->update([
+        $tag->update([
             'name' => $request->name,
         ]);
 
-        return response()->json($collection, 201);
+        return redirect()->route('admin.projects.tags.edit', $tag);
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Tags  $tags
+     * @param  \App\Models\Tag  $tags
      */
-    public function destroy(Tags $tag)
+    public function destroy(Tag $tag)
     {
-        return $tag->delete();
+        $tag->delete();
+        return redirect()->route('admin.projects.tags.index');
     }
 }

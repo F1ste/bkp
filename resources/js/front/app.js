@@ -11,18 +11,6 @@ import "./setting/setting";
 import "./banner/store";
 import "./banner/edit";
 
-import "./tema/store";
-import "./tema/edit";
-
-import "./tip/store";
-import "./tip/edit";
-
-import "./teg/store";
-import "./teg/edit";
-
-import "./partners/store";
-import "./partners/edit";
-
 import "./about/edit";
 
 import "./contacts/edit";

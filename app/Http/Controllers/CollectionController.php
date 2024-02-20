@@ -7,7 +7,7 @@ use App\Models\Notifications;
 use App\Models\Region;
 use App\Models\Role;
 use App\Models\Subject;
-use App\Models\Tags;
+use App\Models\Tag;
 use App\Models\Event;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
@@ -42,7 +42,7 @@ class CollectionController extends Controller
         $regoin = Region::get();
         $roles = Role::get();
         $subject = Subject::get();
-        $tegs = Tags::get();
+        $tegs = Tag::get();
         $event = Event::get();
         $images = json_decode($collection->images)->images;
         $teg = json_decode($collection->teg);
@@ -70,7 +70,7 @@ class CollectionController extends Controller
         $regoin = Region::get();
         $roles = Role::get();
         $subject = Subject::get();
-        $tegs = Tags::get();
+        $tegs = Tag::get();
         $event = Event::get();
 
         return view('pages.user.services.new', [
