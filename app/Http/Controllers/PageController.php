@@ -9,7 +9,7 @@ use App\Models\User;
 use App\Models\News;
 use App\Models\Role;
 use App\Models\Subject;
-use App\Models\Tags;
+use App\Models\Tag;
 use App\Models\Event;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\File;
@@ -132,7 +132,7 @@ class PageController extends Controller
             return $tema;
         })->unique();
 
-        $teg = Tags::distinct()->orderBy('name', 'asc')->pluck('name')->map(function ($teg) {
+        $teg = Tag::distinct()->orderBy('name', 'asc')->pluck('name')->map(function ($teg) {
             return $teg;
         })->unique();
 
