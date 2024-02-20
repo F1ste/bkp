@@ -17,7 +17,7 @@
                                 <div class="create-project__main-col">
                                     <div class="create-project__form-item form__item">
                                         <label for="name" class="create-project__form-label form__label">Название</label>
-                                        <input id="name" type="text" name="name" class="create-project__form-input form__input" placeholder="Название" data-placeholder="Название" value="{{ $collection->name }}">
+                                        <input id="name" type="text" name="name" class="create-project__form-input form__input" placeholder="Название" value="{{ $collection->name }}" required>
                                     </div>
                                 </div>
                             </div>

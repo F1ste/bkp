@@ -16,7 +16,7 @@
                                 <div class="create-project__main-col">
                                     <div class="create-project__form-item form__item">
                                         <label for="name" class="create-project__form-label form__label">Название</label>
-                                        <input id="name" type="text" name="name" class="create-project__form-input form__input" placeholder="Название">
+                                        <input id="name" type="text" name="name" class="create-project__form-input form__input" placeholder="Название" required>
                                     </div>
                                 </div>
                             </div>
