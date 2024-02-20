@@ -41,7 +41,7 @@ class EventController extends Controller
             'name' => $request->name,
         ]);
 
-        return response()->json(route('admin.projects.events.edit', $collection), 201);
+        return redirect()->route('admin.projects.events.edit', $collection);
     }
 
     /**
@@ -67,11 +67,11 @@ class EventController extends Controller
      */
     public function update(Request $request, Event $event)
     {
-        $collection = $event->update([
+        $event->update([
             'name' => $request->name,
         ]);
 
-        return response()->json($collection, 201);
+        return redirect()->route('admin.projects.events.edit', $event);
     }
 
     /**
@@ -81,6 +81,7 @@ class EventController extends Controller
      */
     public function destroy(Event $event)
     {
-        return $event->delete();
+        $event->delete();
+        return redirect()->route('admin.projects.events.index');
     }
 }
