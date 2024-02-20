@@ -41,9 +41,7 @@ class SubjectController extends Controller
             'name' => $request->name,
         ]);
 
-        $route = route('admin.projects.subjects.edit', $collection);
-
-        return response()->json($route, 201);
+        return redirect()->route('admin.projects.subjects.edit', $collection);
     }
 
     /**
@@ -69,11 +67,11 @@ class SubjectController extends Controller
      */
     public function update(Request $request, Subject $subject)
     {
-        $collection = $subject->update([
+        $subject->update([
             'name' => $request->name,
         ]);
 
-        return response()->json($collection, 201);
+        return redirect()->route('admin.projects.subjects.edit', $subject);
     }
 
     /**
@@ -83,6 +81,7 @@ class SubjectController extends Controller
      */
     public function destroy(Subject $subject)
     {
-        return $subject->delete();
+        $subject->delete();
+        return redirect()->route('admin.projects.subjects.index');
     }
 }

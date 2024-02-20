@@ -11,9 +11,6 @@ import "./setting/setting";
 import "./banner/store";
 import "./banner/edit";
 
-import "./tema/store";
-import "./tema/edit";
-
 import "./tip/store";
 import "./tip/edit";
 
