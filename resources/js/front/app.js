@@ -11,9 +11,6 @@ import "./setting/setting";
 import "./banner/store";
 import "./banner/edit";
 
-import "./partners/store";
-import "./partners/edit";
-
 import "./about/edit";
 
 import "./contacts/edit";
