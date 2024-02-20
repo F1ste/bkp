@@ -37,11 +37,11 @@ class TagController extends Controller
      */
     public function store(Request $request)
     {
-        $collection = Tag::create([
+        $tag = Tag::create([
             'name' => $request->name,
         ]);
 
-        return response()->json(route('admin.projects.tags.edit', $collection->id), 201);
+        return redirect()->route('admin.projects.tags.edit', $tag);
     }
 
     /**
@@ -67,11 +67,11 @@ class TagController extends Controller
      */
     public function update(Request $request, Tag $tag)
     {
-        $collection = $tag->update([
+        $tag->update([
             'name' => $request->name,
         ]);
 
-        return response()->json($collection, 201);
+        return redirect()->route('admin.projects.tags.edit', $tag);
     }
 
     /**
@@ -81,6 +81,7 @@ class TagController extends Controller
      */
     public function destroy(Tag $tag)
     {
-        return $tag->delete();
+        $tag->delete();
+        return redirect()->route('admin.projects.tags.index');
     }
 }
