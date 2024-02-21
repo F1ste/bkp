@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\Profile\UploadController;
 use App\Http\Controllers\CollectionController;
 use App\Http\Controllers\SettingUserController;
 use App\Http\Controllers\UserPageController;
@@ -11,6 +12,8 @@ Route::redirect('/', '/profile/dashboard');
 Route::get('/dashboard', [UserPageController::class, 'dashboard'])->name('dashboard');
 
 Route::get('/notifications', [UserPageController::class, 'notifications'])->name('notifications');
+
+Route::post('/upload-image', [UploadController::class, 'image'])->name('upload.image');
 
 Route::prefix('/setting')->group(function () {
     Route::get('/', [SettingUserController::class, 'setting'])->name('setting');
