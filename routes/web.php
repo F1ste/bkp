@@ -54,7 +54,9 @@ Route::get('/partners', function () {
 Route::get('/about/', [AboutController::class,'index'])->name('about');
 Route::get('/contacts/', [ContactController::class,'index'])->name('contact');
 Route::get('/faq/', [FAQController::class,'index'])->name('faq');
-Route::get('/policy/', [PolicyController::class,'index'])->name('policy');
+Route::view('/policy', 'pages.privacy-policy')->name('privacy-policy');
+Route::view('/privacy', 'pages.user-agreement')->name('user-agreement');
+Route::view('/mail_send', 'pages.mailing-agreement')->name('mailing-agreement');
 
 Route::get('storage/{filename}', [PageController::class, 'image']);
 
