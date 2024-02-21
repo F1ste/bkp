@@ -10387,7 +10387,7 @@
                 const query = headerSearchInput.value;
                 if (headerSearchInput.value !== "" && headerResultItem) {
                     headerSearchResults.classList.add("_results-active");
-                    fetch(`/search?searchText=${query}`).then((response => response.json())).then((data => {
+                    fetch(`/quick-search?searchText=${query}`).then((response => response.json())).then((data => {
                         const newsArray = data.news || [];
                         const collectionsArray = data.collections || [];
                         headerSearchResults.innerHTML = "";

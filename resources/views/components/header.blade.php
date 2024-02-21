@@ -13,7 +13,7 @@
                         <li class="menu__item"><a href="/news" class="menu__link">Новости</a></li>
                         <li class="menu__item"><a href="/faq" class="menu__link">FAQ</a></li>
                         <li class="menu__item"><a href="/contacts" class="menu__link">Контакты</a></li>
-                        <form id="headerSearch" class="menu__search-form form">
+                        <form id="headerSearch" class="menu__search-form form" action="/search">
                             <div class="menu__form-item search-item form-item">
                                 <input type="text" class="form__input _icon-search" name="searchText" placeholder="Найти...">
                                 <button type="submit" class="menu__search-submit search-submit _icon-search"></button>
