@@ -2180,6 +2180,45 @@ body::after {
   padding: 0.9375rem 2.5rem 0.9375rem 0.9375rem;
 }
 
+.search-query__empty {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding: 150px 0;
+}
+
+.search-query__search-bar{
+  margin-top: 40px;
+  display: flex;
+  justify-content: space-between;
+  gap: 70px;
+}
+
+.search-query__search-bar input{
+  border-color: #00AF66;
+}
+
+.search-query__search-form{
+  width: 100%;
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+.search-query__form-item{
+  flex: 1 1 100%;
+}
+
+.search-query__form-item input{
+  padding: 1rem 1.6125rem;
+}
+
+.search-query__submit-btn{
+  min-width: 260px;
+  height: 52px;
+}
+
 .search-results {
   position: absolute;
   width: 100%;

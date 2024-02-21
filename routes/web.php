@@ -59,3 +59,4 @@ Route::get('/policy/', [PolicyController::class,'index'])->name('policy');
 Route::get('storage/{filename}', [PageController::class, 'image']);
 
 Route::get('/search', [SearchResultsController::class, 'index']);
+Route::get('/quick-search', [SearchResultsController::class, 'quick_search']);
