@@ -81,9 +81,9 @@
 
                 <div class="news-block__items-wrapper">
                     <div class="news-block__big-block big-news">
-
+                    <!-- модификатор для ссылки with-banner, если баннер есть -->
                     @if (isset($collections[0]) && $collections[0]->name != '')
-                        <a href="{{ route('news.tidings', $collections[0]) }}" class="big-news__item with-banner">
+                        <a href="{{ route('news.tidings', $collections[0]) }}" class="big-news__item">
                             <div class="big-news__media media-block">
                                 <picture>
                                     <source srcset="{{ $collections[0]->img }}" type="image/webp"><img src="{{ $collections[0]->img }}" alt="Изображение новости">
