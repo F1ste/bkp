@@ -1,4 +1,7 @@
 @extends('layouts.index')
+
+@section('title', 'Политика конфиденциальности')
+
 @section('content')
     <main class="page">
         <section class="policy">

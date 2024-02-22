@@ -126,7 +126,7 @@
                             {{ $el->region }}
                         </div>
                         <div class="popular-projects__organization-name">
-                            <a href="#">{{ $users->where('id', $el->user_id)->first()->org }}</a>
+                            <a href="#">{{ $el->user->org }}</a>
                         </div>
                     </div>
                     <div class="popular-projects__partners-tags partners-tags">
