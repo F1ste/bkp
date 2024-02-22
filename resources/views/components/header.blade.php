@@ -27,7 +27,7 @@
                         </form>
 
                         @if (auth()->user())
-                            @if (auth()->user()->roles[0]->name == 'admin')
+                            @if (auth()->user()->hasRole('admin'))
                                 <a href="{{ route('admin.projects.moderation') }}" class="header__login-btn btn btn-filled">Админка</a>
                             @else
                                 <a href="{{ route('login') }}" class="header__login-btn btn btn-filled">Личный кабинет</a>
