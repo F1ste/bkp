@@ -164,6 +164,19 @@
                                 </a>
                             </div>
                             <div class="projects-category__item">
+                                <a href="/projects?tip%5B%5D=Цирк">
+                                    <div class="projects-category__media media-block">
+                                        <picture>
+                                            <source srcset="{{ asset('image/projects-category/museum.webp') }}" type="image/webp">
+                                            <img src="{{ asset('image/projects-category/musuem.jpg') }}" alt="Цирк">
+                                        </picture>
+                                    </div>
+                                    <div class="projects-category__category-name">
+                                        Музей
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="projects-category__item">
                                 <a href="/projects?tip%5B%5D=Другое">
                                     <div class="projects-category__media media-block">
                                         <picture>
@@ -191,7 +204,7 @@
                             <sup class="sup-count help" title="Количество проектов">{{ $collections->count() }}</sup>
                         </div>
                     </div>
-                    <a data-da=".popular-projects__container,768" href="/projects" class="news-block__all-news _fw btn btn-white">
+                    <a href="/projects" class="news-block__all-news _fw btn btn-white">
                         Все проекты
                     </a>
                 </div>
@@ -266,7 +279,7 @@
                         Новости
                     </div>
                 </div>
-                <a data-da=".news-block__container,768" href="/news" class="news-block__all-news _fw btn btn-white">
+                <a href="/news" class="news-block__all-news _fw btn btn-white">
                     Все новости
                 </a>
             </div>
