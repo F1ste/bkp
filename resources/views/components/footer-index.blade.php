@@ -64,7 +64,7 @@
 
         <div class="company-info__col">
             <div class="footer__developer">
-                Разработано <a href="">Русский сокол</a>
+                Разработано <a href="https://design-assist.ru/">Design Assist</a>
             </div>
         </div>
     </div>
