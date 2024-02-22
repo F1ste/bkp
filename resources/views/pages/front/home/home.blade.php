@@ -286,7 +286,8 @@
             <div class="news-block__items-wrapper">
                 <div class="news-block__big-block big-news">
                 @if (isset($news[0]) and $news[0]->name != '')
-                    <a href="{{ route('news.tidings', $news[0]) }}" class="big-news__item with-banner">
+                <!-- with-banner модификатор для  big-news__item, если банер активен -->
+                    <a href="{{ route('news.tidings', $news[0]) }}" class="big-news__item">
                         <div class="big-news__media media-block">
                             <picture>
                                 <source srcset="{{ $news[0]->img }}" type="image/webp">
