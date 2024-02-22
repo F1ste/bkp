@@ -26,7 +26,7 @@ class SearchResultsController extends Controller
 
         $projects = Project::query()
             ->where('status', Project::STATUS_PUBLISHED)
-            ->where('name_proj', 'like', "%{$request->searchText}%")
+            ->where('name_proj', 'like', "%{$searchText}%")
             ->orderByDesc('id')
             ->get();
 
@@ -35,7 +35,7 @@ class SearchResultsController extends Controller
         })->unique();
 
 
-        $news = News::orderByDesc('id')->where('name', 'like', "%{$request->searchText}%")->get();
+        $news = News::orderByDesc('id')->where('name', 'like', "%{$searchText}%")->get();
 
         $categories = News::distinct()->orderBy('rubrica', 'asc')->pluck('rubrica')->map(function ($category) {
             return $category;
