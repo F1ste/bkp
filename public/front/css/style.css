@@ -3015,7 +3015,7 @@ body::after {
   gap: 0.625rem;
 }
 
-.joun-us__info:not(:first-child){
+.join-us__info:not(:first-child){
   margin-top: 2.375rem;
 }
 
