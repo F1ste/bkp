@@ -29,10 +29,6 @@ Route::prefix('/document')->group(function () {
     Route::get('/personal', [PageController::class, 'personal'])->name('page.document.personal');
 });
 
-Route::prefix('/services')->group(function () {
-    Route::get('/{id}', [PageController::class, 'services'])->name('services');
-});
-
 Route::prefix('/projects')->group(function () {
     Route::get('/', [PageController::class, 'projects'])->name('projects');
     Route::get('/project/{project}', [PageController::class, 'project'])->name('projects.project');
