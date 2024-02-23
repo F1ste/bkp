@@ -13,55 +13,6 @@
                     </div>
                 </div>
             </div>
-            <div class="join-us">
-                <div class="join-us__container">
-                    <div class="join-us__wrapper">
-                        <div class="join-us__heading section__heading">
-                            <div class="join-us__heading-text section__heading-text">
-                                <div class="join-us__title main-page__section-title">
-                                    Присоединяйтесь к нам
-                                </div>
-                            </div>
-                        </div>
-                        <div class="join-us__content">
-                            <div class="join-us__item">
-                                <div class="join-us__media media-block">
-                                    <a href="/profile/dashboard"><picture><source srcset="{{ asset('image/join-us1.webp') }}" type="image/webp"><img src="{{ asset('image/join-us1.png') }}" alt="Изображение"></picture></a>
-                                </div>
-                                <div class="join-us__info">
-                                    <div class="join-us__text">
-                                        <div class="join-us__text-title">
-                                            Предложить проект
-                                        </div>
-                                        <div class="join-us__text-desrcription">
-                                            Предложите свою идею и укажите
-                                            какая помощь вам нужна
-                                        </div>
-                                    </div>
-                                    <a href="/profile/dashboard" class="join-us__btn _fw btn btn-filled">Перейти</a>
-                                </div>
-                            </div>
-                            <div class="join-us__item">
-                                <div class="join-us__media media-block">
-                                    <a href="/news"><picture><source srcset="{{ asset('image/join-us2.webp') }}" type="image/webp"><img src="{{ asset('image/join-us2.png') }}" alt="Изображение"></picture></a>
-                                </div>
-                                <div class="join-us__info">
-                                    <div class="join-us__text">
-                                        <div class="join-us__text-title">
-                                            Узнайте о событиях
-                                        </div>
-                                        <div class="join-us__text-desrcription">
-                                            Ознакомьтесь с новостями проектов и
-                                            культурной биржи
-                                        </div>
-                                    </div>
-                                    <a href="/news" class="join-us__btn _fw btn btn-filled">Перейти</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
             <div class="projects__wrapper">
                 <div class="projects__container">
                     <div class="projects__filters">
@@ -239,6 +190,49 @@
                 </div>
             </div>
         </section>
+        <div class="join-us">
+                <div class="join-us__container">
+                    <div class="join-us__wrapper">
+                        <div class="join-us__heading section__heading">
+                            <div class="join-us__heading-text section__heading-text">
+                                <div class="join-us__title main-page__section-title">
+                                    Присоединяйтесь к нам
+                                </div>
+                            </div>
+                        </div>
+                        <div class="join-us__content">
+                            <div class="join-us__item">
+                                <div class="join-us__info">
+                                    <div class="join-us__text">
+                                        <div class="join-us__text-title">
+                                            Предложить проект
+                                        </div>
+                                        <div class="join-us__text-desrcription">
+                                            Предложите свою идею и укажите
+                                            какая помощь вам нужна
+                                        </div>
+                                    </div>
+                                    <a href="/profile/dashboard" class="join-us__btn _fw btn btn-filled">Перейти</a>
+                                </div>
+                            </div>
+                            <div class="join-us__item">
+                                <div class="join-us__info">
+                                    <div class="join-us__text">
+                                        <div class="join-us__text-title">
+                                            Узнайте о событиях
+                                        </div>
+                                        <div class="join-us__text-desrcription">
+                                            Ознакомьтесь с новостями проектов и
+                                            культурной биржи
+                                        </div>
+                                    </div>
+                                    <a href="/news" class="join-us__btn _fw btn btn-filled">Перейти</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
     </main>
     <script>
     (()=>{
