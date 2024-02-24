@@ -33,7 +33,7 @@ class ProjectFactory extends Factory
         return [
             'user_id' => User::factory()->create()->id,
             'name' => fake()->sentence(),
-            'images' => $this->generateFilePath(),
+            'images' => '{"images": []}',
             'excerpt' => fake()->sentence(),
             'date_service_from' => fake()->date(),
             'date_service_to' => fake()->date(),
@@ -44,7 +44,7 @@ class ProjectFactory extends Factory
             'tema' => Subject::query()->inRandomOrder()->first('name')->name,
             'tel' => fake()->phoneNumber(),
             'email' => fake()->email(),
-            'name_proj' => fake()->words(),
+            'name_proj' => fake()->words(asText: true),
             'video' => null,
             'serch' => $this->generateSearch(),
             'img1' => rand(0, 1) ? null : $this->generateFilePath(),
@@ -65,7 +65,7 @@ class ProjectFactory extends Factory
     {
         $roles = Role::query()->inRandomOrder()->take(rand(1, 3))->pluck('name')->map(fn ($role) => [
             'sel' => $role,
-            'tex' => fake()->sentences(),
+            'tex' => '<p>' . fake()->sentences(asText: true) . '</p>',
             'inp' => fake()->date('d.m.Y'),
         ]);
 

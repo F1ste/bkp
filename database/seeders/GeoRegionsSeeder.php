@@ -17,6 +17,8 @@ class GeoRegionsSeeder extends Seeder
     {
         if (! Region::query()->count()) {
             Region::query()->insert($this->data());
+        } else {
+            echo 'no! ' . Region::query()->count();
         }
     }
 

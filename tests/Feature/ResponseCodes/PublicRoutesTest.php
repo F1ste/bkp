@@ -17,7 +17,6 @@ class PublicRoutesTest extends TestCase
      *           ["/document/service"]
      *           ["/events"]
      *           ["/faq"]
-     *           ["/forgot-password"]
      *           ["/login"]
      *           ["/mail_send"]
      *           ["/partners"]

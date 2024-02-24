@@ -9,6 +9,8 @@ use Tests\TestCase;
 
 class NewsRoutesTest extends TestCase
 {
+    use RefreshDatabase;
+
     public function testNewsIndexEmpty()
     {
         $this->get('/news')->assertOk();

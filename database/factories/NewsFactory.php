@@ -32,13 +32,13 @@ class NewsFactory extends Factory
 
         return [
             'name' => fake()->sentence(),
-            'pod_text' => fake()->sentences(),
-            'text' => fake()->paragraphs(),
+            'pod_text' => fake()->sentences(asText: true),
+            'text' => fake()->paragraphs(asText: true),
             'date' => fake()->date(),
             'img' => $this->generateFilePath(),
-            'project' => fake()->words(2),
-            'rubrica' => fake()->words(2),
-            'banner' => fake()->words(2),
+            'project' => fake()->words(nb: 2, asText: true),
+            'rubrica' => fake()->words(nb: 2, asText: true),
+            'banner' => fake()->words(nb: 2, asText: true),
             'glav' => $glav,
             'pozits' => $pozits,
             'img2' => rand(0, 2) ? null : $this->generateFilePath(),

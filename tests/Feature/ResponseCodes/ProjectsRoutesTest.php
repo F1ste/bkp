@@ -9,6 +9,8 @@ use Tests\TestCase;
 
 class ProjectsRoutesTest extends TestCase
 {
+    use RefreshDatabase;
+
     public function testProjectsIndexEmpty()
     {
         $this->get('/projects')->assertOk();
