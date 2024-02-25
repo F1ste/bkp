@@ -54,7 +54,5 @@ Route::view('/policy', 'pages.privacy-policy')->name('privacy-policy');
 Route::view('/privacy', 'pages.user-agreement')->name('user-agreement');
 Route::view('/mail_send', 'pages.mailing-agreement')->name('mailing-agreement');
 
-Route::get('storage/{filename}', [PageController::class, 'image']);
-
 Route::get('/search', [SearchResultsController::class, 'index']);
 Route::get('/quick-search', [SearchResultsController::class, 'quick_search']);
