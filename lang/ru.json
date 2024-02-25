@@ -2,5 +2,6 @@
     "The :attribute must contain at least one letter.": "Значение поля :attribute должно содержать минимум одну букву.",
     "The :attribute must contain at least one number.": "Значение поля :attribute должно содержать минимум одну цифру.",
     "The :attribute must contain at least one symbol.": "Значение поля :attribute должно содержать минимум один спец символ.",
-    "The :attribute must contain at least one uppercase and one lowercase letter.": "Значение поля :attribute должно содержать как минимум по одному символу в нижнем и верхнем регистрах."
+    "The :attribute must contain at least one uppercase and one lowercase letter.": "Значение поля :attribute должно содержать как минимум по одному символу в нижнем и верхнем регистрах.",
+    "Forgot your password? No problem. Just let us know your email address and we will email you a password reset link that will allow you to choose a new one.": "Забыли пароль? Не проблема. Просто введите свой email и мы вышлем вам ссылку для сброса пароля, которая позволит вам выбрать новый."
 }

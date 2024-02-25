@@ -1,36 +1,55 @@
-<x-guest-layout>
-    <x-auth-card>
-        <x-slot name="logo">
-            <a href="/">
-                <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
-            </a>
-        </x-slot>
+@extends('layouts.index')
 
-        <div class="mb-4 text-sm text-gray-600">
-            {{ __('Forgot your password? No problem. Just let us know your email address and we will email you a password reset link that will allow you to choose a new one.') }}
-        </div>
+@section('title', 'Восстановление пароля')
 
-        <!-- Session Status -->
-        <x-auth-session-status class="mb-4" :status="session('status')" />
+@section('content')
 
-        <!-- Validation Errors -->
-        <x-auth-validation-errors class="mb-4" :errors="$errors" />
+    <main class="page">
+        <section class="auth">
+            <div class="auth__media-block media-block">
+                <picture>
+                    <source srcset="image/auth-bg.webp" type="image/webp"><img src="image/auth-bg.png" alt="Изображение">
+                </picture>
+            </div>
+            <div class="auth__content">
+                <div class="auth__heading">
+                    <a href="/">
+                        <img src="image/logo-with-text.png" alt="Культурная биржа">
+                    </a>
+                </div>
+                <div data-tabs class="auth__form tabs">
+                    <nav data-tabs-titles class="auth-form__heading tabs__navigation">
+                        <a href="{{ route('login') }}" type="buttom" class="auth-form__heading-item title tabs__title">Вход</a>
+                        <a href="{{ route('register') }}" type="button" class="auth-form__heading-item title tabs__title">Регистрация</a>
+                    </nav>
+                    <div class="tabs__content">
+                        <div class="tabs__body">
+                            <x-auth-session-status class="mb-4" :status="session('status')" />
+                            <x-auth-validation-errors class="mb-4" :errors="$errors" />
 
-        <form method="POST" action="{{ route('password.email') }}">
-            @csrf
+                            <div class="mb-4 text-sm text-gray-600" style="margin-bottom:2em">
+                                {{ __('Forgot your password? No problem. Just let us know your email address and we will email you a password reset link that will allow you to choose a new one.') }}
+                            </div>
 
-            <!-- Email Address -->
-            <div>
-                <x-label for="email" :value="__('Email')" />
+                            <form method="POST" action="{{ route('password.email') }}" class="auth-form__form-body form__body">
+                                @csrf
 
-                <x-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus />
+                                <div class="auth-form__form-item form__item">
+                                    <label for="FormEmailAuth" class="auth-form__form-label form__label">Email </label>
+                                    <input id="FormEmailAuth" id="email" type="email" name="email" :value="old('email')" required autofocus class="auth-form__form-input form__input" placeholder="Email">
+                                </div>
+                                <button type="submit" class="auth-form__btn form__submit btn btn-filled">
+                                    {{ __('Email Password Reset Link') }}
+                                </button>
+                            </form>
+
+                        </div>
+
+                    </div>
+                </div>
             </div>
 
-            <div class="flex items-center justify-end mt-4">
-                <x-button>
-                    {{ __('Email Password Reset Link') }}
-                </x-button>
-            </div>
-        </form>
-    </x-auth-card>
-</x-guest-layout>
+        </section>
+    </main>
+
+@endsection
