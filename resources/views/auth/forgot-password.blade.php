@@ -27,8 +27,10 @@
                             <x-auth-session-status class="mb-4" :status="session('status')" />
                             <x-auth-validation-errors class="mb-4" :errors="$errors" />
 
+                            <h1 class="faq__question-title" style="margin-bottom:0.5rem">{{ __('Forgot your password?') }}</h1>
+
                             <div class="mb-4 text-sm text-gray-600" style="margin-bottom:2em">
-                                {{ __('Forgot your password? No problem. Just let us know your email address and we will email you a password reset link that will allow you to choose a new one.') }}
+                                {{ __('No problem. Just let us know your email address and we will email you a password reset link that will allow you to choose a new one.') }}
                             </div>
 
                             <form method="POST" action="{{ route('password.email') }}" class="auth-form__form-body form__body">
