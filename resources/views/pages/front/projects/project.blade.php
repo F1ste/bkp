@@ -91,9 +91,6 @@
                                     <p>{!! $serchs->tex !!}</p>
                                 </div>
                                 <div class="partners-searching__statistic">
-                                    <div class="partners-searching__update-date">
-                                        <b>Дата обновления:</b> {{ $serchs->inp }}
-                                    </div>
                                     <div class="partners-searching__replies">
                                         <b>Откликнулось:</b> {{ $counter }}
                                     </div>

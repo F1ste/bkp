@@ -26,6 +26,8 @@ Route::prefix('/projects')->name('projects.')->group(function () {
     Route::get('/archive', [ProjectController::class, 'archive'])->name('archive');
     Route::get('/published', [ProjectController::class, 'published'])->name('public');
     Route::get('/declined', [ProjectController::class, 'declined'])->name('declined');
+    Route::post('/upload', [ProjectController::class, 'upload'])->name('upload');
+    Route::post('/update/{project}', [ProjectController::class, 'update'])->name('update');
 
     Route::resource('/subjects', SubjectController::class)->except('show');
     Route::resource('/events', EventController::class)->except('show');
