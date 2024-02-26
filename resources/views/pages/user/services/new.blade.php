@@ -1,6 +1,6 @@
 @extends('layouts.authorisation')
 
-@section('title', 'Создать услугу')
+@section('title', 'Создать проект')
 
 @section('content')
     <div class="page__container">
