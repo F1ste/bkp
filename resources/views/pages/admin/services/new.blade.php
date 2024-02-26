@@ -1,6 +1,6 @@
 @extends('layouts.authorisation')
 
-@section('title', 'Создать услугу')
+@section('title', 'Создать проект')
 
 @section('content')
     <div class="page__container">
@@ -59,7 +59,7 @@
                                     <label class="create-project__form-label form__label">Тип события</label>
                                     <select id="tip" data-scroll name="form[]" class="form__select">
                                         <option value="" selected>Выбрать</option>
-                                        @foreach ($subject as $el)
+                                        @foreach ($event as $el)
                                             <option value="{{ $el->name }}">{{ $el->name }}</option>
                                         @endforeach
                                     </select>
@@ -68,7 +68,7 @@
                                     <label class="create-project__form-label form__label">Тематика проекта</label>
                                     <select id="tema" data-scroll name="form[]" class="form__select">
                                         <option value="" selected>Выбрать</option>
-                                        @foreach ($event as $el)
+                                        @foreach ($subject as $el)
                                             <option value="{{ $el->name }}">{{ $el->name }}</option>
                                         @endforeach
                                     </select>
