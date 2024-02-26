@@ -150,6 +150,7 @@
     @endif
 
     </main>
+    <x-feedback-popup/>
     <style>
         .swiper-slide-active {
             transform: none !important;
