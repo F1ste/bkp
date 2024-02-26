@@ -374,7 +374,8 @@
                         </div>
 
                         <div class="create-project__buttons_admin">
-                            <button style="margin-top: 20px;" id='store-button' class="create-project__btn btn btn-filled">Cохранить изменения</button>
+                            <!-- <button style="margin-top: 20px;" id='save-changes-button' class="create-project__btn btn btn-filled">Cохранить изменения</button> -->
+                            <button style="margin-top: 20px;" id='store-button' class="create-project__btn btn btn-filled">Опубликовать</button>
                             <button id='store-button2' class="create-project__btn btn btn-filled">Перенести в архив</button>
                             <button id='store-button3' class="create-project__btn btn btn-filled">Отклонить</button>
                             <button id='store-button4' class="create-project__btn btn btn-filled">Продлить проект</button>
