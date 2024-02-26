@@ -13,9 +13,8 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('files_projects', function (Blueprint $table) {
-            $table->foreignId('project_id')->constrained();
-            $table->foreignUlid('file_id')->constrained('files', 'uuid');
+        Schema::table('files', function (Blueprint $table) {
+            $table->primary('uuid');
         });
     }
 
@@ -26,6 +25,8 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('files_projects');
+        Schema::table('files', function (Blueprint $table) {
+            $table->dropPrimary('uuid');
+        });
     }
 };

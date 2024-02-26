@@ -82,6 +82,7 @@ class PageController extends Controller
         $filter = app()->make(PageProjectsFilter::class, ['queryParams' => array_filter($data)]);
 
         $collection = Project::query()
+            ->with('image')
             ->where('status', Project::STATUS_PUBLISHED)
             ->orderByDesc('id')
             ->filter($filter)
@@ -139,7 +140,7 @@ class PageController extends Controller
 
     public function project(Project $project)
     {
-        $project->load('feedbacks');
+        $project->load(['feedbacks', 'image', 'files']);
         $count = $project->feedbacks->count();
         $user = User::find($project->user_id);
         $images = json_decode($project->images)->images;

@@ -135,7 +135,7 @@
                             </div>
                             <div class="popular-projects__project-image media-block">
                                 <a href="{{ route('projects.project', $el->id) }}">
-                                    <picture><source srcset="{{ $el->img1}}" type="image/webp"><img src="{{ $el->img1}}" alt="Изображение проекта"></picture>
+                                    <picture><source srcset="{{ $el->image->path ?? '' }}" type="image/webp"><img src="{{ $el->image->path ?? '' }}" alt="Изображение проекта"></picture>
                                 </a>
                             </div>
                             <div class="popular-projects__info">

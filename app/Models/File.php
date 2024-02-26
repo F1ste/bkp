@@ -26,7 +26,7 @@ class File extends Model
      *
      * @var array<string>
      */
-    protected $fillable = ['name', 'mimetype'];
+    protected $fillable = ['name', 'mimetype', 'extension', 'hash'];
 
     public static function boot()
     {
@@ -39,15 +39,20 @@ class File extends Model
 
     public static function upload(UploadedFile $file): self
     {
-        $file = self::create([
-            'name' => $file->getClientOriginalName(),
-            'mimetype' => $file->getClientMimeType(),
-            'extension' => $file->guessClientExtension(),
-        ]);
+        $file_hash = hash('md5', $file->getContent(), true);
+        $model = self::where('hash', $file_hash);
+        if (is_null($model)) {
+            $model = self::create([
+                'name' => $file->getClientOriginalName(),
+                'mimetype' => $file->getClientMimeType(),
+                'extension' => $file->guessClientExtension(),
+                'hash' => hash_file('md5', $file->path()),
+            ]);
 
-        $file->store($file->uuid . '.' . $file->extension);
+            $file->store($model->uuid . '.' . $model->extension);
+        }
 
-        return $file;
+        return $model;
     }
 
     public function storageFilename(): Attribute
@@ -60,7 +65,7 @@ class File extends Model
     public function path(): Attribute
     {
         return Attribute::make(
-            get: fn ($value, $attributes) => Storage::url($attributes['uuid'] . '.' . $attributes['extension']),
+            get: fn ($value, $attributes) => Storage::url($this->storageFilename),
         );
     }
 

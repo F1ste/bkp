@@ -15,7 +15,7 @@
                 <div class="project-main__content">
                     <div class="project-main__project-image media-block">
                         <picture>
-                            <source srcset="{{ $collection->img1 }}" type="image/webp"><img src="{{ $collection->img1 }}" alt="Изображение проекта">
+                            <source srcset="{{ $collection->image->path ?? '' }}" type="image/webp"><img src="{{ $collection->image->path ?? '' }}" alt="Изображение проекта">
                         </picture>
                     </div>
                     <div class="project-main__project-info">
@@ -115,14 +115,7 @@
             </div>
         </section>
 
-    @if (
-        $collection->video ||
-        $collection->img2 ||
-        $collection->img3 ||
-        $collection->img4 ||
-        $collection->img5 ||
-        $collection->img6
-    )
+    @if ($collection->video || $collection->files->count())
         <div class="project-gallery">
             <div class="project-gallery__container">
                 <div class="project-gallery__slider swiper">
@@ -135,50 +128,14 @@
                             </div>
                         @endif
 
-                        @if ($collection->img2)
+                        @foreach ($collection->files as $file)
                             <div class="swiper-slide media-block">
                                 <picture>
-                                    <source srcset="{{ $collection->img2 }}" type="image/webp">
-                                    <img src="{{ $collection->img2 }}" alt="Изображение галереи">
+                                    <source srcset="{{ $file->path }}" type="image/webp">
+                                    <img src="{{ $file->path }}" alt="Изображение галереи">
                                 </picture>
                             </div>
-                        @endif
-
-                        @if ($collection->img3)
-                            <div class="swiper-slide media-block">
-                                <picture>
-                                    <source srcset="{{ $collection->img3 }}" type="image/webp">
-                                    <img src="{{ $collection->img3 }}" alt="Изображение галереи">
-                                </picture>
-                            </div>
-                        @endif
-
-                        @if ($collection->img4)
-                            <div class="swiper-slide media-block">
-                                <picture>
-                                    <source srcset="{{ $collection->img4 }}" type="image/webp">
-                                    <img src="{{ $collection->img4 }}" alt="Изображение галереи">
-                                </picture>
-                            </div>
-                        @endif
-
-                        @if ($collection->img5)
-                            <div class="swiper-slide media-block">
-                                <picture>
-                                    <source srcset="{{ $collection->img5 }}" type="image/webp">
-                                    <img src="{{ $collection->img5 }}" alt="Изображение галереи">
-                                </picture>
-                            </div>
-                        @endif
-
-                        @if ($collection->img6)
-                            <div class="swiper-slide media-block">
-                                <picture>
-                                    <source srcset="{{ $collection->img6 }}" type="image/webp">
-                                    <img src="{{ $collection->img6 }}" alt="Изображение галереи">
-                                </picture>
-                            </div>
-                        @endif
+                        @endforeach
 
                     </div>
                     <!-- If we need pagination -->

@@ -6,6 +6,7 @@ use App\Models\Traits\Filterable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Project extends Model
 {
@@ -86,8 +87,13 @@ class Project extends Model
         return $this->hasOne(User::class, 'id', 'user_id');
     }
 
+    public function image(): HasOne
+    {
+        return $this->hasOne(File::class, 'uuid', 'file_id');
+    }
+
     public function files(): BelongsToMany
     {
-        return $this->belongsToMany(File::class, 'files_projects');
+        return $this->belongsToMany(File::class, 'files_projects', 'project_id', 'file_id');
     }
 }
