@@ -45,6 +45,11 @@ class Project extends Model
         'img6',
     ];
 
+    protected $casts = [
+        'date_service_from' => 'date',
+        'date_service_to' => 'date',
+    ];
+
     public function scopeOnModeration($query)
     {
         return $query->where('status', self::STATUS_MODERATION);

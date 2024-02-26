@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\Profile\StoreProjectRequest;
 use App\Models\Project;
 use App\Models\Notifications;
 use App\Models\Region;
@@ -112,35 +113,15 @@ class CollectionController extends Controller
     /**
      * POST Store Collection
      */
-    public function store(Request $request)
+    public function store(StoreProjectRequest $request)
     {
-        $collection = Project::create([
-            'name' => $request->name,
-            'images' => $request->images,
-            'user_id' => auth()->user()->id,
-            'excerpt' => $request->excerpt,
-            'date_service_from' => Carbon::parse($request->date_service_from)->format('Y-m-d'),
-            'date_service_to' => Carbon::parse($request->date_service_to)->format('Y-m-d'),
-            'status' => $request->price,
-            'created_at' => date('Y-m-d'),
-            'region' => $request->region,
-            'tip' => $request->tip,
-            'teg' => $request->teg,
-            'tema' => $request->tema,
-            'tel' => $request->tel,
-            'email' => $request->email,
-            'name_proj' => $request->name_proj,
-            'video' => $request->video,
-            'serch' => $request->serch,
-            'img1' => $request->img1,
-            'img2' => $request->img2,
-            'img3' => $request->img3,
-            'img4' => $request->img4,
-            'img5' => $request->img5,
-            'img6' => $request->img6,
-        ]);
+        $data = $request->validated()->toArray();
+        $data['user_id'] = auth()->user()->id;
+        $data['status'] = Project::STATUS_MODERATION;
 
-        return response()->json(route('profile.services.single', ['id' => $collection->id]), 201);
+        $project = Project::create($data);
+
+        return redirect()->route('profile.services.single', $project->id);
     }
 
     /**
