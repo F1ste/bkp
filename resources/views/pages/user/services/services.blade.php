@@ -21,7 +21,7 @@
                                     <div class="my-projects__project-name">
                                         {{ $el->name_proj }}
                                     </div>
-                                    <div class="my-projects__notifications _icon-notification">
+<!--                                     <div class="my-projects__notifications _icon-notification">
                                     @php
                                         $counter = 0;
                                     @endphp
@@ -33,7 +33,7 @@
                                     @php
                                         echo $counter;
                                     @endphp
-                                    </div>
+                                    </div> -->
                                 </a>
                             </div>
                         @endforeach

@@ -73,7 +73,7 @@
                             <div class="chat__dialogue chat__empty main-text">
                                 Выберите контакт, чтобы начать переписку
                             </div>
-                        @elseif($chat->isEmpty())
+                        @elseif($chat->isEmpty() && $chat_second_user->isEmpty())
                             <div class="chat__dialogue chat__empty main-text">
                                 На Ваш проект еще нет откликов <br>
                                 Опубликуйте проект, чтобы получить первый отклик
