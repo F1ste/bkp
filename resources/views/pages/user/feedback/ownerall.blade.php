@@ -20,18 +20,18 @@
                         @if ($mysubarr == [])
                             <div>На Ваши проекты еще никто не откликнулся</div>
                         @else
+                        <thead>
+                            <tr class="my-feedbacks__table-heading">
+                                <th>№</th>
+                                <th>Проект</th>
+                                <th>Роль</th>
+                                <th>Срок поиска</th>
+                                <th>Статус</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
                             @foreach ($feedback as $item)
-                                <thead>
-                                    <tr class="my-feedbacks__table-heading">
-                                        <th>№</th>
-                                        <th>Проект</th>
-                                        <th>Роль</th>
-                                        <th>Срок поиска</th>
-                                        <th>Статус</th>
-                                        <th></th>
-                                    </tr>
-                                </thead>
-                                <tbody>
                                     <tr class="my-feedbacks__table-row">
                                         <td class="my-feedbacks__table-item">
                                             <div class="table-number">1</div>
