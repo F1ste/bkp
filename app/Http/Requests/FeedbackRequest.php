@@ -27,7 +27,7 @@ class FeedbackRequest extends FormRequest
             'cover_letter' => 'required|string',
             'status' => 'integer',
             'user_id' => 'exists:users,id',
-            'service_id' => 'exists:services,id',
+            'service_id' => 'exists:projects,id',
             'role_name' => 'string|required'
         ];
     }
