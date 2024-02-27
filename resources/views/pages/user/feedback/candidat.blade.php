@@ -31,7 +31,7 @@
                                 @elseif ($feedback->status == 2)
                                     Статус отклика: Отказано
                                 @else
-                                    Статус отклика: Просмотрено
+                                    Статус отклика: На рассмотрении
                                 @endif
                                 </div>
                                 <div class="feedback__info-item">
