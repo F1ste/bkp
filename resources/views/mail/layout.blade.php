@@ -148,10 +148,10 @@
                                                 <span class="apple-link" style="color: #9a9ea6; font-size: 16px; text-align: center;">Мы в соц.сетях:</span>
                                             </td>
                                             <td style="padding-left: 10px; padding-right: 10px;">
-                                                <a href="https://vk.com" style="text-decoration: underline; color: #9a9ea6; font-size: 16px; text-align: center;">ВКонтакте</a>
+                                                <a href="https://vk.com/culturexchange_ru" style="text-decoration: underline; color: #9a9ea6; font-size: 16px; text-align: center;">ВКонтакте</a>
                                             </td>
                                             <td style="padding-left: 10px; padding-right: 10px;">
-                                                <a href="https://t.me/" style="text-decoration: underline; color: #9a9ea6; font-size: 16px; text-align: center;">Telegram</a>
+                                                <a href="https://t.me/culturexchange_ru" style="text-decoration: underline; color: #9a9ea6; font-size: 16px; text-align: center;">Telegram</a>
                                             </td>
                                         </tr>
                                     </table>
