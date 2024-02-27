@@ -247,6 +247,7 @@
                         @php
                             $count = 3;
                             $partnerCount = 1;
+                            $descriptionId = 0;
                         @endphp
                         @foreach ($serch as $serchs)
                             <div class="find-partners__partner-block">
@@ -268,14 +269,14 @@
                                     <input id="FormProjectRoleUntil" autocomplete="off" data-datepicker data-datepicker_{{ $count }} type="text" name="projectName" class="create-project__form-input form__input" value='{{ $serchs->inp }}' placeholder="До 10.09.2023" data-placeholder="До 10.09.2023" readonly autocomplete="off">
                                 </div>
                                 <div class="create-project__role-description form__item">
-                                    <label for="FormProjectPartnerDescription" class="create-project__form-label form__label">Описание</label>
-                                    <textarea id="FormProjectPartnerDescription" type="text" name="roleDescription" class="create-project__form-input form__input project-description" placeholder="Не более 10000 символов" data-placeholder="Не более 10000 символов">{{ $serchs->tex }}</textarea>
+                                    <label for="FormProjectPartnerDescription{{$descriptionId}}" class="create-project__form-label form__label">Описание</label>
+                                    <textarea id="FormProjectPartnerDescription{{$descriptionId}}" type="text" name="roleDescription" class="create-project__form-input form__input project-description" placeholder="Не более 10000 символов" data-placeholder="Не более 10000 символов">{{ $serchs->tex }}</textarea>
                                 </div>
                                 <div class="create-project__remove-partner">
                                     <button type="button" class="remove-partner btn btn-filled">Удалить роль</button>
                                 </div>
                             </div>
-                            @php $count++; @endphp
+                            @php $count++; $descriptionId++; @endphp
                         @endforeach
                         </div>
                         <div class="create-project__form-img add-partner">

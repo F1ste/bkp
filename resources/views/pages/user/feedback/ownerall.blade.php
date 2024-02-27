@@ -31,13 +31,17 @@
                             </tr>
                         </thead>
                         <tbody>
+                            @php
+                                $feedbackCount = 1;
+                            @endphp
                             @foreach ($feedback as $item)
+                            
                                     <tr class="my-feedbacks__table-row">
                                         <td class="my-feedbacks__table-item">
-                                            <div class="table-number">1</div>
+                                            <div class="table-number">{{ $feedbackCount }}</div>
                                         </td>
                                         <td class="my-feedbacks__table-item">{{ $item->name_proj }}</td>
-                                        <td class="my-feedbacks__table-item">{{ $item->name }}</td>
+                                        <td class="my-feedbacks__table-item">{{ $mysubarr['sel'] }}</td>
                                         <td class="my-feedbacks__table-item">{{ $mysubarr['inp'] }}</td>
                                         <td class="my-feedbacks__table-item">
                                             @if ($item->status == 1)
@@ -50,6 +54,9 @@
                                         </td>
                                         <td class="my-feedbacks__table-item"><a href="{{ route('profile.feedback.owner', ['id' => $item->id]) }}" class="my-feedbacks__btn btn btn-white _fw">Подробнее</a></td>
                                     </tr>
+                                    @php
+                                     $feedbackCount++
+                                    @endphp
                             @endforeach
                         @endif
                             </tbody>

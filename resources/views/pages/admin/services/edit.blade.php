@@ -242,8 +242,8 @@
                                     <input id="FormProjectRoleUntil" autocomplete="off" data-datepicker data-datepicker_{{ $key + 3 }} type="text" name="projectName" class="create-project__form-input form__input" value='{{ $serchs->inp }}' placeholder="До 10.09.2023" data-placeholder="До 10.09.2023">
                                 </div>
                                 <div class="create-project__role-description form__item">
-                                    <label for="FormProjectPartnerDescription" class="create-project__form-label form__label">Описание</label>
-                                    <textarea id="FormProjectPartnerDescription" type="text" name="roleDescription" class="create-project__form-input form__input project-description" placeholder="Не более 10000 символов" data-placeholder="Не более 10000 символов">{{ $serchs->tex ?? '' }}</textarea>
+                                    <label for="FormProjectPartnerDescription{{$key}}" class="create-project__form-label form__label">Описание</label>
+                                    <textarea id="FormProjectPartnerDescription{{$key}}" type="text" name="roleDescription" class="create-project__form-input form__input project-description" placeholder="Не более 10000 символов" data-placeholder="Не более 10000 символов">{{ $serchs->tex ?? '' }}</textarea>
                                 </div>
                             </div>
                         @endforeach
