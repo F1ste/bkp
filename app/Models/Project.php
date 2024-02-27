@@ -47,6 +47,7 @@ class Project extends Model
         'img4',
         'img5',
         'img6',
+        'reason',
     ];
 
     protected $casts = [
