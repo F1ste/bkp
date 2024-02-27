@@ -41,12 +41,10 @@ import {} from "../libs/ckeditor/ckeditor";
         .addEventListener("click", (e) => {
             let price = 1;
             let name = document.getElementById("name_proj").value;
-            document.getElementById(
-                select.storeButton
-            ).innerHTML = `Подождите...`;
+            document.getElementById(select.storeButton).innerHTML = `Подождите...`;
 
             axios
-                .post(updateRoute, {
+                .patch(updateRoute, {
                     id: id,
                     price: price,
                     name: name,
@@ -67,19 +65,12 @@ import {} from "../libs/ckeditor/ckeditor";
     document
         .getElementById(select.storeButton2)
         .addEventListener("click", (e) => {
-            let price = 2;
-            let name = document.getElementById("name_proj").value;
             document.getElementById(
                 select.storeButton2
             ).innerHTML = `Подождите...`;
 
             axios
-                .post(updateRoute, {
-                    id: id,
-                    price: price,
-                    name: name,
-                    idu: id_uzer,
-                })
+                .patch(updateRoute, { status: 2 })
                 .then((e) => {
                     location.reload();
                 })
