@@ -20,32 +20,21 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [PageController::class, 'home'])->name('home');
-Route::get('/rol', [CollectionController::class, 'roles'])->name('roles');
 
-Route::prefix('/projects')->group(function () {
-    Route::get('/', [PageController::class, 'projects'])->name('projects');
-    Route::get('/project/{project}', [PageController::class, 'project'])->name('projects.project');
-});
+Route::get('/projects', [PageController::class, 'projects'])->name('projects');
+Route::get('/projects/project/{project}', [PageController::class, 'project'])->name('projects.project');
 
-Route::prefix('/news')->group(function () {
-    Route::get('/', [PageController::class, 'news'])->name('news');
-    Route::get('/news/{news}', [PageController::class, 'tidings'])->name('news.tidings');
-});
+Route::get('/news', [PageController::class, 'news'])->name('news');
+Route::get('/news/news/{news}', [PageController::class, 'tidings'])->name('news.tidings');
 
-Route::prefix('/designer')->group(function () {
-    Route::get('/{id}', [PageController::class, 'designer'])->name('designer');
-});
-
-Route::get('/partners', function () {
-    return view('pages.partners', ['name' => 'partners']);
-});
-
-Route::get('/about/', [AboutController::class,'index'])->name('about');
-Route::get('/contacts/', [ContactController::class,'index'])->name('contact');
-Route::get('/faq/', [FAQController::class,'index'])->name('faq');
+Route::get('/about', [AboutController::class,'index'])->name('about');
+Route::get('/contacts', [ContactController::class,'index'])->name('contact');
+Route::get('/faq', [FAQController::class,'index'])->name('faq');
+Route::get('/search', [SearchResultsController::class, 'index']);
+Route::view('/partners', 'pages.partners')->name('partners');
 Route::view('/policy', 'pages.privacy-policy')->name('privacy-policy');
 Route::view('/privacy', 'pages.user-agreement')->name('user-agreement');
 Route::view('/mail_send', 'pages.mailing-agreement')->name('mailing-agreement');
 
-Route::get('/search', [SearchResultsController::class, 'index']);
+Route::get('/rol', [CollectionController::class, 'roles'])->name('roles');
 Route::get('/quick-search', [SearchResultsController::class, 'quick_search']);
