@@ -31,50 +31,6 @@ class PageController extends Controller
         return view('pages.front.home.home', compact('collections', 'news', 'users'));
     }
 
-    /**
-     * View Page Events
-     */
-    public function events()
-    {
-        return view('pages.front.events.events');
-    }
-
-    /**
-     * View Page Service
-     */
-    public function service()
-    {
-        return view('pages.front.document.service');
-    }
-
-    /**
-     * View Page Service
-     */
-    public function personal()
-    {
-        return view('pages.front.document.personal');
-    }
-
-    /**
-     * View Page Designer
-     */
-    public function designer($id)
-    {
-        $designer = User::where('id', $id)->get();
-        $collection = Project::where('user_id', $id)->get();
-
-        if (count($designer) > 0) {
-            $designer = $designer[0];
-
-            return view('pages.front.designer.designer', [
-                'designer' => $designer,
-                'collection' => $collection
-            ]);
-        } else {
-            return redirect(route('home'));
-        }
-    }
-
     public function projects(FilterRequest $request)
     {
         $data = $request->validated();

@@ -5,7 +5,6 @@ use App\Http\Controllers\CollectionController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\FAQController;
 use App\Http\Controllers\PageController;
-use App\Http\Controllers\PolicyController;
 use App\Http\Controllers\SearchResultsController;
 use Illuminate\Support\Facades\Route;
 
@@ -22,12 +21,6 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [PageController::class, 'home'])->name('home');
 Route::get('/rol', [CollectionController::class, 'roles'])->name('roles');
-Route::get('/events', [PageController::class, 'events'])->name('events');
-
-Route::prefix('/document')->group(function () {
-    Route::get('/service', [PageController::class, 'service'])->name('page.document.service');
-    Route::get('/personal', [PageController::class, 'personal'])->name('page.document.personal');
-});
 
 Route::prefix('/projects')->group(function () {
     Route::get('/', [PageController::class, 'projects'])->name('projects');
