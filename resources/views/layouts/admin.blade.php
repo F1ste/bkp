@@ -61,7 +61,13 @@
 
                     <a href="{{ route('admin.user') }}" class="sidebar__item _icon-rate">Рейтинг пользователей</a>
                 </div>
-                <a href="{{ route('logout') }}" class="sidebar__item _icon-logout">Выход</a>
+
+                <div class="sidebar__items mt-auto">
+                    @can('viewTelescope')
+                    <a href="{{ route('telescope') }}" target="_blank" class="sidebar__item _icon-info">Laravel Telescope</a>
+                    @endcan
+                    <a href="{{ route('logout') }}" class="sidebar__item _icon-logout">Выход</a>
+                </div>
             </div>
             @yield('content')
         </main>
