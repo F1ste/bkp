@@ -113,25 +113,28 @@ class ProjectController extends Controller
 
     public function update(Request $request, Project $project)
     {
-        if (in_array($request->price, [1, 2, 3])) {
+        if (in_array($request->status, [1, 2, 3])) {
             $action = [
                 1 => 'опубликован!',
                 2 => 'перенесен в архив.',
                 3 => 'отклонен.',
-            ][$request->price];
+            ][$request->status];
 
             Notifications::create([
-                'id_uzer' => $request->idu,
-                'id_project' => $request->id,
+                'id_uzer' => $project->user->id,
+                'id_project' => $project->id,
                 'name' => "Проект {$request->name} {$action}",
             ]);
         }
 
         $collection = $project->update([
-            'status' => $request->status
+            'status' => $request->status,
+            'reason' => $request->reason,
         ]);
 
-        return response()->json($collection, 201);
+        return $request->status == 3
+            ? redirect()->route('admin.projects.edit', $project)->with('message', "Проект {$action}")
+            : response()->json($collection, 201);
     }
 
     public function upload(Request $request)

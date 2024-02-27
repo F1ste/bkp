@@ -377,7 +377,7 @@
                             <!-- <button style="margin-top: 20px;" id='save-changes-button' class="create-project__btn btn btn-filled">Cохранить изменения</button> -->
                             <button style="margin-top: 20px;" id='store-button' class="create-project__btn btn btn-filled">Опубликовать</button>
                             <button id='store-button2' class="create-project__btn btn btn-filled">Перенести в архив</button>
-                            <button id='store-button3' class="create-project__btn btn btn-filled">Отклонить</button>
+                            <button type="button" data-popup="#declinePopup" class="create-project__btn btn btn-filled">Отклонить</button>
                             <button id='store-button4' class="create-project__btn btn btn-filled">Продлить проект</button>
                         </div>
                     </div>
@@ -385,4 +385,34 @@
                 </div>
             </div>
         </section>
+
+        <div id="declinePopup" aria-hidden="true" class="popup">
+            <div class="popup__wrapper">
+                <div class="popup__content" data-update="">
+                    <button data-close type="button" class="popup__close"></button>
+                    <form action="{{ route('admin.projects.update', $collection) }}" method="POST">
+                        @csrf
+                        @method('PATCH')
+                        <input type="hidden" name="status" value="{{ $collection::STATUS_DECLINED }}">
+                        <div class="popup__text">
+                            <div class="profile__cover-letter">
+                                <div class="profile__form-item form__item">
+                                    <label for="ProfileCV" class="profile__form-label form__label">Комментарий к отклонению</label>
+                                    <textarea id="cover_letter" type="text" class="profile__form-input form__input project-description" name="reason" placeholder="Комментарий к отклонению" data-placeholder="Комментарий к отклонению"></textarea>
+                                </div>
+                            </div>
+                            <button type="submit" class="popup__submit btn btn-filled">Отправить</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <script>
+            let popup = document.getElementById('declinePopup');
+            popup.querySelector('[data-close]').addEventListener('click', function (e) {
+                popup.classList.remove('popup_show');
+                popup.dataset.ariaHidden = 'true';
+            });
+        </script>
     @endsection
