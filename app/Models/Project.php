@@ -74,6 +74,26 @@ class Project extends Model
         });
     }
 
+    public function isOnModeration(): bool
+    {
+        return $this->status == self::STATUS_MODERATION;
+    }
+
+    public function isPublished(): bool
+    {
+        return $this->status == self::STATUS_PUBLISHED;
+    }
+
+    public function isDeclined(): bool
+    {
+        return $this->status == self::STATUS_DECLINED;
+    }
+
+    public function isArchived(): bool
+    {
+        return $this->status == self::STATUS_ARCHIVED;
+    }
+
     public function scopeOnModeration($query)
     {
         return $query->where('status', self::STATUS_MODERATION);
