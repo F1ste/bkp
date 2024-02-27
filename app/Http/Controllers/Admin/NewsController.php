@@ -25,7 +25,10 @@ class NewsController extends Controller
             'queryParams' => array_filter($request->validated())
         ]);
 
-        $collection = News::filter($filter)->paginate(15);
+        $collection = News::query()
+            ->orderByDesc('id')
+            ->filter($filter)
+            ->paginate(15);
 
         $projects = News::query()->distinct()->orderBy('project')->pluck('project')->unique();
 

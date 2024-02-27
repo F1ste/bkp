@@ -2,6 +2,10 @@
 
 namespace App\Models;
 
+use App\Events\Projects\ProjectArchived;
+use App\Events\Projects\ProjectDeclined;
+use App\Events\Projects\ProjectPublished;
+use App\Events\Projects\ProjectStatusChange;
 use App\Models\Traits\Filterable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -43,7 +47,53 @@ class Project extends Model
         'img4',
         'img5',
         'img6',
+        'reason',
     ];
+
+    protected $casts = [
+        'date_service_from' => 'date',
+        'date_service_to' => 'date',
+    ];
+
+    protected static function booted()
+    {
+        static::updated(function ($project) {
+            $is_status_changed = $project->status != $project->getOriginal('status');
+            $is_reason_changed = $project->status == self::STATUS_DECLINED && $project->reason != $project->getOriginal('reason');
+
+            if ($is_status_changed || $is_reason_changed) {
+                ProjectStatusChange::dispatch($project);
+
+                if ($project->status == self::STATUS_PUBLISHED) {
+                    ProjectPublished::dispatch($project);
+                } elseif ($project->status == self::STATUS_DECLINED) {
+                    ProjectDeclined::dispatch($project);
+                } elseif ($project->status == self::STATUS_ARCHIVED) {
+                    ProjectArchived::dispatch($project);
+                }
+            }
+        });
+    }
+
+    public function isOnModeration(): bool
+    {
+        return $this->status == self::STATUS_MODERATION;
+    }
+
+    public function isPublished(): bool
+    {
+        return $this->status == self::STATUS_PUBLISHED;
+    }
+
+    public function isDeclined(): bool
+    {
+        return $this->status == self::STATUS_DECLINED;
+    }
+
+    public function isArchived(): bool
+    {
+        return $this->status == self::STATUS_ARCHIVED;
+    }
 
     public function scopeOnModeration($query)
     {
