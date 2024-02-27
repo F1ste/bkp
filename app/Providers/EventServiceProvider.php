@@ -6,6 +6,7 @@ use App\Events\Projects\ProjectArchived;
 use App\Events\Projects\ProjectDeclined;
 use App\Events\Projects\ProjectPublished;
 use App\Events\Projects\ProjectStatusChange;
+use App\Listeners\Projects\SendDeclinedMailNotification;
 use App\Listeners\SendWelcomeEmail;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
@@ -35,7 +36,7 @@ class EventServiceProvider extends ServiceProvider
             //
         ],
         ProjectDeclined::class => [
-            //
+            SendDeclinedMailNotification::class,
         ],
         ProjectArchived::class => [
             //
