@@ -65,7 +65,7 @@
                                     <select id="tip" data-scroll name="form[]" class="form__select">
                                         <option value="" @if ($collection->tip == '') selected @endif>Выбрать</option>
                                     @foreach ($event as $el)
-                                        <option value="{{ $el->name }}" @if ($collection->tema == $el->name) selected @endif>{{ $el->name }}</option>
+                                        <option value="{{ $el->name }}" @if ($collection->tip == $el->name) selected @endif>{{ $el->name }}</option>
                                     @endforeach
                                     </select>
                                 </div>
@@ -74,7 +74,7 @@
                                     <select id="tema" data-scroll name="form[]" class="form__select">
                                         <option value="" @if ($collection->tema == '') selected @endif>Выбрать</option>
                                     @foreach ($subject as $el)
-                                        <option value="{{ $el->name }}" @if ($collection->tip == $el->name) selected @endif>{{ $el->name }}</option>
+                                        <option value="{{ $el->name }}" @if ($collection->tema == $el->name) selected @endif>{{ $el->name }}</option>
                                     @endforeach
                                     </select>
                                 </div>
