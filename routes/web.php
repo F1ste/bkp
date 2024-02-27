@@ -29,10 +29,6 @@ Route::prefix('/document')->group(function () {
     Route::get('/personal', [PageController::class, 'personal'])->name('page.document.personal');
 });
 
-Route::prefix('/services')->group(function () {
-    Route::get('/{id}', [PageController::class, 'services'])->name('services');
-});
-
 Route::prefix('/projects')->group(function () {
     Route::get('/', [PageController::class, 'projects'])->name('projects');
     Route::get('/project/{project}', [PageController::class, 'project'])->name('projects.project');
@@ -57,8 +53,6 @@ Route::get('/faq/', [FAQController::class,'index'])->name('faq');
 Route::view('/policy', 'pages.privacy-policy')->name('privacy-policy');
 Route::view('/privacy', 'pages.user-agreement')->name('user-agreement');
 Route::view('/mail_send', 'pages.mailing-agreement')->name('mailing-agreement');
-
-Route::get('storage/{filename}', [PageController::class, 'image']);
 
 Route::get('/search', [SearchResultsController::class, 'index']);
 Route::get('/quick-search', [SearchResultsController::class, 'quick_search']);

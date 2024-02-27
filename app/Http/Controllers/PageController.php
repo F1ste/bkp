@@ -40,24 +40,6 @@ class PageController extends Controller
     }
 
     /**
-     * View Image
-     */
-    public function image($filename)
-    {
-        $filename = str_replace('JPG', 'jpg', $filename);
-
-        $path = storage_path('app/img/' . $filename);
-
-        $file = File::get($path);
-        $type = File::mimeType($path);
-
-        $response = Response::make($file, 200);
-        $response->header("Content-Type", $type);
-
-        return $response;
-    }
-
-    /**
      * View Page Service
      */
     public function service()

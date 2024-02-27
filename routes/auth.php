@@ -28,11 +28,6 @@ Route::middleware('guest')->group(function () {
     Route::get('reset-password/{token}', [NewPasswordController::class, 'create'])->name('password.reset');
 
     Route::post('reset-password', [NewPasswordController::class, 'store'])->name('password.update');
-
-    Route::get('/google', [AuthSocialController::class, 'google'])->name('auth.google');
-    Route::get('/google/callback', [AuthSocialController::class, 'google_callback']);
-    Route::get('/facebook', [AuthSocialController::class, 'facebook'])->name('auth.facebook');
-    Route::get('/facebook/callback', [AuthSocialController::class, 'facebook_callback']);
 });
 
 Route::middleware('auth')->group(function () {
