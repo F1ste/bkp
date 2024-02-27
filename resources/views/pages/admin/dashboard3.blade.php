@@ -9,7 +9,7 @@
                 <div class="my-projects__content">
                     <div class="my-projects__heading block-heading">
                         <div class="my-projects__title personal__title">
-                            Отклененные проекты
+                            Отклоненные проекты
                         </div>
                     </div>
 
