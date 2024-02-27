@@ -11,6 +11,13 @@
                 <div data-one-select class="create-project__content">
                     <div class="create-project__title personal__title">Создание проекта</div>
 
+                    @if ($collection->isDeclined() && $collection->reason)
+                    <div style="border:1px solid #997404; background-color:#ffe69c; color:#664d03; padding:15px; border-radius:.375rem; margin:1rem 0">
+                        <div style="margin-bottom:1em"><b>Проект отклонен</b></div>
+                        {!! $collection->reason !!}
+                    </div>
+                    @endif
+
                     <div class="create-project__general-info">
                         <div class="create-project__form-img">
                             <label class="create-project__form-label form__label">Основное фото проекта</label>
