@@ -55,9 +55,9 @@
                             <a href="{{ $project->user->vk }}" class="socials__social-item icon-vk">
                                 <i class="socials__icon _icon-vk"></i>
                             </a>
-<!--                             <a href="{{ $user->youtube }}" class="socials__social-item icon-youtube">
+                            {{-- <a href="{{ $project->user->youtube }}" class="socials__social-item icon-youtube">
                                 <i class="socials__icon _icon-youtube"></i>
-                            </a> -->
+                            </a> --}}
                         </div>
                     </div>
                 </div>
