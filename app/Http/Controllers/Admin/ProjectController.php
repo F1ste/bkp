@@ -127,7 +127,7 @@ class ProjectController extends Controller
         }
 
         $collection = $project->update([
-            'status' => $request->price
+            'status' => $request->status
         ]);
 
         return response()->json($collection, 201);

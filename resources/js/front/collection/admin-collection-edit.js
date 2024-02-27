@@ -95,19 +95,14 @@ import {} from "../libs/ckeditor/ckeditor";
     document
         .getElementById(select.storeButton3)
         .addEventListener("click", (e) => {
-            let price = 3;
-            let name = document.getElementById("name_proj").value;
-            document.getElementById(
-                select.storeButton3
-            ).innerHTML = `Подождите...`;
+            if (! confirm('Вы хотите отклонить проект?')) {
+                return;
+            }
+
+            document.getElementById(select.storeButton3).innerHTML = `Подождите...`;
 
             axios
-                .post(updateRoute, {
-                    id: id,
-                    price: price,
-                    name: name,
-                    idu: id_uzer,
-                })
+                .patch(updateRoute, { status: 3 })
                 .then((e) => {
                     location.reload();
                 })
