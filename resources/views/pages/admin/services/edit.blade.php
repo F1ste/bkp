@@ -65,7 +65,7 @@
                                     <select id="tip" data-scroll name="form[]" class="form__select">
                                         <option value="" @if ($collection->tip == '') selected @endif>Выбрать</option>
                                     @foreach ($event as $el)
-                                        <option value="{{ $el->name }}" @if ($collection->tema == $el->name) selected @endif>{{ $el->name }}</option>
+                                        <option value="{{ $el->name }}" @if ($collection->tip == $el->name) selected @endif>{{ $el->name }}</option>
                                     @endforeach
                                     </select>
                                 </div>
@@ -74,7 +74,7 @@
                                     <select id="tema" data-scroll name="form[]" class="form__select">
                                         <option value="" @if ($collection->tema == '') selected @endif>Выбрать</option>
                                     @foreach ($subject as $el)
-                                        <option value="{{ $el->name }}" @if ($collection->tip == $el->name) selected @endif>{{ $el->name }}</option>
+                                        <option value="{{ $el->name }}" @if ($collection->tema == $el->name) selected @endif>{{ $el->name }}</option>
                                     @endforeach
                                     </select>
                                 </div>
@@ -225,6 +225,7 @@
                         <div class="create-project__title personal__title">Кого ищем</div>
                         <div class="find-partners__content">
 
+                        
                         @foreach ($serch as $key => $serchs)
                             <div class="find-partners__partner-block">
                                 <div class="create-project__form-select">
@@ -242,8 +243,8 @@
                                     <input id="FormProjectRoleUntil" autocomplete="off" data-datepicker data-datepicker_{{ $key + 3 }} type="text" name="projectName" class="create-project__form-input form__input" value='{{ $serchs->inp }}' placeholder="До 10.09.2023" data-placeholder="До 10.09.2023">
                                 </div>
                                 <div class="create-project__role-description form__item">
-                                    <label for="FormProjectPartnerDescription" class="create-project__form-label form__label">Описание</label>
-                                    <textarea id="FormProjectPartnerDescription" type="text" name="roleDescription" class="create-project__form-input form__input project-description" placeholder="Не более 10000 символов" data-placeholder="Не более 10000 символов">{{ $serchs->tex ?? '' }}</textarea>
+                                    <label for="FormProjectPartnerDescription{{$key}}" class="create-project__form-label form__label">Описание</label>
+                                    <textarea id="FormProjectPartnerDescription{{$key}}" type="text" name="roleDescription" class="create-project__form-input form__input project-description" placeholder="Не более 10000 символов" data-placeholder="Не более 10000 символов">{{ $serchs->tex ?? '' }}</textarea>
                                 </div>
                             </div>
                         @endforeach
