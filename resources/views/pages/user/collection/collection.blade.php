@@ -13,14 +13,6 @@
                 <div class="collection-group">
                     @foreach ($collection as $el)
                         <div class="collection-item" data-id="{{ $el->id }}">
-                            <div class="collection-item__image">
-                            @php
-                                $images = json_decode($el->images)->images;
-                            @endphp
-                            @if (count($images) > 0)
-                                <img src="{{ $images[0] }}" alt="">
-                            @endif
-                            </div>
                             <div class="collection-item__group">
                                 <div class="collection-item__tools">
                                     <a href="{{ route('profile.collection.single', ['id' => $el->id]) }}" class="collection-item__edit">

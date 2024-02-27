@@ -143,7 +143,6 @@ class PageController extends Controller
         $project->load(['feedbacks', 'image', 'files']);
         $count = $project->feedbacks->count();
         $user = User::find($project->user_id);
-        $images = json_decode($project->images)->images;
         $teg = json_decode($project->teg);
         $serch = collect(json_decode($project->serch))
             ->sort(function ($a, $b) {
@@ -153,7 +152,6 @@ class PageController extends Controller
 
         return view('pages.front.projects.project', [
             'collection' => $project,
-            'images' => $images,
             'id' => $project->id,
             'teg' => $teg,
             'serch' => $serch,

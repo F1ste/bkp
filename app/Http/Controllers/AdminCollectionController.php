@@ -51,7 +51,6 @@ class AdminCollectionController extends Controller
     {
         $collection = Project::create([
             'name' => $request->name,
-            'images' => $request->images,
             'user_id' => auth()->user()->id,
             'excerpt' => $request->excerpt,
             'date_service_from' => $request->date_service_from,

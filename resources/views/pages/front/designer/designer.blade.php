@@ -81,12 +81,6 @@
             @foreach ($collection as $el)
                 <a href="{{ route('collection', ['id' => $el->id]) }}" target="_blank">
                     <div class="collection-miniitems">
-                    @php
-                        $image = json_decode($el->images)->images;
-                    @endphp
-                    @if (count($image) > 0)
-                        <img src="{{ $image[0] }}" alt="Коллекция">
-                    @endif
                         <h4>{{ $el->name }}</h4>
                         <p>{{ $el->name }}</p>
                     </div>
@@ -95,19 +89,11 @@
             </div>
             <div class="forbig">
             @foreach ($collection as $el)
-            @php
-                $image = json_decode($el->images)->images;
-            @endphp
             <div class="collection-bigitem">
                 <h3>КОЛЛЕКЦИЯ: {{ $el->name }}</h3>
                 <h3>СТИЛЬ: {{ $el->style }}</h3>
                 <h5>О цветовой гамме:</h5>
                 <p>{{ $el->gamma }}</p>
-            </div>
-            <div class="collection-slider">
-            @if (count($image) > 0)
-                <img src="{{ $image[0] }}" alt="Фото дизайнера">
-            @endif
             </div>
         @break
         @endforeach

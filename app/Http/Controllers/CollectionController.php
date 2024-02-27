@@ -45,13 +45,11 @@ class CollectionController extends Controller
         $subject = Subject::get();
         $tegs = Tag::get();
         $event = Event::get();
-        $images = json_decode($collection->images)->images;
         $teg = json_decode($collection->teg);
         $serch = json_decode($collection->serch);
 
         return view('pages.user.services.edit', [
             'collection' => $collection,
-            'images' => $images,
             'id' => $id,
             'teg' => $teg,
             'serch' => $serch,
@@ -131,7 +129,6 @@ class CollectionController extends Controller
     {
         $collection = Project::where('id', $request->id)->update([
             'name' => $request->name,
-            'images' => $request->images,
             'user_id' => auth()->user()->id,
             'excerpt' => $request->excerpt,
             'date_service_from' => Carbon::parse($request->date_service_from)->format('Y-m-d'),

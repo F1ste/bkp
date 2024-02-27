@@ -63,7 +63,6 @@ class ProjectController extends Controller
     {
         $collection = Project::create([
             'name' => $request->name,
-            'images' => $request->images,
             'user_id' => auth()->user()->id,
             'excerpt' => $request->excerpt,
             'date_service_from' => Carbon::parse($request->date_service_from)->format('Y-m-d'),
@@ -96,7 +95,6 @@ class ProjectController extends Controller
 
         return view('pages.admin.services.edit', [
             'collection' => $project,
-            'images' => json_decode($project->images)->images,
             'id' => $project->id,
             'teg' => json_decode($project->teg),
             'serch' => json_decode($project->serch),
