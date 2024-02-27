@@ -4582,7 +4582,7 @@ blockquote p::after {
   overflow-y: auto;
 }
 
-.sidebar.fixed .sidebar__item._icon-logout {
+.mt-auto {
   margin-top: auto;
 }
 
