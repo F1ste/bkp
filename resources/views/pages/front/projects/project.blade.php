@@ -15,47 +15,47 @@
                 <div class="project-main__content">
                     <div class="project-main__project-image media-block">
                         <picture>
-                            <source srcset="{{ $collection->img1 }}" type="image/webp"><img src="{{ $collection->img1 }}" alt="Изображение проекта">
+                            <source srcset="{{ $project->img1 }}" type="image/webp"><img src="{{ $project->img1 }}" alt="Изображение проекта">
                         </picture>
                     </div>
                     <div class="project-main__project-info">
                         <div class="project-main__project-heading">
                             <div class="project-main__project-type">
-                                {{ $collection->tema }}
+                                {{ $project->tema }}
                             </div>
                             <div class="project-main__project-name">
-                                {{ $collection->name_proj }}
+                                {{ $project->name_proj }}
                             </div>
                         </div>
                         <div class="project-main__brief-info brief-info__col main-text">
                             <div class="project-main__project-duration">
-                                {{ Carbon\Carbon::parse($collection->date_service_from)->format('d.m.Y') }} —
-                                {{ Carbon\Carbon::parse($collection->date_service_to)->format('d.m.Y') }}
+                                {{ Carbon\Carbon::parse($project->date_service_from)->format('d.m.Y') }} —
+                                {{ Carbon\Carbon::parse($project->date_service_to)->format('d.m.Y') }}
                             </div>
                             <div class="project-main__brief-item project-info__item">
-                                <a href="{{ $user->sait }}">{{ $user->sait }}</a>
+                                <a href="{{ $project->user->sait }}">{{ $project->user->sait }}</a>
                             </div>
                             <div class="project-main__brief-item project-info__item">
-                                {{ $user->org }}
+                                {{ $project->user->org }}
                             </div>
                             <div class="project-main__project-geo _icon-geo">
-                                {{ $collection->region }}
+                                {{ $project->region }}
                             </div>
                         </div>
                         <div class="project-main__short-description">
                             <div class="project-main__text main-text">
-                                {!! $collection->excerpt !!}
+                                {!! $project->excerpt !!}
                             </div>
                             <button type="button" class="project-main__btn-description">Еще</button>
                         </div>
                         <div class="project-main__socials socials">
-                            <a href="{{ $user->telegram }}" class="socials__social-item icon-telegram">
+                            <a href="{{ $project->user->telegram }}" class="socials__social-item icon-telegram">
                                 <i class="socials__icon _icon-telegram"></i>
                             </a>
-                            <a href="{{ $user->vk }}" class="socials__social-item icon-vk">
+                            <a href="{{ $project->user->vk }}" class="socials__social-item icon-vk">
                                 <i class="socials__icon _icon-vk"></i>
                             </a>
-                            <a href="{{ $user->youtube }}" class="socials__social-item icon-youtube">
+                            <a href="{{ $project->user->youtube }}" class="socials__social-item icon-youtube">
                                 <i class="socials__icon _icon-youtube"></i>
                             </a>
                         </div>
@@ -95,9 +95,9 @@
                                         <b>Дата обновления:</b> {{ $serchs->inp }}
                                     </div>
                                     <div class="partners-searching__replies">
-                                        <b>Откликнулось:</b> {{ $counter }}
+                                        <b>Откликнулось:</b> {{ $project->feedbacks->count() }}
                                     </div>
-                                @if ($collection->status == \App\Models\Project::STATUS_PUBLISHED && \Illuminate\Support\Carbon::parse($serchs->inp)->gte(now()))
+                                @if ($project->status == $project::STATUS_PUBLISHED && \Illuminate\Support\Carbon::parse($serchs->inp)->gte(now()))
                                     <button type="button" data-popup="#feedbackPopup" data-role="{{ $serchs->sel }}" class="partners-searching__btn btn btn-filled _fw">
                                         Откликнуться
                                     </button>
@@ -116,69 +116,35 @@
         </section>
 
     @if (
-        $collection->video ||
-        $collection->img2 ||
-        $collection->img3 ||
-        $collection->img4 ||
-        $collection->img5 ||
-        $collection->img6
+        $project->video ||
+        $project->img2 ||
+        $project->img3 ||
+        $project->img4 ||
+        $project->img5 ||
+        $project->img6
     )
         <div class="project-gallery">
             <div class="project-gallery__container">
                 <div class="project-gallery__slider swiper">
                     <div class="swiper-wrapper">
-                        <!-- Slides -->
+                    <!-- Slides -->
 
-                        @if ($collection->video)
-                            <div class="swiper-slide media-block">
-                                {!! $collection->video !!}
-                            </div>
-                        @endif
+                    @if ($project->video)
+                        <div class="swiper-slide media-block">
+                            {!! $project->video !!}
+                        </div>
+                    @endif
 
-                        @if ($collection->img2)
-                            <div class="swiper-slide media-block">
-                                <picture>
-                                    <source srcset="{{ $collection->img2 }}" type="image/webp">
-                                    <img src="{{ $collection->img2 }}" alt="Изображение галереи">
-                                </picture>
-                            </div>
+                    @foreach (['img2', 'img3', 'img4', 'img5', 'img6'] as $img)
+                        @if ($project->$img)
+                        <div class="swiper-slide media-block">
+                            <picture>
+                                <source srcset="{{ $project->$img }}" type="image/webp">
+                                <img src="{{ $project->$img }}" alt="Изображение галереи">
+                            </picture>
+                        </div>
                         @endif
-
-                        @if ($collection->img3)
-                            <div class="swiper-slide media-block">
-                                <picture>
-                                    <source srcset="{{ $collection->img3 }}" type="image/webp">
-                                    <img src="{{ $collection->img3 }}" alt="Изображение галереи">
-                                </picture>
-                            </div>
-                        @endif
-
-                        @if ($collection->img4)
-                            <div class="swiper-slide media-block">
-                                <picture>
-                                    <source srcset="{{ $collection->img4 }}" type="image/webp">
-                                    <img src="{{ $collection->img4 }}" alt="Изображение галереи">
-                                </picture>
-                            </div>
-                        @endif
-
-                        @if ($collection->img5)
-                            <div class="swiper-slide media-block">
-                                <picture>
-                                    <source srcset="{{ $collection->img5 }}" type="image/webp">
-                                    <img src="{{ $collection->img5 }}" alt="Изображение галереи">
-                                </picture>
-                            </div>
-                        @endif
-
-                        @if ($collection->img6)
-                            <div class="swiper-slide media-block">
-                                <picture>
-                                    <source srcset="{{ $collection->img6 }}" type="image/webp">
-                                    <img src="{{ $collection->img6 }}" alt="Изображение галереи">
-                                </picture>
-                            </div>
-                        @endif
+                    @endforeach
 
                     </div>
                     <!-- If we need pagination -->

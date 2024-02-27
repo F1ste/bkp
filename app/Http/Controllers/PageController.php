@@ -107,8 +107,6 @@ class PageController extends Controller
     public function project(Project $project)
     {
         $project->load('feedbacks');
-        $count = $project->feedbacks->count();
-        $user = User::find($project->user_id);
         $images = json_decode($project->images)->images;
         $teg = json_decode($project->teg);
         $serch = collect(json_decode($project->serch))
@@ -118,13 +116,11 @@ class PageController extends Controller
             ->values();
 
         return view('pages.front.projects.project', [
-            'collection' => $project,
+            'project' => $project,
             'images' => $images,
             'id' => $project->id,
             'teg' => $teg,
             'serch' => $serch,
-            'user' => $user,
-            'counter' => $count,
         ]);
     }
 
