@@ -55,9 +55,9 @@ class FeedbackController extends Controller
 
     public function owner_index($id)
     {
-        $feedback = Feedback::query()
-            ->with('service')
-            ->where('service_id', $id)
+
+        $feedback = Feedback::with('service')
+            ->where('id', $id)
             ->whereHas('service', function ($q) {
                 $q->where('user_id', auth()->user()->id);
             })
@@ -80,16 +80,18 @@ class FeedbackController extends Controller
 
     public function owner_all()
     {
-        $feedback = Project::with('feedbacks')->where('user_id', auth()->user()->id)->get();
-        $mysubarr = [];
-        foreach ($feedback as $key => $item) {
-            if ($item->feedbacks->isEmpty()) {
-                $feedback->forget($key);
-            }
-        }
-        $feedback = collect($feedback);
+        $project = Project::with('feedbacks')
+            ->where('user_id', auth()->user()->id)
+            ->get();
 
-        foreach ($feedback as $item) {
+        $mysubarr = [];
+        $feedbacks = [];
+
+        foreach ($project as $item) {
+            array_push($feedbacks, Feedback::with('service')->where('service_id', $item->id)->get());
+        }
+
+        foreach ($project as $item) {
             $serch = json_decode($item->serch, true);
 
             foreach ($item->feedbacks as $el) {
@@ -103,7 +105,7 @@ class FeedbackController extends Controller
         }
 
         return view('pages.user.feedback.ownerall', [
-            'feedback' => $feedback,
+            'feedbacks' => $feedbacks,
             'mysubarr' => $mysubarr
         ]);
     }

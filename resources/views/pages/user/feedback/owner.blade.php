@@ -30,7 +30,7 @@
                                     @elseif ($feedback->status == 2)
                                         Статус отклика: Отказано
                                     @else
-                                        Статус отклика: Просмотрено
+                                        Статус отклика: На рассмотрении
                                     @endif
                                 </div>
                                 <div class="feedback__info-item">
@@ -56,7 +56,7 @@
                             Запрос размещенный в карточке проекта
                         </div>
                         <div class="feedback__text main-text">
-                            {{ $mysubarr['tex'] }}
+                            {!! $mysubarr['tex'] !!}
                             <br><br>
                             Зарегистрируйтесь сегодня!
                         </div>
