@@ -4,6 +4,7 @@ use App\Http\Controllers\AboutController;
 use App\Http\Controllers\CollectionController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\FAQController;
+use App\Http\Controllers\NewsController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\SearchResultsController;
@@ -25,8 +26,8 @@ Route::get('/', [PageController::class, 'home'])->name('home');
 Route::get('/projects', [ProjectController::class, 'index'])->name('projects');
 Route::get('/projects/project/{project}', [ProjectController::class, 'show'])->name('projects.project');
 
-Route::get('/news', [PageController::class, 'news'])->name('news');
-Route::get('/news/news/{news}', [PageController::class, 'tidings'])->name('news.tidings');
+Route::get('/news', [NewsController::class, 'news'])->name('news');
+Route::get('/news/news/{news}', [NewsController::class, 'tidings'])->name('news.tidings');
 
 Route::get('/about', [AboutController::class,'index'])->name('about');
 Route::get('/contacts', [ContactController::class,'index'])->name('contact');
