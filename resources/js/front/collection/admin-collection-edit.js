@@ -39,17 +39,10 @@ import {} from "../libs/ckeditor/ckeditor";
     document
         .getElementById(select.storeButton)
         .addEventListener("click", (e) => {
-            let price = 1;
-            let name = document.getElementById("name_proj").value;
             document.getElementById(select.storeButton).innerHTML = `Подождите...`;
 
             axios
-                .patch(updateRoute, {
-                    id: id,
-                    price: price,
-                    name: name,
-                    idu: id_uzer,
-                })
+                .patch(updateRoute, { status: 1 })
                 .then((e) => {
                     location.reload();
                 })
