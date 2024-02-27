@@ -9,7 +9,7 @@
                 <div class="my-feedbacks__content">
                     <div class="my-feedbacks__heading">
                         <div class="my-feedbacks__title personal__title">
-                            Мои отклики
+                            Отклики
                         </div>
                     </div>
                     <div class="my-projects__projects-items">

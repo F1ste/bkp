@@ -21,6 +21,7 @@ class ProjectController extends Controller
     public function moderation()
     {
         $collections = Project::onModeration()->orderByDesc('id')->get();
+        
         return view('pages.admin.dashboard', compact('collections'));
     }
 

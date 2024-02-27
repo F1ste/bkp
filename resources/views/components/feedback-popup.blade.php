@@ -1,7 +1,7 @@
 <div id="feedbackPopup" aria-hidden="true" class="popup">
 
     <div class="popup__wrapper">
-        <div class="popup__content" data-update="{{ route('profile.feedback.create') }}" data-id="{{ request()->route('id') }}">
+        <div class="popup__content" data-update="{{ route('profile.feedback.create') }}" data-id="{{ request()->route('project')->id }}">
 
             <button data-close type="button" class="popup__close"></button>
             <div class="popup__text">

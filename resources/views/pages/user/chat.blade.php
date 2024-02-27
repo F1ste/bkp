@@ -36,7 +36,9 @@
                                                 {{ $chat_id->first_user->name }}
                                             @endif
                                         </div>
-                                        <div class="chat__contact-date chat-date">{{ Carbon\Carbon::parse($chat_id->messages->last()->created_at)->timezone('Europe/Moscow')->format('H:i')}}</div>
+                                        @if ($chat_id->messages->isNotEmpty())
+                                            <div class="chat__contact-date chat-date">{{ Carbon\Carbon::parse($chat_id->messages->last()->created_at)->timezone('Europe/Moscow')->format('H:i')}}</div>
+                                        @endif
                                     </button>
                                 @endforeach
 
@@ -60,17 +62,19 @@
                                             {{ $chat_id->first_user->name }}
                                         @endif
                                     </div>
-                                    <div class="chat__contact-date chat-date">{{ Carbon\Carbon::parse($chat_id->messages->last()->created_at)->timezone('Europe/Moscow')->format('H:i')}}</div>
+                                    @if ($chat_id->messages->isNotEmpty())
+                                        <div class="chat__contact-date chat-date">{{ Carbon\Carbon::parse($chat_id->messages->last()->created_at)->timezone('Europe/Moscow')->format('H:i')}}</div>
+                                    @endif
                                 </button>
                             @endforeach
                             </form>
 						</div>
-                        @if($current_chat == null && $chat_second_user->isNotEmpty())
+                        @if($current_chat == null && $chat_second_user->isNotEmpty() || $current_chat == null && $chat->isNotEmpty())
                             <div class="chat__dialogue chat__empty main-text">
                                 Выберите контакт, чтобы начать переписку
                             </div>
-                        @elseif($current_chat == null)
-                        <div class="chat__dialogue chat__empty main-text">
+                        @elseif($chat->isEmpty() && $chat_second_user->isEmpty())
+                            <div class="chat__dialogue chat__empty main-text">
                                 На Ваш проект еще нет откликов <br>
                                 Опубликуйте проект, чтобы получить первый отклик
                             </div>

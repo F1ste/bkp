@@ -19,7 +19,6 @@
             @yield('content')
 
             <x-footer-index />
-            <x-feedback-popup/>
             <x-how-it-works-popup/>
         </div>
         <script src="{{ asset('front/js/app.js') }}"></script>
