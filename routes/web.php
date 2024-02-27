@@ -5,6 +5,7 @@ use App\Http\Controllers\CollectionController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\FAQController;
 use App\Http\Controllers\PageController;
+use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\SearchResultsController;
 use Illuminate\Support\Facades\Route;
 
@@ -21,8 +22,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [PageController::class, 'home'])->name('home');
 
-Route::get('/projects', [PageController::class, 'projects'])->name('projects');
-Route::get('/projects/project/{project}', [PageController::class, 'project'])->name('projects.project');
+Route::get('/projects', [ProjectController::class, 'index'])->name('projects');
+Route::get('/projects/project/{project}', [ProjectController::class, 'show'])->name('projects.project');
 
 Route::get('/news', [PageController::class, 'news'])->name('news');
 Route::get('/news/news/{news}', [PageController::class, 'tidings'])->name('news.tidings');
