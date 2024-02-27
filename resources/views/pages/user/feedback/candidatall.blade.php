@@ -21,21 +21,24 @@
                         @if ($mysubarr == [])
                             <div>Вы еще не откликались на проекты</div>
                         @else
+                            @php
+                                $feedbackCount = 1;
+                            @endphp
+                            <thead>
+                                <tr class="my-feedbacks__table-heading">
+                                    <th>№</th>
+                                    <th>Проект</th>
+                                    <th>Роль</th>
+                                    <th>Срок поиска</th>
+                                    <th>Статус</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
                             @foreach ($feedback as $item)
-                                <thead>
-                                    <tr class="my-feedbacks__table-heading">
-                                        <th>№</th>
-                                        <th>Проект</th>
-                                        <th>Роль</th>
-                                        <th>Срок поиска</th>
-                                        <th>Статус</th>
-                                        <th></th>
-                                    </tr>
-                                </thead>
-                                <tbody>
                                     <tr class="my-feedbacks__table-row">
                                         <td class="my-feedbacks__table-item">
-                                            <div class="table-number">1</div>
+                                            <div class="table-number">{{ $feedbackCount }}</div>
                                         </td>
                                         <td class="my-feedbacks__table-item">{{ $item->service->name_proj }}</td>
                                         <td class="my-feedbacks__table-item">{{ $item->role_name }}</td>
@@ -51,6 +54,9 @@
                                         </td>
                                         <td class="my-feedbacks__table-item"><a href="{{ route('profile.feedback.candidat', ['id' => $item->id]) }}" class="my-feedbacks__btn btn btn-white _fw">Подробнее</a></td>
                                     </tr>
+                                    @php
+                                     $feedbackCount++
+                                    @endphp
                             @endforeach
                         @endif
                             </tbody>
