@@ -24,11 +24,22 @@ class PageController extends Controller
      */
     public function home()
     {
-        $news = News::orderByDesc('id')->get();
-        $collections = Project::where('status', Project::STATUS_PUBLISHED)->orderByDesc('id')->get();
-        $userIds = $collections->pluck('user_id')->unique();
-        $users = User::whereIn('id', $userIds)->get();
-        return view('pages.front.home.home', compact('collections', 'news', 'users'));
+        $projects_total = Project::query()
+            ->published()
+            ->count();
+
+        $news = News::query()
+            ->orderByDesc('id')
+            ->limit(6)
+            ->get();
+
+        $projects = Project::query()
+            ->with('user')
+            ->published()
+            ->orderByDesc('date_service_from')
+            ->get();
+
+        return view('pages.front.home.home', compact('projects_total', 'projects', 'news'));
     }
 
     public function projects(FilterRequest $request)
