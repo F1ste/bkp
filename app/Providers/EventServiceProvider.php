@@ -2,6 +2,12 @@
 
 namespace App\Providers;
 
+use App\Events\Projects\ProjectArchived;
+use App\Events\Projects\ProjectDeclined;
+use App\Events\Projects\ProjectPublished;
+use App\Events\Projects\ProjectStatusChange;
+use App\Listeners\Projects\SendDeclinedMailNotification;
+use App\Listeners\Projects\SendPublishedMailNotification;
 use App\Listeners\SendWelcomeEmail;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
@@ -23,6 +29,18 @@ class EventServiceProvider extends ServiceProvider
         \SocialiteProviders\Manager\SocialiteWasCalled::class => [
             \SocialiteProviders\Facebook\FacebookExtendSocialite::class.'@handle',
             \SocialiteProviders\Google\GoogleExtendSocialite::class.'@handle',
+        ],
+        ProjectStatusChange::class => [
+            //
+        ],
+        ProjectPublished::class => [
+            SendPublishedMailNotification::class,
+        ],
+        ProjectDeclined::class => [
+            SendDeclinedMailNotification::class,
+        ],
+        ProjectArchived::class => [
+            //
         ],
     ];
 
