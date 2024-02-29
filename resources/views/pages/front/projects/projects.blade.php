@@ -223,7 +223,7 @@
                                         </div>
                                         <div class="join-us__text-desrcription">
                                             Ознакомьтесь с новостями проектов и
-                                            культурной биржи
+                                            Культурной биржи
                                         </div>
                                     </div>
                                     <a href="/news" class="join-us__btn _fw btn btn-filled">Перейти</a>
