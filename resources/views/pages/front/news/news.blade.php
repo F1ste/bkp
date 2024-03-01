@@ -83,21 +83,21 @@
                     <div class="news-block__big-block big-news">
                     <!-- модификатор для ссылки with-banner, если баннер есть -->
                     @if (isset($collections[0]) && $collections[0]->name != '')
-                        <div  class="big-news__item">
-                            <a href="{{ route('news.tidings', $collections[0]) }}" class="big-news__media media-block">
+                        <a href="{{ route('news.tidings', $collections[0]) }}" class="big-news__item">
+                            <div class="big-news__media media-block">
                                 <picture>
                                     <source srcset="{{ $collections[0]->img }}" type="image/webp"><img src="{{ $collections[0]->img }}" alt="Изображение новости">
                                 </picture>
-                            </a>
-                            <a href="{{ route('news.tidings', $collections[0]) }}" class="big-news__content">
+                            </div>
+                            <div class="big-news__content">
                                 <div class="big-news__title article-title">
                                     {{ $collections[0]->name }}
                                 </div>
                                 <div class="big-news__description article-description">
                                     {!! $collections[0]->pod_text !!}
                                 </div>
-                            </a>
-                        </div>
+                            </div>
+                        </a>
                     @endif
 
                         {{-- <div class="big-news__banner ">
