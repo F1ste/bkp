@@ -3497,7 +3497,7 @@ body::after {
   pointer-events: none;
 }
 
-.news-block__items-wrapper .big-news__item:hover img {
+.news-block__items-wrapper .big-news__item .big-news__media:hover img {
   -webkit-transform: scale(1.1);
       -ms-transform: scale(1.1);
           transform: scale(1.1);
