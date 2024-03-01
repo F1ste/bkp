@@ -280,23 +280,23 @@
                     <div class="news-block__big-block big-news">
                     @if (isset($news[0]) and $news[0]->name != '')
                     <!-- with-banner модификатор для  big-news__item, если банер активен -->
-                        <div class="big-news__item">
-                            <a href="{{ route('news.tidings', $news[0]) }}" class="big-news__media media-block">
+                        <a href="{{ route('news.tidings', $news[0]) }}" class="big-news__item">
+                            <div class="big-news__media media-block">
                                 <picture>
                                     <source srcset="{{ $news[0]->img }}" type="image/webp">
                                     <img src="{{ $news[0]->img }}" alt="Изображение новости">
                                 </picture>
-                            </a>
-                            <a href="{{ route('news.tidings', $news[0]) }}" class="big-news__content">
+                            </div>
+                            <div class="big-news__content">
                                 <div class="big-news__title article-title">
                                     {{ $news[0]->name }}
                                 </div>
-                                
+
                                 <div class="big-news__description article-description">
                                     {!! $news[0]->pod_text !!}
                                 </div>
-                            </a>
-                        </div>
+                            </div>
+                        </a>
                     @endif
 
                         {{-- <div class="big-news__banner ">
