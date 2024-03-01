@@ -81,25 +81,28 @@
 
                 <div class="news-block__items-wrapper">
                     <div class="news-block__big-block big-news">
-                    <!-- модификатор для ссылки with-banner, если баннер есть -->
-                    @if (isset($collections[0]) && $collections[0]->name != '')
-                        <a href="{{ route('news.tidings', $collections[0]) }}" class="big-news__item">
-                            <div class="big-news__media media-block">
-                                <picture>
-                                    <source srcset="{{ $collections[0]->img }}" type="image/webp"><img src="{{ $collections[0]->img }}" alt="Изображение новости">
-                                </picture>
-                            </div>
-                            <div class="big-news__content">
-                                <div class="big-news__title article-title">
-                                    {{ $collections[0]->name }}
+                        @if (isset($collections[0]) && $collections[0]->name != '')
+                            <!-- with-banner модификатор для  big-news__item, если банер активен -->
+                            <a href="{{ route('news.tidings', $collections[0]) }}" class="big-news__item">
+                                <div class="big-news__media media-block">
+                                    <picture>
+                                        <source srcset="{{ $collections[0]->img }}" type="image/webp">
+                                        <img src="{{ $collections[0]->img }}" alt="Изображение новости">
+                                    </picture>
                                 </div>
-                                <div class="big-news__description article-description">
-                                    {!! $collections[0]->pod_text !!}
-                                </div>
-                            </div>
-                        </a>
-                    @endif
+                                <div class="big-news__content">
+                                    <div class="big-news__title article-title">
+                                        {{ $collections[0]->name }}
+                                    </div>
 
+                                    <div class="big-news__description article-description">
+                                        <object>
+                                            {!! strip_tags($collections[0]->pod_text) !!}
+                                        </object>
+                                    </div>
+                                </div>
+                            </a>
+                        @endif
                         {{-- <div class="big-news__banner ">
                             <a href="#" class="media-block">
                                 <picture>
@@ -108,56 +111,55 @@
                                 </picture>
                             </a>
                         </div> --}}
-
                     </div>
                     <div class="news-block__big-items">
-                    @for ($i = 1; $i < 3; $i++)
-                    @if (isset($collections[$i]) && $collections[$i]->name != '')
-                        <div class="news-block__item">
-                            <a href="{{ route('news.tidings', $collections[$i]) }}">
-                                <div class="news-block__item-media media-block">
-                                    <picture>
-                                        <source srcset="{{ $collections[$i]->img }}" type="image/webp"><img src="{{ $collections[$i]->img }}" alt="Изображение новости">
-                                    </picture>
+                        @for ($i = 1; $i < 3; $i++)
+                            @if (isset($collections[$i]) && $collections[$i]->name != '')
+                                <div class="news-block__item">
+                                    <a href="{{ route('news.tidings', $collections[$i]) }}">
+                                        <div class="news-block__item-media media-block">
+                                            <picture>
+                                                <source srcset="{{ $collections[$i]->img }}" type="image/webp"><img src="{{ $collections[$i]->img }}" alt="Изображение новости">
+                                            </picture>
+                                        </div>
+                                        <div class="news-block__date">
+                                            {{ Carbon\Carbon::parse($collections[$i]->date)->format('d.m.Y') }}
+                                        </div>
+                                        <div class="news-block__title title">
+                                            {{ $collections[$i]->name }}
+                                        </div>
+                                        <div class="news-block__description article-description">
+                                            {!! $collections[$i]->pod_text !!}
+                                        </div>
+                                    </a>
                                 </div>
-                                <div class="news-block__date">
-                                    {{ Carbon\Carbon::parse($collections[$i]->date)->format('d.m.Y') }}
-                                </div>
-                                <div class="news-block__title title">
-                                    {{ $collections[$i]->name }}
-                                </div>
-                                <div class="news-block__description article-description">
-                                    {!! $collections[$i]->pod_text !!}
-                                </div>
-                            </a>
-                        </div>
-                    @endif
-                    @endfor
+                            @endif
+                        @endfor
                     </div>
 
                     <div class="news-block__items-content">
-                    @for ($i = 3; $i < count($collections); $i++)
-                    @if (isset($collections[$i]) && $collections[$i]->name != '')
-                        <div class="news-block__item">
-                            <a href="{{ route('news.tidings', $collections[$i]) }}">
-                                <div class="news-block__item-media media-block">
-                                    <picture>
-                                        <source srcset="{{ $collections[$i]->img }}" type="image/webp"><img src="{{ $collections[$i]->img }}" alt="Изображение новости">
-                                    </picture>
+                        @for ($i = 3; $i < count($collections); $i++)
+                            @if (isset($collections[$i]) && $collections[$i]->name != '')
+                                <div class="news-block__item">
+                                    <a href="{{ route('news.tidings', $collections[$i]) }}">
+                                        <div class="news-block__item-media media-block">
+                                            <picture>
+                                                <source srcset="{{ $collections[$i]->img }}" type="image/webp"><img src="{{ $collections[$i]->img }}" alt="Изображение новости">
+                                            </picture>
+                                        </div>
+                                        <div class="news-block__date">
+                                            {{ Carbon\Carbon::parse($collections[$i]->date)->format('d.m.Y') }}
+                                        </div>
+                                        <div class="news-block__title title">
+                                            {{ $collections[$i]->name }}
+                                        </div>
+                                        <div class="news-block__description article-description">
+                                            {!! $collections[$i]->pod_zag !!}
+                                        </div>
+                                    </a>
                                 </div>
-                                <div class="news-block__date">
-                                    {{ Carbon\Carbon::parse($collections[$i]->date)->format('d.m.Y') }}
-                                </div>
-                                <div class="news-block__title title">
-                                    {{ $collections[$i]->name }}
-                                </div>
-                                <div class="news-block__description article-description">
-                                    {!! $collections[$i]->pod_zag !!}
-                                </div>
-                            </a>
-                        </div>
-                    @endif
-                    @endfor
+                            @endif
+                        @endfor
                     </div>
 
                     {{ $collections->withQueryString()->links('pagination::default') }}

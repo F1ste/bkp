@@ -278,26 +278,28 @@
                 </div>
                 <div class="news-block__items-wrapper">
                     <div class="news-block__big-block big-news">
-                    @if (isset($news[0]) and $news[0]->name != '')
-                    <!-- with-banner модификатор для  big-news__item, если банер активен -->
-                        <a href="{{ route('news.tidings', $news[0]) }}" class="big-news__item">
-                            <div class="big-news__media media-block">
-                                <picture>
-                                    <source srcset="{{ $news[0]->img }}" type="image/webp">
-                                    <img src="{{ $news[0]->img }}" alt="Изображение новости">
-                                </picture>
-                            </div>
-                            <div class="big-news__content">
-                                <div class="big-news__title article-title">
-                                    {{ $news[0]->name }}
+                        @if (isset($news[0]) and $news[0]->name != '')
+                        <!-- with-banner модификатор для  big-news__item, если банер активен -->
+                            <a href="{{ route('news.tidings', $news[0]) }}" class="big-news__item">
+                                <div class="big-news__media media-block">
+                                    <picture>
+                                        <source srcset="{{ $news[0]->img }}" type="image/webp">
+                                        <img src="{{ $news[0]->img }}" alt="Изображение новости">
+                                    </picture>
                                 </div>
+                                <div class="big-news__content">
+                                    <div class="big-news__title article-title">
+                                        {{ $news[0]->name }}
+                                    </div>
 
-                                <div class="big-news__description article-description">
-                                    {!! $news[0]->pod_text !!}
+                                    <div class="big-news__description article-description">
+                                        <object>
+                                            {!! strip_tags($news[0]->pod_text) !!}
+                                        </object>
+                                    </div>
                                 </div>
-                            </div>
-                        </a>
-                    @endif
+                            </a>
+                        @endif
 
                         {{-- <div class="big-news__banner ">
                             <a href="#" class="media-block">
@@ -310,65 +312,63 @@
 
                     </div>
                     <div class="news-block__big-items">
-                    @for ($i = 1; $i < 3; $i++)
-                    @if (isset($news[$i]) && $news[$i]->name != '')
-                        <div class="news-block__item">
-                            <a href="{{ route('news.tidings', $news[$i]->id) }}">
-                                <div class="news-block__item-media media-block">
-                                    <picture>
-                                        <source srcset="{{ $news[$i]->img }}" type="image/webp">
-                                        <img src="{{ $news[$i]->img }}" alt="Изображение новости">
-                                    </picture>
+                        @for ($i = 1; $i < 3; $i++)
+                            @if (isset($news[$i]) && $news[$i]->name != '')
+                                <div class="news-block__item">
+                                    <a href="{{ route('news.tidings', $news[$i]->id) }}">
+                                        <div class="news-block__item-media media-block">
+                                            <picture>
+                                                <source srcset="{{ $news[$i]->img }}" type="image/webp">
+                                                <img src="{{ $news[$i]->img }}" alt="Изображение новости">
+                                            </picture>
+                                        </div>
+                                        <div class="news-block__date">
+                                            {{ $news[$i]->date }}
+                                        </div>
+                                        <div class="news-block__title title">
+                                            {{ $news[$i]->name }}
+                                        </div>
+                                        <div class="news-block__author-name title">
+                                            {{ $news[$i]->author }}
+                                        </div>
+                                        <div class="news-block__description article-description">
+                                            {!! $news[$i]->pod_text !!}
+                                        </div>
+                                    </a>
                                 </div>
-                                <div class="news-block__date">
-                                    {{ $news[$i]->date }}
-                                </div>
-                                <div class="news-block__title title">
-                                    {{ $news[$i]->name }}
-                                </div>
-                                <div class="news-block__author-name title">
-                                    {{ $news[$i]->author }}
-                                </div>
-                                <div class="news-block__description article-description">
-                                    {!! $news[$i]->pod_text !!}
-                                </div>
-                            </a>
+                            @endif
+                        @endfor
+                    </div>
+                    @if (isset($news[3]) && $news[3]->name != '')
+                        <div class="news-block__items-content">
+                            @for ($i = 3; $i < 7; $i++)
+                                @if (isset($news[$i]) && $news[$i]->name != '')
+                                    <div class="news-block__item">
+                                        <a href="{{ route('news.tidings', $news[$i]->id) }}">
+                                            <div class="news-block__item-media media-block">
+                                                <picture>
+                                                    <source srcset="{{ $news[$i]->img }}" type="image/webp">
+                                                    <img src="{{ $news[$i]->img }}" alt="Изображение новости">
+                                                </picture>
+                                            </div>
+                                            <div class="news-block__date">
+                                                {{ Carbon\Carbon::parse($news[$i]->date)->format('d.m.Y') }}
+                                            </div>
+                                            <div class="news-block__title title">
+                                                {{ $news[$i]->name }}
+                                            </div>
+                                            <div class="news-block__author-name title">
+                                                {{ $news[$i]->author }}
+                                            </div>
+                                            <div class="news-block__description article-description">
+                                                {!! $news[$i]->pod_text !!}
+                                            </div>
+                                        </a>
+                                    </div>
+                                @endif
+                            @endfor
                         </div>
                     @endif
-                    @endfor
-                    </div>
-                @if (isset($news[3]) && $news[3]->name != '')
-                    <div class="news-block__items-content">
-
-                    @for ($i = 3; $i < 7; $i++)
-                    @if (isset($news[$i]) && $news[$i]->name != '')
-                        <div class="news-block__item">
-                            <a href="{{ route('news.tidings', $news[$i]->id) }}">
-                                <div class="news-block__item-media media-block">
-                                    <picture>
-                                        <source srcset="{{ $news[$i]->img }}" type="image/webp">
-                                        <img src="{{ $news[$i]->img }}" alt="Изображение новости">
-                                    </picture>
-                                </div>
-                                <div class="news-block__date">
-                                    {{ Carbon\Carbon::parse($news[$i]->date)->format('d.m.Y') }}
-                                </div>
-                                <div class="news-block__title title">
-                                    {{ $news[$i]->name }}
-                                </div>
-                                <div class="news-block__author-name title">
-                                    {{ $news[$i]->author }}
-                                </div>
-                                <div class="news-block__description article-description">
-                                    {!! $news[$i]->pod_text !!}
-                                </div>
-                            </a>
-                        </div>
-                    @endif
-                    @endfor
-
-                    </div>
-                @endif
                 </div>
             </div>
         </section>
