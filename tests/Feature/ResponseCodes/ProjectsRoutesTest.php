@@ -30,7 +30,13 @@ class ProjectsRoutesTest extends TestCase
 
     public function testProjectShow()
     {
-        Project::factory()->create();
-        $this->get('/projects/project/1')->assertOk();
+        $project = Project::factory()->create();
+        $this->get('/projects/' . $project->slug)->assertOk();
+    }
+
+    public function testProjectShowRedirectFriendlyUrl()
+    {
+        $project = Project::factory()->create();
+        $this->get('/projects/project/' . $project->id)->assertRedirectToRoute('projects.project', [$project]);
     }
 }
