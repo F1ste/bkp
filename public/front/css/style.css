@@ -6548,10 +6548,6 @@ blockquote p::after {
   /* aspect-ratio: 1737/450; */
 }
 
-.news-single__article-text {
-  max-width: 1155px;
-}
-
 .news-single__article-text a{
   color: #00AF66;
 }
