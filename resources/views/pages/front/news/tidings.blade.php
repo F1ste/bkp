@@ -21,17 +21,6 @@
                             <div class="news-single__date">
                                 {{ Carbon\Carbon::parse($collection->date)->format('d.m.Y') }}
                             </div>
-                            <div class="news-single__socials socials">
-                                <a href="" class="socials__social-item icon-telegram">
-                                    <i class="socials__icon _icon-telegram"></i>
-                                </a>
-                                <a href="" class="socials__social-item icon-vk">
-                                    <i class="socials__icon _icon-vk"></i>
-                                </a>
-                                <a href="" class="socials__social-item icon-youtube">
-                                    <i class="socials__icon _icon-youtube"></i>
-                                </a>
-                            </div>
                         </div>
                     </div>
                     <div class="news-single__main-image">
