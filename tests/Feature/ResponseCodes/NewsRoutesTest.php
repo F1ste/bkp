@@ -30,7 +30,13 @@ class NewsRoutesTest extends TestCase
 
     public function testNewsShow()
     {
-        News::factory()->create();
-        $this->get('/news/news/1')->assertOk();
+        $news = News::factory()->create();
+        $this->get('/news/' . $news->slug)->assertOk();
+    }
+
+    public function testNewsShowRedirectFriendlyUrl()
+    {
+        $news = News::factory()->create();
+        $this->get('/news/news/' . $news->id)->assertRedirectToRoute('news.tidings', [$news]);
     }
 }

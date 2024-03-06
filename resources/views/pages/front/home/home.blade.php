@@ -315,7 +315,7 @@
                         @for ($i = 1; $i < 3; $i++)
                             @if (isset($news[$i]) && $news[$i]->name != '')
                                 <div class="news-block__item">
-                                    <a href="{{ route('news.tidings', $news[$i]->id) }}">
+                                    <a href="{{ route('news.tidings', $news[$i]) }}">
                                         <div class="news-block__item-media media-block">
                                             <picture>
                                                 <source srcset="{{ $news[$i]->img }}" type="image/webp">
@@ -344,7 +344,7 @@
                             @for ($i = 3; $i < 7; $i++)
                                 @if (isset($news[$i]) && $news[$i]->name != '')
                                     <div class="news-block__item">
-                                        <a href="{{ route('news.tidings', $news[$i]->id) }}">
+                                        <a href="{{ route('news.tidings', $news[$i]) }}">
                                             <div class="news-block__item-media media-block">
                                                 <picture>
                                                     <source srcset="{{ $news[$i]->img }}" type="image/webp">

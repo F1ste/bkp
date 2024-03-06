@@ -8,6 +8,7 @@ use App\Http\Controllers\NewsController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\SearchResultsController;
+use App\Models\News;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -27,7 +28,9 @@ Route::get('/projects', [ProjectController::class, 'index'])->name('projects');
 Route::get('/projects/project/{project}', [ProjectController::class, 'show'])->name('projects.project');
 
 Route::get('/news', [NewsController::class, 'news'])->name('news');
-Route::get('/news/news/{news}', [NewsController::class, 'tidings'])->name('news.tidings');
+Route::get('/news/news/{news}', fn (News $news) => redirect()->route('news.tidings', $news, 301))
+    ->whereNumber('news'); // redirect old link with id to new link with slug (SEO)
+Route::get('/news/{news:slug}', [NewsController::class, 'tidings'])->name('news.tidings');
 
 Route::get('/about', [AboutController::class,'index'])->name('about');
 Route::get('/contacts', [ContactController::class,'index'])->name('contact');
