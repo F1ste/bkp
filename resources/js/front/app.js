@@ -31,3 +31,5 @@ import "./fpage/create";
 import "./fpage/edit";
 
 import "./chat/chat";
+
+import "./external-links";

@@ -9,6 +9,7 @@ use App\Events\Projects\ProjectStatusChange;
 use App\Models\Traits\Filterable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Str;
 
 class Project extends Model
 {
@@ -54,6 +55,15 @@ class Project extends Model
         'date_service_from' => 'date',
         'date_service_to' => 'date',
     ];
+
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::creating(function ($post) {
+            $post->slug = Str::slug($post->name);
+        });
+    }
 
     protected static function booted()
     {
