@@ -42,6 +42,7 @@ Route::get('/search', [SearchResultsController::class, 'index']);
 Route::view('/partners', 'pages.partners')->name('partners');
 Route::view('/policy', 'pages.privacy-policy')->name('privacy-policy');
 Route::view('/privacy', 'pages.user-agreement')->name('user-agreement');
+Route::view('/pravila', 'pages.rules')->name('rules');
 Route::view('/mail_send', 'pages.mailing-agreement')->name('mailing-agreement');
 
 Route::get('/rol', [CollectionController::class, 'roles'])->name('roles');
