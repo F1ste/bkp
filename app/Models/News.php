@@ -42,5 +42,19 @@ class News extends Model
         static::creating(function ($post) {
             $post->slug = Str::slug($post->name);
         });
+
+        static::saving(function ($news) {
+            if (! $news->glav && ! $news->pozits) {
+                return;
+            }
+
+            if ($news->isDirty('glav') && $news->glav) {
+                self::where('glav', $news->glav)->update(['glav' => 0]);
+            }
+
+            if ($news->isDirty('pozits') && $news->pozits) {
+                self::where('pozits', $news->pozits)->update(['pozits' => 0]);
+            }
+        });
     }
 }

@@ -120,7 +120,7 @@ class NewsController extends Controller
             ? Carbon::parse($request->date)->format('Y-m-d')
             : Carbon::now()->format('Y-m-d');
 
-        $collection = News::where('id', $request->id)->update([
+        $collection = $news->update([
             'name' => $request->name,
             'img' => $request->img1,
             'pod_text' => $request->pod_text,
