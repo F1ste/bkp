@@ -24,10 +24,10 @@ class NewsFactory extends Factory
      */
     public function definition()
     {
-        $glav = rand(0, 1) ?: null;
+        $glav = rand(0, 3) ?: null;
         $pozits = null;
         if ($glav) {
-            $pozits = rand(1, 2);
+            $pozits = rand(0, 3);
         }
 
         return [

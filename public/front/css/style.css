@@ -4392,6 +4392,11 @@ blockquote p::after {
   gap: 80px;
 }
 
+.faq__content a {
+    color: #00AF66;
+    text-decoration: underline;
+}
+
 .faq__item {
   display: -webkit-box;
   display: -ms-flexbox;
