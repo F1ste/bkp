@@ -11,6 +11,9 @@
                     <div class="projects-category__subtitle main-page__section-subtitle">
                         Платформа, где культурные проекты находят партнеров
                     </div>
+                    <a href="/profile/dashboard" class="projects-category__create_new _fw btn btn-filled">
+                        Предложить проект
+                    </a>
                     <div class="projects-category__masonry">
                         <div class="projects-category__masonry-col">
                             <div class="projects-category__item">
@@ -199,10 +202,10 @@
             <div class="popular-projects__container">
                 <div class="popular-projects__heading section__heading">
                     <div class="popular-projects__heading-text section__heading-text">
-                        <div class="popular-projects__title main-page__section-title">
+                        <a href="/projects" class="popular-projects__title main-page__section-title">
                             Проекты
                             <sup class="sup-count help" title="Количество проектов">{{ $projects_total }}</sup>
-                        </div>
+                        </a>
                     </div>
                     <a href="/projects" class="news-block__all-news _fw btn btn-white">
                         Все проекты
@@ -218,7 +221,7 @@
                             {{ $project->name_proj }}
                         </a>
                         <div class="popular-projects__project-date">
-                            От {{ $project->date_service_from->format('d.m.Y') }}
+                            С {{ $project->date_service_from->format('d.m.Y') }}
                         </div>
                         <div class="popular-projects__project-image media-block">
                             <a href="{{ route('projects.project', $project->id) }}">
@@ -268,9 +271,9 @@
             <div class="news-block__container">
                 <div class="news-block__heading section__heading">
                     <div class="news-block__heading-text section__heading-text">
-                        <div class="news-block__title main-page__section-title">
+                        <a href="/news" class="news-block__title main-page__section-title">
                             Новости
-                        </div>
+                        </a>
                     </div>
                     <a href="/news" class="news-block__all-news _fw btn btn-white">
                         Все новости

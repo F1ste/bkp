@@ -2543,6 +2543,11 @@ body::after {
   }
 }
 
+.projects-category__create_new{
+  display: none;
+  margin-top: 1.5625rem;
+}
+
 .projects-category__masonry {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -3767,9 +3772,22 @@ body::after {
 
 .project-main__text {
   font-weight: 400;
-  height: 38px;
+  height: 50px;
   overflow: hidden;
 }
+
+@supports (height: clamp( 2.777rem , 2.5rem  +  0.75vw , 1.875rem )) {
+  .project-main__text {
+    height: clamp( 2.777rem , 2.5rem  +  0.75vw , 1.875rem );
+  }
+}
+
+@supports not (height: clamp( 2.777rem , 2.5rem  +  0.75vw , 1.875rem )) {
+  .project-main__text {
+    height: calc(2.777rem + 0.75 * (100vw - 20rem) / 100);
+  }
+}
+
 .project-main__text p{
   margin-top: 10px;
 }
@@ -7345,8 +7363,18 @@ blockquote p::after {
 }
 
 @media (max-width: 768px) {
+  .projects-category__create_new{
+    display: inline-flex;
+  }
   .swiper-slide {
     height: 300px;
+  }
+  .faq__row{
+    flex-direction: column;
+    gap: 40px;
+  }
+  .faq__row.reverse-row{
+    flex-direction: column;
   }
 }
 
