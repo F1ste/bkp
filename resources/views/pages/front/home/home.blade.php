@@ -236,7 +236,7 @@
                                 {{ $project->region }}
                             </div>
                             <div class="popular-projects__organization-name">
-                                <a href="#">{{ $project->user->org }}</a>
+                                <a>{{ $project->user->org }}</a>
                             </div>
                         </div>
                         <div class="popular-projects__partners-tags partners-tags">

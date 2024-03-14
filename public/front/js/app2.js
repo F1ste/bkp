@@ -3895,7 +3895,28 @@
                         spollerTitles.forEach((spollerTitle => {
                             if (hideSpollerBody) {
                                 spollerTitle.removeAttribute("tabindex");
-                                if (!spollerTitle.classList.contains("_spoller-active")) spollerTitle.nextElementSibling.hidden = true;
+                                if (!spollerTitle.classList.contains("_spoller-active")) {
+                                    // Check if spoller content will be outside the screen
+                                    let spollerContent = spollerTitle.nextElementSibling;
+                                    let spollerRect = spollerContent.getBoundingClientRect();
+                                    let windowWidth = window.innerWidth;
+                                    // Adjust position and width if content goes beyond the screen
+                                    if (spollerRect.right > windowWidth) {
+                                        spollerContent.style.left = "auto";
+                                        spollerContent.style.right = "0";
+                                        spollerContent.style.width = "250px";
+                                    } else if (spollerRect.left < 0) {
+                                        spollerContent.style.left = "0";
+                                        spollerContent.style.right = "auto";
+                                        spollerContent.style.width = "250px";
+                                    } else {
+                                        // Reset position and width if content fits within the screen
+                                        spollerContent.style.left = "auto";
+                                        spollerContent.style.right = "auto";
+                                        spollerContent.style.width = "auto";
+                                    }
+                                    spollerContent.hidden = true;
+                                }
                             } else {
                                 spollerTitle.setAttribute("tabindex", "-1");
                                 spollerTitle.nextElementSibling.hidden = false;
@@ -10250,18 +10271,21 @@
         (() => {
             const sidebar = document.querySelector(".sidebar");
             if (!sidebar) return false;
-            const header = document.querySelector(".header");
+
+            sidebar.classList.add("fixed");
+
+            /* const header = document.querySelector(".header");
             let headerHeight = header.getBoundingClientRect().height;
-            const stickyNav = function(entries) {
-                const [entry] = entries;
-                if (!entry.isIntersecting) sidebar.classList.add("fixed"); else sidebar.classList.remove("fixed");
+            
+            const handleScroll = () => {
+                if (window.scrollY > headerHeight) {
+                    sidebar.classList.add("fixed");
+                } else {
+                    sidebar.classList.remove("fixed");
+                }
             };
-            const headerObserver = new IntersectionObserver(stickyNav, {
-                root: null,
-                threshold: 1,
-                rootMargin: `${headerHeight}px`
-            });
-            headerObserver.observe(header);
+            
+            window.addEventListener("scroll", handleScroll); */
         })();
         const dropArea = document.querySelectorAll(".add-photo");
         if (dropArea.length != 0) {
