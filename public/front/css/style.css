@@ -1485,7 +1485,7 @@ body::after {
 }
 
 .filter__form-item {
-  white-space: nowrap;
+  white-space: normal;
 }
 
 .filter__form-item:not(:last-child) {
