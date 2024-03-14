@@ -1568,6 +1568,7 @@ body::after {
   padding: 1rem;
   max-height: 300px;
   overflow-y: auto;
+  overflow-x: hidden;
 }
 
 .section__heading {
