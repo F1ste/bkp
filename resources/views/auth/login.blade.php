@@ -31,11 +31,11 @@
 
                                 <div class="auth-form__form-item form__item">
                                     <label for="FormEmailAuth" class="auth-form__form-label form__label">Email </label>
-                                    <input id="FormEmailAuth" id="email" name="email" :value="old('email')" required autofocus class="auth-form__form-input form__input" placeholder="Email">
+                                    <input type="email" id="FormEmailAuth" id="email" name="email" :value="old('email')" required autofocus class="auth-form__form-input form__input" placeholder="Email">
                                 </div>
                                 <div class="auth-form__form-item form__item">
                                     <label for="password" class="auth-form__form-label form__label">Пароль</label>
-                                    <input data-required data-error="Поле должно быть заполнено" id="password" id="password" name="password" required autocomplete="current-password" class="auth-form__form-input form__input" autocomplete=off placeholder="Введите пароль">
+                                    <input type="password" data-required data-error="Поле должно быть заполнено" id="password" id="password" name="password" required autocomplete="current-password" class="auth-form__form-input form__input" autocomplete=off placeholder="Введите пароль">
                                 </div>
                                 <button type="submit" class="auth-form__btn form__submit btn btn-filled">Войти</button>
                             </form>
