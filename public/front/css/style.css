@@ -4427,6 +4427,11 @@ blockquote p::after {
   gap: 80px;
 }
 
+.faq__content a {
+    color: #00AF66;
+    text-decoration: underline;
+}
+
 .faq__item {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -6586,10 +6591,6 @@ blockquote p::after {
 
 .news-single__main-image .media-block img {
   /* aspect-ratio: 1737/450; */
-}
-
-.news-single__article-text {
-  max-width: 1155px;
 }
 
 .news-single__article-text a{

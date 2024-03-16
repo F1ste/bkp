@@ -21,7 +21,7 @@ class ProjectController extends Controller
     public function moderation()
     {
         $collections = Project::onModeration()->orderByDesc('id')->get();
-        
+
         return view('pages.admin.dashboard', compact('collections'));
     }
 
@@ -127,14 +127,29 @@ class ProjectController extends Controller
             ]);
         }
 
-        $collection = $project->update([
-            'status' => $request->status,
-            'reason' => $request->reason,
-        ]);
+        if ($request->has('status')) {
+            $collection = $project->update([
+                'status' => $request->status,
+                'reason' => $request->reason,
+            ]);
 
-        return $request->status == 3
-            ? redirect()->route('admin.projects.edit', $project)->with('message', "Проект {$action}")
-            : response()->json($collection, 201);
+            return $request->status == 3
+                ? redirect()->route('admin.projects.edit', $project)->with('message', "Проект {$action}")
+                : response()->json($collection, 201);
+        } else {
+            $data = $request->except(['user', 'teg', 'serch']);
+            $data['teg'] = json_encode(array_values(array_filter($request->teg ?? [])), JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
+            $serch = [];
+            foreach ($request->serch as $key => $rows) {
+                foreach ($rows as $index => $value) {
+                    $serch[$index][$key] = $value;
+                }
+            }
+            $data['serch'] = json_encode($serch, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
+            $project->update($data);
+            $project->user()->update($request->user);
+            return redirect()->back()->with('message', 'Проект обновлен');
+        }
     }
 
     public function upload(Request $request)
