@@ -4621,6 +4621,10 @@
                     selectItem.classList.toggle(this.selectClasses.classSelectOpen);
                     _slideToggle(selectOptions, originalSelect.dataset.speed);
                 }
+                const selectOptionsItems = selectOptions.querySelectorAll(`.${this.selectClasses.classSelectOption}`);
+                selectOptionsItems.forEach(selectOptionItem => {
+                    selectOptionItem.hidden = false;
+                })
             }
             setSelectTitleValue(selectItem, originalSelect) {
                 const selectItemBody = this.getSelectElement(selectItem, this.selectClasses.classSelectBody).selectElement;
@@ -4764,17 +4768,42 @@
                 }
             }
             searchActions(selectItem) {
-                this.getSelectElement(selectItem).originalSelect;
                 const selectInput = this.getSelectElement(selectItem, this.selectClasses.classSelectInput).selectElement;
                 const selectOptions = this.getSelectElement(selectItem, this.selectClasses.classSelectOptions).selectElement;
                 const selectOptionsItems = selectOptions.querySelectorAll(`.${this.selectClasses.classSelectOption}`);
                 const _this = this;
-                selectInput.addEventListener("input", (function() {
-                    selectOptionsItems.forEach((selectOptionsItem => {
-                        if (selectOptionsItem.textContent.toUpperCase().indexOf(selectInput.value.toUpperCase()) >= 0) selectOptionsItem.hidden = false; else selectOptionsItem.hidden = true;
-                    }));
-                    selectOptions.hidden === true ? _this.selectAction(selectItem) : null;
-                }));
+                if (!selectInput.value) {
+                    selectInput.value = ''
+                }
+                selectInput.addEventListener("input", function() {
+                    let nothingFound = true;
+                    selectOptionsItems.forEach(selectOptionsItem => {
+                        if (selectOptionsItem.textContent.toUpperCase().includes(selectInput.value.toUpperCase())) {
+                            selectOptionsItem.hidden = false;
+                            nothingFound = false;
+                        } else {
+                            selectOptionsItem.hidden = true;
+                        }
+                    });
+                    if (nothingFound) {
+                        let emptyText = selectOptions.querySelector(".select__nothing-found");
+                        if (!emptyText) {
+                            emptyText = document.createElement("div");
+                            emptyText.appendChild(document.createTextNode("По вашему запросу ничего не найдено"));
+                            emptyText.classList.add("select__nothing-found");
+                            selectOptions.appendChild(emptyText);
+                        }
+                    } else {
+                        let emptyText = selectOptions.querySelector(".select__nothing-found");
+                        if (emptyText) {
+                            emptyText.remove();
+                        }
+                    }
+                    if (selectOptions.hidden === true) {
+                        _this.selectAction(selectItem)
+                    } else null
+                    
+                });
             }
             selectCallback(selectItem, originalSelect) {
                 document.dispatchEvent(new CustomEvent("selectCallback", {
@@ -4789,6 +4818,20 @@
         }
         modules_flsModules.select = new SelectConstructor({});
         __webpack_require__(125);
+        document.addEventListener("selectCallback", function (e) {
+            // Селект 
+            const currentSelect = e.detail.select;
+            const selectInstance = modules_flsModules.select;
+        
+            // Проверяем, есть ли у текущего селекта атрибут data-search
+            if (currentSelect.hasAttribute("data-search")) {
+                // Получаем родительский элемент текущего селекта
+                const selectItem = currentSelect.parentElement;
+        
+                // Переинициализируем поиск для селекта
+                selectInstance.searchActions(selectItem);
+            }
+        });
         const inputMasks = document.querySelectorAll("input");
         if (inputMasks.length) modules_flsModules.inputmask = Inputmask().mask(inputMasks);
         function getWindow_getWindow(node) {
