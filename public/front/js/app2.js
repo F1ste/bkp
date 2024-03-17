@@ -4818,20 +4818,6 @@
         }
         modules_flsModules.select = new SelectConstructor({});
         __webpack_require__(125);
-        document.addEventListener("selectCallback", function (e) {
-            // Селект 
-            const currentSelect = e.detail.select;
-            const selectInstance = modules_flsModules.select;
-        
-            // Проверяем, есть ли у текущего селекта атрибут data-search
-            if (currentSelect.hasAttribute("data-search")) {
-                // Получаем родительский элемент текущего селекта
-                const selectItem = currentSelect.parentElement;
-        
-                // Переинициализируем поиск для селекта
-                selectInstance.searchActions(selectItem);
-            }
-        });
         const inputMasks = document.querySelectorAll("input");
         if (inputMasks.length) modules_flsModules.inputmask = Inputmask().mask(inputMasks);
         function getWindow_getWindow(node) {
@@ -10373,11 +10359,13 @@
         (() => {
             const findPartnerSect = document.querySelector(".create-project__find-partners");
             if (!findPartnerSect) return false;
-            const addPartnerBtn = findPartnerSect.querySelector(".add-partner__input");
+            const addPartnerBtn = findPartnerSect.querySelector(".add-partner__input").closest('.add-partner');
             if (!addPartnerBtn) return false;
             const findPartnerContent = findPartnerSect.querySelector(".find-partners__content");
             const findPartnerBlock = findPartnerSect.querySelectorAll(".find-partners__partner-block");
             let partnerCount = findPartnerBlock.length;
+            let optionsCount = 0;
+            let createdCount = 1;
             function addPartner(e) {
                 e.target;
 
@@ -10392,17 +10380,32 @@
                 function fetchData() {
                     return fetch(urlRoles).then((response => response.json())).then((data => data));
                 }
-                fetchData().then((data => {
+                fetchData().then(data => {
                     for (const item of data) {
                         const option = document.createElement("option");
                         option.value = item.name;
                         option.textContent = item.name;
                         selectElement.appendChild(option);
                     }
+                    optionsCount = data.length;
+                    // Удаляем выбранные значения из общего списка опций
+                    const allSelects = document.querySelectorAll('.find-partners__partner-block select');
+                    allSelects.forEach(select => {
+                        const selectedValue = select.value;
+                        if (selectedValue) {
+                            const optionToRemove = selectElement.querySelector(`option[value="${selectedValue}"]`);
+                            if (optionToRemove) {
+                                optionToRemove.remove();
+                            }
+                        }
+                    });
+                    // Переинициализируем новый селект
                     const selectInstance = modules_flsModules.select;
-                    const newSelect = newPartnerBlock.querySelector("select");
-                    selectInstance.selectInit(newSelect);
-                }));
+                    selectInstance.selectInit(selectElement);
+                    if (createdCount === data.length) {
+                        addPartnerBtn.style.display = 'none'
+                    }
+                })
                 const newPartnerBlock = findPartnerContent.lastElementChild;
                 const newDatePickerInput = newPartnerBlock.querySelector(`[data-datepicker_${partnerCount + +2}]`);
                 datepicker_min(newDatePickerInput, {
@@ -10418,26 +10421,72 @@
                     onSelect: function(input, instance, date) {}
                 });
                 partnerCount++;
+                createdCount++;
                 let removeButtons = findPartnerSect.querySelectorAll(".remove-partner");
-                removeButtons[0].style.display = (removeButtons.length === 1) ? 'none' : 'block';
+                removeButtons.length > 0 ? removeButtons[0].style.display = (removeButtons.length < 1) ? 'none' : 'block' : null;
             }
             addPartnerBtn.addEventListener("click", addPartner);
 
             function removePartner(e) {
                 const btn = e.target.closest('.remove-partner');
                 if (!btn) return false
-
                 const partnerBlock = btn.closest('.find-partners__partner-block');
-
+                const deletedSelectValue = partnerBlock.querySelector('.select').querySelector('.select__content').textContent;
+                
                 if (partnerBlock) {
                     partnerBlock.remove();
                 }
-
                 let removeButtons = findPartnerSect.querySelectorAll(".remove-partner");
-                removeButtons[0].style.display = (removeButtons.length === 1) ? 'none' : 'block';
+                removeButtons.length > 0 ? removeButtons[0].style.display = (removeButtons.length < 1) ? 'none' : 'block' : null;
+                createdCount--;
+                if (createdCount < optionsCount) {
+                    addPartnerBtn.style.display = 'flex'
+                }
+                const selectInstance = modules_flsModules.select;
+                
+                const allSelects = document.querySelectorAll('.find-partners__partner-block select');
+                const newOption = document.createElement('option');
+                newOption.value = deletedSelectValue;
+                newOption.textContent = deletedSelectValue;
+                if (deletedSelectValue === 'Выбрать') {
+                    return false
+                }
+                allSelects.forEach(select => {
+                        select.appendChild(newOption);
+                        if (newOption) {
+                            selectInstance.setOptions(select.parentElement, select);
+                        }
+                    
+                });
             }
             findPartnerSect.addEventListener("click", removePartner);
         })();
+        document.addEventListener("selectCallback", function (e) {
+            // Селект 
+            const currentSelect = e.detail.select;
+            const selectInstance = modules_flsModules.select;
+            // Проверяем, есть ли у текущего селекта атрибут data-search
+            if (currentSelect.hasAttribute("data-search")) {
+                // Получаем родительский элемент текущего селекта
+                const selectItem = currentSelect.parentElement;
+                // Переинициализируем поиск для селекта
+                selectInstance.searchActions(selectItem);
+            }
+            // Фильтрация значений в блоке find-partners, при выборе роли
+            if (currentSelect.closest('.find-partners__partner-block')) {
+                const selectedValue = currentSelect.value;
+                const allSelects = document.querySelectorAll('.find-partners__partner-block select');
+                allSelects.forEach(select => {
+                    if (select !== currentSelect) {
+                        const optionToRemove = select.querySelector(`option[value="${selectedValue}"]`);
+                        if (optionToRemove) {
+                            optionToRemove.remove();
+                            selectInstance.setOptions(select.parentElement, select);
+                        }
+                    }
+                });
+            }
+        });
         (() => {
             const headerSearch = document.getElementById("headerSearch");
             if (!headerSearch) return false;
