@@ -122,7 +122,7 @@
                     </div>
                     <div class="popular-projects__content">
                     @if ($collections->count() > 0)
-                        @foreach($collections->sortBy('date_service_from') as $el)
+                        @foreach($collections as $el)
                         <div class="popular-projects__item">
                             <div class="popular-projects__project-type">
                                 {{ $el->tema }}
