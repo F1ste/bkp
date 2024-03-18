@@ -23,7 +23,8 @@ class ProjectController extends Controller
 
         $collection = Project::query()
             ->where('status', Project::STATUS_PUBLISHED)
-            ->orderByDesc('id')
+            ->orderBy('order')
+            ->orderByDesc('created_at')
             ->filter($filter)
             ->paginate(12);
 

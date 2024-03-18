@@ -20,26 +20,45 @@ class ProjectController extends Controller
      */
     public function moderation()
     {
-        $collections = Project::onModeration()->orderByDesc('id')->get();
+        $collections = Project::query()
+            ->onModeration()
+            ->orderBy('order')
+            ->orderByDesc('created_at')
+            ->get();
 
         return view('pages.admin.dashboard', compact('collections'));
     }
 
     public function archive()
     {
-        $collections = Project::archived()->orderByDesc('id')->get();
+        $collections = Project::query()
+            ->archived()
+            ->orderBy('order')
+            ->orderByDesc('created_at')
+            ->get();
+
         return view('pages.admin.dashboard2', compact('collections'));
     }
 
     public function published()
     {
-        $collections = Project::published()->orderByDesc('id')->get();
+        $collections = Project::query()
+            ->published()
+            ->orderBy('order')
+            ->orderByDesc('created_at')
+            ->get();
+
         return view('pages.admin.dashboard1', compact('collections'));
     }
 
     public function declined()
     {
-        $collections = Project::declined()->orderByDesc('id')->get();
+        $collections = Project::query()
+            ->declined()
+            ->orderBy('order')
+            ->orderByDesc('created_at')
+            ->get();
+
         return view('pages.admin.dashboard3', compact('collections'));
     }
 

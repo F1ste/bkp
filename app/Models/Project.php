@@ -49,6 +49,11 @@ class Project extends Model
         'img5',
         'img6',
         'reason',
+        'order',
+    ];
+
+    protected $attributes = [
+        'order' => 100,
     ];
 
     protected $casts = [

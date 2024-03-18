@@ -38,6 +38,10 @@
                                     </div>
                                 </div>
                                 <div class="create-project__photo-propetries">950x310 px, до 1 Мб</div>
+                                <div class="create-project__form-item form__item">
+                                    <label for="date_service_to" class="create-project__form-label form__label">Сортировка</label>
+                                    <input type="text" name="order" value="{{ $collection->order }}" class="create-project__form-input form__input" placeholder="100" data-placeholder="100">
+                                </div>
                             </div>
                             <div class="create-project__main-info">
                                 <div class="create-project__main-col">
