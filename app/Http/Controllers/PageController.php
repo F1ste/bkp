@@ -25,7 +25,8 @@ class PageController extends Controller
         $projects = Project::query()
             ->with('user')
             ->published()
-            ->orderByDesc('date_service_from')
+            ->orderBy('order')
+            ->orderByDesc('created_at')
             ->get();
 
         return view('pages.front.home.home', compact('projects_total', 'projects', 'news'));
