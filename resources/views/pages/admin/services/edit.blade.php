@@ -61,7 +61,7 @@
                                 <div class="create-project__main-col">
                                     <div class="create-project__form-select">
                                         <label class="create-project__form-label form__label">Регион</label>
-                                        <select id="region" data-scroll name="region" class="form__select">
+                                        <select id="region" data-search data-scroll name="region" class="form__select">
                                             <option value="" @if ($collection->region == '') selected @endif>Выбрать</option>
                                         @foreach ($region as $el)
                                             <option value="{{ $el->name }}" @if ($collection->region == $el->name) selected @endif>{{ $el->name }}</option>
@@ -88,7 +88,7 @@
                                     </div>
                                     <div class="create-project__form-select">
                                         <label class="create-project__form-label form__label">Теги проекта</label>
-                                        <select id="teg" data-scroll multiple name="teg[]" class="form__select">
+                                        <select id="teg" data-search data-scroll multiple name="teg[]" class="form__select">
                                             <option value="" selected>Выбрать</option>
                                         @foreach ($tegs as $el)
                                             <option value="{{ $el->name }}" @if (in_array($el->name, $teg)) selected @endif>{{ $el->name }}</option>

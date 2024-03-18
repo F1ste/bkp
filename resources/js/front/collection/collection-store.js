@@ -87,7 +87,7 @@ import {} from "../libs/ckeditor/ckeditor";
     const findPartnerSect = document.querySelector(
         ".create-project__find-partners"
     );
-    const addPartnerBtn = findPartnerSect.querySelector(".add-partner__input");
+    const addPartnerBtn = findPartnerSect.querySelector(".add-partner__input").closest('.add-partner');
     let partnersEditors = document.querySelectorAll(
         ".find-partners__partner-block"
     );

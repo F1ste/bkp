@@ -4621,6 +4621,10 @@
                     selectItem.classList.toggle(this.selectClasses.classSelectOpen);
                     _slideToggle(selectOptions, originalSelect.dataset.speed);
                 }
+                const selectOptionsItems = selectOptions.querySelectorAll(`.${this.selectClasses.classSelectOption}`);
+                selectOptionsItems.forEach(selectOptionItem => {
+                    selectOptionItem.hidden = false;
+                })
             }
             setSelectTitleValue(selectItem, originalSelect) {
                 const selectItemBody = this.getSelectElement(selectItem, this.selectClasses.classSelectBody).selectElement;
@@ -4764,17 +4768,42 @@
                 }
             }
             searchActions(selectItem) {
-                this.getSelectElement(selectItem).originalSelect;
                 const selectInput = this.getSelectElement(selectItem, this.selectClasses.classSelectInput).selectElement;
                 const selectOptions = this.getSelectElement(selectItem, this.selectClasses.classSelectOptions).selectElement;
                 const selectOptionsItems = selectOptions.querySelectorAll(`.${this.selectClasses.classSelectOption}`);
                 const _this = this;
-                selectInput.addEventListener("input", (function() {
-                    selectOptionsItems.forEach((selectOptionsItem => {
-                        if (selectOptionsItem.textContent.toUpperCase().indexOf(selectInput.value.toUpperCase()) >= 0) selectOptionsItem.hidden = false; else selectOptionsItem.hidden = true;
-                    }));
-                    selectOptions.hidden === true ? _this.selectAction(selectItem) : null;
-                }));
+                if (!selectInput.value) {
+                    selectInput.value = ''
+                }
+                selectInput.addEventListener("input", function() {
+                    let nothingFound = true;
+                    selectOptionsItems.forEach(selectOptionsItem => {
+                        if (selectOptionsItem.textContent.toUpperCase().includes(selectInput.value.toUpperCase())) {
+                            selectOptionsItem.hidden = false;
+                            nothingFound = false;
+                        } else {
+                            selectOptionsItem.hidden = true;
+                        }
+                    });
+                    if (nothingFound) {
+                        let emptyText = selectOptions.querySelector(".select__nothing-found");
+                        if (!emptyText) {
+                            emptyText = document.createElement("div");
+                            emptyText.appendChild(document.createTextNode("По вашему запросу ничего не найдено"));
+                            emptyText.classList.add("select__nothing-found");
+                            selectOptions.appendChild(emptyText);
+                        }
+                    } else {
+                        let emptyText = selectOptions.querySelector(".select__nothing-found");
+                        if (emptyText) {
+                            emptyText.remove();
+                        }
+                    }
+                    if (selectOptions.hidden === true) {
+                        _this.selectAction(selectItem)
+                    } else null
+                    
+                });
             }
             selectCallback(selectItem, originalSelect) {
                 document.dispatchEvent(new CustomEvent("selectCallback", {
@@ -10330,11 +10359,13 @@
         (() => {
             const findPartnerSect = document.querySelector(".create-project__find-partners");
             if (!findPartnerSect) return false;
-            const addPartnerBtn = findPartnerSect.querySelector(".add-partner__input");
+            const addPartnerBtn = findPartnerSect.querySelector(".add-partner__input").closest('.add-partner');
             if (!addPartnerBtn) return false;
             const findPartnerContent = findPartnerSect.querySelector(".find-partners__content");
             const findPartnerBlock = findPartnerSect.querySelectorAll(".find-partners__partner-block");
             let partnerCount = findPartnerBlock.length;
+            let optionsCount = 0;
+            let createdCount = 1;
             function addPartner(e) {
                 e.target;
 
@@ -10349,17 +10380,32 @@
                 function fetchData() {
                     return fetch(urlRoles).then((response => response.json())).then((data => data));
                 }
-                fetchData().then((data => {
+                fetchData().then(data => {
                     for (const item of data) {
                         const option = document.createElement("option");
                         option.value = item.name;
                         option.textContent = item.name;
                         selectElement.appendChild(option);
                     }
+                    optionsCount = data.length;
+                    // Удаляем выбранные значения из общего списка опций
+                    const allSelects = document.querySelectorAll('.find-partners__partner-block select');
+                    allSelects.forEach(select => {
+                        const selectedValue = select.value;
+                        if (selectedValue) {
+                            const optionToRemove = selectElement.querySelector(`option[value="${selectedValue}"]`);
+                            if (optionToRemove) {
+                                optionToRemove.remove();
+                            }
+                        }
+                    });
+                    // Переинициализируем новый селект
                     const selectInstance = modules_flsModules.select;
-                    const newSelect = newPartnerBlock.querySelector("select");
-                    selectInstance.selectInit(newSelect);
-                }));
+                    selectInstance.selectInit(selectElement);
+                    if (createdCount === data.length) {
+                        addPartnerBtn.style.display = 'none'
+                    }
+                })
                 const newPartnerBlock = findPartnerContent.lastElementChild;
                 const newDatePickerInput = newPartnerBlock.querySelector(`[data-datepicker_${partnerCount + +2}]`);
                 datepicker_min(newDatePickerInput, {
@@ -10375,26 +10421,72 @@
                     onSelect: function(input, instance, date) {}
                 });
                 partnerCount++;
+                createdCount++;
                 let removeButtons = findPartnerSect.querySelectorAll(".remove-partner");
-                removeButtons[0].style.display = (removeButtons.length === 1) ? 'none' : 'block';
+                removeButtons.length > 0 ? removeButtons[0].style.display = (removeButtons.length < 1) ? 'none' : 'block' : null;
             }
             addPartnerBtn.addEventListener("click", addPartner);
 
             function removePartner(e) {
                 const btn = e.target.closest('.remove-partner');
                 if (!btn) return false
-
                 const partnerBlock = btn.closest('.find-partners__partner-block');
-
+                const deletedSelectValue = partnerBlock.querySelector('.select').querySelector('.select__content').textContent;
+                
                 if (partnerBlock) {
                     partnerBlock.remove();
                 }
-
                 let removeButtons = findPartnerSect.querySelectorAll(".remove-partner");
-                removeButtons[0].style.display = (removeButtons.length === 1) ? 'none' : 'block';
+                removeButtons.length > 0 ? removeButtons[0].style.display = (removeButtons.length < 1) ? 'none' : 'block' : null;
+                createdCount--;
+                if (createdCount < optionsCount) {
+                    addPartnerBtn.style.display = 'flex'
+                }
+                const selectInstance = modules_flsModules.select;
+                
+                const allSelects = document.querySelectorAll('.find-partners__partner-block select');
+                const newOption = document.createElement('option');
+                newOption.value = deletedSelectValue;
+                newOption.textContent = deletedSelectValue;
+                if (deletedSelectValue === 'Выбрать') {
+                    return false
+                }
+                allSelects.forEach(select => {
+                        select.appendChild(newOption);
+                        if (newOption) {
+                            selectInstance.setOptions(select.parentElement, select);
+                        }
+                    
+                });
             }
             findPartnerSect.addEventListener("click", removePartner);
         })();
+        document.addEventListener("selectCallback", function (e) {
+            // Селект 
+            const currentSelect = e.detail.select;
+            const selectInstance = modules_flsModules.select;
+            // Проверяем, есть ли у текущего селекта атрибут data-search
+            if (currentSelect.hasAttribute("data-search")) {
+                // Получаем родительский элемент текущего селекта
+                const selectItem = currentSelect.parentElement;
+                // Переинициализируем поиск для селекта
+                selectInstance.searchActions(selectItem);
+            }
+            // Фильтрация значений в блоке find-partners, при выборе роли
+            if (currentSelect.closest('.find-partners__partner-block')) {
+                const selectedValue = currentSelect.value;
+                const allSelects = document.querySelectorAll('.find-partners__partner-block select');
+                allSelects.forEach(select => {
+                    if (select !== currentSelect) {
+                        const optionToRemove = select.querySelector(`option[value="${selectedValue}"]`);
+                        if (optionToRemove) {
+                            optionToRemove.remove();
+                            selectInstance.setOptions(select.parentElement, select);
+                        }
+                    }
+                });
+            }
+        });
         (() => {
             const headerSearch = document.getElementById("headerSearch");
             if (!headerSearch) return false;
