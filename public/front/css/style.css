@@ -4833,6 +4833,7 @@ blockquote p::after {
 
 .my-projects {
   margin-top: 3.25rem;
+  margin-bottom: 50px;
 }
 
 .my-projects__content {
