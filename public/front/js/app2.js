@@ -10316,39 +10316,42 @@
             
             window.addEventListener("scroll", handleScroll); */
         })();
-        const dropArea = document.querySelectorAll(".add-photo");
-        if (dropArea.length != 0) {
-            document.querySelector(".drag-wrapper");
-            const fileInput = document.querySelector(".file__input");
-            [ "dragenter", "dragover", "dragleave", "drop" ].forEach((eventName => {
+        (()=> {            
+            const dropArea = document.querySelectorAll(".add-photo");
+            if (dropArea.length != 0) {
+                document.querySelector(".drag-wrapper");
+                const fileInput = document.querySelector(".file__input");
+                if (!fileInput) return false;
+                [ "dragenter", "dragover", "dragleave", "drop" ].forEach((eventName => {
+                    dropArea.forEach((element => {
+                        element.addEventListener(eventName, preventDefaults, false);
+                    }));
+                }));
+                function preventDefaults(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                }
                 dropArea.forEach((element => {
-                    element.addEventListener(eventName, preventDefaults, false);
+                    element.addEventListener("click", (e => {
+                        if (!e.target.classList.contains("delete-img__button")) {
+                            var box = e.currentTarget;
+                            var lockedItem = box.querySelector(".file__input");
+                            lockedItem.click();
+                        }
+                    }));
                 }));
-            }));
-            function preventDefaults(e) {
-                e.preventDefault();
-                e.stopPropagation();
+                fileInput.onchange = () => {
+                    const files = fileInput.files;
+                    handleFiles(files);
+                };
+                function handleFiles(files) {
+                    files = [ ...files ];
+                    files.forEach((file => {
+                        console.log(file);
+                    }));
+                }
             }
-            dropArea.forEach((element => {
-                element.addEventListener("click", (e => {
-                    if (!e.target.classList.contains("delete-img__button")) {
-                        var box = e.currentTarget;
-                        var lockedItem = box.querySelector(".file__input");
-                        lockedItem.click();
-                    }
-                }));
-            }));
-            fileInput.onchange = () => {
-                const files = fileInput.files;
-                handleFiles(files);
-            };
-            function handleFiles(files) {
-                files = [ ...files ];
-                files.forEach((file => {
-                    console.log(file);
-                }));
-            }
-        }
+        })();
         const projectDescriptionBtn = document.querySelector(".project-main__btn-description");
         if (projectDescriptionBtn) projectDescriptionBtn.addEventListener("click", (() => {
             const item = document.querySelector(".project-main__text");
