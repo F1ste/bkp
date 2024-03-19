@@ -10,7 +10,7 @@ import {} from "../libs/ckeditor/ckeditor";
     const ckeExistsing = document.querySelector(".cke");
     if (!ckeExistsing) {
         var editorData = {};
-        var textareas = document.querySelectorAll("textarea:not(#video)");
+        var textareas = document.querySelectorAll("textarea:not(#video):not(#cover_letter)");
         textareas.forEach(function (textarea) {
             var editor = CKEDITOR.replace(textarea);
             CKFinder.setupCKEditor(editor);
@@ -21,6 +21,35 @@ import {} from "../libs/ckeditor/ckeditor";
                     editorData[fieldName] = currentEditor.getData();
                 });
             })(editor, excerptFieldName);
+        });
+    }
+
+    const findPartnerSect = document.querySelector(
+        ".create-project__find-partners"
+    );
+    const addPartnerBtn = findPartnerSect.querySelector(".add-partner__input").closest('.add-partner');
+    let partnersEditors = document.querySelectorAll(
+        ".find-partners__partner-block"
+    );
+    let editorsCount = partnersEditors.length;
+    if (addPartnerBtn) {
+        function initializeCKEditorForTextarea(textareaId) {
+            var editor = CKEDITOR.replace(textareaId);
+            CKFinder.setupCKEditor(editor);
+            var excerptFieldName = textareaId;
+            editorData[excerptFieldName] = editor.getData();
+            editor.on("change", function () {
+                editorData[excerptFieldName] = editor.getData();
+            });
+        }
+
+        addPartnerBtn.addEventListener("click", () => {
+            setTimeout(() => {
+                var newTextareaId =
+                    "FormProjectPartnerDescription" + editorsCount;
+                initializeCKEditorForTextarea(newTextareaId);
+                editorsCount++;
+            }, 1);
         });
     }
 
@@ -76,7 +105,7 @@ import {} from "../libs/ckeditor/ckeditor";
                 });
         });
 
-    document
+/*     document
         .getElementById(select.storeButton3)
         .addEventListener("click", (e) => {
             if (! confirm('Вы хотите отклонить проект?')) {
@@ -97,7 +126,7 @@ import {} from "../libs/ckeditor/ckeditor";
                         "Не удалось обновить услугу... Попробуйте позже"
                     );
                 });
-        });
+        }); */
 
     document
         .getElementById(select.storeButton4)

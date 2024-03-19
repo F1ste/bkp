@@ -257,7 +257,17 @@
                             @endforeach
 
                             </div>
-
+                        <div class="create-project__form-img add-partner">
+                            Добавить роль партнера
+                            <div class="create-project__gallery form__input add-partner__input">
+                                <div class="create-project__drag-and-drop">
+                                    <div class="create-project__drag-wrapper">
+                                        <button type="button" name="addPartner" class="add-partner__btn" hidden=""></button>
+                                        <div class="create-project__upload-logo"><img src="/image/iconsFont/add-img_thin.svg" alt="Загрузите фото "></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                         </div>
                         <div class="create-project__footer">
                             <div class="create-project__title personal__title">Контакты для связи:</div>
