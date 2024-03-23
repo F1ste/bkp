@@ -253,6 +253,9 @@
                                         <label for="FormProjectPartnerDescription{{$key}}" class="create-project__form-label form__label">Описание</label>
                                         <textarea id="FormProjectPartnerDescription{{$key}}" type="text" name="serch[tex][]" class="create-project__form-input form__input project-description" placeholder="Не более 10000 символов" data-placeholder="Не более 10000 символов">{{ $serchs->tex ?? '' }}</textarea>
                                     </div>
+                                    <div class="create-project__remove-partner">
+                                    <button type="button" class="remove-partner btn btn-filled">Удалить роль</button>
+                                </div>
                                 </div>
                             @endforeach
 

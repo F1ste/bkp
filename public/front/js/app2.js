@@ -10440,7 +10440,7 @@
                     partnerBlock.remove();
                 }
                 let removeButtons = findPartnerSect.querySelectorAll(".remove-partner");
-                removeButtons.length > 0 ? removeButtons[0].style.display = (removeButtons.length < 1) ? 'none' : 'block' : null;
+                removeButtons.length > 0 ? removeButtons[0].style.display = (removeButtons.length <= 1) ? 'none' : 'block' : null;
                 createdCount--;
                 if (createdCount < optionsCount) {
                     addPartnerBtn.style.display = 'flex'
@@ -10463,6 +10463,13 @@
                 });
             }
             findPartnerSect.addEventListener("click", removePartner);
+        })();
+        (()=>{
+            const findPartnerSect = document.querySelector(".create-project__find-partners");
+            if (!findPartnerSect) return false;
+            let removeButtons = findPartnerSect.querySelectorAll(".remove-partner");
+            if (removeButtons.length !== 1) return false;
+            removeButtons[0].style.display = 'none';
         })();
         document.addEventListener("selectCallback", function (e) {
             // Селект 
@@ -10490,6 +10497,19 @@
                 });
             }
         });
+        (()=>{
+            document.addEventListener("DOMContentLoaded", function() {
+                const allSelects = document.querySelectorAll('.find-partners__partner-block select');
+                if (allSelects.length === 0) return false;
+                allSelects.forEach(currentSelect => {
+                    document.dispatchEvent(new CustomEvent("selectCallback", {
+                        detail: {
+                            select: currentSelect
+                        }
+                    }));
+                });
+            });
+        })();
         (() => {
             const headerSearch = document.getElementById("headerSearch");
             if (!headerSearch) return false;
