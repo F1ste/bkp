@@ -53,21 +53,45 @@ class ProjectController extends Controller
             ->pluck('name', 'number')
             ->sortKeys();
 
-        $eventType = Subject::distinct()->orderBy('name', 'asc')->pluck('name')->map(function ($eventType) {
-            return $eventType;
-        })->unique();
+        $eventType = Project::query()
+            ->published()
+            ->select('tema')
+            ->distinct()
+            ->pluck('tema')
+            ->filter()
+            ->sort();
 
-        $tema = Event::distinct()->orderBy('name', 'asc')->pluck('name')->map(function ($tema) {
-            return $tema;
-        })->unique();
+        $tema = Project::query()
+            ->published()
+            ->select('tip')
+            ->distinct()
+            ->pluck('tip')
+            ->filter()
+            ->sort();
 
-        $teg = Tag::distinct()->orderBy('name', 'asc')->pluck('name')->map(function ($teg) {
-            return $teg;
-        })->unique();
+        $teg = Project::query()
+            ->published()
+            ->select('teg')
+            ->pluck('teg')
+            ->map(function ($tag) {
+                return json_decode($tag, true);
+            })
+            ->flatten()
+            ->unique()
+            ->sort();
 
-        $roles = Role::distinct()->orderBy('name', 'asc')->pluck('name')->map(function ($roles) {
-            return $roles;
-        })->unique();
+        $roles = Project::query()
+            ->published()
+            ->select('serch')
+            ->pluck('serch')
+            ->map(function ($serch) {
+                $roles = json_decode($serch, true);
+                return array_column($roles, 'sel');
+            })
+            ->flatten()
+            ->unique()
+            ->filter()
+            ->sort();
 
         $userIds = $collection->pluck('user_id')->unique();
         $users = User::whereIn('id', $userIds)->get();
