@@ -10,7 +10,7 @@ import {} from "../libs/ckeditor/ckeditor";
     var editorData = {};
     var textareas = document.querySelectorAll("textarea:not(#video)");
     textareas.forEach(function (textarea) {
-        var editor = CKEDITOR.replace(textarea);
+        var editor = CKEDITOR.replace(textarea, { extraPlugins: 'autolink' });
         CKFinder.setupCKEditor(editor);
         var excerptFieldName = textarea.id;
         (function (currentEditor, fieldName) {

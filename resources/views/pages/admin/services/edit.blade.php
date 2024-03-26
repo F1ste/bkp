@@ -47,7 +47,7 @@
                                 <div class="create-project__main-col">
                                     <div class="create-project__form-item form__item">
                                         <label for="name_proj" class="create-project__form-label form__label">Название проекта</label>
-                                        <input value="{{ $collection->name_proj }}" id="name_proj" type="text" name="name_proj" class="create-project__form-input form__input" placeholder="Название проекта" data-placeholder="Название проекта">
+                                        <input value="{{ $collection->name_proj }}" id="name_proj" type="text" name="name_proj" class="create-project__form-input form__input" maxlength="46" placeholder="Название проекта" data-placeholder="Название проекта">
                                     </div>
                                     <div class="create-project__form-item form__item">
                                         <label for="date_service_from" class="create-project__form-label form__label">Сроки начала проекта</label>

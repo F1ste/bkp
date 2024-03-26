@@ -132,6 +132,10 @@ class ProjectController extends Controller
 
     public function update(Request $request, Project $project)
     {
+        $request->validate([
+            'name_proj' => ['string', 'max:46']
+        ]);
+
         if (in_array($request->status, [1, 2, 3])) {
             $action = [
                 1 => 'опубликован!',

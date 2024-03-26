@@ -19,7 +19,7 @@
                         <form id="pageFilter" class="news-block__filter-form">
                             <div data-spollers data-one-spoller data-spollers-speed="200" class="news-block__filter filter">
                                 <div class="filter__item">
-                                    <button type="button" data-spoller data-spoller-close class="filter__btn accordion__title _icon-accordionArrow">
+                                    <button type="button" data-spoller data-spoller-close class="filter__btn accordion__title _icon-accordionArrow" {!! is_null(request()->get('year')) ? '' : 'style="border-bottom: 3px solid #00AF66"' !!}>
                                         Год
                                     </button>
                                     <div class="filter__accordion-body accordion__body main-text">
@@ -35,7 +35,7 @@
 
                                 </div>
                                 <div class="filter__item">
-                                    <button type="button" data-spoller data-spoller-close class="filter__btn accordion__title _icon-accordionArrow">
+                                    <button type="button" data-spoller data-spoller-close class="filter__btn accordion__title _icon-accordionArrow" {!! is_null(request()->get('month')) ? '' : 'style="border-bottom: 3px solid #00AF66"' !!}>
                                         Месяц
                                     </button>
                                     <div class="filter__accordion-body accordion__body main-text">
@@ -50,7 +50,7 @@
                                     </div>
                                 </div>
                                 <div class="filter__item">
-                                    <button type="button" data-spoller data-spoller-close class="filter__btn accordion__title _icon-accordionArrow">
+                                    <button type="button" data-spoller data-spoller-close class="filter__btn accordion__title _icon-accordionArrow" {!! is_null(request()->get('tip')) ? '' : 'style="border-bottom: 3px solid #00AF66"' !!}>
                                         Тематика
                                     </button>
                                     <div class="filter__accordion-body accordion__body main-text">
@@ -67,7 +67,7 @@
                                     </div>
                                 </div>
                                 <div class="filter__item">
-                                    <button type="button" data-spoller data-spoller-close class="filter__btn accordion__title _icon-accordionArrow">
+                                    <button type="button" data-spoller data-spoller-close class="filter__btn accordion__title _icon-accordionArrow" {!! is_null(request()->get('tema')) ? '' : 'style="border-bottom: 3px solid #00AF66"' !!}>
                                         Тип
                                     </button>
                                     <div class="filter__accordion-body accordion__body main-text">
@@ -84,7 +84,7 @@
                                     </div>
                                 </div>
                                 <div class="filter__item">
-                                    <button type="button" data-spoller data-spoller-close class="filter__btn accordion__title _icon-accordionArrow">
+                                    <button type="button" data-spoller data-spoller-close class="filter__btn accordion__title _icon-accordionArrow" {!! is_null(request()->get('teg')) ? '' : 'style="border-bottom: 3px solid #00AF66"' !!}>
                                         Теги
                                     </button>
                                     <div class="filter__accordion-body accordion__body main-text">
@@ -101,7 +101,7 @@
                                     </div>
                                 </div>
                                 <div class="filter__item">
-                                    <button type="button" data-spoller data-spoller-close class="filter__btn accordion__title _icon-accordionArrow">
+                                    <button type="button" data-spoller data-spoller-close class="filter__btn accordion__title _icon-accordionArrow" {!! is_null(request()->get('role')) ? '' : 'style="border-bottom: 3px solid #00AF66"' !!}>
                                         Роли
                                     </button>
                                     <div class="filter__accordion-body accordion__body main-text">

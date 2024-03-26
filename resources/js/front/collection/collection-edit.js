@@ -71,7 +71,7 @@ import {} from "../libs/ckeditor/ckeditor";
     var editorData = {};
     var textareas = document.querySelectorAll("textarea:not(#video)");
     textareas.forEach(function (textarea) {
-        var editor = CKEDITOR.replace(textarea);
+        var editor = CKEDITOR.replace(textarea, { extraPlugins: 'autolink' });
         CKFinder.setupCKEditor(editor);
         var excerptFieldName = textarea.id;
         (function (currentEditor, fieldName) {
@@ -103,7 +103,7 @@ import {} from "../libs/ckeditor/ckeditor";
     let editorsCount = partnersEditors.length;
     if (addPartnerBtn) {
         function initializeCKEditorForTextarea(textareaId) {
-            var editor = CKEDITOR.replace(textareaId);
+            var editor = CKEDITOR.replace(textareaId, { extraPlugins: 'autolink' });
             CKFinder.setupCKEditor(editor);
             var excerptFieldName = textareaId;
             editorData[excerptFieldName] = editor.getData();

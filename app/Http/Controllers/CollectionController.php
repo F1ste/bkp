@@ -114,6 +114,10 @@ class CollectionController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'name_proj' => ['string', 'max:46']
+        ]);
+
         $collection = Project::create([
             'name' => $request->name,
             'images' => $request->images,
@@ -148,6 +152,10 @@ class CollectionController extends Controller
      */
     public function edit(Request $request)
     {
+        $request->validate([
+            'name_proj' => ['string', 'max:46']
+        ]);
+
         $collection = Project::where('id', $request->id)->update([
             'name' => $request->name,
             'images' => $request->images,
