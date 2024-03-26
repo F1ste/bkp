@@ -39,13 +39,19 @@ class ProjectController extends Controller
             ->unique();
 
         $months = Project::query()
+            ->published()
+            ->selectRaw('MONTH(date_service_from) as month')
             ->distinct()
-            ->orderBy('date_service_from', 'asc')
-            ->pluck('date_service_from')
-            ->map(function ($date) {
-                return Carbon::parse($date)->isoFormat('MMMM');
+            ->get()
+            ->map(function ($row) {
+                $date = Carbon::create(null, $row['month']);
+                return [
+                    'number' => $date->month,
+                    'name' => $date->isoFormat('MMMM'),
+                ];
             })
-            ->unique();
+            ->pluck('name', 'number')
+            ->sortKeys();
 
         $eventType = Subject::distinct()->orderBy('name', 'asc')->pluck('name')->map(function ($eventType) {
             return $eventType;
