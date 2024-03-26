@@ -3995,7 +3995,7 @@ blockquote p::after {
 }
 
 .partners-searching__partner-description a{
-  background-color: #00AF66;
+  color: #00AF66;
 }
 
 .partners-searching__partner-description a:hover{
