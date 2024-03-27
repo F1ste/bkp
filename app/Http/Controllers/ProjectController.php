@@ -22,14 +22,14 @@ class ProjectController extends Controller
         $filter = app()->make(PageProjectsFilter::class, ['queryParams' => array_filter($data)]);
 
         $collection = Project::query()
-            ->where('status', Project::STATUS_PUBLISHED)
+            ->published()
             ->orderBy('order')
             ->orderByDesc('created_at')
             ->filter($filter)
             ->paginate(12);
 
         $years = Project::query()
-            ->where('status', Project::STATUS_PUBLISHED)
+            ->published()
             ->distinct()
             ->orderBy('date_service_from', 'desc')
             ->pluck('date_service_from')
