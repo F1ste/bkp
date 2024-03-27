@@ -3,6 +3,7 @@
 namespace App\Http\Filters;
 
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Support\Arr;
 
 class PageProjectsFilter extends AbstractFilter
 {
@@ -29,7 +30,7 @@ class PageProjectsFilter extends AbstractFilter
 
     public function month(Builder $builder, $value)
     {
-        $months = $value;
+        $months = Arr::wrap($value);
         $monthMappings = [
             'январь' => '01',
             'февраль' => '02',
@@ -59,7 +60,7 @@ class PageProjectsFilter extends AbstractFilter
 
     public function year(Builder $builder, $value)
     {
-        $years = $value;
+        $years = Arr::wrap($value);
 
         $builder->where(function ($query) use ($years) {
             foreach ($years as $year) {
@@ -73,7 +74,7 @@ class PageProjectsFilter extends AbstractFilter
 
     public function tip(Builder $builder, $value)
     {
-        $values = $value;
+        $values = Arr::wrap($value);
         $builder->where(function ($query) use ($values) {
             foreach ($values as $value) {
                 $query->orWhere('tip', $value);
@@ -83,7 +84,7 @@ class PageProjectsFilter extends AbstractFilter
 
     public function tema(Builder $builder, $value)
     {
-        $values = $value;
+        $values = Arr::wrap($value);
         $builder->where(function ($query) use ($values) {
             foreach ($values as $value) {
                 $query->orWhere('tema', $value);
@@ -93,7 +94,7 @@ class PageProjectsFilter extends AbstractFilter
 
     public function teg(Builder $builder, $value)
     {
-        $values = $value;
+        $values = Arr::wrap($value);
         $builder->where(function ($query) use ($values) {
             foreach ($values as $value) {
                 $query->orWhere('teg', 'like', "%{$value}%");
@@ -103,7 +104,7 @@ class PageProjectsFilter extends AbstractFilter
 
     public function role(Builder $builder, $value)
     {
-        $values = $value;
+        $values = Arr::wrap($value);
         $builder->where(function ($query) use ($values) {
             foreach ($values as $value) {
                 $query->orWhere('serch', 'like', "%{$value}%");
