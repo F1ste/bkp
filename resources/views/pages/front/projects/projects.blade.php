@@ -50,7 +50,7 @@
                                     </div>
                                 </div>
                                 <div class="filter__item">
-                                    <button type="button" data-spoller data-spoller-close class="filter__btn accordion__title _icon-accordionArrow" {!! is_null(request()->get('tip')) ? '' : 'style="border-bottom: 3px solid #00AF66"' !!}>
+                                    <button type="button" data-spoller data-spoller-close class="filter__btn accordion__title _icon-accordionArrow" {!! is_null(request()->get('tema')) ? '' : 'style="border-bottom: 3px solid #00AF66"' !!}>
                                         Тематика
                                     </button>
                                     <div class="filter__accordion-body accordion__body main-text">
@@ -58,8 +58,8 @@
                                         @if (!is_null($rubric))
                                             <div class="filter__form-item form__item">
                                                 <div class="filter__checkbox checkbox">
-                                                    <input data-no-focus-classes id="type-{{ $rubric }}" value="{{ $rubric }}" type="checkbox" name="tip[]" class="filter__checkbox-input checkbox__input">
-                                                    <label for="type-{{ $rubric }}" class="filter__form-label checkbox__label "><span>{{ $rubric }}</span></label>
+                                                    <input data-no-focus-classes id="subject-{{ $rubric }}" value="{{ $rubric }}" type="checkbox" name="tema[]" class="filter__checkbox-input checkbox__input">
+                                                    <label for="subject-{{ $rubric }}" class="filter__form-label checkbox__label "><span>{{ $rubric }}</span></label>
                                                 </div>
                                             </div>
                                         @endif
@@ -67,7 +67,7 @@
                                     </div>
                                 </div>
                                 <div class="filter__item">
-                                    <button type="button" data-spoller data-spoller-close class="filter__btn accordion__title _icon-accordionArrow" {!! is_null(request()->get('tema')) ? '' : 'style="border-bottom: 3px solid #00AF66"' !!}>
+                                    <button type="button" data-spoller data-spoller-close class="filter__btn accordion__title _icon-accordionArrow" {!! is_null(request()->get('tip')) ? '' : 'style="border-bottom: 3px solid #00AF66"' !!}>
                                         Тип
                                     </button>
                                     <div class="filter__accordion-body accordion__body main-text">
@@ -75,8 +75,8 @@
                                         @if (!is_null($rubric))
                                             <div class="filter__form-item form__item">
                                                 <div class="filter__checkbox checkbox">
-                                                    <input data-no-focus-classes id="subject-{{ $rubric }}" value="{{ $rubric }}" type="checkbox" name="tema[]" class="filter__checkbox-input checkbox__input">
-                                                    <label for="subject-{{ $rubric }}" class="filter__form-label checkbox__label "><span>{{ $rubric }}</span></label>
+                                                    <input data-no-focus-classes id="type-{{ $rubric }}" value="{{ $rubric }}" type="checkbox" name="tip[]" class="filter__checkbox-input checkbox__input">
+                                                    <label for="type-{{ $rubric }}" class="filter__form-label checkbox__label "><span>{{ $rubric }}</span></label>
                                                 </div>
                                             </div>
                                         @endif
