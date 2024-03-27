@@ -26,8 +26,8 @@
                                     @foreach ($years as $year)
                                         <div class="filter__form-item form__item">
                                             <div class="filter__checkbox checkbox">
-                                                <input data-no-focus-classes id="{{ $year }}" value="{{ $year }}" type="checkbox" name="year[]" class="filter__checkbox-input checkbox__input">
-                                                <label for="{{ $year }}" class="filter__form-label checkbox__label "><span>{{ $year }}</span></label>
+                                                <input data-no-focus-classes id="year-{{ $year }}" value="{{ $year }}" type="checkbox" name="year[]" class="filter__checkbox-input checkbox__input">
+                                                <label for="year-{{ $year }}" class="filter__form-label checkbox__label "><span>{{ $year }}</span></label>
                                             </div>
                                         </div>
                                     @endforeach
@@ -42,8 +42,8 @@
                                     @foreach ($months as $month)
                                         <div class="filter__form-item form__item">
                                             <div class="filter__checkbox checkbox">
-                                                <input data-no-focus-classes id="{{ $month }}" value="{{ $month }}" type="checkbox" name="month[]" class="filter__checkbox-input checkbox__input">
-                                                <label for="{{ $month }}" class="filter__form-label checkbox__label "><span>{{ Str::title($month) }}</span></label>
+                                                <input data-no-focus-classes id="month-{{ $month }}" value="{{ $month }}" type="checkbox" name="month[]" class="filter__checkbox-input checkbox__input">
+                                                <label for="month-{{ $month }}" class="filter__form-label checkbox__label "><span>{{ Str::title($month) }}</span></label>
                                             </div>
                                         </div>
                                     @endforeach
@@ -58,8 +58,8 @@
                                         @if (!is_null($rubric))
                                             <div class="filter__form-item form__item">
                                                 <div class="filter__checkbox checkbox">
-                                                    <input data-no-focus-classes id="{{ $rubric }}" value="{{ $rubric }}" type="checkbox" name="tip[]" class="filter__checkbox-input checkbox__input">
-                                                    <label for="{{ $rubric }}" class="filter__form-label checkbox__label "><span>{{ $rubric }}</span></label>
+                                                    <input data-no-focus-classes id="type-{{ $rubric }}" value="{{ $rubric }}" type="checkbox" name="tip[]" class="filter__checkbox-input checkbox__input">
+                                                    <label for="type-{{ $rubric }}" class="filter__form-label checkbox__label "><span>{{ $rubric }}</span></label>
                                                 </div>
                                             </div>
                                         @endif
@@ -75,8 +75,8 @@
                                         @if (!is_null($rubric))
                                             <div class="filter__form-item form__item">
                                                 <div class="filter__checkbox checkbox">
-                                                    <input data-no-focus-classes id="{{ $rubric }}" value="{{ $rubric }}" type="checkbox" name="tema[]" class="filter__checkbox-input checkbox__input">
-                                                    <label for="{{ $rubric }}" class="filter__form-label checkbox__label "><span>{{ $rubric }}</span></label>
+                                                    <input data-no-focus-classes id="subject-{{ $rubric }}" value="{{ $rubric }}" type="checkbox" name="tema[]" class="filter__checkbox-input checkbox__input">
+                                                    <label for="subject-{{ $rubric }}" class="filter__form-label checkbox__label "><span>{{ $rubric }}</span></label>
                                                 </div>
                                             </div>
                                         @endif
@@ -92,8 +92,8 @@
                                         @if (!is_null($rubric))
                                             <div class="filter__form-item form__item">
                                                 <div class="filter__checkbox checkbox">
-                                                    <input data-no-focus-classes id="{{ $rubric }}" value="{{ $rubric }}" type="checkbox" name="teg[]" class="filter__checkbox-input checkbox__input">
-                                                    <label for="{{ $rubric }}" class="filter__form-label checkbox__label "><span>{{ $rubric }}</span></label>
+                                                    <input data-no-focus-classes id="tag-{{ $rubric }}" value="{{ $rubric }}" type="checkbox" name="teg[]" class="filter__checkbox-input checkbox__input">
+                                                    <label for="tag-{{ $rubric }}" class="filter__form-label checkbox__label "><span>{{ $rubric }}</span></label>
                                                 </div>
                                             </div>
                                         @endif
@@ -109,8 +109,8 @@
                                         @if (!is_null($rubric))
                                             <div class="filter__form-item form__item">
                                                 <div class="filter__checkbox checkbox">
-                                                    <input data-no-focus-classes id="{{ $rubric }}" value="{{ $rubric }}" type="checkbox" name="role[]" class="filter__checkbox-input checkbox__input">
-                                                    <label for="{{ $rubric }}" class="filter__form-label checkbox__label "><span>{{ $rubric }}</span></label>
+                                                    <input data-no-focus-classes id="role-{{ $rubric }}" value="{{ $rubric }}" type="checkbox" name="role[]" class="filter__checkbox-input checkbox__input">
+                                                    <label for="role-{{ $rubric }}" class="filter__form-label checkbox__label "><span>{{ $rubric }}</span></label>
                                                 </div>
                                             </div>
                                         @endif
@@ -235,8 +235,9 @@
             </div>
     </main>
     <script>
-    (()=>{
+    (() => {
         const currentURL = window.location.href;
+        const pageFilter = document.getElementById('pageFilter');
 
         function getQueryParams(url) {
             const queryParams = {};
@@ -257,9 +258,7 @@
         }
 
         const queryParams = getQueryParams(currentURL);
-
-        const checkboxes = document.querySelectorAll('input[name]');
-
+        const checkboxes = pageFilter.querySelectorAll('input[type="checkbox"][name]');
         checkboxes.forEach((checkbox) => {
             const checkboxName = checkbox.name;
             if (queryParams.hasOwnProperty(checkboxName)) {
@@ -270,13 +269,9 @@
             }
         });
 
-        const pageFilter = document.getElementById('pageFilter');
-
         const PageCheckboxes = pageFilter.querySelectorAll('input[type="checkbox"]');
-
         PageCheckboxes.forEach((checkbox) => {
             checkbox.addEventListener('change', function () {
-
                 pageFilter.submit();
             });
         });
