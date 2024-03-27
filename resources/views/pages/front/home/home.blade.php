@@ -17,7 +17,7 @@
                     <div class="projects-category__masonry">
                         <div class="projects-category__masonry-col">
                             <div class="projects-category__item">
-                                <a href="/projects?tip%5B%5D=Дизайн">
+                                <a href="{{ route('projects', ['tema' => 'Дизайн']) }}">
                                     <div class="projects-category__media media-block">
                                         <picture>
                                             <source srcset="{{ asset('image/projects-category/design.webp') }}" type="image/webp">
@@ -30,7 +30,7 @@
                                 </a>
                             </div>
                             <div class="projects-category__item">
-                                <a href="/projects?tip%5B%5D=Литература">
+                                <a href="{{ route('projects', ['tema' => 'Литература']) }}">
                                     <div class="projects-category__media media-block">
                                         <picture>
                                             <source srcset="{{ asset('image/projects-category/literature.webp') }}" type="image/webp">
@@ -43,7 +43,7 @@
                                 </a>
                             </div>
                             <div class="projects-category__item">
-                                <a href="/projects?tip%5B%5D=Междисциплинарные+проекты">
+                                <a href="{{ route('projects', ['tema' => 'Междисциплинарные проекты']) }}">
                                     <div class="projects-category__media media-block">
                                         <picture>
                                             <source srcset="{{ asset('image/projects-category/interdisciplinary.webp') }}" type="image/webp">
@@ -58,7 +58,7 @@
                         </div>
                         <div class="projects-category__masonry-col">
                             <div class="projects-category__item">
-                                <a href="/projects?tip%5B%5D=Драмтеатр">
+                                <a href="{{ route('projects', ['tema' => 'Драмтеатр']) }}">
                                     <div class="projects-category__media media-block">
                                         <picture>
                                             <source srcset="{{ asset('image/projects-category/dramtheatr.webp') }}" type="image/webp">
@@ -71,7 +71,7 @@
                                 </a>
                             </div>
                             <div class="projects-category__item">
-                                <a href="/projects?tip%5B%5D=Визуальные+искусства">
+                                <a href="{{ route('projects', ['tema' => 'Визуальные искусства']) }}">
                                     <div class="projects-category__media media-block">
                                         <picture>
                                             <source srcset="{{ asset('image/projects-category/visual.webp') }}" type="image/webp">
@@ -86,7 +86,7 @@
                         </div>
                         <div class="projects-category__masonry-col">
                             <div class="projects-category__item">
-                                <a href="/projects?tip%5B%5D=Музыка">
+                                <a href="{{ route('projects', ['tema' => 'Музыка']) }}">
                                     <div class="projects-category__media media-block">
                                         <picture>
                                             <source srcset="{{ asset('image/projects-category/music.webp') }}" type="image/webp">
@@ -99,7 +99,7 @@
                                 </a>
                             </div>
                             <div class="projects-category__item">
-                                <a href="/projects?tip%5B%5D=Балет+и+танец">
+                                <a href="{{ route('projects', ['tema' => 'Балет и танец']) }}">
                                     <div class="projects-category__media media-block">
                                         <picture>
                                             <source srcset="{{ asset('image/projects-category/dance.webp') }}" type="image/webp">
@@ -112,7 +112,7 @@
                                 </a>
                             </div>
                             <div class="projects-category__item">
-                                <a href="/projects?tip%5B%5D=Опера">
+                                <a href="{{ route('projects', ['tema' => 'Опера']) }}">
                                     <div class="projects-category__media media-block">
                                         <picture>
                                             <source srcset="{{ asset('image/projects-category/opera.webp') }}" type="image/webp">
@@ -127,7 +127,7 @@
                         </div>
                         <div class="projects-category__masonry-row">
                             <div class="projects-category__item">
-                                <a href="/projects?tip%5B%5D=Архитектура">
+                                <a href="{{ route('projects', ['tema' => 'Архитектура']) }}">
                                     <div class="projects-category__media media-block">
                                         <picture>
                                             <source srcset="{{ asset('image/projects-category/architecture.webp') }}" type="image/webp">
@@ -141,7 +141,7 @@
                                 </a>
                             </div>
                             <div class="projects-category__item">
-                                <a href="/projects?tip%5B%5D=Кино">
+                                <a href="{{ route('projects', ['tema' => 'Кино']) }}">
                                     <div class="projects-category__media media-block">
                                         <picture>
                                             <source srcset="{{ asset('image/projects-category/film.webp') }}" type="image/webp">
@@ -154,7 +154,7 @@
                                 </a>
                             </div>
                             <div class="projects-category__item">
-                                <a href="/projects?tip%5B%5D=Цирк">
+                                <a href="{{ route('projects', ['tema' => 'Цирк']) }}">
                                     <div class="projects-category__media media-block">
                                         <picture>
                                             <source srcset="{{ asset('image/projects-category/circus.webp') }}" type="image/webp">
@@ -167,11 +167,11 @@
                                 </a>
                             </div>
                             <div class="projects-category__item">
-                                <a href="/projects?tip%5B%5D=Цирк">
+                                <a href="{{ route('projects', ['tema' => 'Музей']) }}">
                                     <div class="projects-category__media media-block">
                                         <picture>
                                             <source srcset="{{ asset('image/projects-category/museum.webp') }}" type="image/webp">
-                                            <img src="{{ asset('image/projects-category/musuem.jpg') }}" alt="Цирк">
+                                            <img src="{{ asset('image/projects-category/musuem.jpg') }}" alt="Музей">
                                         </picture>
                                     </div>
                                     <div class="projects-category__category-name">
@@ -180,7 +180,7 @@
                                 </a>
                             </div>
                             <div class="projects-category__item">
-                                <a href="/projects?tip%5B%5D=Другое">
+                                <a href="{{ route('projects', ['tema' => 'Другое']) }}">
                                     <div class="projects-category__media media-block">
                                         <picture>
                                             <source srcset="{{ asset('image/projects-category/other.webp') }}" type="image/webp">
