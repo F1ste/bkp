@@ -66,7 +66,7 @@ class Project extends Model
         parent::boot();
 
         static::creating(function ($post) {
-            $post->slug = Str::slug($post->name);
+            $post->slug = Str::slug($post->name_proj);
         });
     }
 
