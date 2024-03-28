@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Region;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -12,7 +13,8 @@ class SettingUserController extends Controller
      */
     public function setting()
     {
-        return view('pages.user.setting.setting');
+        $regions = Region::all();
+        return view('pages.user.setting.setting', compact('regions'));
     }
 
     /**
