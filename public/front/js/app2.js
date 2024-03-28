@@ -10374,9 +10374,25 @@
 
                 const dataSelect = document.querySelectorAll("select");
 
-                let partnerBlockTempl = `\n        <div class="find-partners__partner-block">\n            <div class="create-project__form-select">\n                <label class="create-project__form-label form__label">Кого ищем</label>\n                <select id="selectElement${partnerCount}" data-id="${dataSelect.length + +1}" data-scroll name="form[]" class="form__select">\n                    <option value="" selected>Выбрать</option>\n                </select>\n            </div>\n            <div class="create-project__form-item form__item">\n                <label for="FormProjectRoleUntil${partnerCount + +1}" class="create-project__form-label form__label">До какого числа принимаются заявки</label>\n                <input id="FormProjectRoleUntil${partnerCount + +1}" autocomplete="off" data-datepicker data-datepicker_${partnerCount + +2} type="text" name="projectName" class="create-project__form-input form__input" placeholder="До 10.09.2023" data-placeholder="До 10.09.2023" readonly autocomplete="off">\n            </div>\n            <div class="create-project__role-description form__item">\n                <label for="FormProjectPartnerDescription${partnerCount}" class="create-project__form-label form__label">Описание</label>\n                <textarea id="FormProjectPartnerDescription${partnerCount}" type="text" name="roleDescription"\n                class="create-project__form-input form__input project-description" placeholder="Не более 10000 символов" data-placeholder="Не более 10000 символов"></textarea>\n            </div>\n\n                            <div class="create-project__remove-partner">
-                <button type="button" class="remove-partner btn btn-filled">Удалить роль</button>
-            </div>        </div>\n        `;
+                let partnerBlockTempl = `<div class="find-partners__partner-block">
+                    <div class="create-project__form-select">
+                        <label class="create-project__form-label form__label">Кого ищем</label>
+                        <select id="selectElement${partnerCount}" data-id="${dataSelect.length + +1}" data-scroll name="serch[sel][]" class="form__select">
+                            <option value="" selected>Выбрать</option>
+                        </select>
+                    </div>
+                    <div class="create-project__form-item form__item">
+                        <label for="FormProjectRoleUntil${partnerCount + +1}" class="create-project__form-label form__label">До какого числа принимаются заявки</label>
+                        <input id="FormProjectRoleUntil${partnerCount + +1}" autocomplete="off" data-datepicker data-datepicker_${partnerCount + +2} type="text" name="serch[inp][]" class="create-project__form-input form__input" placeholder="До 10.09.2023" data-placeholder="До 10.09.2023" readonly autocomplete="off">
+                    </div>
+                    <div class="create-project__role-description form__item">
+                        <label for="FormProjectPartnerDescription${partnerCount}" class="create-project__form-label form__label">Описание</label>
+                        <textarea id="FormProjectPartnerDescription${partnerCount}" type="text" name="serch[tex][]" class="create-project__form-input form__input project-description" placeholder="Не более 10000 символов" data-placeholder="Не более 10000 символов"></textarea>
+                    </div>
+                    <div class="create-project__remove-partner">
+                        <button type="button" class="remove-partner btn btn-filled">Удалить роль</button>
+                    </div>
+                </div>`;
                 findPartnerContent.insertAdjacentHTML("beforeend", partnerBlockTempl);
                 var selectElement = document.getElementById(`selectElement${partnerCount}`);
                 const urlRoles = "/rol";

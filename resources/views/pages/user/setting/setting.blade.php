@@ -20,9 +20,9 @@
                                     <label class="profile__form-label form__label">Город</label>
                                     <select id="city" data-scroll name="form[]" class="form__select">
                                         <option value="" @if (auth()->user()->city == '') selected @endif>Город</option>
-                                        <option value="2" @if (auth()->user()->city == '2') selected @endif>Москва</option>
-                                        <option value="3"@if (auth()->user()->city == '3') selected @endif>Санкт-Петербург</option>
-                                        <option value="4"@if (auth()->user()->city == '4') selected @endif>Воронеж</option>
+                                    @foreach ($regions as $region)
+                                        <option value="{{ $region->id }}" @if (auth()->user()->city == $region->id) selected @endif>{{ $region->name }}</option>
+                                    @endforeach
                                     </select>
                                 </div>
                                 <div class="profile__form-item form__item">
