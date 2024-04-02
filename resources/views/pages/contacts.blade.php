@@ -2,7 +2,7 @@
 
 @section('content')
     <main class="page">
-        <section class="contacts">
+        <section class="contacts section__heading">
             <div class="contacts__container">
 
                 <div class="contacts__col">
