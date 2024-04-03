@@ -7,11 +7,14 @@
     "require": {
         "php": "^8.0.2",
         "guzzlehttp/guzzle": "^7.2",
+        "http-interop/http-factory-guzzle": "^1.2",
         "laravel/framework": "^9.2",
         "laravel/sanctum": "^2.14.1",
+        "laravel/scout": "^10.8",
         "laravel/socialite": "^5.5",
         "laravel/telescope": "^4.17",
         "laravel/tinker": "^2.7",
+        "meilisearch/meilisearch-php": "^1.7",
         "pusher/pusher-php-server": "^7.2",
         "socialiteproviders/facebook": "^4.1",
         "socialiteproviders/google": "^4.1",
@@ -62,7 +65,10 @@
     "config": {
         "optimize-autoloader": true,
         "preferred-install": "dist",
-        "sort-packages": true
+        "sort-packages": true,
+        "allow-plugins": {
+            "php-http/discovery": true
+        }
     },
     "minimum-stability": "dev",
     "prefer-stable": true
