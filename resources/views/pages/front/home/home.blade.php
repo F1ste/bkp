@@ -5,7 +5,7 @@
         <section class="projects-category">
             <div class="projects-category__container">
                 <div class="projects-category__heading-text section__heading-text">
-                    <div class="projects-category__title main-page__section-title">
+                    <div class="projects-category__title section__heading section__title ">
                         КУЛЬТУРНАЯ БИРЖА
                     </div>
                     <div class="projects-category__subtitle main-page__section-subtitle">

@@ -4,7 +4,7 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="{{ asset('front/css/style.css?v=112211457017') }}"/>
+        <link rel="stylesheet" href="{{ asset('front/css/style.css?v=15344571457076') }}"/>
         <link rel="stylesheet" href="{{ asset('plugins/bvi/dist/css/bvi.min.css') }}"/>
         @hasSection('title')
             <title>@yield('title') &mdash; {{ config('app.name') }}</title>
@@ -30,6 +30,22 @@
     </head>
     <body>
         <noscript><div><img src="https://mc.yandex.ru/watch/96380785" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+        
+        <!-- Top.Mail.Ru counter -->
+        <script type="text/javascript">
+            var _tmr = window._tmr || (window._tmr = []);
+            _tmr.push({id: "3499698", type: "pageView", start: (new Date()).getTime()});
+            (function (d, w, id) {
+            if (d.getElementById(id)) return;
+            var ts = d.createElement("script"); ts.type = "text/javascript"; ts.async = true; ts.id = id;
+            ts.src = "https://top-fwz1.mail.ru/js/code.js";
+            var f = function () {var s = d.getElementsByTagName("script")[0]; s.parentNode.insertBefore(ts, s);};
+            if (w.opera == "[object Opera]") { d.addEventListener("DOMContentLoaded", f, false); } else { f(); }
+            })(document, window, "tmr-code");
+        </script>
+        <noscript><div><img src="https://top-fwz1.mail.ru/counter?id=3499698;js=na" style="position:absolute;left:-9999px;" alt="Top.Mail.Ru" /></div></noscript>
+        <!-- /Top.Mail.Ru counter -->
+
         <div class="wrapper">
             <x-header />
 
@@ -39,7 +55,7 @@
             <x-how-it-works-popup/>
         </div>
         <script src="{{ asset('front/js/app.js') }}"></script>
-        <script src="{{ asset('front/js/app2.js?v=112211457017') }}"></script>
+        <script src="{{ asset('front/js/app2.js?v=15344571457076') }}"></script>
         <script src="{{ asset('plugins/bvi/dist/js/bvi.min.js') }}"></script>
         <script>
             new isvek.Bvi({
