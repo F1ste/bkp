@@ -13,7 +13,7 @@ class SettingUserController extends Controller
      */
     public function setting()
     {
-        $regions = Region::all();
+        $regions = Region::orderBy('name')->get();
         return view('pages.user.setting.setting', compact('regions'));
     }
 
