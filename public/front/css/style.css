@@ -1610,6 +1610,7 @@ body::after {
   line-height: 112.077%;
   text-transform: uppercase;
   margin-left: -5px;
+  position: relative;
 }
 
 @supports (font-size: clamp( 3rem , 2.35rem  +  3.25vw , 6.25rem )) {
@@ -8812,6 +8813,9 @@ blockquote p::after {
 .sup-count {
     opacity: .5;
     font-size: .6em;
+    top: -25px;
+    right: -50px;
+    position: absolute;
 }
 
 .help {
