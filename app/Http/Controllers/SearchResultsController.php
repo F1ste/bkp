@@ -60,7 +60,7 @@ class SearchResultsController extends Controller
             ->orderByDesc('id')
             ->get();
 
-        $news = News::orderByDesc('id')->where('name', 'like', "%{$request->searchText}%")->get();
+        $news = News::search($request->searchText)->get();
 
         $response = [
             'news' => $news,

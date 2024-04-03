@@ -17,9 +17,9 @@
                                     <input id="org" type="text" class="profile__form-input form__input" placeholder="Название организации" data-placeholder="Название организации" value='{{ auth()->user()->org }}'>
                                 </div>
                                 <div class="profile__form-select">
-                                    <label class="profile__form-label form__label">Город</label>
+                                    <label class="profile__form-label form__label">Регион</label>
                                     <select id="city" data-scroll name="form[]" class="form__select">
-                                        <option value="" @if (auth()->user()->city == '') selected @endif>Город</option>
+                                        <option value="" @if (auth()->user()->city == '') selected @endif>Регион</option>
                                     @foreach ($regions as $region)
                                         <option value="{{ $region->id }}" @if (auth()->user()->city == $region->id) selected @endif>{{ $region->name }}</option>
                                     @endforeach
