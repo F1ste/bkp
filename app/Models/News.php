@@ -5,12 +5,15 @@ namespace App\Models;
 use App\Models\Traits\Filterable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Str;
+use Laravel\Scout\Searchable;
 
 class News extends Model
 {
     use HasFactory;
     use Filterable;
+    use Searchable;
 
     protected $table = 'news';
 
@@ -56,5 +59,22 @@ class News extends Model
                 self::where('pozits', $news->pozits)->update(['pozits' => 0]);
             }
         });
+    }
+
+    /**
+     * Get the indexable data array for the model.
+     *
+     * @return array
+     */
+    public function toSearchableArray()
+    {
+        return [
+            'name' => $this->name,
+            'slug' => $this->slug,
+            'pod_text' => strip_tags($this->pod_text),
+            'text' => strip_tags($this->text),
+            'date' => Carbon::parse($this->date),
+            'created_at' => $this->created_at,
+        ];
     }
 }
