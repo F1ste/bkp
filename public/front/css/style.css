@@ -4517,6 +4517,7 @@ blockquote p::after {
 }
 
 .contacts__container {
+  margin-top: 15px;
   display: -ms-grid;
   display: grid;
   -ms-grid-columns: 1fr 1fr;
