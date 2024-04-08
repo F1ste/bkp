@@ -204,7 +204,7 @@
         <div>
             <img src="/image/search-engine.png" width="90" alt="">
         </div>
-        <div class="info-title text-lg text-bold">По Вашему запросу ничего не найдено</div>
+        <div class="info-title text-lg text-bold text-center">По Вашему запросу ничего не найдено</div>
     </div>
     @endif
 </main>

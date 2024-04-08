@@ -2208,8 +2208,8 @@ body::after {
 .search-query__search-bar{
   margin-top: 40px;
   display: flex;
-  justify-content: space-between;
-  gap: 70px;
+  flex-direction: column;
+  gap: 20px;
 }
 
 .search-query__search-bar input{
@@ -2234,6 +2234,13 @@ body::after {
 .search-query__submit-btn{
   min-width: 260px;
   height: 52px;
+  display: none;
+}
+
+@media (min-width: 992px) {
+    .search-query__submit-btn {
+        display: block;
+    }
 }
 
 .search-results {
@@ -3362,11 +3369,6 @@ body::after {
   -ms-flex-item-align: end;
       align-self: flex-end;
   max-width: 291px;
-}
-
-.news-block__filter-form {
-  -ms-flex-item-align: end;
-      align-self: flex-end;
 }
 
 .news-block__filter {
