@@ -35,7 +35,7 @@ class SearchResultsController extends Controller
         })->unique();
 
 
-        $news = News::orderByDesc('id')->where('name', 'like', "%{$searchText}%")->get();
+        $news = News::search($request->searchText)->get();
 
         $categories = News::distinct()->orderBy('rubrica', 'asc')->pluck('rubrica')->map(function ($category) {
             return $category;
