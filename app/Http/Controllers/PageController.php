@@ -18,7 +18,8 @@ class PageController extends Controller
             ->count();
 
         $news = News::query()
-            ->orderByDesc('id')
+            ->orderByGlav()
+            ->orderByDesc('created_at')
             ->limit(6)
             ->get();
 

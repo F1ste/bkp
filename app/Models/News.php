@@ -9,6 +9,10 @@ use Illuminate\Support\Carbon;
 use Illuminate\Support\Str;
 use Laravel\Scout\Searchable;
 
+/**
+ * @method \Illuminate\Database\Eloquent\Builder orderByGlav()
+ * @method \Illuminate\Database\Eloquent\Builder orderByPozits()
+ */
 class News extends Model
 {
     use HasFactory;
@@ -76,5 +80,15 @@ class News extends Model
             'date' => Carbon::parse($this->date),
             'created_at' => $this->created_at,
         ];
+    }
+
+    public function scopeOrderByGlav()
+    {
+        return $this->orderByRaw('IF(glav > 0, 4 - glav, 0) DESC');
+    }
+
+    public function scopeOrderByPozits()
+    {
+        return $this->orderByRaw('IF(pozits > 0, 4 - pozits, 0) DESC');
     }
 }

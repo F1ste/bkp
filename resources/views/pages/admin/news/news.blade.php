@@ -86,11 +86,16 @@
                     <div style="margin-top: 20px; margin-bottom: 20px;">
                         @foreach ($collections as $el)
                             <div class="my-projects__item" style="margin-bottom: 15px;">
-                                <a href="{{ route('admin.news.edit', $el) }}">
-                                    <div class="my-projects__project-name">
-                                        {{ $el->name }}
+                                <a href="{{ route('admin.news.edit', $el) }}" class="my-projects__project-name" style="display:flex; justify-content:space-between">
+                                    <span>{{ $el->name }}</span>
+                                    <div>
+                                    @if ($el->glav)
+                                        <span style="color:cyan; cursor:help" title="Закреплена на позиции {{ $el->glav }} на главной странице">&#9733;</span>
+                                    @endif
+                                    @if ($el->pozits)
+                                        <span style="color:coral; cursor:help" title="Закреплена на позиции {{ $el->pozits }} в новостях">&#9733;</span>
+                                    @endif
                                     </div>
-
                                 </a>
                             </div>
                         @endforeach
