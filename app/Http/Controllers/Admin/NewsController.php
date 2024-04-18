@@ -26,7 +26,8 @@ class NewsController extends Controller
         ]);
 
         $collection = News::query()
-            ->orderByDesc('id')
+            ->orderByGlav()
+            ->orderByDesc('created_at')
             ->filter($filter)
             ->paginate(15);
 

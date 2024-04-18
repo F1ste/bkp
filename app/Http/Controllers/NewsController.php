@@ -16,7 +16,11 @@ class NewsController extends Controller
 
         $filter = app()->make(PageNewsFilter::class, ['queryParams' => array_filter($data)]);
 
-        $collection = News::orderByDesc('id')->filter($filter)->paginate(10);
+        $collection = News::query()
+            ->orderByPozits()
+            ->orderByDesc('id')
+            ->filter($filter)
+            ->paginate(10);
 
         $years = News::distinct()->orderBy('date', 'desc')->pluck('date')->map(function ($date) {
             return Carbon::parse($date)->format('Y');
