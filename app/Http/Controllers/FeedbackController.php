@@ -61,7 +61,7 @@ class FeedbackController extends Controller
             ->whereHas('service', function ($q) {
                 $q->where('user_id', auth()->user()->id);
             })
-            ->first();
+            ->firstOrFail();
 
         $serch = json_decode($feedback->service->serch, true);
         $mysubarr = [];

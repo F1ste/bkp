@@ -22,7 +22,7 @@
                             </div>
                             <div class="feedback__info">
                                 <div class="feedback__info-item">
-                                    {{ $mysubarr['sel'] }}
+                                    {{ $mysubarr['sel'] ?? '' }}
                                 </div>
                                 <div class="feedback__info-item">
                                     @if ($feedback->status == 1)
