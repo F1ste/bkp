@@ -17,6 +17,12 @@ class SettingUserController extends Controller
         return view('pages.user.setting.setting', compact('regions'));
     }
 
+    public function showUser(User $user)
+    {
+        $regions = Region::orderBy('name')->get();
+        return view('pages.user.setting.show', compact('regions', 'user'));
+    }
+
     /**
      * POST Update Profile User
      */
