@@ -17,6 +17,7 @@ Route::post('/upload-image', [UploadController::class, 'image'])->name('upload.i
 
 Route::prefix('/setting')->group(function () {
     Route::get('/', [SettingUserController::class, 'setting'])->name('setting');
+    Route::get('/{user}', [SettingUserController::class, 'showUser'])->name('user')->middleware('role:admin');
     Route::post('/update', [SettingUserController::class, 'update'])->name('setting.update');
     Route::post('/avatar', [SettingUserController::class, 'avatar'])->name('setting.avatar');
 });
