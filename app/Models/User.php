@@ -73,4 +73,9 @@ class User extends Authenticatable
         9,
         10
     ];
+
+    public function getFullNameAttribute()
+    {
+        return trim(implode(' ', [$this->surname, $this->first_name, $this->patronymic]));
+    }
 }

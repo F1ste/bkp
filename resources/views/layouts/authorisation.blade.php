@@ -22,7 +22,7 @@
                     <a href="{{route('profile.feedback')}}" class="sidebar__item _icon-edit">Отклики</a>
                     <a href="/profile/chat" class="sidebar__item _icon-chat">Диалоги</a>
                     <a href="/profile/notifications" class="sidebar__item _icon-notification">Уведомления</a>
-                    <a href="#" class="sidebar__item _icon-settings">Помощь</a>
+                    <a href="#" class="sidebar__item _icon-settings" data-modal="#modal-help">Помощь</a>
                 </div>
                 <div class="sidebar__info">
                     <div class="sidebar__info-item">
@@ -50,6 +50,25 @@
             </div>
             @yield('content')
         </main>
+
+        <div class="modal-wrapper" style="display:none">
+            <div id="modal-help" class="modal">
+                <form action="{{ route('profile.help') }}" method="POST">
+                    @csrf
+                    <div class="modal-header">
+                        <div>Помощь</div>
+                        <button type="button" class="modal-close">&times;</button>
+                    </div>
+                    <label for="help-question" class="profile__form-label form__label">Напишите Ваш вопрос</label>
+                    <textarea name="message" class="profile__form-input form__input" id="help-question" style="width:500px; max-width: calc(100% - 20px); height: 160px" required></textarea>
+
+                    <div style="display:flex; align-items:center; column-gap:15px; padding-top:15px">
+                        <button type="submit" class="btn btn-filled">Отправить</button>
+                        <p id="help-response">Ответ придёт Вам на почту</p>
+                    </div>
+                </form>
+            </div>
+        </div>
 
         <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
         <script src="{{ asset('/plugins/ckeditor/ckeditor.js') }}"></script>

@@ -9000,3 +9000,46 @@ blockquote p::after {
     color: #00AF66;
     text-decoration: underline;
 }
+
+.modal-wrapper {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0,0,0,0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 20;
+}
+
+.modal {
+    background-color: #fff;
+    border-radius: 16px;
+    padding: 20px;
+    box-shadow: 0 4px 12px rgba(0,0,0,.2), 0 2px 2px rgba(0,0,0,.12);
+    max-width: calc(100% - 30px);
+}
+
+.modal-header {
+    font-size: 24px;
+    line-height: 1.4em;
+    margin-bottom: 12px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.modal-close {
+    padding: 5px;
+    border-radius: 12px;
+    width: 40px;
+    height: 40px;
+    background-color: rgba(0,0,0,.05);
+}
+
+.modal-close:hover {
+    background-color: rgba(0,0,0,.1);
+}

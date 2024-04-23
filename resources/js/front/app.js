@@ -33,3 +33,6 @@ import "./fpage/edit";
 import "./chat/chat";
 
 import "./external-links";
+
+import "./modal";
+import "./help-form";

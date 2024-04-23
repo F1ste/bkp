@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\Profile\UploadController;
 use App\Http\Controllers\CollectionController;
+use App\Http\Controllers\HelpController;
 use App\Http\Controllers\SettingUserController;
 use App\Http\Controllers\UserPageController;
 use App\Http\Controllers\ChatController;
@@ -65,3 +66,5 @@ Route::prefix('/feedback')->group(function () {
     Route::get('/owner', [FeedbackController::class,'owner_all'])->name('feedback.owner.all');
     Route::get('/candidat', [FeedbackController::class,'candidat_all'])->name('feedback.candidat.all');
 });
+
+Route::post('/help', [HelpController::class, 'store'])->name('help');
