@@ -129,7 +129,9 @@
                                             {{ $collections[$i]->name }}
                                         </div>
                                         <div class="news-block__description article-description">
-                                            {!! $collections[$i]->pod_text !!}
+                                            <object>
+                                                {!! $collections[$i]->pod_text !!}
+                                            </object>
                                         </div>
                                     </a>
                                 </div>
@@ -154,7 +156,9 @@
                                             {{ $collections[$i]->name }}
                                         </div>
                                         <div class="news-block__description article-description">
-                                            {!! $collections[$i]->pod_zag !!}
+                                            <object>
+                                                {!! $collections[$i]->pod_zag !!}
+                                            </object>
                                         </div>
                                     </a>
                                 </div>

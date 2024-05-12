@@ -189,7 +189,9 @@
                                 {{ $el->name }}
                             </div>
                             <div class="news-block__description article-description">
-                                {!! $el->pod_zag !!}
+                                <object>
+                                    {!! $el->pod_zag !!}
+                                </object>
                             </div>
                         </a>
                     </div>
