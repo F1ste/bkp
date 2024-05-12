@@ -6599,7 +6599,7 @@ blockquote p::after {
 }
 
 .news-single__main-image .media-block img {
-  /* aspect-ratio: 1737/450; */
+  aspect-ratio: 930/310;
 }
 
 .news-single__article-text a{
