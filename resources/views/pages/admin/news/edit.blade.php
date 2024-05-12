@@ -39,7 +39,7 @@
 
                             <label class="create-project__form-label form__label">Дополнительное фото</label>
                             <div class="create-project__main-photo form__input add-photo">
-                                <div data-img="{{ route('admin.news.img1') }}" class="create-project__drag-and-drop drag-and-drop" id='img7'>
+                                <div data-img="{{ route('admin.news.img7') }}" class="create-project__drag-and-drop drag-and-drop" id='img7'>
                                 @if ($collection->img7 == '')
                                     <div class="create-project__drag-wrapper drag-wrapper" id='img7_box'>
                                         <form id='form_img_7'><input id='img7_input' type="file" name="file" class="file__input" accept=".jpeg, .jpg, .png" hidden></form>
@@ -51,7 +51,7 @@
                                     <button id="img7_delete" class="delete-img__button" style="display: none;"></button>
                                 @else
                                     <div style="display: none;" class="create-project__drag-wrapper drag-wrapper" id='img7_box'>
-                                        <form id='form_img_1'><input id='img7_input' type="file" name="file" class="file__input" accept=".jpeg, .jpg, .png" hidden></form>
+                                        <form id='form_img_7'><input id='img7_input' type="file" name="file" class="file__input" accept=".jpeg, .jpg, .png" hidden></form>
                                         <div class="create-project__upload-logo"><img src="/image/iconsFont/add-img.svg" alt="Загрузите основное фото проекта"></div>
                                         <div class="create-project__upload-info">Загрузите дополнительное фото</div>
                                     </div>
