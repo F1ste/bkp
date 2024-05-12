@@ -12,28 +12,27 @@
                     <div class="create-project__general-info" style="align-items: flex-start;">
                         <div class="create-project__form-img">
 
-                            <label class="create-project__form-label form__label">Основное фото новости</label>
+                            <label class="create-project__form-label form__label">Изображение превью</label>
                             <div class="create-project__main-photo form__input add-photo">
                                 <div data-img="{{ route('admin.news.img1') }}" class="create-project__drag-and-drop drag-and-drop" id='img1'>
                                     <div class="create-project__drag-wrapper drag-wrapper" id='img1_box'>
                                         <form id='form_img_1'><input id='img1_input' type="file" name="file" class="file__input" accept=".jpeg, .jpg, .png" hidden></form>
-                                        <div class="create-project__upload-logo"><img src="/image/iconsFont/add-img.svg" alt="Загрузите основное фото проекта"></div>
-                                        <div class="create-project__upload-info">Загрузите основное фото новости</div>
+                                        <div class="create-project__upload-logo"><img src="/image/iconsFont/add-img.svg" alt="Загрузите превью новости"></div>
+                                        <div class="create-project__upload-info">Загрузите превью новости</div>
                                     </div>
 
                                     <img id="img1_fin" class='form_img_cul' style="width: 100%;" src="">
                                     <button id="img1_delete" class="delete-img__button" style="display: none;"></button>
                                 </div>
                             </div>
-                            <div class="create-project__photo-propetries">950x310 px, до 1 Мб</div>
 
-                            <label class="create-project__form-label form__label">Дополнительное фото</label>
+                            <label class="create-project__form-label form__label" style="display: block; margin-top: 10px;">Изображение на странице</label>
                             <div class="create-project__main-photo form__input add-photo">
-                                <div data-img="{{ route('admin.news.img1') }}" class="create-project__drag-and-drop drag-and-drop" id='img7'>
+                                <div data-img="{{ route('admin.news.img7') }}" class="create-project__drag-and-drop drag-and-drop" id='img7'>
                                     <div class="create-project__drag-wrapper drag-wrapper" id='img7_box'>
                                         <form id='form_img_7'><input id='img7_input' type="file" name="file" class="file__input" accept=".jpeg, .jpg, .png" hidden></form>
-                                        <div class="create-project__upload-logo"><img src="/image/iconsFont/add-img.svg" alt="Загрузите основное фото проекта"></div>
-                                        <div class="create-project__upload-info">Загрузите дополнительное новости</div>
+                                        <div class="create-project__upload-logo"><img src="/image/iconsFont/add-img.svg" alt="Загрузите изображение на странице"></div>
+                                        <div class="create-project__upload-info">Загрузите изображение на странице</div>
                                     </div>
 
                                     <img id="img7_fin" class='form_img_cul' style="width: 100%;" src="">

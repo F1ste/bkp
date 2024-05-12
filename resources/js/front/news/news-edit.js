@@ -242,7 +242,7 @@ import {} from "../libs/ckeditor/ckeditor";
         });
 
         deleteButton.addEventListener("click", (e) => {
-            img6 = "";
+            img7 = "";
             fin.removeAttribute("src");
             blox.style.display = "block";
             fin.style.display = "none";
@@ -287,7 +287,6 @@ import {} from "../libs/ckeditor/ckeditor";
                     name: name,
                     pod_text: pod_text,
                     text: text,
-                    img1: img1,
                     id: id,
                     img1: img1,
                     img2: img2,
