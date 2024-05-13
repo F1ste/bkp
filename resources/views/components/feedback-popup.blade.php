@@ -5,6 +5,7 @@
 
             <button data-close type="button" class="popup__close"></button>
             <div class="popup__text">
+                @auth
                 <div class="profile__cover-letter">
                     <div class="profile__form-item form__item">
                         <label for="ProfileCV" class="profile__form-label form__label">Краткое сопроводительное письмо</label>
@@ -19,6 +20,17 @@
                     </div>
                 </div>
                 <button type="submit" class="popup__submit btn btn-filled">Отправить</button>
+                @endauth
+
+                @guest
+                <label class="profile__form-label form__label">
+                    Отправить отклик
+                </label>
+                <div class="feedback-popup__guest-message">
+                    <p>Отклики могут отправлять только зарегистрированные пользователи.</p>
+                </div>
+                <a href="{{ route('register') }}" class="popup__submit btn btn-filled" style="max-width: none;">Зарегистрироваться</a>
+                @endguest
             </div>
         </div>
     </div>

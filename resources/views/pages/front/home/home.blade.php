@@ -366,7 +366,9 @@
                                                 {{ $news[$i]->author }}
                                             </div>
                                             <div class="news-block__description article-description">
-                                                {!! $news[$i]->pod_text !!}
+                                                <object>
+                                                    {!! $news[$i]->pod_text !!}
+                                                </object>
                                             </div>
                                         </a>
                                     </div>

@@ -1399,6 +1399,19 @@ body::after {
   letter-spacing: 0.64px;
 }
 
+.feedback-popup__guest-message p{
+  font-size: 18px;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.feedback-popup__guest-message p:first-child{
+  margin-top: 20px;
+}
+.feedback-popup__guest-message p:not(p:first-child){
+  margin-top: 5px;
+}
+
 .tabs__navigation {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -3786,7 +3799,6 @@ body::after {
   font-size: 1.125rem;
   font-weight: 600;
   line-height: 131.8%;
-  /* 23.724px */
   letter-spacing: 0.72px;
 }
 
@@ -3798,21 +3810,17 @@ body::after {
   -webkit-box-orient: vertical;
 }
 
-/* @supports (height: clamp( 2.777rem , 2.5rem  +  0.75vw , 1.875rem )) {
-  .project-main__text {
-    height: clamp( 2.777rem , 2.5rem  +  0.75vw , 1.875rem );
-  }
+.project-main__text p {
+  overflow: unset;
+  display: block;
+  -webkit-line-clamp: initial;
+  -webkit-box-orient: initial;
 }
-
-@supports not (height: clamp( 2.777rem , 2.5rem  +  0.75vw , 1.875rem )) {
-  .project-main__text {
-    height: calc(2.777rem + 0.75 * (100vw - 20rem) / 100);
-  }
-} */
 
 .project-main__text p{
   margin-top: 10px;
 }
+
 .project-main__text li {
   position: relative;
   list-style: disc;
@@ -3849,7 +3857,7 @@ blockquote p::after {
 .project-main__text.active-text {
   overflow: visible;
   display: -webkit-box;
-    -webkit-line-clamp: unset;
+    -webkit-line-clamp: initial;
     -webkit-box-orient: vertical;
 }
 
