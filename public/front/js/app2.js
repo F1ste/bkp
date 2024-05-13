@@ -10563,7 +10563,7 @@
                                     listItem.classList.add("search-results__item");
                                     const title = document.createElement("a");
                                     title.textContent = item.name;
-                                    title.href = "/news/news/" + item.id;
+                                    title.href = "/news/" + item.slug;
                                     listItem.appendChild(title);
                                     headerSearchResults.appendChild(listItem);
                                 }));
@@ -10575,7 +10575,7 @@
                                     listItem.classList.add("search-results__item");
                                     const title = document.createElement("a");
                                     title.textContent = item.name_proj;
-                                    title.href = "/projects/project/" + item.id;
+                                    title.href = "/projects/" + item.slug;
                                     listItem.appendChild(title);
                                     headerSearchResults.appendChild(listItem);
                                 }));
