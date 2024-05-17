@@ -5637,6 +5637,9 @@ blockquote p::after {
   font-style: normal;
   font-weight: 700;
   line-height: normal;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
 .chat__contact-date {
