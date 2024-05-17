@@ -138,13 +138,11 @@ import { notification } from "../utils/notification";
     const chatValue = document.getElementById("chatValue");
 
     function getChatValue(e) {
-        e.preventDefault();
-        let currentTarget = e.target;
-        if (!currentTarget.classList.contains("chat__contact-item")) {
+        let currentTarget = e.target.closest('.chat__contact-item');
+        if (!currentTarget) {
             return;
         }
 
-        /*         currentTarget.classList.add('_contact-active'); */
         chatValue.value = currentTarget.dataset.chat;
 
         chatsMenu.submit();

@@ -90,6 +90,9 @@
                                         <img src="{{ $collections[0]->img }}" alt="Изображение новости">
                                     </picture>
                                 </div>
+                                <div class="news-block__date">
+                                        {{ $collections[0]->date }}
+                                </div>
                                 <div class="big-news__content">
                                     <div class="big-news__title article-title">
                                         {{ $collections[0]->name }}

@@ -37,14 +37,19 @@ class ChatController extends Controller
         $chat = new Chat();
         $chat->first_user_id = $request->first_user_id;
         $chat->second_user_id = $request->second_user_id;
-
-        if (
-            ! Chat::where('first_user_id', '=', $request->input('first_user_id'))->exists() &&
-            ! Chat::where('second_user_id', '=', $request->input('second_user_id'))->exists()
-        ) {
+    
+        $chatExists = Chat::where(function ($query) use ($request) {
+            $query->where('first_user_id', $request->first_user_id)
+                  ->where('second_user_id', $request->second_user_id);
+        })->orWhere(function ($query) use ($request) {
+            $query->where('first_user_id', $request->second_user_id)
+                  ->where('second_user_id', $request->first_user_id);
+        })->exists();
+    
+        if (!$chatExists) {
             $chat->save();
         }
-
+    
         return $chat;
     }
 
