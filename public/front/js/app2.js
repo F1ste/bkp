@@ -3900,8 +3900,12 @@
                                     let spollerContent = spollerTitle.nextElementSibling;
                                     let spollerRect = spollerContent.getBoundingClientRect();
                                     let windowWidth = window.innerWidth;
+                                    console.log(spollerRect.left, spollerRect.right, spollerContent.offsetWidth, windowWidth);
                                     // Adjust position and width if content goes beyond the screen
-                                    if (spollerRect.right > windowWidth) {
+                                    if (
+                                        (spollerRect.right + spollerContent.offsetWidth > windowWidth && spollerRect.left + spollerContent.offsetWidth > windowWidth)
+                                        || spollerRect.right > 970
+                                    ) {
                                         spollerContent.style.left = "auto";
                                         spollerContent.style.right = "0";
                                         spollerContent.style.width = "250px";

@@ -7439,14 +7439,14 @@ blockquote p::after {
   .big-news__item .news-block__date{
     display: block;
   }
+  .news-block__filter{
+    flex-direction: column;
+  }
 }
 
 @media (max-width: 450px) {
   .swiper-slide {
     height: 201px;
-  }
-  .news-block__filter{
-    flex-direction: column;
   }
   .filter__form-item{
     white-space: normal;
