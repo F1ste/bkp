@@ -62,7 +62,7 @@
                                 <button type="button" data-spoller data-spoller-close class="filter__btn accordion__title _icon-accordionArrow">
                                     Проект
                                 </button>
-                                <div class="filter__accordion-body accordion__body main-text" style="left:auto;right:0;">
+                                <div class="filter__accordion-body accordion__body main-text" style="left:auto;right:0; min-width: 232px;">
                                     @foreach ($projects as $project)
                                         @if (!is_null($project))
                                             <div class="filter__form-item form__item">
@@ -71,6 +71,10 @@
                                                     <label for="{{ $project }}" class="filter__form-label checkbox__label "><span>{{ $project }}</span></label>
                                                 </div>
                                             </div>
+                                        @else
+                                        <div class="filter__form-item form__item">
+                                            Скоро здесь появятся новости о развитии проектов
+                                        </div>
                                         @endif
                                     @endforeach
                                 </div>
@@ -89,6 +93,9 @@
                                         <source srcset="{{ $collections[0]->img }}" type="image/webp">
                                         <img src="{{ $collections[0]->img }}" alt="Изображение новости">
                                     </picture>
+                                </div>
+                                <div class="news-block__date">
+                                        {{ $collections[0]->date }}
                                 </div>
                                 <div class="big-news__content">
                                     <div class="big-news__title article-title">
@@ -129,7 +136,9 @@
                                             {{ $collections[$i]->name }}
                                         </div>
                                         <div class="news-block__description article-description">
-                                            {!! $collections[$i]->pod_text !!}
+                                            <object>
+                                                {!! $collections[$i]->pod_text !!}
+                                            </object>
                                         </div>
                                     </a>
                                 </div>
@@ -154,7 +163,9 @@
                                             {{ $collections[$i]->name }}
                                         </div>
                                         <div class="news-block__description article-description">
-                                            {!! $collections[$i]->pod_zag !!}
+                                            <object>
+                                                {!! $collections[$i]->pod_zag !!}
+                                            </object>
                                         </div>
                                     </a>
                                 </div>

@@ -26,8 +26,8 @@
                     <div class="news-single__main-image">
                         <div class="news-single__media-block media-block">
                             <picture>
-                                <source srcset="{{ $collection->img }}" type="image/webp">
-                                <img src="{{ $collection->img }}" alt="Изображение проекта" style="object-position: top;">
+                                <source srcset="{{ $collection->img7 }}" type="image/webp">
+                                <img src="{{ $collection->img7 }}" alt="Изображение проекта" style="object-position: top;">
                             </picture>
                         </div>
                     </div>

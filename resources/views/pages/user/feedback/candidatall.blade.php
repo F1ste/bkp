@@ -22,7 +22,7 @@
                             <div>Вы еще не откликались на проекты</div>
                         @else
                             @php
-                                $feedbackCount = 1;
+                                $feedbackCount = 0;
                             @endphp
                             <thead>
                                 <tr class="my-feedbacks__table-heading">
@@ -35,14 +35,15 @@
                                 </tr>
                             </thead>
                             <tbody>
+                                
                             @foreach ($feedback as $item)
                                     <tr class="my-feedbacks__table-row">
                                         <td class="my-feedbacks__table-item">
-                                            <div class="table-number">{{ $feedbackCount }}</div>
+                                            <div class="table-number">{{ $feedbackCount + 1 }}</div>
                                         </td>
                                         <td class="my-feedbacks__table-item">{{ $item->service->name_proj }}</td>
                                         <td class="my-feedbacks__table-item">{{ $item->role_name }}</td>
-                                        <td class="my-feedbacks__table-item">{{ $mysubarr['inp'] }}</td>
+                                        <td class="my-feedbacks__table-item">{{ $mysubarr[$feedbackCount]['inp'] }}</td>
                                         <td class="my-feedbacks__table-item">
                                             @if ($item->status == 1)
                                                 Одобрено

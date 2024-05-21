@@ -201,4 +201,18 @@ class CollectionController extends Controller
         $link = '/storage/' . $name;
         return $link;
     }
+
+    public function img7(Request $request)
+    {
+        $size = $request->file('file')->getSize();
+        $type = $request->file('file')->extension();
+        $name = $size . '_' . 'image' . '.' . $type;
+        $request->file('file')->storeAs(
+            'public',
+            $name
+        );
+
+        $link = '/storage/' . $name;
+        return $link;
+    }
 }

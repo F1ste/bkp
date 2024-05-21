@@ -107,14 +107,14 @@
                     <div class="popular-projects__project-type">
                         {{ $el->tema }}
                     </div>
-                    <a href="{{ route('projects.project', $el->id) }}" class="popular-projects__project-name">
+                    <a href="{{ route('projects.project', $el) }}" class="popular-projects__project-name">
                         {{ $el->name_proj }}
                     </a>
                     <div class="popular-projects__project-date">
                         От {{ Carbon\Carbon::parse($el->date_service_from)->format('d.m.Y') }}
                     </div>
                     <div class="popular-projects__project-image media-block">
-                        <a href="{{ route('projects.project', $el->id) }}">
+                        <a href="{{ route('projects.project', $el) }}">
                             <picture>
                                 <source srcset="{{ $el->img1 }}" type="image/webp">
                                 <img src="{{ $el->img1 }}" alt="Изображение проекта">
@@ -140,7 +140,7 @@
 
                             @foreach ($json as $serchs)
                             @if (\Illuminate\Support\Carbon::parse($serchs->inp)->gte(now()))
-                            <a href="{{ route('projects.project', ['project' => $el->id, '#roles']) }}"
+                            <a href="{{ route('projects.project', ['project' => $el, '#roles']) }}"
                                 class="tags__item btn btn-white">
                                 {{$serchs->sel}}
                             </a>
@@ -151,7 +151,7 @@
                         </div>
                     </div>
                     <div class="popular-projects__subscribe">
-                        <a href="{{ route('projects.project', $el->id) }}"
+                        <a href="{{ route('projects.project', $el) }}"
                             class="popular-projects__subscribe-btn _fw btn btn-filled">Подробнее</a>
                     </div>
                 </div>
@@ -175,7 +175,7 @@
                 <div class="news-block__items-content">
                     @foreach ($news->sortBy('date_service_from') as $el)
                     <div class="news-block__item">
-                        <a href="{{ route('news.tidings', $el->id) }}">
+                        <a href="{{ route('news.tidings', $el) }}">
                             <div class="news-block__item-media media-block">
                                 <picture>
                                     <source srcset="{{ $el->img }}" type="image/webp"><img
@@ -189,7 +189,9 @@
                                 {{ $el->name }}
                             </div>
                             <div class="news-block__description article-description">
-                                {!! $el->pod_zag !!}
+                                <object>
+                                    {!! $el->pod_zag !!}
+                                </object>
                             </div>
                         </a>
                     </div>

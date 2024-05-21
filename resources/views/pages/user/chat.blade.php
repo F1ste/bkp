@@ -31,9 +31,9 @@
 
                                         <div class="chat__contact-name">                                       
                                             @if ($chat_id->first_user->id == auth()->user()->id)
-                                                {{ $chat_id->second_user->name }}
+                                                {{$chat_id->second_user->name == null ? $chat_id->second_user->email : $chat_id->second_user->name}}
                                             @else
-                                                {{ $chat_id->first_user->name }}
+                                                {{$chat_id->first_user->name == null ? $chat_id->first_user->email : $chat_id->first_user->name}}
                                             @endif
                                         </div>
                                         @if ($chat_id->messages->isNotEmpty())
@@ -57,9 +57,9 @@
 
                                     <div class="chat__contact-name">                                       
                                         @if ($chat_id->first_user->id == auth()->user()->id)
-                                            {{ $chat_id->second_user->name }}
+                                            {{$chat_id->second_user->name == null ? $chat_id->second_user->email : $chat_id->second_user->name}}
                                         @else
-                                            {{ $chat_id->first_user->name }}
+                                            {{$chat_id->first_user->name == null ? $chat_id->first_user->email : $chat_id->first_user->name}}
                                         @endif
                                     </div>
                                     @if ($chat_id->messages->isNotEmpty())
@@ -90,9 +90,9 @@
 								<div class="chat__dialogue-status user-status_online"></div>
 								<div class="chat__chat-name">                                        
                                         @if ($current_chat->first_user->id == auth()->user()->id)
-                                            {{ $current_chat->second_user->name }}
+                                            {{$current_chat->second_user->name == null ? $current_chat->second_user->email : $chat_id->second_user->name}}
                                         @else
-                                            {{ $current_chat->first_user->name }}
+                                            {{$chat_id->first_user->name == null ? $chat_id->first_user->email : $chat_id->first_user->name}}
                                         @endif
                                     </div>
 							    </div>

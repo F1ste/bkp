@@ -37,6 +37,7 @@ Route::prefix('/projects')->name('projects.')->group(function () {
 Route::resource('/news', NewsController::class)->except('show');
 Route::prefix('/news')->name('news.')->group(function () {
     Route::post('/img1', [CollectionController::class, 'img'])->name('img1');
+    Route::post('/img7', [CollectionController::class, 'img7'])->name('img7');
     Route::resource('/categories', CategoryController::class)->except('show');
 });
 

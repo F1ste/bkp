@@ -39,9 +39,9 @@ import {} from "../libs/ckeditor/ckeditor";
     }
 
     const getChatBtn = document.getElementById("getChat");
-    const getChatRoute = getChatBtn.dataset.update;
-    const getUser1 = getChatBtn.dataset.user1;
-    const getUser2 = getChatBtn.dataset.user2;
+    const getChatRoute = getChatBtn?.dataset.update;
+    const getUser1 = getChatBtn?.dataset.user1;
+    const getUser2 = getChatBtn?.dataset.user2;
 
     function getChat(e) {
         let currentTarget = e.target;
@@ -59,6 +59,6 @@ import {} from "../libs/ckeditor/ckeditor";
             });
     }
 
-    getChatBtn.addEventListener("click", getChat);
+    getChatBtn?.addEventListener("click", getChat);
     collectionEdit.addEventListener("click", setStatusAprove);
 })();

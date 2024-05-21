@@ -105,7 +105,7 @@ class FeedbackController extends Controller
             foreach ($item->feedbacks as $el) {
                 foreach ($serch as $subarr) {
                     if ($subarr['sel'] == $el->role_name) {
-                        $mysubarr = $subarr;
+                        $mysubarr[] = $subarr;
                         break;
                     }
                 }
@@ -130,7 +130,7 @@ class FeedbackController extends Controller
             } else {
                 foreach ($serch as $subarr) {
                     if ($subarr['sel'] == $item['role_name']) {
-                        $mysubarr = $subarr;
+                        $mysubarr[] = $subarr;
                     }
                 }
             }
