@@ -3,8 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\FeedbackRequest;
+use App\Mail\Projects\Feedbacks\FeedbackAccepted;
+use App\Mail\Projects\Feedbacks\NewFeedback;
 use App\Models\Project;
 use App\Models\Feedback;
+use Illuminate\Support\Facades\Mail;
 
 class FeedbackController extends Controller
 {
@@ -23,6 +26,11 @@ class FeedbackController extends Controller
         $feedback->service_id = $request->service_id;
         $feedback->role_name = $request->role_name;
         $feedback->save();
+
+        Mail::to($feedback->service->user->email)->send(
+            new NewFeedback($feedback)
+        );
+
         return redirect()->route('projects');
     }
 
@@ -136,10 +144,16 @@ class FeedbackController extends Controller
 
     public function accept($id)
     {
-        $feedback = Feedback::where('id', $id)->update([
+        $success = Feedback::where('id', $id)->update([
             'status' => 1
         ]);
-        return response()->json($feedback, 201);
+
+        $feedback = Feedback::find($id);
+        Mail::to($feedback->user->email)->send(
+            new FeedbackAccepted($feedback)
+        );
+
+        return response()->json($success, 201);
     }
 
     public function decline($id)
