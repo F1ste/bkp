@@ -9,10 +9,10 @@
 
             <div class="create-project__container">
                 <div data-one-select class="create-project__content">
-                    <div class="create-project__title personal__title">Создание проекта</div>
+                    <div class="create-project__title personal__title">Редактирование проекта</div>
 
                     @if ($collection->isDeclined() && $collection->reason)
-                    <div style="border:1px solid #997404; background-color:#ffe69c; color:#664d03; padding:15px; border-radius:.375rem; margin:1rem 0">
+                    <div style="border:1px solid #997404; background-color:#ffe69c; color:#664d03; padding:15px; border-radius:.375rem; margin:1rem 0; word-break: break-all;">
                         <div style="margin-bottom:1em"><b>Проект отклонен</b></div>
                         {!! $collection->reason !!}
                     </div>

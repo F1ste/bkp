@@ -14,6 +14,10 @@ import {} from "../libs/ckeditor/ckeditor";
     const projectTheme = document.querySelector("#tema");
     const phoneInput = document.querySelector("#tel");
     const emailInput = document.querySelector("#email");
+    const dateServiceFrom = document.querySelector("#date_service_from");
+    const dateServiceTo = document.querySelector("#date_service_to");
+    const nameProj = document.querySelector("#name_proj");
+    const contactName = document.querySelector("#name");
 
     function showValidateError(targetElement, isError, hintMessage) {
         const parentElement = targetElement.closest(
@@ -406,12 +410,18 @@ import {} from "../libs/ckeditor/ckeditor";
                 tema.length === 0 ||
                 mainImg.getAttribute("src").length === 0 ||
                 excerpt.length >= 1000 ||
-                serch.some((item) => item.sel === "" || item.sel === undefined)
+                serch.some((item) => item.sel === "" || item.sel === undefined) ||
+                serch.some((item) => item.inp === "" || item.inp === undefined)
             ) {
                 showValidateError(
                     excerptEl,
                     excerpt.length >= 1000,
                     "Не более 1000 символов"
+                );
+                showValidateError(
+                    excerptEl,
+                    excerpt.length === 0,
+                    "Заполните описание проекта"
                 );
                 showValidateError(
                     mainImg,
@@ -424,6 +434,8 @@ import {} from "../libs/ckeditor/ckeditor";
                 showValidateError(projectTheme, tema.length === 0, "");
                 showValidateError(phoneInput, !validatePhone(tel), "");
                 showValidateError(emailInput, !validateEmail(email), "");
+                showValidateError(nameProj, name_proj.length === 0);
+                showValidateError(contactName, name.length === 0);
 
                 for (let i = 0; i < serch_mas.length; i++) {
                     showValidateError(
@@ -433,14 +445,19 @@ import {} from "../libs/ckeditor/ckeditor";
                         serch[i].sel.length === 0,
                         ""
                     );
+                    showValidateError(
+                        serch_mas[i].querySelector(
+                            ".create-project__form-input"
+                        ),
+                        serch[i].inp.length === 0,
+                        ""
+                    );
                 }
 
-                alert("Заполните все поля выделенные красным");
-                return false;
-            }
+                showValidateError(dateServiceFrom, date_service_from.length === 0);
+                showValidateError(dateServiceTo, date_service_to.length === 0);
 
-            if (!date_service_from || !date_service_to) {
-                alert("Заполните сроки проекта");
+                alert("Заполните все поля выделенные красным");
                 return false;
             }
 
