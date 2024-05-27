@@ -42,13 +42,13 @@
                                 </div>
                                 <div class="auth-form__form-item form__item checkbox__item">
                                     <div class="auth-form__checkbox checkbox">
-                                        <input data-no-focus-classes="" id="terms" required type="checkbox" name="terms" class="auth-form__checkbox-input checkbox__input">
+                                        <input data-no-focus-classes="" id="terms" type="checkbox" name="terms" class="auth-form__checkbox-input checkbox__input">
                                         <label for="terms" class="auth-form__form-label checkbox__label "><span>Я ознакомился с <a href="{{ route('privacy-policy') }}" target="_blank">Политикой конфиденциальности</a> и принимаю условия <a href="{{ route('user-agreement') }}" target="_blank">Пользовательского соглашения</a>.</span></label>
                                     </div>
                                 </div>
                                 <div class="auth-form__form-item form__item checkbox__item">
                                     <div class="auth-form__checkbox checkbox">
-                                        <input data-no-focus-classes="" id="mailing-confirmation" required type="checkbox" name="mailing-confirmation" class="auth-form__checkbox-input checkbox__input">
+                                        <input data-no-focus-classes="" id="mailing-confirmation" type="checkbox" name="mailing-confirmation" class="auth-form__checkbox-input checkbox__input">
                                         <label for="mailing-confirmation" class="auth-form__form-label checkbox__label "><span>Хочу <a href="{{ route('mailing-agreement') }}" target="_blank">получать новости и полезные анонсы</a> от Культурной биржи.</span></label>
                                     </div>
                                 </div>
