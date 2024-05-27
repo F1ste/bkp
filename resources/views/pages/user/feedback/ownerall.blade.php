@@ -43,7 +43,7 @@
                                         <td class="my-feedbacks__table-item">{{ $item->service->name_proj }}</td>
                                         
                                         <td class="my-feedbacks__table-item">{{ $item->role_name }}</td>
-                                        <td class="my-feedbacks__table-item">{{ $mysubarr[$feedbackCount]['inp'] }}</td>
+                                        <td class="my-feedbacks__table-item">{{ $mysubarr[$feedbackCount]['inp'] ?? '' }}</td>
                                         <td class="my-feedbacks__table-item">
                                             @if ($item->status == 1)
                                                 Одобрено

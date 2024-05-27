@@ -34,11 +34,11 @@
                                     @endif
                                 </div>
                                 <div class="feedback__info-item">
-                                    {{ $mysubarr['inp'] }}
+                                    {{ $mysubarr['inp'] ?? '' }}
                                 </div>
                             </div>
                         </div>
-
+    
                         <div class="feedback__buttons feedback-status">
                             @if($feedback->status ==1)
                                 <button data-update="{{ route('profile.chat.create') }}" data-user1="{{ $feedback->service->user_id }}" data-user2="{{ $feedback->user_id }}" id="getChat" class="feedback__btn btn btn-white">
@@ -58,7 +58,7 @@
                             Запрос размещенный в карточке проекта
                         </div>
                         <div class="feedback__text main-text">
-                            {!! $mysubarr['tex'] !!}
+                            {!! $mysubarr['tex'] ?? '' !!}
                             <br><br>
                             Зарегистрируйтесь сегодня!
                         </div>
