@@ -88,33 +88,33 @@ class FeedbackController extends Controller
 
     public function owner_all()
     {
-        $project = Project::with('feedbacks')
-            ->where('user_id', auth()->user()->id)
-            ->get();
 
-        $mysubarr = [];
-        $feedbacks = [];
+        $projects = Project::with('feedbacks')->where('user_id', auth()->user()->id)->get();
+    
+        $allFeedbacks = [];
+            foreach ($projects as $project) {
 
-        foreach ($project as $item) {
-            array_push($feedbacks, Feedback::with('service')->where('service_id', $item->id)->get());
-        }
+            foreach ($project->feedbacks as $feedback) {
 
-        foreach ($project as $item) {
-            $serch = json_decode($item->serch, true);
+                $searchData = json_decode($project->serch, true);
+    
 
-            foreach ($item->feedbacks as $el) {
-                foreach ($serch as $subarr) {
-                    if ($subarr['sel'] == $el->role_name) {
-                        $mysubarr[] = $subarr;
-                        break;
+                foreach ($searchData as $searchItem) {
+                    if ($searchItem['sel'] == $feedback->role_name) {
+                        $allFeedbacks[] = [
+                            'project_name' => $project->name_proj,
+                            'role_name' => $feedback->role_name,
+                            'role_date' => $searchItem['inp'],
+                            'status' => $feedback->status,
+                            'id' => $feedback->id
+                        ];
                     }
                 }
             }
         }
-
+    
         return view('pages.user.feedback.ownerall', [
-            'feedbacks' => $feedbacks,
-            'mysubarr' => $mysubarr
+            'feedbacks' => $allFeedbacks
         ]);
     }
 

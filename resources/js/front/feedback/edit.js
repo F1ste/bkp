@@ -21,11 +21,18 @@ import {} from "../libs/ckeditor/ckeditor";
         }
 
         let feedbackRole = currentTarget.dataset.role;
-        //let feedbackText = currentTarget.closest('.feedback-send').querySelector('.partners-searching__partner-description').textContent;
 
         popupSubmitBtn.dataset.role = feedbackRole;
-        //popupSubmitBtn.dataset.text = feedbackText;
     }
+
+    const tabsBlock = document.querySelector('.partners-searching__tabs');
+
+    document.addEventListener('DOMContentLoaded', () => {
+        const firstTabData = tabsBlock.querySelector('.partners-searching__btn');
+        let feedbackRole = firstTabData.dataset.role;
+
+        popupSubmitBtn.dataset.role = feedbackRole;
+    })
 
     parntersSearchBlock.addEventListener("click", getFeedbackData);
 

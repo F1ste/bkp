@@ -36,7 +36,7 @@ class RegisteredUserController extends Controller
         $request->validate([
             'email' => ['required', 'string', 'max:255', 'unique:users','email'],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
-            'mailing-confirmation' => ['accepted'],
+            'terms' => ['accepted'],
         ]);
 
         $user = User::create([

@@ -56,8 +56,8 @@
                         </div>
                         <div class="feedback__text main-text">
                             {{ $feedback->cover_letter }}
-                            <br><br>
-                            Имя Фамилия Отчество
+                            <!-- <br><br>
+                            Имя Фамилия Отчество -->
                         </div>
                     </div>
                 </div>
