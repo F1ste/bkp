@@ -17,7 +17,7 @@
                     </div>
                     <div class="feedback__heading">
                         <table class="my-feedbacks__table">
-                        @if ($mysubarr == [])
+                        @if ($feedbacks == [])
                             <div>На Ваши проекты еще никто не откликнулся</div>
                         @else
                         <thead>
@@ -34,31 +34,30 @@
                             @php
                                 $feedbackCount = 0;
                             @endphp
+                            
                             @foreach ($feedbacks as $feedback)
-                                @foreach($feedback as $item) 
                                     <tr class="my-feedbacks__table-row">
                                         <td class="my-feedbacks__table-item">
                                             <div class="table-number">{{ $feedbackCount + 1 }}</div>
                                         </td>
-                                        <td class="my-feedbacks__table-item">{{ $item->service->name_proj }}</td>
+                                        <td class="my-feedbacks__table-item">{{ $feedback['project_name'] }}</td>
                                         
-                                        <td class="my-feedbacks__table-item">{{ $item->role_name }}</td>
-                                        <td class="my-feedbacks__table-item">{{ $mysubarr[$feedbackCount]['inp'] ?? '' }}</td>
+                                        <td class="my-feedbacks__table-item">{{ $feedback['role_name'] }}</td>
+                                        <td class="my-feedbacks__table-item">{{ $feedback['role_date'] ?? '' }}</td>
                                         <td class="my-feedbacks__table-item">
-                                            @if ($item->status == 1)
+                                            @if ($feedback['status'] == 1)
                                                 Одобрено
-                                            @elseif ($item->status == 2)
+                                            @elseif ($feedback['status'] == 2)
                                                 Отказано
                                             @else
                                                 На рассмотрении
                                             @endif
                                         </td>
-                                        <td class="my-feedbacks__table-item"><a href="{{ route('profile.feedback.owner', ['id' => $item->id]) }}" class="my-feedbacks__btn btn btn-white _fw">Подробнее</a></td>
+                                        <td class="my-feedbacks__table-item"><a href="{{ route('profile.feedback.owner', ['id' => $feedback['id']]) }}" class="my-feedbacks__btn btn btn-white _fw">Подробнее</a></td>
                                     </tr>
                                     @php
                                         $feedbackCount++
                                     @endphp
-                                    @endforeach
                             @endforeach
                         @endif
                             </tbody>
