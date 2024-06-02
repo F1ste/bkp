@@ -6,7 +6,9 @@ use App\Events\Projects\ProjectArchived;
 use App\Events\Projects\ProjectDeclined;
 use App\Events\Projects\ProjectPublished;
 use App\Events\Projects\ProjectStatusChange;
+use App\Models\Scopes\ExcludeDraftsScope;
 use App\Models\Traits\Filterable;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
@@ -16,6 +18,7 @@ class Project extends Model
     use HasFactory;
     use Filterable;
 
+    public const STATUS_DRAFT = -1;
     public const STATUS_MODERATION = 0;
     public const STATUS_PUBLISHED = 1;
     public const STATUS_ARCHIVED = 2;
@@ -72,6 +75,8 @@ class Project extends Model
 
     protected static function booted()
     {
+        static::addGlobalScope(new ExcludeDraftsScope());
+
         static::updated(function ($project) {
             $is_status_changed = $project->status != $project->getOriginal('status');
             $is_reason_changed = $project->status == self::STATUS_DECLINED && $project->reason != $project->getOriginal('reason');
@@ -88,6 +93,11 @@ class Project extends Model
                 }
             }
         });
+    }
+
+    public function isDraft(): bool
+    {
+        return $this->status == self::STATUS_DRAFT;
     }
 
     public function isOnModeration(): bool
@@ -108,6 +118,25 @@ class Project extends Model
     public function isArchived(): bool
     {
         return $this->status == self::STATUS_ARCHIVED;
+    }
+
+    public function scopeWithDrafts(Builder $query)
+    {
+        return $query->withoutGlobalScope(ExcludeDraftsScope::class);
+    }
+
+    public function scopeOnlyDrafts(Builder $query)
+    {
+        return $query
+            ->withoutGlobalScope(ExcludeDraftsScope::class)
+            ->where('status', self::STATUS_DRAFT);
+    }
+
+    public function scopeWithoutDrafts(Builder $query)
+    {
+        return $query
+            ->withoutGlobalScope(ExcludeDraftsScope::class)
+            ->where('status', '!=', self::STATUS_DRAFT);
     }
 
     public function scopeOnModeration($query)

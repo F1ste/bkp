@@ -78,4 +78,9 @@ class User extends Authenticatable
     {
         return trim(implode(' ', [$this->surname, $this->first_name, $this->patronymic]));
     }
+
+    public function projects()
+    {
+        return $this->hasMany(Project::class);
+    }
 }
