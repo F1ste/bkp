@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\BannerController;
 use App\Http\Controllers\Admin\News\CategoryController;
 use App\Http\Controllers\Admin\NewsController;
 use App\Http\Controllers\Admin\Projects\RoleController;
+use App\Http\Controllers\Admin\StatisticController;
 use App\Http\Controllers\AdminUserController;
 use App\Http\Controllers\Admin\ProjectController;
 use App\Http\Controllers\Admin\Projects\EventController;
@@ -99,3 +100,5 @@ Route::prefix('/footer')->group(function () {
         Route::post('/delete', [FooterController::class, 'fpage_delete'])->name('fpage.delete');
     });
 });
+
+Route::get('/statictics', [StatisticController::class, 'index'])->name('statictics');

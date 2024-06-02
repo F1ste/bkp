@@ -60,6 +60,7 @@
                     </div>
 
                     <a href="{{ route('admin.user') }}" class="sidebar__item _icon-rate">Рейтинг пользователей</a>
+                    <a href="{{ route('admin.statictics') }}" class="sidebar__item _icon-statistic">Статистика</a>
                 </div>
 
                 <div class="sidebar__items mt-auto">
