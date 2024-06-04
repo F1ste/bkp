@@ -73,6 +73,7 @@
             @yield('content')
         </main>
 
+        <x-send-to-moderation-popup-admin />
         <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
         <script src="{{ asset('/plugins/ckeditor/ckeditor.js') }}"></script>
         <script src="{{ asset('/plugins/ckfinder/ckfinder.js') }}"></script>

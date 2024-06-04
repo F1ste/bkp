@@ -236,7 +236,7 @@
                             </div>
                         </div>
                         <div class="create-project__buttons">
-                            <button id='store-button' class="create-project__btn btn btn-filled">Сохранить</button>
+                            <button data-popup="#moderationPopup" class="create-project__btn btn btn-filled">Отправить на модерацию</button>
                         </div>
                     </div>
 
