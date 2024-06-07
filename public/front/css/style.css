@@ -5509,9 +5509,9 @@ blockquote p::after {
   padding: 0.875rem 3.3125rem;
 }
 
-.create-project__footer .create-project__buttons .create-project__btn:nth-child(2) {
+/* .create-project__footer .create-project__buttons .create-project__btn:nth-child(2) {
   margin-left: auto;
-}
+} */
 
 .create-project .form__input {
   border-color: #00AF66;
