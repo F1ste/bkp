@@ -145,6 +145,7 @@ import {} from "../libs/ckeditor/ckeditor";
         email: "email",
         name_proj: "name_proj",
         video: "video",
+        draftButton: "draft-button",
         storeButton: "store-button",
         serch: "find-partners__partner-block",
         img1: "img1",
@@ -317,94 +318,150 @@ import {} from "../libs/ckeditor/ckeditor";
             input.value = "";
         });
     });
+
+    function collectFormData() {
+        let name = document.getElementById(select.name).value,
+            excerpt = editorData.excerpt,
+            date_service_from = document.getElementById(select.date_service_from).value,
+            date_service_to = document.getElementById(select.date_service_to).value,
+            price = 0,
+            imagesEl = document.querySelectorAll(select.imageEl),
+            images = {},
+            image = [],
+            region = document.getElementById(select.region).value,
+            tip = document.getElementById(select.tip).value,
+            teg_mas = document.getElementById(select.teg),
+            tema = document.getElementById(select.tema).value,
+            tel = document.getElementById(select.tel).value,
+            email = document.getElementById(select.email).value,
+            name_proj = document.getElementById(select.name_proj).value,
+            video = document.getElementById(select.video).value,
+            teg = [],
+            serch_mas = document.getElementsByClassName(select.serch),
+            serch = [];
+    
+        //случай мульти-режима
+        if (teg_mas.multiple) {
+            //перебираем массив опций
+            for (var i = 0; i < teg_mas.options.length; i++) {
+                //если опция выбрана - добавим её в массив
+                if (teg_mas.options[i].selected)
+                    teg.push(teg_mas.options[i].value);
+            }
+            //случай одиночного выбора в select
+        } else teg.push(elm.value);
+    
+        teg.shift();
+    
+        for (var i = 0; i < serch_mas.length; i++) {
+            serch[i] = {};
+            serch[i]["sel"] =
+                serch_mas[i].getElementsByTagName("select")[0].value;
+            var textareaId =
+                serch_mas[i].getElementsByTagName("textarea")[0].id;
+            serch[i]["tex"] = editorData[textareaId];
+            serch[i]["inp"] =
+                serch_mas[i].getElementsByTagName("input")[0].value;
+        }
+    
+        for (let i = 0; imagesEl.length > i; i++) {
+            if (imagesEl[i].querySelectorAll("img").length !== 0) {
+                image.push(
+                    imagesEl[i]
+                        .querySelectorAll("img")[0]
+                        .getAttribute("src")
+                );
+            }
+        }
+        images.images = image;
+    
+        serch_mas = Array.from(serch_mas);
+    
+        return {
+            name,
+            excerpt,
+            date_service_from,
+            date_service_to,
+            price,
+            images: JSON.stringify(images),
+            region,
+            tip,
+            teg: Array.from(teg),
+            tema,
+            tel,
+            email,
+            name_proj,
+            video,
+            serch: Array.from(serch),
+            img1: img1,
+            img2: img2,
+            img3: img3,
+            img4: img4,
+            img5: img5,
+            img6: img6,
+            serch_mas: serch_mas,
+            teg_mas: teg_mas,
+        };
+    }
+    
+    document
+        .getElementById(select.draftButton)
+        .addEventListener("click", (e) => {
+            e.preventDefault();
+            let formData = collectFormData();
+
+            if (formData.name_proj.length === 0) {
+                showValidateError(nameProj, formData.name_proj.length === 0);
+                alert("Необходимо заполнить название проекта для создания черновика")
+                return false;
+            }
+    
+            document.getElementById(select.draftButton).innerHTML = `Подождите...`;
+    
+            delete formData.serch_mas;
+            delete formData.teg_mas;
+            
+            axios
+                .post(storeRoute, {...formData, price: -1, teg: JSON.stringify(formData.teg), serch: JSON.stringify(formData.serch)})
+                .then((e) => {
+                    window.location.href = e.data;
+                })
+                .catch((error) => {
+                    console.log(error);
+                    alert("Упс, что-то пошло не так \nНе удалось создать черновик... Попробуйте позже");
+                });
+        });
+
     document
         .getElementById(select.storeButton)
         .addEventListener("click", (e) => {
-            let name = document.getElementById(select.name).value,
-                excerpt = editorData.excerpt,
-                date_service_from = document.getElementById(
-                    select.date_service_from
-                ).value,
-                date_service_to = document.getElementById(
-                    select.date_service_to
-                ).value,
-                price = 0,
-                imagesEl = document.querySelectorAll(select.imageEl),
-                images = {},
-                image = [],
-                region = document.getElementById(select.region).value,
-                tip = document.getElementById(select.tip).value,
-                teg_mas = document.getElementById(select.teg),
-                tema = document.getElementById(select.tema).value,
-                tel = document.getElementById(select.tel).value,
-                email = document.getElementById(select.email).value,
-                name_proj = document.getElementById(select.name_proj).value,
-                video = document.getElementById(select.video).value,
-                teg = [],
-                serch_mas = document.getElementsByClassName(select.serch),
-                serch = [];
-
-            //случай мульти-режима
-            if (teg_mas.multiple) {
-                //перебираем массив опций
-                for (var i = 0; i < teg_mas.options.length; i++) {
-                    //если опция выбрана - добавим её в массив
-                    if (teg_mas.options[i].selected)
-                        teg.push(teg_mas.options[i].value);
-                }
-                //случай одиночного выбора в select
-            } else teg.push(elm.value);
-
-            teg.shift();
-
-            for (var i = 0; i < serch_mas.length; i++) {
-                serch[i] = {};
-                serch[i]["sel"] =
-                    serch_mas[i].getElementsByTagName("select")[0].value;
-                var textareaId =
-                    serch_mas[i].getElementsByTagName("textarea")[0].id;
-                serch[i]["tex"] = editorData[textareaId];
-                serch[i]["inp"] =
-                    serch_mas[i].getElementsByTagName("input")[0].value;
-            }
-
-            for (let i = 0; imagesEl.length > i; i++) {
-                if (imagesEl[i].querySelectorAll("img").length !== 0) {
-                    image.push(
-                        imagesEl[i]
-                            .querySelectorAll("img")[0]
-                            .getAttribute("src")
-                    );
-                }
-            }
-            images.images = image;
-
-            serch_mas = Array.from(serch_mas);
-
+            e.preventDefault();
+            let formData = collectFormData();
             if (
-                name.length === 0 ||
-                email.length === 0 ||
-                !validateEmail(email) ||
-                tel === 0 ||
-                !validatePhone(tel) ||
-                excerpt.length === 0 ||
-                name_proj.length === 0 ||
-                teg.length === 0 ||
-                tip.length === 0 ||
-                region.length === 0 ||
-                tema.length === 0 ||
-                mainImg.getAttribute('src').length === 0 ||
-                excerpt.length >= 1000 ||
-                serch.some((item) => item.sel === "" || item.sel === undefined)
+                formData.name.length === 0 ||
+                formData.email.length === 0 ||
+                !validateEmail(formData.email) ||
+                formData.tel === 0 ||
+                !validatePhone(formData.tel) ||
+                formData.excerpt.length === 0 ||
+                formData.name_proj.length === 0 ||
+                formData.teg.length === 0 ||
+                formData.tip.length === 0 ||
+                formData.region.length === 0 ||
+                formData.tema.length === 0 ||
+                mainImg.getAttribute("src").length === 0 ||
+                formData.excerpt.length >= 1000 ||
+                formData.serch.some((item) => item.sel === "" || item.sel === undefined) ||
+                formData.serch.some((item) => item.inp === "" || item.inp === undefined)
             ) {
                 showValidateError(
                     excerptEl,
-                    excerpt.length >= 1000,
+                    formData.excerpt.length >= 1000,
                     "Не более 1000 символов"
                 );
                 showValidateError(
                     excerptEl,
-                    excerpt.length === 0,
+                    formData.excerpt.length === 0,
                     "Заполните описание проекта"
                 );
                 showValidateError(
@@ -412,76 +469,63 @@ import {} from "../libs/ckeditor/ckeditor";
                     mainImg.getAttribute("src").length === 0,
                     ""
                 );
-                showValidateError(teg_mas, teg.length === 0, "");
-                showValidateError(projectType, tip.length === 0, "");
-                showValidateError(projectRegion, region.length === 0, "");
-                showValidateError(projectTheme, tema.length === 0, "");
-                showValidateError(phoneInput, !validatePhone(tel), "");
-                showValidateError(emailInput, !validateEmail(email), "");
-                showValidateError(nameProj, name_proj.length === 0);
-                showValidateError(contactName, name.length === 0);
+                showValidateError(formData.teg_mas, formData.teg.length === 0, "");
+                showValidateError(projectType, formData.tip.length === 0, "");
+                showValidateError(projectRegion, formData.region.length === 0, "");
+                showValidateError(projectTheme, formData.tema.length === 0, "");
+                showValidateError(phoneInput, !validatePhone(formData.tel), "");
+                showValidateError(emailInput, !validateEmail(formData.email), "");
+                showValidateError(nameProj, formData.name_proj.length === 0);
+                showValidateError(contactName, formData.name.length === 0);
 
-                for (let i = 0; i < serch_mas.length; i++) {
+                for (let i = 0; i < formData.serch_mas.length; i++) {
                     showValidateError(
-                        serch_mas[i].querySelector(
+                        formData.serch_mas[i].querySelector(
                             ".create-project__form-select"
                         ),
-                        serch[i].sel.length === 0,
+                        formData.serch[i].sel.length === 0,
                         ""
                     );
                     showValidateError(
-                        serch_mas[i].querySelector(
+                        formData.serch_mas[i].querySelector(
                             ".create-project__form-input"
                         ),
-                        serch[i].inp.length === 0,
+                        formData.serch[i].inp.length === 0,
                         ""
                     );
                 }
 
-                showValidateError(dateServiceFrom, date_service_from.length === 0);
-                showValidateError(dateServiceTo, date_service_to.length === 0);
+                showValidateError(dateServiceFrom, formData.date_service_from.length === 0);
+                showValidateError(dateServiceTo, formData.date_service_to.length === 0);
+
+                const closeBtn = document.getElementById("moderationPopup").querySelector('.popup__close');
+
+                const clickEvent = new MouseEvent('click', {
+                    bubbles: true,
+                    cancelable: true,
+                    view: window
+                });
+
+                closeBtn.dispatchEvent(clickEvent);
 
                 alert("Заполните все поля выделенные красным");
                 return false;
             }
-
-            document.getElementById(
-                select.storeButton
-            ).innerHTML = `Подождите...`;
-
+    
+            document.getElementById(select.storeButton).innerHTML = `Подождите...`;
+    
             axios
-                .post(storeRoute, {
-                    name: name,
-                    images: JSON.stringify(images),
-                    excerpt: excerpt,
-                    date_service_from: date_service_from,
-                    date_service_to: date_service_to,
-                    price: price,
-                    region: region,
-                    tip: tip,
-                    teg: JSON.stringify(teg),
-                    tema: tema,
-                    tel: tel,
-                    email: email,
-                    name_proj: name_proj,
-                    video: video,
-                    serch: JSON.stringify(serch),
-                    img1: img1,
-                    img2: img2,
-                    img3: img3,
-                    img4: img4,
-                    img5: img5,
-                    img6: img6,
-                })
+                .post(storeRoute, {...formData, teg: JSON.stringify(formData.teg), serch: JSON.stringify(formData.serch)})
                 .then((e) => {
+                    if (window.location.href.includes("#moderationPopup")) {
+                        history.replaceState({}, document.title, window.location.href.replace(/#moderationPopup/g, ''));
+                    }
                     window.location.href = e.data;
                 })
                 .catch((error) => {
                     console.log(error);
-                    notification(
-                        "Упс, что-то пошло не так",
-                        "Не удалось создать услугу... Попробуйте позже"
-                    );
-                });
-        });
+                    alert("Упс, что-то пошло не так \nНе удалось создать проект... Попробуйте позже");
+            });
+    });
+    
 })();

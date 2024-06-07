@@ -237,6 +237,7 @@
                         </div>
                         <div class="create-project__buttons">
                             <button data-popup="#moderationPopup" class="create-project__btn btn btn-filled">Отправить на модерацию</button>
+                            <button id="draft-button" class="create-project__btn btn btn-filled">Сохранить черновик</button>
                         </div>
                     </div>
 

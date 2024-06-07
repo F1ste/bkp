@@ -22,6 +22,7 @@
 									<a href="{{ route('profile.services.single', ['id' => $el->id]) }}">
 										<div class="my-projects__project-name">
 											{{ $el->name_proj }}
+											@if ($el->status == -1) <span style="opacity: .5;">(Черновик)</span> @endif
 										</div>
 										<!-- <div class="my-projects__notifications _icon-notification">
 											@php

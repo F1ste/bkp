@@ -126,7 +126,7 @@ class CollectionController extends Controller
             'date_service_from' => Carbon::parse($request->date_service_from)->format('Y-m-d'),
             'date_service_to' => Carbon::parse($request->date_service_to)->format('Y-m-d'),
             'status' => $request->price,
-            'created_at' => date('Y-m-d'),
+            'created_at' => Carbon::now(),
             'region' => $request->region,
             'tip' => $request->tip,
             'teg' => $request->teg,
@@ -155,7 +155,6 @@ class CollectionController extends Controller
         $request->validate([
             'name_proj' => ['string', 'max:46']
         ]);
-
         $collection = Project::where('id', $request->id)->update([
             'name' => $request->name,
             'images' => $request->images,
@@ -164,7 +163,7 @@ class CollectionController extends Controller
             'date_service_from' => Carbon::parse($request->date_service_from)->format('Y-m-d'),
             'date_service_to' => Carbon::parse($request->date_service_to)->format('Y-m-d'),
             'status' => $request->price,
-            'updated_at' => date('Y-m-d'),
+            'updated_at' => Carbon::now(),
             'region' => $request->region,
             'tip' => $request->tip,
             'teg' => $request->teg,

@@ -68,8 +68,15 @@ class Project extends Model
     {
         parent::boot();
 
-        static::creating(function ($post) {
-            $post->slug = Str::slug($post->name_proj);
+        static::creating(function ($project) {
+            if (!$project->isDraft()) {
+                $slug = Str::slug($project->name_proj);
+                $count = Project::where('slug', 'like', $slug . '%')->count();
+                if ($count > 0) {
+                    $slug .= '-' . ($count);
+                }
+                $project->slug = $slug;
+            }
         });
     }
 
@@ -83,6 +90,17 @@ class Project extends Model
 
             if ($is_status_changed || $is_reason_changed) {
                 ProjectStatusChange::dispatch($project);
+
+                if (is_null($project->slug)) {
+                    $project->refresh();
+                    $slug = Str::slug($project->name_proj);
+                    $count = Project::where('slug', 'like', $slug . '%')->count();
+                    if ($count > 0) {
+                        $slug .= '-' . ($count);
+                    }
+                    $project->slug = $slug;
+                    $project->save();
+                }
 
                 if ($project->status == self::STATUS_PUBLISHED) {
                     ProjectPublished::dispatch($project);
