@@ -128,7 +128,11 @@
                                 {{ $el->tema }}
                             </div>
                             <a href="{{ route('projects.project', $el) }}" class="popular-projects__project-name">
-                                {{ $el->name_proj }}
+                                @if ($el->is_project_name_hidden)
+                                    {{ $el->tema }} <i style="opacity:.5;">(название не указано)</i>
+                                @else
+                                    {{ $el->name_proj }}
+                                @endif
                             </a>
                             <div class="popular-projects__project-date">
                                 С {{ Carbon\Carbon::parse($el->date_service_from)->format('d.m.Y') }}
@@ -143,7 +147,9 @@
                                     {{ $el->region}}
                                 </div>
                                 <div class="popular-projects__organization-name">
-                                    <a>{{ $users->where('id', $el->user_id)->first()->org }}</a>
+                                    @if (!$el->is_organization_hidden)
+                                        <a>{{ $users->where('id', $el->user_id)->first()->org }}</a>
+                                    @endif
                                 </div>
                             </div>
                             <div class="popular-projects__partners-tags partners-tags">

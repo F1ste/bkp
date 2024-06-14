@@ -24,7 +24,11 @@
                                 {{ $project->tema }}
                             </div>
                             <div class="project-main__project-name">
-                                {{ $project->name_proj }}
+                                @if ($project->is_project_name_hidden)
+                                    {{ $project->tema }} <i style="opacity:.5;">(название не указано)</i>
+                                @else
+                                    {{ $project->name_proj }}
+                                @endif
                             </div>
                         </div>
                         <div class="project-main__brief-info brief-info__col main-text">
@@ -36,7 +40,9 @@
                                 <a href="{{ $project->user->sait }}">{{ $project->user->sait }}</a>
                             </div>
                             <div class="project-main__brief-item project-info__item">
-                                {{ $project->user->org }}
+                                @if (!$project->is_organization_hidden)
+                                    {{ $project->user->org }}
+                                @endif
                             </div>
                             <div class="project-main__project-geo _icon-geo">
                                 {{ $project->region }}

@@ -53,6 +53,8 @@ class Project extends Model
         'img6',
         'reason',
         'order',
+        'is_project_name_hidden',
+        'is_organization_hidden',
     ];
 
     protected $attributes = [
@@ -69,7 +71,10 @@ class Project extends Model
         parent::boot();
 
         static::creating(function ($project) {
-            if (!$project->isDraft()) {
+            if ($project->is_project_name_hidden) {
+                $uuid = (string) Str::uuid();
+                $project->slug = $uuid;
+            } elseif (!$project->isDraft() && !$project->is_project_name_hidden) {
                 $slug = Str::slug($project->name_proj);
                 $count = Project::where('slug', 'like', $slug . '%')->count();
                 if ($count > 0) {
@@ -85,32 +90,50 @@ class Project extends Model
         static::addGlobalScope(new ExcludeDraftsScope());
 
         static::updated(function ($project) {
-            $is_status_changed = $project->status != $project->getOriginal('status');
-            $is_reason_changed = $project->status == self::STATUS_DECLINED && $project->reason != $project->getOriginal('reason');
-
-            if ($is_status_changed || $is_reason_changed) {
+            if (self::statusOrReasonChanged($project)) {
                 ProjectStatusChange::dispatch($project);
-
-                if (is_null($project->slug)) {
-                    $project->refresh();
-                    $slug = Str::slug($project->name_proj);
-                    $count = Project::where('slug', 'like', $slug . '%')->count();
-                    if ($count > 0) {
-                        $slug .= '-' . ($count);
-                    }
-                    $project->slug = $slug;
-                    $project->save();
-                }
-
-                if ($project->status == self::STATUS_PUBLISHED) {
-                    ProjectPublished::dispatch($project);
-                } elseif ($project->status == self::STATUS_DECLINED) {
-                    ProjectDeclined::dispatch($project);
-                } elseif ($project->status == self::STATUS_ARCHIVED) {
-                    ProjectArchived::dispatch($project);
-                }
+                self::updateSlugIfNeeded($project);
+                self::dispatchStatusEvent($project);
             }
         });
+    }
+
+    protected static function statusOrReasonChanged($project)
+    {
+        $is_status_changed = $project->status != $project->getOriginal('status');
+        $is_reason_changed = $project->status == self::STATUS_DECLINED && $project->reason != $project->getOriginal('reason');
+        return $is_status_changed || $is_reason_changed;
+    }
+
+    protected static function updateSlugIfNeeded($project)
+    {
+        if (is_null($project->slug)) {
+            $project->refresh();
+            $slug = Str::slug($project->name_proj);
+            $count = Project::where('slug', 'like', $slug . '%')->count();
+            if ($count > 0) {
+                $slug .= '-' . ($count);
+            }
+            $project->slug = $slug;
+            $project->save();
+        }
+
+        if ($project->is_project_name_hidden && $project->slug == Str::slug($project->name_proj)) {
+            $uuid = (string) Str::uuid();
+            $project->slug = $uuid;
+            $project->save();
+        }
+    }
+
+    protected static function dispatchStatusEvent($project)
+    {
+        if ($project->status == self::STATUS_PUBLISHED) {
+            ProjectPublished::dispatch($project);
+        } elseif ($project->status == self::STATUS_DECLINED) {
+            ProjectDeclined::dispatch($project);
+        } elseif ($project->status == self::STATUS_ARCHIVED) {
+            ProjectArchived::dispatch($project);
+        }
     }
 
     public function isDraft(): bool

@@ -142,6 +142,8 @@ class CollectionController extends Controller
             'img4' => $request->img4,
             'img5' => $request->img5,
             'img6' => $request->img6,
+            'is_project_name_hidden' => $request->is_project_name_hidden,
+            'is_organization_hidden' => $request->is_organization_hidden,
         ]);
 
         return response()->json(route('profile.services.single', ['id' => $collection->id]), 201);
@@ -179,6 +181,8 @@ class CollectionController extends Controller
             'img4' => $request->img4,
             'img5' => $request->img5,
             'img6' => $request->img6,
+            'is_project_name_hidden' => $request->is_project_name_hidden,
+            'is_organization_hidden' => $request->is_organization_hidden,
         ]);
 
         return response()->json($collection, 201);

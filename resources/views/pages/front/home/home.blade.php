@@ -218,7 +218,11 @@
                             {{ $project->tema }}
                         </div>
                         <a href="{{ route('projects.project', $project) }}" class="popular-projects__project-name">
-                            {{ $project->name_proj }}
+                            @if ($project->is_project_name_hidden)
+                                {{ $project->tema }} <i style="opacity:.5;">(название не указано)</i>
+                            @else
+                                {{ $project->name_proj }}
+                            @endif
                         </a>
                         <div class="popular-projects__project-date">
                             С {{ $project->date_service_from->format('d.m.Y') }}
@@ -236,7 +240,9 @@
                                 {{ $project->region }}
                             </div>
                             <div class="popular-projects__organization-name">
-                                <a>{{ $project->user->org }}</a>
+                                @if (!$project->is_organization_hidden)
+                                    {{ $project->user->org }}
+                                @endif
                             </div>
                         </div>
                         <div class="popular-projects__partners-tags partners-tags">

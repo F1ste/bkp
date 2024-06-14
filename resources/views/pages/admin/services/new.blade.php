@@ -211,6 +211,34 @@
                             </div>
                         </div>
                     </div>
+                    <div class="project__additional">
+                        <div class="project__form-item form__item checkbox__item">
+                            <div class="project__checkbox checkbox">
+                                <input data-no-focus-classes="" 
+                                    id="hideNameProj" 
+                                    type="checkbox" 
+                                    name="hideNameProj" 
+                                    class="project__checkbox-input checkbox__input"
+                                >
+                                <label for="hideNameProj" class="project__checkbox-label checkbox__label">
+                                    <span>Скрыть название проекта</span>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="project__form-item form__item checkbox__item">
+                            <div class="project__checkbox checkbox">
+                                <input data-no-focus-classes="" 
+                                    id="hideOrg" 
+                                    type="checkbox" 
+                                    name="hideOrg" 
+                                    class="project__checkbox-input checkbox__input"
+                                >
+                                <label for="hideOrg" class="project__checkbox-label checkbox__label">
+                                    <span>Скрыть название организации</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
                     <div class="create-project__footer">
                         <div class="create-project__title personal__title">Контакты для связи:</div>
                         <div class="create-project__footer-content">
