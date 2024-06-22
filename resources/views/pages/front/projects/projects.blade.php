@@ -2,6 +2,49 @@
 
 @section('content')
     <main class="page">
+    <div class="join-us">
+                <div class="join-us__container">
+                    <div class="join-us__wrapper">
+                        <div class="join-us__heading section__heading">
+                            <div class="join-us__heading-text section__heading-text">
+                                <div class="join-us__title main-page__section-title">
+                                    Присоединяйтесь к нам
+                                </div>
+                            </div>
+                        </div>
+                        <div class="join-us__content">
+                            <div class="join-us__item">
+                                <div class="join-us__info">
+                                    <div class="join-us__text">
+                                        <div class="join-us__text-title">
+                                            Предложить проект
+                                        </div>
+                                        <div class="join-us__text-desrcription">
+                                            Предложите свою идею и укажите,
+                                            какая помощь вам нужна
+                                        </div>
+                                    </div>
+                                    <a href="/profile/dashboard" class="join-us__btn _fw btn btn-filled">Перейти</a>
+                                </div>
+                            </div>
+                            <div class="join-us__item">
+                                <div class="join-us__info">
+                                    <div class="join-us__text">
+                                        <div class="join-us__text-title">
+                                            Узнайте о событиях
+                                        </div>
+                                        <div class="join-us__text-desrcription">
+                                            Ознакомьтесь с новостями проектов и
+                                            Культурной биржи
+                                        </div>
+                                    </div>
+                                    <a href="/news" class="join-us__btn _fw btn btn-filled">Перейти</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         <section class="projects">
             <div class="projects__container">
                 <div class="projects__heading section__heading">
@@ -196,49 +239,7 @@
                 </div>
             </div>
         </section>
-        <div class="join-us">
-                <div class="join-us__container">
-                    <div class="join-us__wrapper">
-                        <div class="join-us__heading section__heading">
-                            <div class="join-us__heading-text section__heading-text">
-                                <div class="join-us__title main-page__section-title">
-                                    Присоединяйтесь к нам
-                                </div>
-                            </div>
-                        </div>
-                        <div class="join-us__content">
-                            <div class="join-us__item">
-                                <div class="join-us__info">
-                                    <div class="join-us__text">
-                                        <div class="join-us__text-title">
-                                            Предложить проект
-                                        </div>
-                                        <div class="join-us__text-desrcription">
-                                            Предложите свою идею и укажите,
-                                            какая помощь вам нужна
-                                        </div>
-                                    </div>
-                                    <a href="/profile/dashboard" class="join-us__btn _fw btn btn-filled">Перейти</a>
-                                </div>
-                            </div>
-                            <div class="join-us__item">
-                                <div class="join-us__info">
-                                    <div class="join-us__text">
-                                        <div class="join-us__text-title">
-                                            Узнайте о событиях
-                                        </div>
-                                        <div class="join-us__text-desrcription">
-                                            Ознакомьтесь с новостями проектов и
-                                            Культурной биржи
-                                        </div>
-                                    </div>
-                                    <a href="/news" class="join-us__btn _fw btn btn-filled">Перейти</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        
     </main>
     <script>
     (() => {
