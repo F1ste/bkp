@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function () {
-    document.querySelector('#modal-help form').addEventListener('submit', function (e) {
+    document.querySelector('#modal-help form')?.addEventListener('submit', function (e) {
         e.preventDefault();
         let responseElement = document.querySelector('#help-response');
         let submits = e.target.querySelectorAll('button[type="submit"]');
