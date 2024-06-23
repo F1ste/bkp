@@ -474,7 +474,8 @@ import {} from "../libs/ckeditor/ckeditor";
                 mainImg.getAttribute("src").length === 0 ||
                 formData.excerpt.length >= 1000 ||
                 formData.serch.some((item) => item.sel === "" || item.sel === undefined) ||
-                formData.serch.some((item) => item.inp === "" || item.inp === undefined)
+                formData.serch.some((item) => item.inp === "" || item.inp === undefined) ||
+                formData.serch.some((item) => item.sel === "Меценат/Спонсор") && formData.serch.length === 1
             ) {
                 showValidateError(
                     excerptEl,
@@ -505,8 +506,8 @@ import {} from "../libs/ckeditor/ckeditor";
                         formData.serch_mas[i].querySelector(
                             ".create-project__form-select"
                         ),
-                        formData.serch[i].sel.length === 0,
-                        ""
+                        (formData.serch[i].sel === "Меценат/Спонсор" && formData.serch.length === 1 || formData.serch[i].sel.length === 0),
+                        formData.serch[i].sel.length === 0 ? "" : "Выберите еще один вид помощи. Это увеличит ваши шансы найти партнеров"
                     );
                     showValidateError(
                         formData.serch_mas[i].querySelector(

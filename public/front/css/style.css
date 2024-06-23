@@ -363,7 +363,7 @@ h6 {
 .form__error{
   margin-top: 5px;
   color: red;
-  font-size: clamp( 0.875rem , 0.85rem  +  0.125vw , 1rem );
+  font-size: clamp( 0.775rem , 0.75rem  +  0.125vw , 0.9rem );
 }
 
 .form .search-submit {
@@ -1264,6 +1264,37 @@ body::after {
   transition: opacity 0.8s ease 0s;
   pointer-events: none;
   z-index: 149;
+}
+
+.partnership-widget{
+  position: fixed;
+  z-index: 5;
+  background-color: #fff;
+  color: #00AF66;
+  bottom: 20px;
+  right: 20px;
+  border: 2px solid #00AF66;
+  padding: 20px;
+  border-radius: 50%;
+  cursor: pointer;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.partnership-widget svg{
+  width: 64px;
+  height: 64px;
 }
 
 .popup-show body::after {
@@ -2321,6 +2352,8 @@ body::after {
 }
 
 .footer {
+  position: relative;
+  z-index: 6;
   padding-top: 3.4375rem;
   padding-bottom: 3.9375rem;
   background-color: #00AF66;
@@ -5430,6 +5463,11 @@ blockquote p::after {
 .create-project__find-partners .form__item {
   max-width: 296px;
   width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .create-project__find-partners .create-project__role-description {
@@ -5444,6 +5482,11 @@ blockquote p::after {
 .create-project__find-partners .create-project__form-select {
   width: 100%;
   max-width: 406px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .create-project .add-partner {
@@ -7446,6 +7489,16 @@ blockquote p::after {
   }
   .faq__row.reverse-row{
     flex-direction: column;
+  }
+  .partnership-widget{
+    bottom: 10px;
+    right: 10px;
+    padding: 10px;
+  }
+
+  .partnership-widget svg {
+    width: 45px;
+    height: 45px;
   }
 }
 
