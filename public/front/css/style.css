@@ -1320,13 +1320,12 @@ body::after {
 
 .partnership-widget{
   position: fixed;
-  z-index: 5;
   background-color: #fff;
   color: #00AF66;
   bottom: 20px;
-  right: 20px;
+  right: 30px;
   border: 2px solid #00AF66;
-  padding: 20px;
+  padding: 15px;
   border-radius: 50%;
   cursor: pointer;
   transition: transform .5s ease;

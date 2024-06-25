@@ -4,7 +4,7 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="{{ asset('front/css/style.css?v=1542566346773653790643') }}"/>
+        <link rel="stylesheet" href="{{ asset('front/css/style.css?v=15542562634736537901643') }}"/>
         <link rel="stylesheet" href="{{ asset('plugins/bvi/dist/css/bvi.min.css') }}"/>
         @hasSection('title')
             <title>@yield('title') &mdash; {{ config('app.name') }}</title>
@@ -75,6 +75,25 @@
             function widgetToggle() {
                 widgetForm.classList.toggle('widget-form_active');
             }
+
+            document.addEventListener('DOMContentLoaded', function() {
+                const widgetButton = document.getElementById('widgetButton');
+                const footer = document.querySelector('footer');
+                
+                if (!footer || !widgetButton) return;
+
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            widgetButton.style.display = 'none';
+                        } else {
+                            widgetButton.style.display = 'block';
+                        }
+                    });
+                }, { threshold: 0 });
+
+                observer.observe(footer);
+            });
 
             widgetBtn.addEventListener('click', widgetToggle)
             widgetCloseBtn.addEventListener('click', widgetToggle)
