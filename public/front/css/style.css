@@ -1266,6 +1266,58 @@ body::after {
   z-index: 149;
 }
 
+.widget-form{
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  z-index: 10;
+  right: 10px;
+  bottom: 10px;
+  width: 250px;
+  height: 100%;
+  max-height: 300px;
+  padding: 20px 35px 20px 30px;
+  background-color: #fff;
+  border-radius: 5px;
+  border: 2px solid #00AF66;
+  visibility: hidden;
+}
+
+.widget-form_active{
+  visibility: visible;
+}
+
+.widget-form__title{
+  font-weight: 700;
+  color: #00AF66;
+  font-size: 18px;
+}
+
+.widget-form__text{
+  margin-top: 20px;
+  font-size: 15px;
+}
+
+.widget-form__link{
+  margin: auto 0;
+  padding: 7px;
+  border-radius: 5px;
+  font-size: 15px;
+}
+
+.widget-form__annotation{
+  margin-top: auto;
+  padding-top: 20px;
+  padding-bottom: 10px;
+  font-size: 13px;
+  opacity: .5;
+}
+
+.popup__close.widget-close {
+  top: 18px;
+  right: 15px;
+}
+
 .partnership-widget{
   position: fixed;
   z-index: 5;
@@ -1277,19 +1329,11 @@ body::after {
   padding: 20px;
   border-radius: 50%;
   cursor: pointer;
-  animation: pulse 2s infinite;
+  transition: transform .5s ease;
 }
 
-@keyframes pulse {
-  0% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(1.1);
-  }
-  100% {
-    transform: scale(1);
-  }
+.partnership-widget:hover{
+  transform: scale(1.05);
 }
 
 .partnership-widget svg{
