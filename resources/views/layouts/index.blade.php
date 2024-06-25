@@ -4,7 +4,7 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="{{ asset('front/css/style.css?v=15542562634736537901643') }}"/>
+        <link rel="stylesheet" href="{{ asset('front/css/style.css?v=1554256263473426537901643') }}"/>
         <link rel="stylesheet" href="{{ asset('plugins/bvi/dist/css/bvi.min.css') }}"/>
         @hasSection('title')
             <title>@yield('title') &mdash; {{ config('app.name') }}</title>
@@ -51,13 +51,12 @@
 
             @yield('content')
 
-            <x-partnership-widget />
             <x-footer-index />
             <x-partnership-widget-popup />
             <x-how-it-works-popup/>
         </div>
         <script src="{{ asset('front/js/app.js') }}"></script>
-        <script src="{{ asset('front/js/app2.js?v=1542566346773653790643') }}"></script>
+        <script src="{{ asset('front/js/app2.js?v=1554256263473426537901643') }}"></script>
         <script src="{{ asset('plugins/bvi/dist/js/bvi.min.js') }}"></script>
         <script>
             new isvek.Bvi({
@@ -68,35 +67,23 @@
             });
         </script>
         <script type="module">
-            const widgetBtn = document.querySelector('#widgetButton');
             const widgetForm = document.querySelector('#partnershipPopup');
             const widgetCloseBtn = widgetForm.querySelector('.popup__close');
-            
-            function widgetToggle() {
+                          
+            function showFixedBlock() {
                 widgetForm.classList.toggle('widget-form_active');
             }
 
-            document.addEventListener('DOMContentLoaded', function() {
-                const widgetButton = document.getElementById('widgetButton');
-                const footer = document.querySelector('footer');
-                
-                if (!footer || !widgetButton) return;
+            function hideFixedBlock() {
+                widgetForm.classList.toggle('widget-form_active');
+                sessionStorage.setItem('fixedBlockClosed', 'true');
+            }
 
-                const observer = new IntersectionObserver((entries) => {
-                    entries.forEach(entry => {
-                        if (entry.isIntersecting) {
-                            widgetButton.style.display = 'none';
-                        } else {
-                            widgetButton.style.display = 'block';
-                        }
-                    });
-                }, { threshold: 0 });
+            if (!sessionStorage.getItem('fixedBlockClosed')) {
+                setTimeout(showFixedBlock, 10000);
+            }
 
-                observer.observe(footer);
-            });
-
-            widgetBtn.addEventListener('click', widgetToggle)
-            widgetCloseBtn.addEventListener('click', widgetToggle)
+            widgetCloseBtn.addEventListener('click', hideFixedBlock);
         </script>
     </body>
 </html>
