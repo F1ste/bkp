@@ -76,6 +76,25 @@
                 widgetForm.classList.toggle('widget-form_active');
             }
 
+            document.addEventListener('DOMContentLoaded', function() {
+                const widgetButton = document.getElementById('widgetButton');
+                const footer = document.querySelector('footer');
+                
+                if (!footer || !widgetButton) return;
+
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            widgetButton.style.display = 'none';
+                        } else {
+                            widgetButton.style.display = 'block';
+                        }
+                    });
+                }, { threshold: 0 });
+
+                observer.observe(footer);
+            });
+
             widgetBtn.addEventListener('click', widgetToggle)
             widgetCloseBtn.addEventListener('click', widgetToggle)
         </script>
