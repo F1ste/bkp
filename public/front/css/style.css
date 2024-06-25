@@ -1329,6 +1329,7 @@ body::after {
   border-radius: 50%;
   cursor: pointer;
   transition: transform .5s ease;
+  visibility: hidden;
 }
 
 .partnership-widget:hover{
