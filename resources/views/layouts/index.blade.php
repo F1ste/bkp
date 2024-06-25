@@ -4,7 +4,7 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="{{ asset('front/css/style.css?v=1383566256773653790643') }}"/>
+        <link rel="stylesheet" href="{{ asset('front/css/style.css?v=1542566346773653790643') }}"/>
         <link rel="stylesheet" href="{{ asset('plugins/bvi/dist/css/bvi.min.css') }}"/>
         @hasSection('title')
             <title>@yield('title') &mdash; {{ config('app.name') }}</title>
@@ -51,13 +51,13 @@
 
             @yield('content')
 
-
+            <x-partnership-widget />
             <x-footer-index />
-
+            <x-partnership-widget-popup />
             <x-how-it-works-popup/>
         </div>
         <script src="{{ asset('front/js/app.js') }}"></script>
-        <script src="{{ asset('front/js/app2.js?v=1383566256773653790643') }}"></script>
+        <script src="{{ asset('front/js/app2.js?v=1542566346773653790643') }}"></script>
         <script src="{{ asset('plugins/bvi/dist/js/bvi.min.js') }}"></script>
         <script>
             new isvek.Bvi({
@@ -66,6 +66,18 @@
                 theme: 'white'
                 //...etc
             });
+        </script>
+        <script type="module">
+            const widgetBtn = document.querySelector('#widgetButton');
+            const widgetForm = document.querySelector('#partnershipPopup');
+            const widgetCloseBtn = widgetForm.querySelector('.popup__close');
+            
+            function widgetToggle() {
+                widgetForm.classList.toggle('widget-form_active');
+            }
+
+            widgetBtn.addEventListener('click', widgetToggle)
+            widgetCloseBtn.addEventListener('click', widgetToggle)
         </script>
     </body>
 </html>
