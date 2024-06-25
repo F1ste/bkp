@@ -31,7 +31,7 @@
                                 <div class="join-us__info">
                                     <div class="join-us__text">
                                         <div class="join-us__text-title">
-                                            Узнайте о событиях
+                                            Узнать о событиях
                                         </div>
                                         <div class="join-us__text-desrcription">
                                             Ознакомьтесь с новостями проектов и
