@@ -51,7 +51,6 @@
 
             @yield('content')
 
-            <x-partnership-widget />
             <x-footer-index />
             <x-partnership-widget-popup />
             <x-how-it-works-popup/>
