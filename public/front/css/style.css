@@ -1295,11 +1295,11 @@ body::after {
 
 .widget-form__text{
   margin-top: 20px;
-  font-size: 15px;
+  font-size: 17px;
 }
 
 .widget-form__link{
-  margin: auto 0;
+  margin: 24px 0 auto 0;
   padding: 7px;
   border-radius: 5px;
   font-size: 15px;
@@ -1316,29 +1316,6 @@ body::after {
 .popup__close.widget-close {
   top: 18px;
   right: 15px;
-}
-
-.partnership-widget{
-  position: fixed;
-  background-color: #fff;
-  color: #00AF66;
-  bottom: 20px;
-  right: 30px;
-  border: 2px solid #00AF66;
-  padding: 15px;
-  border-radius: 50%;
-  cursor: pointer;
-  transition: transform .5s ease;
-  visibility: hidden;
-}
-
-.partnership-widget:hover{
-  transform: scale(1.05);
-}
-
-.partnership-widget svg{
-  width: 64px;
-  height: 64px;
 }
 
 .popup-show body::after {
