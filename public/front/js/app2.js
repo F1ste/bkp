@@ -3900,7 +3900,6 @@
                                     let spollerContent = spollerTitle.nextElementSibling;
                                     let spollerRect = spollerContent.getBoundingClientRect();
                                     let windowWidth = window.innerWidth;
-                                    console.log(spollerRect.left, spollerRect.right, spollerContent.offsetWidth, windowWidth);
                                     // Adjust position and width if content goes beyond the screen
                                     if (
                                         (spollerRect.right + spollerContent.offsetWidth > windowWidth && spollerRect.left + spollerContent.offsetWidth > windowWidth)

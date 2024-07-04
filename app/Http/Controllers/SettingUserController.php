@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Region;
 use App\Models\User;
 use Illuminate\Http\Request;
+use App\Models\Project;
 
 class SettingUserController extends Controller
 {
@@ -14,7 +15,14 @@ class SettingUserController extends Controller
     public function setting()
     {
         $regions = Region::orderBy('name')->get();
-        return view('pages.user.setting.setting', compact('regions'));
+        $user = auth()->user();
+    
+        // Проверка, во всех ли проектах скрыты организации
+        $allProjectsHidden = Project::where('user_id', $user->id)
+                                    ->where('is_organization_hidden', false)
+                                    ->count() == 0;
+    
+        return view('pages.user.setting.setting', compact('regions', 'allProjectsHidden'));
     }
 
     public function showUser(User $user)
@@ -48,6 +56,11 @@ class SettingUserController extends Controller
             'email' => $request->email,
             'portfol' => $request->portfol
         ]);
+
+        if ($request->has('is_organization_hidden')) {
+            $isHidden = $request->is_organization_hidden;
+            Project::where('user_id', auth()->user()->id)->update(['is_organization_hidden' => $isHidden]);
+        }
 
         return response()->json($user, 201);
     }

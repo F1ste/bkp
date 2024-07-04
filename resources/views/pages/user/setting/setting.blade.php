@@ -12,9 +12,25 @@
                         <div class="profile__form-block">
                             <div class="profile__title personal__title">Организация</div>
                             <div class="profile__main-info">
-                                <div class="profile__form-item form__item">
-                                    <label for="org" class="profile__form-label form__label">Название организации</label>
-                                    <input id="org" type="text" class="profile__form-input form__input" placeholder="Название организации" data-placeholder="Название организации" value='{{ auth()->user()->org }}'>
+                                <div class="profile__organisation-block">
+                                    <div class="profile__form-item form__item">
+                                        <label for="org" class="profile__form-label form__label">Название организации</label>
+                                        <input id="org" type="text" class="profile__form-input form__input" placeholder="Название организации" data-placeholder="Название организации" value='{{ auth()->user()->org }}'>
+                                    </div>
+                                    <div class="project__form-item form__item checkbox__item">
+                                    <div class="project__checkbox checkbox">
+                                        <input data-no-focus-classes="" 
+                                            id="hideOrg" 
+                                            type="checkbox" 
+                                            name="hideOrg" 
+                                            class="project__checkbox-input checkbox__input"
+                                            {{ $allProjectsHidden ? 'checked' : '' }}
+                                        >
+                                        <label for="hideOrg" class="project__checkbox-label checkbox__label">
+                                            <span>Скрыть название организации</span>
+                                        </label>
+                                    </div>
+                                </div>
                                 </div>
                                 <div class="profile__form-select">
                                     <label class="profile__form-label form__label">Регион</label>

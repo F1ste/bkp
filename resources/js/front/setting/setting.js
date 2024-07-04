@@ -29,6 +29,7 @@ import { notification } from "../utils/notification";
         name: "name",
         email: "email",
         portfol: "portfol",
+        is_organization_hidden: "hideOrg",
     };
 
     document.getElementById(select.update).addEventListener("click", (e) => {
@@ -49,7 +50,8 @@ import { notification } from "../utils/notification";
             dpl = document.getElementById(select.dpl).value,
             name = document.getElementById(select.name).value,
             email = document.getElementById(select.email).value,
-            portfol = document.getElementById(select.portfol).value;
+            portfol = document.getElementById(select.portfol).value,
+            is_organization_hidden = document.getElementById(select.is_organization_hidden).checked;
 
         document.getElementById(select.update).innerHTML = `Подождите...`;
 
@@ -73,6 +75,7 @@ import { notification } from "../utils/notification";
                 name: name,
                 email: email,
                 portfol: portfol,
+                is_organization_hidden: is_organization_hidden,
             })
             .then((e) => {
                 document.getElementById(select.update).innerHTML = `Обновить`;

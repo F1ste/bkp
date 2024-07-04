@@ -26,8 +26,6 @@ import {} from "../libs/ckeditor/ckeditor";
     const updateRoute = collectionEdit.dataset.store,
         id = collectionEdit.dataset.id;
 
-    console.log(updateRoute);
-
     const select = {
         description: editorData.description,
         img1: "img1",

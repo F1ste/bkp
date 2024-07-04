@@ -13,7 +13,6 @@ import {} from "../libs/ckeditor/ckeditor";
 
         if (status === "aprove") {
             let updateRoute = currentTarget.getAttribute("data-update");
-            console.log(updateRoute);
             axios
                 .put(updateRoute, {})
                 .then((e) => {
