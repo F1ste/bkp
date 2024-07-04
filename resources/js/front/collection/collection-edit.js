@@ -442,7 +442,6 @@ import {} from "../libs/ckeditor/ckeditor";
             delete formData.serch_mas;
             delete formData.teg_mas;
             
-            console.log(formData);
             axios
                 .post(updateRoute, {...formData, price: -1, teg: JSON.stringify(formData.teg), serch: JSON.stringify(formData.serch)})
                 .then((e) => {

@@ -618,6 +618,10 @@ textarea.input {
   border-color: #00AF66;
 }
 
+.profile__organisation-block .checkbox{
+  margin: 20px 0 10px 0;
+}
+
 .project__checkbox-input:checked + .project__checkbox-label:before {
   font-size: 24px;
   color: #00AF66;
@@ -2079,6 +2083,13 @@ body::after {
   gap: 0;
 }
 
+.create-project__date-block{
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  gap: 0.9375rem;
+}
+
 .header {
   position: fixed;
   width: 100%;
@@ -2314,6 +2325,12 @@ body::after {
   min-width: 260px;
   height: 52px;
   display: none;
+}
+
+@media (max-width: 1100px) {
+  .create-project__main-info{
+    flex-wrap: wrap;
+  }
 }
 
 @media (min-width: 992px) {
@@ -5318,8 +5335,8 @@ blockquote p::after {
 
 .create-project__main-info .create-project__form-item:first-child {
   -webkit-box-flex: 1;
-      -ms-flex: 1 1 527px;
-          flex: 1 1 527px;
+      -ms-flex: 1 1 100%;
+          flex: 1 1 100%;
 }
 
 .create-project__main-info .create-project__form-item .form__input {
@@ -8845,6 +8862,7 @@ blockquote p::after {
         -ms-flex-pack: justify;
             justify-content: space-between;
   }
+
 
   .profile__btn {
     max-width: none;

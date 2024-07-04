@@ -49,6 +49,20 @@
                                         <label for="name_proj" class="create-project__form-label form__label">Название проекта</label>
                                         <input value="{{ $collection->name_proj }}" id="name_proj" type="text" name="name_proj" class="create-project__form-input form__input" maxlength="46" placeholder="Название проекта" data-placeholder="Название проекта">
                                     </div>
+                                    <div class="project__form-item form__item checkbox__item">
+                                    <div class="project__checkbox checkbox">
+                                        <input data-no-focus-classes="" 
+                                            id="hideNameProj" 
+                                            type="checkbox" 
+                                            name="hideNameProj" 
+                                            class="project__checkbox-input checkbox__input"
+                                        >
+                                        <label for="hideNameProj" class="project__checkbox-label checkbox__label">
+                                            <span>Скрыть название проекта</span>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="create-project__date-block">
                                     <div class="create-project__form-item form__item">
                                         <label for="date_service_from" class="create-project__form-label form__label">Сроки начала проекта</label>
                                         <input data-datepicker data-datepicker_1 id="date_service_from" type="text" readonly autocomplete="off" name="date_service_from" value="{{ Carbon\Carbon::parse($collection->date_service_from)->format('d.m.Y') }}" class="create-project__form-input form__input" placeholder="C" data-placeholder="C">
@@ -57,6 +71,7 @@
                                         <label for="date_service_to" class="create-project__form-label form__label">Сроки окончания проекта</label>
                                         <input data-datepicker data-datepicker_2 id="date_service_to" type="text" readonly autocomplete="off" name="date_service_to" value="{{ Carbon\Carbon::parse($collection->date_service_to)->format('d.m.Y') }}" class="create-project__form-input form__input" placeholder="До" data-placeholder="До">
                                     </div>
+                                </div>
                                 </div>
                                 <div class="create-project__main-col">
                                     <div class="create-project__form-select">
@@ -272,36 +287,6 @@
                             </div>
                         </div>
                         </div>
-                    <div class="project__additional">
-                        <div class="project__form-item form__item checkbox__item">
-                            <div class="project__checkbox checkbox">
-                                <input data-no-focus-classes="" 
-                                    id="hideNameProj" 
-                                    type="checkbox" 
-                                    name="hideNameProj" 
-                                    class="project__checkbox-input checkbox__input"
-                                    {{ $collection->is_project_name_hidden ? 'checked' : '' }}
-                                />
-                                <label for="hideNameProj" class="project__checkbox-label checkbox__label">
-                                    <span>Скрыть название проекта</span>
-                                </label>
-                            </div>
-                        </div>
-                        <div class="project__form-item form__item checkbox__item">
-                            <div class="project__checkbox checkbox">
-                                <input data-no-focus-classes="" 
-                                    id="hideOrg" 
-                                    type="checkbox" 
-                                    name="hideOrg" 
-                                    class="project__checkbox-input checkbox__input"
-                                    {{ $collection->is_organization_hidden ? 'checked' : '' }}
-                                />
-                                <label for="hideOrg" class="project__checkbox-label checkbox__label">
-                                    <span>Скрыть название организации</span>
-                                </label>
-                            </div>
-                        </div>
-                    </div>
                         <div class="create-project__footer">
                             <div class="create-project__title personal__title">Контакты для связи:</div>
                             <div class="create-project__footer-content">

@@ -67,10 +67,6 @@ import { notification } from "../utils/notification";
                         console.log(error.response);
                     });
             }
-
-            /*             console.log(
-                `Event store_chat was triggered with data: ${JSON.stringify(data)}`
-            ); */
         });
     }
 
