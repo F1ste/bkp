@@ -155,7 +155,6 @@ import {} from "../libs/ckeditor/ckeditor";
         img5: "img5",
         img6: "img6",
         is_project_name_hidden: "hideNameProj",
-        // is_organization_hidden: "hideOrg",
     };
 
     document.getElementById(select.img1).addEventListener("click", (e) => {
@@ -342,7 +341,6 @@ import {} from "../libs/ckeditor/ckeditor";
             serch_mas = document.getElementsByClassName(select.serch),
             serch = [],
             is_project_name_hidden = document.getElementById(select.is_project_name_hidden).checked;
-            // is_organization_hidden = document.getElementById(select.is_organization_hidden).checked;
     
         //случай мульти-режима
         if (teg_mas.multiple) {
@@ -406,7 +404,6 @@ import {} from "../libs/ckeditor/ckeditor";
             serch_mas: serch_mas,
             teg_mas: teg_mas,
             is_project_name_hidden,
-            // is_organization_hidden,
         };
     }
     
