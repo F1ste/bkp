@@ -146,7 +146,7 @@ class ProjectController extends Controller
             Notifications::create([
                 'id_uzer' => $project->user->id,
                 'id_project' => $project->id,
-                'name' => "Проект {$request->name} {$action}",
+                'name' => "Проект {$project->name_proj} {$action}",
             ]);
         }
 

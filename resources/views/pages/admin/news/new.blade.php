@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 
-@section('title', 'Создать услугу')
+@section('title', 'Создание новости')
 
 @section('content')
     <div class="page__container">

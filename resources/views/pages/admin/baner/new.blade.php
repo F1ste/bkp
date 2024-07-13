@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 
-@section('title', 'Создать услугу')
+@section('title', 'Создать рекламный баннер')
 
 @section('content')
     <div class="page__container" style="min-height: 100vh;">

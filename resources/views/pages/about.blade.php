@@ -18,8 +18,8 @@
                         <div class="about__media media-block">
                         @foreach ($about as $item)
                             <picture>
-                                <source srcset="{{ asset('image/about/about.webp') }}" type="image/webp">
-                                <img src="{{ asset('image/about/about.jpg') }}" alt="">
+                                <source srcset="{{ $item->img }}" type="image/webp">
+                                <img src="{{ $item->img }}" alt="">
                             </picture>
                         @endforeach
                         </div>

@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 
-@section('title', 'Создать услугу')
+@section('title', 'Редактировать страницу "О Бирже"')
 
 @section('content')
     <div class="page__container" style="min-height: 100vh;">

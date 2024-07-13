@@ -1,13 +1,13 @@
 @extends('layouts.admin')
 
-@section('title', 'Создать услугу')
+@section('title', 'Редактировать Тему')
 
 @section('content')
     <div class="page__container">
         <section class="collection section-base create-project personal-account">
             <div class="create-project__container">
                 <div data-one-select class="create-project__content">
-                    <div class="create-project__title personal__title">Создать Тему</div>
+                    <div class="create-project__title personal__title">Редактировать Тему</div>
 
                     <div class="create-project__general-info" style="align-items: flex-start;">
                         <form action="{{ route('admin.projects.subjects.update', $collection) }}" method="POST" id="store-form">

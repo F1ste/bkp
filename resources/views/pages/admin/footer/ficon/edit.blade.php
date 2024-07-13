@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 
-@section('title', 'Создать услугу')
+@section('title', 'Редактировать ссылку для иконки соц-сетей футера')
 
 @section('content')
     <div class="page__container" style="min-height: 100vh;">
@@ -8,7 +8,7 @@
 
             <div class="create-project__container">
                 <div data-one-select class="create-project__content">
-                    <div class="create-project__title personal__title">Создать ссылку для иконки соц-сетей футера</div>
+                    <div class="create-project__title personal__title">Редактировать ссылку для иконки соц-сетей футера</div>
                     <div class="create-project__general-info" style="align-items: flex-start;">
                         <div class="create-project__main-info" style="align-items: flex-start;">
                             <div class="create-project__main-col">

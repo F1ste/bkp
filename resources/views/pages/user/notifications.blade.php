@@ -17,7 +17,7 @@
 
 							@foreach($notifications as $el)
 							<div class="notifications__item">
-								<a href="#" class="notifications__name">
+								<a href="/profile/services/services-{{$el->id_project}}" class="notifications__name">
 									{{$el->name}}
 								</a>
 								<div class="notifications__description">

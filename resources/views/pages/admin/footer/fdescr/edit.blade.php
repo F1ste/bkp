@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 
-@section('title', 'Создать услугу')
+@section('title', 'Создать описание футера')
 
 @section('content')
     <div class="page__container" style="min-height: 100vh;">
