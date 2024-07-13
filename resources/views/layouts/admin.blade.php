@@ -12,9 +12,11 @@
         @endif
     </head>
     <body>
+    <div class="notifications-container"></div>
         <x-header />
 
         <main class="page">
+        
             <div class="sidebar sidebar__expanded">
                 <div class="sidebar__items">
                     <a href="{{ route('admin.news.index') }}" class="sidebar__item _icon-invoice">Новости</a>
@@ -93,12 +95,21 @@
         </div>
 
         <x-send-to-moderation-popup-admin />
+        @if(session('message'))
+        <script>
+            window.sess = {
+                csrfToken: '{{ csrf_token() }}',
+                sessionData: @json(session('message')) // Передайте данные сессии в формате JSON
+            };
+        </script>
+        @endif
         <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
         <script src="{{ asset('/plugins/ckeditor/ckeditor.js') }}"></script>
         <script src="{{ asset('/plugins/ckfinder/ckfinder.js') }}"></script>
         <script src="{{ asset('front/js/editor.js') }}"></script>
         <script src="{{ mix('front/js/app.js') }}"></script>
         <script src="{{ asset('front/js/app2.js?v=17434256263423467379016422223') }}"></script>
+
 
     </body>
 </html>

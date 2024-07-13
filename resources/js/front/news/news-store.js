@@ -257,7 +257,7 @@ import {} from "../libs/ckeditor/ckeditor";
                 video = document.getElementById(select.video).value;
 
             if (name == "") {
-                alert("Заполните Название новости!");
+                notification("Поле 'Название новости' должно быть заполнено!", "error");
                 return false;
             }
 
@@ -286,14 +286,15 @@ import {} from "../libs/ckeditor/ckeditor";
                     video: video,
                 })
                 .then((e) => {
+                    localStorage.setItem('toastMessage', JSON.stringify({
+                        type: 'success',
+                        description: 'Новость успешно создана!'
+                    }));
                     window.location.href = e.data;
                 })
                 .catch((error) => {
                     console.log(error);
-                    notification(
-                        "Упс, что-то пошло не так",
-                        "Не удалось создать услугу... Попробуйте позже"
-                    );
+                    notification(`Упс, что-то пошло не так \nНе удалось создать новость... Попробуйте позже`, "error");
                 });
         });
 

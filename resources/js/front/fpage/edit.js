@@ -24,8 +24,13 @@ import {} from "../libs/ckeditor/ckeditor";
             let page = document.getElementById(select.page).value;
             let link = document.getElementById(select.link).value;
 
-            if (page == "" || link == "") {
-                alert("Заполните поле!");
+            if (page == "") {
+                notification("Поле 'Название страницы' должно быть заполнено!", "error");
+                return false;
+            }
+
+            if (link == "") {
+                notification("Поле 'Ссылка на страницу' должно быть заполнено!", "error");
                 return false;
             }
 
@@ -40,9 +45,14 @@ import {} from "../libs/ckeditor/ckeditor";
                     link: link,
                 })
                 .then((e) => {
+                    localStorage.setItem('toastMessage', JSON.stringify({
+                        type: 'success',
+                        description: 'Страница успешно сохранена!'
+                    }));
                     location.reload();
                 })
                 .catch((error) => {
+                    notification(`Упс, что-то пошло не так \nНе удалось сохранить страницу... Попробуйте позже`, "error");
                     console.log(error.response);
                 });
         });
@@ -54,9 +64,14 @@ import {} from "../libs/ckeditor/ckeditor";
                 id: id,
             })
             .then((e) => {
+                localStorage.setItem('toastMessage', JSON.stringify({
+                    type: 'success',
+                    description: 'Страница успешно удалена!'
+                }));
                 window.location.replace("/admin/footer");
             })
             .catch((error) => {
+                notification(`Упс, что-то пошло не так \nНе удалось удалить страницу... Попробуйте позже`, "error");
                 console.log(error.response);
             });
     });

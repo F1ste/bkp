@@ -35,7 +35,7 @@ import {} from "../libs/ckeditor/ckeditor";
             let descr = editorData.descr;
 
             if (descr == "") {
-                alert("Заполните поле!");
+                notification("Поле 'Описание' должно быть заполнено!", "error");
                 return false;
             }
 
@@ -49,9 +49,14 @@ import {} from "../libs/ckeditor/ckeditor";
                     descr: descr,
                 })
                 .then((e) => {
+                    localStorage.setItem('toastMessage', JSON.stringify({
+                        type: 'success',
+                        description: 'Страница успешно создана!'
+                    }));
                     window.location.href = e.data;
                 })
                 .catch((error) => {
+                    notification(`Упс, что-то пошло не так \nНе удалось создать страницу... Попробуйте позже`, "error");
                     console.log(error.response);
                 });
         });

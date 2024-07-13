@@ -51,7 +51,7 @@ import {} from "../libs/ckeditor/ckeditor";
             let erid = document.getElementById(select.erid).value;
 
             if (name == "") {
-                alert("Заполните поле!");
+                notification("Поле 'Ссылка баннера' должно быть заполнено!", "error");
                 return false;
             }
 
@@ -70,10 +70,15 @@ import {} from "../libs/ckeditor/ckeditor";
                     erid: erid,
                 })
                 .then((e) => {
+                    localStorage.setItem('toastMessage', JSON.stringify({
+                        type: 'success',
+                        description: 'Баннер успешно сохранён!'
+                    }));
                     location.reload();
                 })
                 .catch((error) => {
                     console.log(error.response);
+                    notification(`Упс, что-то пошло не так \nНе удалось сохранить баннер... Попробуйте позже`, "error");
                 });
         });
 
@@ -84,10 +89,15 @@ import {} from "../libs/ckeditor/ckeditor";
                 id: id,
             })
             .then((e) => {
+                localStorage.setItem('toastMessage', JSON.stringify({
+                    type: 'success',
+                    description: 'Баннер успешно удалён!'
+                }));
                 window.location.replace("/admin/banners");
             })
             .catch((error) => {
                 console.log(error.response);
+                notification(`Упс, что-то пошло не так \nНе удалось удалить баннер... Попробуйте позже`, "error");
             });
     });
 })();

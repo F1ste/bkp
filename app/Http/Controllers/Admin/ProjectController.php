@@ -171,7 +171,7 @@ class ProjectController extends Controller
             $data['serch'] = json_encode($serch, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
             $project->update($data);
             $project->user()->update($request->user);
-            return redirect()->back()->with('message', 'Проект обновлен');
+            return redirect()->back()->with('message', 'Проект обновлен успешно!');
         }
     }
 

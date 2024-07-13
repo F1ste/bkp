@@ -47,6 +47,7 @@
         <!-- /Top.Mail.Ru counter -->
 
         <div class="wrapper">
+            <div class="notifications-container"></div>
             <x-header />
 
             @yield('content')

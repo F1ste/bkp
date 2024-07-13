@@ -37,7 +37,7 @@ import {} from "../libs/ckeditor/ckeditor";
             let map = document.getElementById(select.map).value;
 
             if (description == "") {
-                alert("Заполните поле!");
+                notification("Поле 'Описание' должно быть заполнено!", "error");
                 return false;
             }
 
@@ -52,10 +52,15 @@ import {} from "../libs/ckeditor/ckeditor";
                     map: map,
                 })
                 .then((e) => {
+                    localStorage.setItem('toastMessage', JSON.stringify({
+                        type: 'success',
+                        description: 'Страница успешно сохранена!'
+                    }));
                     location.reload();
                 })
                 .catch((error) => {
                     console.log(error.response);
+                    notification(`Упс, что-то пошло не так \nНе удалось сохранить страницу... Попробуйте позже`, "error");
                 });
         });
 })();

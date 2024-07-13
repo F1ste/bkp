@@ -79,11 +79,11 @@ import { notification } from "../utils/notification";
             })
             .then((e) => {
                 document.getElementById(select.update).innerHTML = `Обновить`;
-                notification("Данные обновлены");
+                notification("Данные пользователя успешно обновлены", "success");
             })
             .catch((error) => {
                 console.log(error.response);
-                notification("Ошибка...", "Попробуйте позже...");
+                notification("Упс, что-то пошло не так \nНе удалось сохранить пользователя... Попробуйте позже", "error");
             });
     });
 })();

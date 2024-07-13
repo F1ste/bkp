@@ -63,6 +63,8 @@ import {} from "../libs/ckeditor/ckeditor";
         storeButton2: "store-button2",
         storeButton3: "store-button3",
         storeButton4: "store-button4",
+        saveButton: 'save-button',
+        declineButton: 'decline-button'
     };
 
     document
@@ -73,14 +75,15 @@ import {} from "../libs/ckeditor/ckeditor";
             axios
                 .patch(updateRoute, { status: 1 })
                 .then((e) => {
+                    localStorage.setItem('toastMessage', JSON.stringify({
+                        type: 'success',
+                        description: 'Проект успешно опубликован!'
+                    }));
                     location.reload();
                 })
                 .catch((error) => {
                     console.log(error.response);
-                    notification(
-                        "Упс, что-то пошло не так",
-                        "Не удалось обновить услугу... Попробуйте позже"
-                    );
+                    notification("Упс, что-то пошло не так \nНе удалось опубликовать проект... Попробуйте позже", "error");
                 });
         });
 
@@ -94,39 +97,17 @@ import {} from "../libs/ckeditor/ckeditor";
             axios
                 .patch(updateRoute, { status: 2 })
                 .then((e) => {
+                    localStorage.setItem('toastMessage', JSON.stringify({
+                        type: 'success',
+                        description: 'Проект успешно перенесён в архив!'
+                    }));
                     location.reload();
                 })
                 .catch((error) => {
                     console.log(error.response);
-                    notification(
-                        "Упс, что-то пошло не так",
-                        "Не удалось обновить услугу... Попробуйте позже"
-                    );
+                    notification("Упс, что-то пошло не так \nНе удалось перенести проект в архив... Попробуйте позже", "error");
                 });
         });
-
-/*     document
-        .getElementById(select.storeButton3)
-        .addEventListener("click", (e) => {
-            if (! confirm('Вы хотите отклонить проект?')) {
-                return;
-            }
-
-            document.getElementById(select.storeButton3).innerHTML = `Подождите...`;
-
-            axios
-                .patch(updateRoute, { status: 3 })
-                .then((e) => {
-                    location.reload();
-                })
-                .catch((error) => {
-                    console.log(error.response);
-                    notification(
-                        "Упс, что-то пошло не так",
-                        "Не удалось обновить услугу... Попробуйте позже"
-                    );
-                });
-        }); */
 
     document
         .getElementById(select.storeButton4)
@@ -138,14 +119,29 @@ import {} from "../libs/ckeditor/ckeditor";
             axios
                 .patch(updateRoute, { status: 1 })
                 .then((e) => {
+                    localStorage.setItem('toastMessage', JSON.stringify({
+                        type: 'success',
+                        description: 'Проект успешно продлён!'
+                    }));
                     location.reload();
                 })
                 .catch((error) => {
                     console.log(error.response);
-                    notification(
-                        "Упс, что-то пошло не так",
-                        "Не удалось обновить услугу... Попробуйте позже"
-                    );
+                    notification(`Упс, что-то пошло не так \nНе удалось продлить проект... Попробуйте позже`, "error");
                 });
         });
+
+        // document.getElementById(select.saveButton).closest('form').addEventListener('submit', () => {
+        //     localStorage.setItem('toastMessage', JSON.stringify({
+        //         type: 'success',
+        //         description: 'Проект успешно сохранён!'
+        //     }));
+        // })
+
+        // document.getElementById(select.declineButton).closest('form').addEventListener('submit', () => {
+        //     localStorage.setItem('toastMessage', JSON.stringify({
+        //         type: 'success',
+        //         description: 'Проект успешно отклонён!'
+        //     }));
+        // })
 })();

@@ -12,9 +12,10 @@
         @endif
     </head>
     <body>
-
+    <div class="notifications-container"></div>
         <x-header />
         <main class="page">
+        
             <div class="sidebar sidebar__expanded">
                 <div class="sidebar__items">
                     <a href="/profile/setting" class="sidebar__item _icon-person">Профиль</a>
@@ -69,6 +70,7 @@
                 </form>
             </div>
         </div>
+        
 
         <x-send-to-moderation-popup/>
         <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>

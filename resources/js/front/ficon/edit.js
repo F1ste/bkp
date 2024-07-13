@@ -37,7 +37,7 @@ import {} from "../libs/ckeditor/ckeditor";
             let style = document.getElementById(select.style).value;
 
             if (style == "") {
-                alert("Заполните поле!");
+                notification("Поле 'Ссылка на соцсеть страницы' должно быть заполнено!", "error");
                 return false;
             }
 
@@ -51,9 +51,14 @@ import {} from "../libs/ckeditor/ckeditor";
                     style: style,
                 })
                 .then((e) => {
+                    localStorage.setItem('toastMessage', JSON.stringify({
+                        type: 'success',
+                        description: 'Страница успешно сохранена!'
+                    }));
                     location.reload();
                 })
                 .catch((error) => {
+                    notification(`Упс, что-то пошло не так \nНе удалось сохранить страницу... Попробуйте позже`, "error");
                     console.log(error.response);
                 });
         });
@@ -65,9 +70,14 @@ import {} from "../libs/ckeditor/ckeditor";
                 id: id,
             })
             .then((e) => {
+                localStorage.setItem('toastMessage', JSON.stringify({
+                    type: 'success',
+                    description: 'Страница успешно удалена!'
+                }));
                 window.location.replace("/admin/footer");
             })
             .catch((error) => {
+                notification(`Упс, что-то пошло не так \nНе удалось удалить страницу... Попробуйте позже`, "error");
                 console.log(error.response);
             });
     });
