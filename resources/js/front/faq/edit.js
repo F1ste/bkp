@@ -73,15 +73,15 @@ import {} from "../libs/ckeditor/ckeditor";
             let description = editorData.description;
 
             if (quest == "") {
-                alert("Заполните поле!");
+                notification("Поле 'Вопрос' должно быть заполнено!", "error");
                 return false;
             }
             if (description == "") {
-                alert("Заполните поле!");
+                notification("Поле 'Ответ' должно быть заполнено!", "error");
                 return false;
             }
             if (img == "") {
-                alert("Заполните поле!");
+                notification("Необходимо загрузить изображение", "error");
                 return false;
             }
 
@@ -97,10 +97,15 @@ import {} from "../libs/ckeditor/ckeditor";
                     img: img,
                 })
                 .then((e) => {
+                    localStorage.setItem('toastMessage', JSON.stringify({
+                        type: 'success',
+                        description: 'Страница успешно сохранена!'
+                    }));
                     location.reload();
                 })
                 .catch((error) => {
                     console.log(error.response);
+                    notification(`Упс, что-то пошло не так \nНе удалось сохранить страницу... Попробуйте позже`, "error");
                 });
         });
 })();

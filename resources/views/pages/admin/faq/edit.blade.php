@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 
-@section('title', 'Создать услугу')
+@section('title', 'Редактировать страницу "Вопрос-ответ')
 
 @section('content')
 

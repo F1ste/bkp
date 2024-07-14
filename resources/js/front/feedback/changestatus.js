@@ -16,10 +16,14 @@ import {} from "../libs/ckeditor/ckeditor";
             axios
                 .put(updateRoute, {})
                 .then((e) => {
-                    alert("Статус отклика изменен");
+                    localStorage.setItem('toastMessage', JSON.stringify({
+                        type: 'success',
+                        description: 'Статус отклика успешно изменён!'
+                    }));
                     location.reload();
                 })
                 .catch((error) => {
+                    notification(`Упс, что-то пошло не так \nНе удалось изменить статус отклика... Попробуйте позже`, "error");
                     console.log(error.response);
                 });
         } else if (status === "decline") {
@@ -28,10 +32,14 @@ import {} from "../libs/ckeditor/ckeditor";
             axios
                 .put(updateRoute, {})
                 .then((e) => {
-                    alert("Статус отклика изменен");
+                    localStorage.setItem('toastMessage', JSON.stringify({
+                        type: 'success',
+                        description: 'Статус отклика успешно изменён!'
+                    }));
                     location.reload();
                 })
                 .catch((error) => {
+                    notification(`Упс, что-то пошло не так \nНе удалось изменить статус отклика... Попробуйте позже`, "error");
                     console.log(error.response);
                 });
         }
@@ -54,6 +62,7 @@ import {} from "../libs/ckeditor/ckeditor";
                 window.location.replace(getChatRoute);
             })
             .catch((error) => {
+                notification(`Упс, что-то пошло не так \nНе удалось получить страницу чата... Попробуйте позже`, "error");
                 console.log(error.response);
             });
     }

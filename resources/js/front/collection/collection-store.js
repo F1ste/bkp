@@ -415,7 +415,7 @@ import {} from "../libs/ckeditor/ckeditor";
 
             if (formData.name_proj.length === 0) {
                 showValidateError(nameProj, formData.name_proj.length === 0);
-                alert("Необходимо заполнить название проекта для создания черновика")
+                notification("Необходимо заполнить поле 'Название проекта' для создания черновика!", "error");
                 return false;
             }
     
@@ -427,11 +427,15 @@ import {} from "../libs/ckeditor/ckeditor";
             axios
                 .post(storeRoute, {...formData, price: -1, teg: JSON.stringify(formData.teg), serch: JSON.stringify(formData.serch)})
                 .then((e) => {
+                    localStorage.setItem('toastMessage', JSON.stringify({
+                        type: 'success',
+                        description: 'Черновик успешно создан!'
+                    }));
                     window.location.href = e.data;
                 })
                 .catch((error) => {
                     console.log(error);
-                    alert("Упс, что-то пошло не так \nНе удалось создать черновик... Попробуйте позже");
+                    notification(`Упс, что-то пошло не так \nНе удалось создать черновик... Попробуйте позже`, "error");
                 });
         });
 
@@ -512,7 +516,7 @@ import {} from "../libs/ckeditor/ckeditor";
 
                 closeBtn.dispatchEvent(clickEvent);
 
-                alert("Заполните все поля выделенные красным");
+                notification("Заполните все поля выделенные красным", "error");
                 return false;
             }
     
@@ -524,11 +528,15 @@ import {} from "../libs/ckeditor/ckeditor";
                     if (window.location.href.includes("#moderationPopup")) {
                         history.replaceState({}, document.title, window.location.href.replace(/#moderationPopup/g, ''));
                     }
+                    localStorage.setItem('toastMessage', JSON.stringify({
+                        type: 'success',
+                        description: 'Проект успешно создан!'
+                    }));
                     window.location.href = e.data;
                 })
                 .catch((error) => {
                     console.log(error);
-                    alert("Упс, что-то пошло не так \nНе удалось создать проект... Попробуйте позже");
+                    notification("Упс, что-то пошло не так \nНе удалось создать проект... Попробуйте позже", "error");
             });
     });
     

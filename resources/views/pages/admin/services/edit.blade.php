@@ -410,7 +410,7 @@
                             </div>
 
                             <div class="create-project__buttons_admin">
-                                <button type="submit" style="margin-top: 20px;" class="create-project__btn btn btn-filled">Cохранить изменения</button>
+                                <button id="save-button" type="submit" style="margin-top: 20px;" class="create-project__btn btn btn-filled">Cохранить изменения</button>
                                 или
                                 <button type="button" style="margin-top: 20px;" id='store-button' class="create-project__btn btn btn-filled">Опубликовать</button>
                                 <button type="button" id='store-button2' class="create-project__btn btn btn-filled">Перенести в архив</button>
@@ -439,7 +439,7 @@
                                     <textarea id="cover_letter" type="text" class="profile__form-input form__input project-description" name="reason" placeholder="Комментарий к отклонению" data-placeholder="Комментарий к отклонению"></textarea>
                                 </div>
                             </div>
-                            <button type="submit" class="popup__submit btn btn-filled">Отправить</button>
+                            <button id="decline-button" type="submit" class="popup__submit btn btn-filled">Отправить</button>
                         </div>
                     </form>
                 </div>

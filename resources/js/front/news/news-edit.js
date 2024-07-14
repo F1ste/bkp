@@ -274,7 +274,7 @@ import {} from "../libs/ckeditor/ckeditor";
                 video = document.getElementById(select.video).value;
 
             if (name == "") {
-                alert("Заполните Название новости!");
+                notification("Поле 'Название новости' должно быть заполнено!", "error");
                 return false;
             }
 
@@ -304,9 +304,14 @@ import {} from "../libs/ckeditor/ckeditor";
                     video: video,
                 })
                 .then((e) => {
+                    localStorage.setItem('toastMessage', JSON.stringify({
+                        type: 'success',
+                        description: 'Новость успешно сохранена!'
+                    }));
                     location.reload();
                 })
                 .catch((error) => {
+                    notification(`Упс, что-то пошло не так \nНе удалось сохранить новость... Попробуйте позже`, "error");
                     console.log(error.response);
                 });
         });
@@ -319,9 +324,14 @@ import {} from "../libs/ckeditor/ckeditor";
                 id: id,
             })
             .then((e) => {
+                localStorage.setItem('toastMessage', JSON.stringify({
+                    type: 'success',
+                    description: 'Новость успешно удалена!'
+                }));
                 window.location.replace("/admin/news");
             })
             .catch((error) => {
+                notification(`Упс, что-то пошло не так \nНе удалось удалить новость... Попробуйте позже`, "error");
                 console.log(error.response);
             });
     });

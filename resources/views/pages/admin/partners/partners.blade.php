@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 
-@section('title', 'Новости')
+@section('title', 'Роли')
 
 @section('content')
     <div class="page__container" style="min-height: 100vh;">

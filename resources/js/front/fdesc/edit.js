@@ -36,7 +36,7 @@ import {} from "../libs/ckeditor/ckeditor";
             let descr = editorData.descr;
 
             if (descr == "") {
-                alert("Заполните поле!");
+                notification("Поле 'Описание' должно быть заполнено!", "error");
                 return false;
             }
 
@@ -50,9 +50,14 @@ import {} from "../libs/ckeditor/ckeditor";
                     descr: descr,
                 })
                 .then((e) => {
+                    localStorage.setItem('toastMessage', JSON.stringify({
+                        type: 'success',
+                        description: 'Страница успешно сохранена!'
+                    }));
                     location.reload();
                 })
                 .catch((error) => {
+                    notification(`Упс, что-то пошло не так \nНе удалось сохранить страницу... Попробуйте позже`, "error");
                     console.log(error.response);
                 });
         });
@@ -64,9 +69,14 @@ import {} from "../libs/ckeditor/ckeditor";
                 id: id,
             })
             .then((e) => {
+                localStorage.setItem('toastMessage', JSON.stringify({
+                    type: 'success',
+                    description: 'Страница успешно удалена!'
+                }));
                 window.location.replace("/admin/footer");
             })
             .catch((error) => {
+                notification(`Упс, что-то пошло не так \nНе удалось удалить страницу... Попробуйте позже`, "error");
                 console.log(error.response);
             });
     });

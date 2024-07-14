@@ -146,7 +146,7 @@ class ProjectController extends Controller
             Notifications::create([
                 'id_uzer' => $project->user->id,
                 'id_project' => $project->id,
-                'name' => "Проект {$request->name} {$action}",
+                'name' => "Проект {$project->name_proj} {$action}",
             ]);
         }
 
@@ -171,7 +171,7 @@ class ProjectController extends Controller
             $data['serch'] = json_encode($serch, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
             $project->update($data);
             $project->user()->update($request->user);
-            return redirect()->back()->with('message', 'Проект обновлен');
+            return redirect()->back()->with('message', 'Проект обновлен успешно!');
         }
     }
 

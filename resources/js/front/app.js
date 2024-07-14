@@ -1,3 +1,4 @@
+import { notification } from "./utils/notification";
 import "./collection/collection-store";
 import "./collection/collection-edit";
 
@@ -36,3 +37,17 @@ import "./external-links";
 
 import "./modal";
 import "./help-form";
+
+
+(() => {
+    const toastMessage = JSON.parse(localStorage.getItem('toastMessage'));
+    
+    if (toastMessage) {
+        notification(toastMessage.description, toastMessage.type);
+        localStorage.removeItem('toastMessage');
+    }
+
+    if (window?.sess?.sessionData) {
+        notification(window?.sess?.sessionData, 'success');
+    }
+})()

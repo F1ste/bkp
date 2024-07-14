@@ -1255,6 +1255,88 @@ select {
   background: #cce4ff;
 }
 
+.notifications-container {
+  position: fixed;
+  top: 100px;
+  right: 20px;
+  z-index: 99999999;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.toastNotification {
+  min-width: 300px;
+  max-width: 450px;
+  padding: 20px 25px 20px 20px;
+  margin-bottom: 10px;
+  font-weight: 600;
+  color: #fff;
+  background-color: #ffffff;
+  border: 1px solid #00AF66;
+  border-radius: 10px;
+  -webkit-box-shadow: 0px 0px 10px 0px rgba(61, 57, 57, 0.25);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  opacity: 0;
+  transform: translateX(100%);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  margin: 0;
+}
+
+.toastNotification.show {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.toastNotification.hide {
+  opacity: 0;
+  transform: translateX(100%);
+}
+
+.toastNotification.success {
+  background-color: #0a7548;
+  border: 1px solid #0a7548;
+}
+
+.toastNotification.error {
+  background-color: #EF5350;
+  border: 1px solid #EF5350;
+}
+
+.toastNotification.warning {
+  background-color: #ff9800;
+  border: 1px solid #ff9800;
+}
+
+.toastNotification.info {
+  background-color: #fff;
+  color: #1D1D1B;
+  border: 1px solid #0a7548;
+}
+
+.toastNotifications__close.popup__close {
+  top: 5px;
+  right: 3px;
+  width: 18px;
+  height: 18px;
+}
+
+.toastNotification.success .toastNotifications__close.popup__close::before,
+.toastNotification.success .toastNotifications__close.popup__close::after,
+.toastNotification.error .toastNotifications__close.popup__close::before,
+.toastNotification.error .toastNotifications__close.popup__close::after,
+.toastNotification.warning .toastNotifications__close.popup__close::before,
+.toastNotification.warning .toastNotifications__close.popup__close::after {
+  background: #fff;
+}
+
+.toastNotifications__close.popup__close::before,
+.toastNotifications__close.popup__close::after {
+  width: 18px;
+  height: 3px;
+}
+
+
 body::after {
   content: "";
   background-color: rgba(0, 0, 0, 0.5);

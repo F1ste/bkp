@@ -58,15 +58,15 @@ import {} from "../libs/ckeditor/ckeditor";
             let description = editorData.description;
 
             if (quest == "") {
-                alert("Заполните поле!");
+                notification("Поле 'Вопрос' должно быть заполнено!", "error");
                 return false;
             }
             if (description == "") {
-                alert("Заполните поле!");
+                notification("Поле 'Ответ' должно быть заполнено!", "error");
                 return false;
             }
             if (img == "") {
-                alert("Заполните поле!");
+                notification("Необходимо загрузить изображение", "error");
                 return false;
             }
 
@@ -82,9 +82,14 @@ import {} from "../libs/ckeditor/ckeditor";
                     img: img,
                 })
                 .then((e) => {
+                    localStorage.setItem('toastMessage', JSON.stringify({
+                        type: 'success',
+                        description: 'Страница успешно создана!'
+                    }));
                     window.location.href = e.data;
                 })
                 .catch((error) => {
+                    notification(`Упс, что-то пошло не так \nНе удалось создать страницу... Попробуйте позже`, "error");
                     console.log(error.response);
                 });
         });

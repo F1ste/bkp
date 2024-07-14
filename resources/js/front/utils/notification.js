@@ -1,33 +1,40 @@
 /**
- *
- * 'title': string
- * 'description': string
- *
- * @param data
+ * @description Всплывающие уведомления
+ * @property {string} description - Текст уведомления
+ * @property {"info" | "success" | "warning" | "error"} type - Тип уведомления
+ * @property {number} duration - Время, через которое уведомление исчезает
  */
 
-export const notification = (title='Упс, что-то пошло не так', description='') => {
-    const modal = `
-        <div class="notification modal">
-            <div class="modal-group">
-                <div class="hide-modal times">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="38" height="38" viewBox="0 0 38 38" fill="none">
-                        <path d="M3 3L35.5 35.5" stroke="#242527" stroke-width="5" stroke-linecap="round"/>
-                        <path d="M35.5 3L3 35.5" stroke="#242527" stroke-width="5" stroke-linecap="round"/>
-                    </svg>
-                </div>
-                <div class="modal-group__title">${title}</div>
-                <div class="modal-group__description">${description}</div>
-                <div class="modal-group__button hide-modal">Закрыть</div>
-            </div>
-        </div>
-    `
+export function notification(description = "Упс... Что-то пошло не так, попробуйте позже", type = "info", duration = 5000) {
+    const toastContainer = document.querySelector('.notifications-container');
 
-    document.body.insertAdjacentHTML('beforeend', modal)
+    const toast = document.createElement('div');
+    toast.className = `toastNotification ${type}`;
+    toast.innerHTML = description.replace(/\n/g, '<br>');
 
-    document.querySelectorAll('.notification').forEach(el => el.addEventListener('click', e => {
-        if(!e.target.closest('.hide-modal')) return false
+    const closeBtn = document.createElement('button');
+    closeBtn.className = `popup__close toastNotifications__close`;
 
-        e.target.closest('.notification').remove()
-    }))
+    toastContainer.appendChild(toast);
+    toast.appendChild(closeBtn);
+
+    requestAnimationFrame(() => {
+        toast.classList.add('show');
+    });
+
+    closeBtn.addEventListener('click', () => {
+        toast.classList.remove('show');
+        toast.classList.add('hide');
+        toast.addEventListener('transitionend', () => {
+            toast.remove();
+        });
+    })
+
+    setTimeout(() => {
+        toast.classList.remove('show');
+        toast.classList.add('hide');
+        toast.addEventListener('transitionend', () => {
+            toast.remove();
+        });
+    }, duration);
 }

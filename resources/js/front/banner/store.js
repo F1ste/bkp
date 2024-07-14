@@ -50,7 +50,7 @@ import {} from "../libs/ckeditor/ckeditor";
             let erid = document.getElementById(select.erid).value;
 
             if (name == "") {
-                alert("Заполните все поля!");
+                notification("Поле 'Ссылка баннера' должно быть заполнено!", "error");
                 return false;
             }
 
@@ -68,14 +68,15 @@ import {} from "../libs/ckeditor/ckeditor";
                     erid: erid,
                 })
                 .then((e) => {
+                    localStorage.setItem('toastMessage', JSON.stringify({
+                        type: 'success',
+                        description: 'Баннер успешно создан!'
+                    }));
                     window.location.href = e.data;
                 })
                 .catch((error) => {
                     console.log(error);
-                    notification(
-                        "Упс, что-то пошло не так",
-                        "Не удалось создать услугу... Попробуйте позже"
-                    );
+                    notification(`Упс, что-то пошло не так \nНе удалось создать баннер... Попробуйте позже`, "error");
                 });
         });
 })();
