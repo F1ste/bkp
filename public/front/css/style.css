@@ -9208,15 +9208,19 @@ blockquote p::after {
 }
 
 .typography ul,
-.typography ol {
+.typography ol,
+.news-single__article ul,
+.news-single__article ol {
     padding-left: 1.5rem;
 }
 
-.typography ul li {
+.typography ul li,
+.news-single__article ul li {
     list-style-type: disc;
 }
 
-.typography li {
+.typography li,
+.news-single__article li {
     padding-left: 0.5rem;
     margin-bottom: 1.25rem;
 }
