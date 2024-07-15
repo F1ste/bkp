@@ -4,7 +4,7 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="{{ asset('front/css/style.css?v=17534256262343467379016422223') }}"/>
+        <link rel="stylesheet" href="{{ asset('front/css/style.css?v=12457534256262343467379016422223') }}"/>
         <link rel="stylesheet" href="{{ asset('plugins/bvi/dist/css/bvi.min.css') }}"/>
         @hasSection('title')
             <title>@yield('title') &mdash; {{ config('app.name') }}</title>
@@ -57,7 +57,7 @@
             <x-how-it-works-popup/>
         </div>
         <script src="{{ mix('front/js/app.js') }}"></script>
-        <script src="{{ asset('front/js/app2.js?v=17534256262343467379016422223') }}"></script>
+        <script src="{{ asset('front/js/app2.js?v=12457534256262343467379016422223') }}"></script>
         <script src="{{ asset('plugins/bvi/dist/js/bvi.min.js') }}"></script>
         <script>
             new isvek.Bvi({
