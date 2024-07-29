@@ -10355,13 +10355,13 @@
                 }
             }
         })();
-        const projectDescriptionBtn = document.querySelector(".project-main__btn-description");
-        if (projectDescriptionBtn) projectDescriptionBtn.addEventListener("click", (() => {
-            const item = document.querySelector(".project-main__text");
-            item.classList.toggle("active-text");
-            projectDescriptionBtn.textContent = "Закрыть";
-            if (!item.classList.contains("active-text")) projectDescriptionBtn.textContent = "Еще";
-        }));
+        // const projectDescriptionBtn = document.querySelector(".project-main__btn-description");
+        // if (projectDescriptionBtn) projectDescriptionBtn.addEventListener("click", (() => {
+        //     const item = document.querySelector(".project-main__text");
+        //     item.classList.toggle("active-text");
+        //     projectDescriptionBtn.textContent = "Закрыть";
+        //     if (!item.classList.contains("active-text")) projectDescriptionBtn.textContent = "Еще";
+        // }));
         (() => {
             const findPartnerSect = document.querySelector(".create-project__find-partners");
             if (!findPartnerSect) return false;
