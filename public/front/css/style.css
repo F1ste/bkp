@@ -3975,6 +3975,10 @@ body::after {
   text-overflow: ellipsis;
   line-height: 1.3em;
   max-height: calc(2.6em + 10px);
+  -webkit-box-orient: vertical;
+    display: -webkit-box;
+    line-clamp: 2;
+  -webkit-line-clamp: 2;
 }
 
 .project-main__text p {
@@ -4017,6 +4021,8 @@ blockquote p::after {
 
 .project-main__text.active-text {
   max-height: none;
+  line-clamp: initial;
+  -webkit-line-clamp: initial;
 }
 
 .project-main__socials {
