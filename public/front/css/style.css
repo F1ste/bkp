@@ -3951,13 +3951,6 @@ body::after {
 
 .project-main__short-description {
   margin-top: 1.25rem;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
 }
 
 .project-main__short-description a {
