@@ -173,21 +173,4 @@
             height: auto !important;
         }
     </style>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/Clamp.js/0.5.1/clamp.min.js"></script>
-        <script>
-            const projectDescriptionBtn = document.querySelector(".project-main__btn-description");
-            const truncate = document.querySelector(".project-main__text");
-
-            projectDescriptionBtn?.addEventListener("click", (() => {
-                truncate.classList.toggle("active-text");
-                projectDescriptionBtn.textContent = "Закрыть";
-
-                $clamp(truncate, {
-                    clamp: !truncate.classList.contains("active-text") ? '2' : 'initial', 
-                });
-                if (!truncate.classList.contains("active-text")) projectDescriptionBtn.textContent = "Еще";
-            }));
-            
-
-        </script>
 @endsection
