@@ -4023,6 +4023,8 @@ blockquote p::after {
   max-height: none;
   line-clamp: initial;
   -webkit-line-clamp: initial;
+  -webkit-box-orient: initial;
+  display: block;
 }
 
 .project-main__socials {
