@@ -82,10 +82,10 @@
                         </div>
                     </form>
                 </div>
-
+                
                 <div class="news-block__items-wrapper">
                     <div class="news-block__big-block big-news">
-                        @if (isset($collections[0]) && $collections[0]->name != '')
+                        @if (isset($collections[0]) && $collections[0]->name != '' && Carbon\Carbon::parse($collections[0]->date)->lte(Carbon\Carbon::now()))
                             <!-- with-banner модификатор для  big-news__item, если банер активен -->
                             <a href="{{ route('news.tidings', $collections[0]) }}" class="big-news__item">
                                 <div class="big-news__media media-block">
@@ -121,7 +121,7 @@
                     </div>
                     <div class="news-block__big-items">
                         @for ($i = 1; $i < 3; $i++)
-                            @if (isset($collections[$i]) && $collections[$i]->name != '')
+                            @if (isset($collections[$i]) && $collections[$i]->name != '' && Carbon\Carbon::parse($collections[$i]->date)->lte(Carbon\Carbon::now()))
                                 <div class="news-block__item">
                                     <a href="{{ route('news.tidings', $collections[$i]) }}">
                                         <div class="news-block__item-media media-block">
@@ -148,7 +148,7 @@
 
                     <div class="news-block__items-content">
                         @for ($i = 3; $i < count($collections); $i++)
-                            @if (isset($collections[$i]) && $collections[$i]->name != '')
+                            @if (isset($collections[$i]) && $collections[$i]->name != '' && Carbon\Carbon::parse($collections[$i]->date)->lte(Carbon\Carbon::now()))
                                 <div class="news-block__item">
                                     <a href="{{ route('news.tidings', $collections[$i]) }}">
                                         <div class="news-block__item-media media-block">
