@@ -37,6 +37,11 @@ class SearchResultsController extends Controller
 
         $news = News::search($request->searchText)->get();
 
+        $currentDate = Carbon::now();
+        $news = $news->filter(function ($item) use ($currentDate) {
+            return Carbon::parse($item->date)->lte($currentDate);
+        });
+
         $categories = News::distinct()->orderBy('rubrica', 'asc')->pluck('rubrica')->map(function ($category) {
             return $category;
         })->unique();
@@ -61,6 +66,11 @@ class SearchResultsController extends Controller
             ->get();
 
         $news = News::search($request->searchText)->get();
+
+        $currentDate = Carbon::now();
+        $news = $news->filter(function ($item) use ($currentDate) {
+            return Carbon::parse($item->date)->lte($currentDate);
+        });
 
         $response = [
             'news' => $news,
