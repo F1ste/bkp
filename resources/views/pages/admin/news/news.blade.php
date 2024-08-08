@@ -110,7 +110,7 @@
         document.addEventListener("DOMContentLoaded", function() {
             const form = document.querySelector(".dashboard-filters");
             form.addEventListener("submit", function(event) {
-                event.preventDefault(); // Отменяем стандартное действие формы
+                event.preventDefault();
 
                 // Получаем значения из инпутов
                 const name = document.querySelector("input[name='name']").value;
@@ -121,7 +121,6 @@
                 const onHome = document.querySelector("#onHome").value;
                 const status = document.querySelector("#status").value;
 
-                // Создаем массив для хранения параметров
                 let params = [];
 
                 if (name) {
@@ -153,7 +152,6 @@
                     url += '?' + params.join('&'); // Добавляем параметры к URL
                 }
 
-                // Выполняем переход по новому URL
                 window.location.href = url;
             });
         });

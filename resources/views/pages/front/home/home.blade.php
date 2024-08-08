@@ -287,7 +287,7 @@
                 </div>
                 <div class="news-block__items-wrapper">
                     <div class="news-block__big-block big-news">
-                        @if (isset($news[0]) and $news[0]->name != '')
+                        @if (isset($news[0]) and $news[0]->name != '' && Carbon\Carbon::parse($news[0]->date)->lte(Carbon\Carbon::now()))
                         <!-- with-banner модификатор для  big-news__item, если банер активен -->
                             <a href="{{ route('news.tidings', $news[0]) }}" class="big-news__item">
                                 <div class="big-news__media media-block">
@@ -325,7 +325,7 @@
                     </div>
                     <div class="news-block__big-items">
                         @for ($i = 1; $i < 3; $i++)
-                            @if (isset($news[$i]) && $news[$i]->name != '')
+                            @if (isset($news[$i]) && $news[$i]->name != '' && Carbon\Carbon::parse($news[$i]->date)->lte(Carbon\Carbon::now()))
                                 <div class="news-block__item">
                                     <a href="{{ route('news.tidings', $news[$i]) }}">
                                         <div class="news-block__item-media media-block">
@@ -356,7 +356,7 @@
                     @if (isset($news[3]) && $news[3]->name != '')
                         <div class="news-block__items-content">
                             @for ($i = 3; $i < 7; $i++)
-                                @if (isset($news[$i]) && $news[$i]->name != '')
+                                @if (isset($news[$i]) && $news[$i]->name != '' && Carbon\Carbon::parse($news[$i]->date)->lte(Carbon\Carbon::now()))
                                     <div class="news-block__item">
                                         <a href="{{ route('news.tidings', $news[$i]) }}">
                                             <div class="news-block__item-media media-block">
