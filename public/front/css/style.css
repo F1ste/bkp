@@ -1352,6 +1352,20 @@ body::after {
   z-index: 149;
 }
 
+.link__item:hover {
+  color: #00AF66;
+}
+
+.forget-pass__link {
+  display: block;
+  margin-top: 12px;
+  opacity: .5;
+}
+
+.forget-pass__link:hover {
+  opacity: 1;
+}
+
 .widget-form{
   display: flex;
   flex-direction: column;

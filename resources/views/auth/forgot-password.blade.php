@@ -18,24 +18,19 @@
                     </a>
                 </div>
                 <div data-tabs class="auth__form tabs">
-                    <nav data-tabs-titles class="auth-form__heading tabs__navigation">
-                        <a href="{{ route('login') }}" type="buttom" class="auth-form__heading-item title tabs__title">Вход</a>
-                        <a href="{{ route('register') }}" type="button" class="auth-form__heading-item title tabs__title">Регистрация</a>
-                    </nav>
                     <div class="tabs__content">
                         <div class="tabs__body">
-                            <x-auth-session-status class="mb-4" :status="session('status')" />
-                            <x-auth-validation-errors class="mb-4" :errors="$errors" />
-
                             <h1 class="faq__question-title" style="margin-bottom:0.5rem">{{ __('Forgot your password?') }}</h1>
 
-                            <div class="mb-4 text-sm text-gray-600" style="margin-bottom:2em">
-                                {{ __('No problem. Just let us know your email address and we will email you a password reset link that will allow you to choose a new one.') }}
+                            <div class="mb-4 text-sm text-gray-600" style="margin-bottom:1em">
+                                {{ __('Enter your email address and we will send you instructions on how to reset your password.') }}
                             </div>
 
+                            <x-auth-session-status class="mb-4" :status="session('status')" />
+                            <x-auth-validation-errors class="mb-4 _form-error" style="margin-bottom:0.5em" :errors="$errors" />
+                            
                             <form method="POST" action="{{ route('password.email') }}" class="auth-form__form-body form__body">
                                 @csrf
-
                                 <div class="auth-form__form-item form__item">
                                     <label for="FormEmailAuth" class="auth-form__form-label form__label">Email </label>
                                     <input id="FormEmailAuth" id="email" type="email" name="email" :value="old('email')" required autofocus class="auth-form__form-input form__input" placeholder="Email">
