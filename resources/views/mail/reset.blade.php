@@ -19,7 +19,10 @@
     display: inline-block;
     font-family: '-apple-system', 'blinkmacsystemfont', 'segoe ui', 'roboto', 'helvetica', 'arial', sans-serif, 'apple color emoji', 'segoe ui emoji', 'segoe ui symbol';
     overflow: hidden;
-    text-decoration: none;">Сбросить пароль</a>
+    text-decoration: none;
+    left: 50%;
+    position: relative;
+    transform: translateX(-50%);">Сбросить пароль</a>
 <p style="font-family: Helvetica, sans-serif; font-size: 16px; font-weight: normal; Margin: 0; margin-bottom: 16px;">
     Если вы не запрашивали сброс пароля, никаких дальнейших действий не требуется.
 </p>
