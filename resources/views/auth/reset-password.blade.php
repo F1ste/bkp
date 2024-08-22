@@ -33,7 +33,7 @@
                                 Введите новый пароль для вашей учетной записи.
                             </div>
 
-                            <x-auth-session-status class="mb-4" :status="session('status')" />
+                            <x-auth-session-status class="mb-4" style="margin-bottom:0.5em" :status="session('status')" />
                             <x-auth-validation-errors class="mb-4 _form-error" style="margin-bottom:0.5em" :errors="$errors" />
 
                             <form method="POST" action="{{ route('password.update') }}" class="auth-form__form-body form__body">

@@ -25,7 +25,7 @@
 
                     <div class="tabs__content">
                         <div class="tabs__body">
-                            <x-auth-validation-errors class="mb-4" :errors="$errors" />
+                            <x-auth-validation-errors class="mb-4 _form-error" style="margin-bottom:0.5em" :errors="$errors" />
                             <form method="POST" action="{{ route('register') }}" class="auth-form__form-body form__body">
                                 @csrf
                                 <div class="auth-form__form-item form__item">
