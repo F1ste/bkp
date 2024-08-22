@@ -4,7 +4,7 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="{{ asset('front/css/style.css?v=1242235354212345623434673790542222411') }}"/>
+        <link rel="stylesheet" href="{{ asset('front/css/style.css?v=124223535421234562343467379022542222411111') }}"/>
         @hasSection('title')
             <title>@yield('title') &mdash; {{ config('app.name') }}</title>
         @else
@@ -78,6 +78,6 @@
         <script src="{{ asset('/plugins/ckfinder/ckfinder.js') }}"></script>
         <script src="{{ asset('front/js/editor.js') }}"></script>
         <script src="{{ mix('front/js/app.js') }}"></script>
-        <script src="{{ asset('front/js/app2.js?v=1242235354212345623434673790542222411') }}"></script>
+        <script src="{{ asset('front/js/app2.js?v=124223535421234562343467379022542222411111') }}"></script>
     </body>
 </html>

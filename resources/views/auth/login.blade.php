@@ -25,7 +25,7 @@
                     <div data-tabs-body class="tabs__content">
                         <div class="tabs__body">
                             <x-auth-session-status class="mb-4" :status="session('status')" />
-                            <x-auth-validation-errors class="mb-4" :errors="$errors" />
+                            <x-auth-validation-errors class="mb-4 _form-error" style="margin-bottom:0.5em" :errors="$errors" />
                             <form method="POST" action="{{ route('login') }}" class="auth-form__form-body form__body">
                                 @csrf
 
@@ -39,7 +39,7 @@
                                 </div>
                                 <button type="submit" class="auth-form__btn form__submit btn btn-filled">Войти</button>
                             </form>
-
+                            <a href="{{route('password.request')}}" class="link__item forget-pass__link">Забыли пароль?</a>
                         </div>
 
                     </div>
