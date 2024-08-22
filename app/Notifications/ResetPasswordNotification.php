@@ -46,7 +46,7 @@ class ResetPasswordNotification extends Notification
         // Возвращаем MailMessage с использованием кастомного Mailable
         return (new MailMessage)
             ->subject('Сброс пароля')
-            ->view('mails.reset-password', ['url' => $url]);
+            ->view('mail.reset', ['url' => $url]);
     }
 
     /**
