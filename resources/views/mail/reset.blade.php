@@ -9,23 +9,25 @@
 <p style="font-family: Helvetica, sans-serif; font-size: 16px; font-weight: normal; Margin: 0; margin-bottom: 16px;">
     Вы получили это письмо, поскольку мы получили запрос на сброс пароля для Вашей учетной записи.
 </p>
-<table role="presentation" border="0" cellpadding="0" cellspacing="0" style="margin: 0 auto; padding: 0; text-align: center; width: 100%;">
-    <tr>
-        <td>
-            <a href="{{ $url }}" style="background-color: #00AF66;
-                border-color: #00AF66;
-                border-radius: 4px;
-                border-style: solid;
-                border-width: 8px 18px 8px 18px;
-                box-sizing: border-box;
-                color: #fff;
-                display: inline-block;
-                font-family: '-apple-system', 'blinkmacsystemfont', 'segoe ui', 'roboto', 'helvetica', 'arial', sans-serif, 'apple color emoji', 'segoe ui emoji', 'segoe ui symbol';
-                overflow: hidden;
-                text-decoration: none;">Сбросить пароль</a>
-        </td>
-    </tr>
-</table>
+<div align="center">
+    <a
+        href="{{ $url }}"
+        style="
+        background-color:#00af66;
+        border-color:#00af66;
+        border-radius:4px;
+        border-style:solid;
+        border-width:8px 18px 8px 18px;
+        box-sizing:border-box;
+        color:#fff;
+        display:inline-block;
+        font-family:'-apple-system' , 'blinkmacsystemfont' , 'segoe ui' , 'roboto' , 'helvetica' , 'arial' , sans-serif , 'apple color emoji' , 'segoe ui emoji' , 'segoe ui symbol';
+        overflow:hidden;text-decoration:none;"
+        target="_blank" 
+        rel="noopener noreferrer">
+        Сбросить пароль
+    </a>
+</div>
 <p style="font-family: Helvetica, sans-serif; font-size: 16px; font-weight: normal; Margin: 0; margin-bottom: 16px;">
     Если вы не запрашивали сброс пароля, никаких дальнейших действий не требуется.
 </p>
