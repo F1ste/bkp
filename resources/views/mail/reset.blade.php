@@ -43,6 +43,4 @@
             style="box-sizing:border-box;color:#3869d4;font-family:'-apple-system' , 'blinkmacsystemfont' , 'segoe ui' , 'roboto' , 'helvetica' , 'arial' , sans-serif , 'apple color emoji' , 'segoe ui emoji' , 'segoe ui symbol'"
             data-link-id="8" target="_blank" rel="noopener noreferrer">{{ $url }}</a></span>
 </p>
-
-</table>
 @endsection
